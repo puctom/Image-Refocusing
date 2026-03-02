@@ -1,0 +1,11 @@
+# Build outputs
+/refocus
+*.o
+*.d
+
+# macOS / Linux noise
+.DS_Store
+*.swp
+
+# Default output
+/refocused.png
