@@ -16,7 +16,7 @@ FOCUS_VALUES = [-49.3, -20, 0, 12.352, 33.33]
 EPSILON      = 1
 
 
-def test_images_exist():
+def validation_data_exists():
     if not os.path.exists(PATH):
         return False
     
@@ -66,7 +66,7 @@ def download_test_images():
 def build_cpp():
     subprocess.run("cd cpp_refocus && make", shell=True, check=True)
 
-def run_case(focus):
+def run_cpp_single(focus):
     binary_path = os.path.join("cpp_refocus", "refocus")
     output_path = os.path.join(OUT, "cpp", f"{str(focus).replace('.', '_')}.png")
     subprocess.run(
@@ -75,8 +75,30 @@ def run_case(focus):
     )
 
 def run_cpp():
+    os.makedirs(os.path.join(OUT, "cpp"), exist_ok=True)
     with mp.Pool() as pool:
-        pool.map(run_case, FOCUS_VALUES)
+        pool.map(run_cpp_single, FOCUS_VALUES)
+
+def rust_results_exist():
+    for focus in FOCUS_VALUES:
+        fname = str(focus).replace(".", "_") + ".png"
+        if not os.path.isfile(os.path.join(OUT, "rust", fname)):
+            return False
+    return True
+
+def run_rust_single(focus):
+    output_path = os.path.join(OUT, "rust", f"{str(focus).replace('.', '_')}.png")
+    manifest_path = os.path.join("rust_refocus", "Cargo.toml")
+    subprocess.run(
+        ["cargo", "run", "--release", "--manifest-path", manifest_path, "--", PATH, str(focus), output_path],
+        check=True,
+    )
+
+def run_rust():
+    os.makedirs(os.path.join(OUT, "rust"), exist_ok=True)
+    with mp.Pool() as pool:
+        pool.map(run_rust_single, FOCUS_VALUES)
+
 
 def compare_single(focus):
     fname = str(focus).replace(".", "_") + ".png"
@@ -108,11 +130,13 @@ def compare():
 
 
 def main():
-    if not test_images_exist():
-        print("Test images not found, downloading...")
+    if not validation_data_exists():
+        print("Validation data not found, downloading...")
         download_test_images()
     build_cpp()
     run_cpp()
+    if not rust_results_exist():
+        run_rust()
     compare()
 
 if __name__ == "__main__":
