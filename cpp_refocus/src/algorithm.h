@@ -1,9 +1,10 @@
+#pragma once
+
 #include <filesystem>
 #include <iostream>
 #include <cmath>
 #include <algorithm>
-
-#include "deps/lodepng.h"
+#include "../deps/lodepng.h"
 
 struct ImageData {
     size_t width = 0;
@@ -49,7 +50,7 @@ RGB sample_bilinear(const SubApertureImage& img, float x, float y){
     if(x < 0 || x >= img.data.width - 1) return RGB{-1.0, -1.0, -1.0};
     if(y < 0 || y >= img.data.height -1) return RGB{-1.0, -1.0, -1.0};
 
-    const int x0 = std::floor(x); 
+    const int x0 = std::floor(x);
     const int x1 = std::ceil(x);
     const int y0 = std::floor(y);
     const int y1 = std::ceil(y);
@@ -78,9 +79,6 @@ unsigned char scale_round_clamp(float val, float scale){
 }
 
 static ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {
-    const size_t total = subapertures.size();
-    std::cout << "Loaded " << total << " sub-aperture images\n";
-
     const size_t width = subapertures.front().data.width;
     const size_t height = subapertures.front().data.height;
     ImageData output;
@@ -91,7 +89,7 @@ static ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertur
     for(size_t y=0; y<height; ++y){
         for(size_t x=0; x<width; ++x){
             int count = 0;
-            RGB sum{0.0f, 0.0f, 0.0f}; 
+            RGB sum{0.0f, 0.0f, 0.0f};
             for(SubApertureImage& sub : subapertures){
                 float shift_x = focus * sub.u;
                 float shift_y = focus * sub.v;
@@ -105,9 +103,9 @@ static ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertur
                 ++count;
             }
             if(count == 0) continue;
-            output.at(x, y, 0) = scale_round_clamp(sum.r, count); 
-            output.at(x, y, 1) = scale_round_clamp(sum.g, count); 
-            output.at(x, y, 2) = scale_round_clamp(sum.b, count); 
+            output.at(x, y, 0) = scale_round_clamp(sum.r, count);
+            output.at(x, y, 1) = scale_round_clamp(sum.g, count);
+            output.at(x, y, 2) = scale_round_clamp(sum.b, count);
         }
     }
 
@@ -232,29 +230,4 @@ static std::vector<SubApertureImage> load_subaperture_images(const fs::path &dir
                                 ". Expected files named like out_00_00_-780.134705_-3355.331299_.png");
     }
     return subapertures;
-}
-
-static std::tuple<fs::path, float, fs::path> parse_args(int argc, char **argv) {
-    if (argc < 3 || argc > 4) {
-        throw std::runtime_error("Usage: <directory> <focus> [output.png]");
-    }
-    fs::path directory = argv[1];
-    float focus = std::stof(argv[2]);
-    fs::path output = argc > 3 ? fs::path(argv[3]) : fs::path("refocused.png");
-    return {directory, focus, output};
-}
-
-int main(int argc, char **argv) {
-    try {
-        auto [directory, focus, output] = parse_args(argc, argv);
-
-        auto subapertures = load_subaperture_images(directory);
-        ImageData image = refocus_shift_and_sum(subapertures, focus);
-        save_png(output, image);
-        std::cout << "Saved refocused image to " << output.string() << "\n";
-    } catch (const std::exception &ex) {
-        std::cerr << ex.what() << "\n";
-        return 1;
-    }
-    return 0;
 }
