@@ -36,8 +36,8 @@ static std::vector<SubApertureImage> generate_size(size_t new_w, size_t new_h) {
     for (int v = 0; v < grid; ++v) {
         for (int u = 0; u < grid; ++u) {
             SubApertureImage sub;
-            sub.u = (u-grid/2) / (0.9f / (grid -1));
-            sub.v = (v-grid/2) / (0.9f / (grid -1));
+            sub.u = (u-grid/2) * (0.9f / (grid -1));
+            sub.v = (v-grid/2) * (0.9f / (grid -1));
             sub.data.width = new_w;
             sub.data.height = new_h;
             sub.data.data.resize(new_w * new_h * 3);
