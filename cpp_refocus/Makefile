@@ -8,10 +8,13 @@ DATA         ?= ../in/validation
 TIMING_CSV   ?= timing_results.csv
 TIMING_SIZES ?= 10 50 200 500
 
-all: $(BUILD)/basic $(BUILD)/bench
+all: $(BUILD)/basic $(BUILD)/bench $(BUILD)/basic-opt
 
 $(BUILD)/basic: src/main.cpp src/basic.cpp deps/lodepng.cpp | $(BUILD)
 	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -DBASIC -o $@ $^
+
+$(BUILD)/basic-opt: src/main.cpp src/basic.cpp deps/lodepng.cpp | $(BUILD)
+	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -march=native -ffast-math -DBASIC -o $@ $^
 
 $(BUILD)/bench: src/bench.cpp src/basic.cpp deps/lodepng.cpp | $(BUILD) 
 	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -DBASIC -o $@ $^

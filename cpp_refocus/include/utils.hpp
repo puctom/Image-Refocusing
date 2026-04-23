@@ -83,10 +83,10 @@ inline std::vector<std::string> split(const std::string &value, char delimiter) 
 inline std::tuple<std::vector<std::tuple<fs::path, float, float>>, float, float, float>
 find_subaperture_files(const fs::path &directory) {
     std::vector<std::tuple<fs::path, float, float>> files;
-    float min_u = std::numeric_limits<float>::infinity();
-    float max_u = -std::numeric_limits<float>::infinity();
-    float min_v = std::numeric_limits<float>::infinity();
-    float max_v = -std::numeric_limits<float>::infinity();
+    float min_u = std::numeric_limits<float>::max();
+    float max_u = std::numeric_limits<float>::min();
+    float min_v = std::numeric_limits<float>::max();
+    float max_v = std::numeric_limits<float>::min();
     float mean_u = 0.0f;
     float mean_v = 0.0f;
 
