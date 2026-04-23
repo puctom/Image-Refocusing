@@ -1,19 +1,20 @@
-CXX      ?= g++
-CXXFLAGS ?= -O3 -march=native -std=c++17 -Wall -Wextra -pedantic
+CXX       ?= g++
+CPPFLAGS  ?= -Iinclude -Ideps
+BASEFLAGS ?= -O3 -std=c++17 -Wall -Wextra -pedantic
 
-DEPS_SRC := deps/lodepng.cpp
+BUILD ?= build
 
 DATA         ?= ../in/validation
 TIMING_CSV   ?= timing_results.csv
 TIMING_SIZES ?= 10 50 200 500
 
-all: refocus bench
+all: basic bench
 
-refocus: src/main.cpp $(DEPS_SRC)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+$(BUILD)/basic: src/main.cpp src/basic.cpp deps/lodepng.cpp | $(BUILD)
+	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -DBASIC -o $@ $^
 
-bench: src/bench.cpp $(DEPS_SRC)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+$(BUILD)/bench: src/bench.cpp src/basic.cpp deps/lodepng.cpp | $(BUILD) 
+	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -DBASIC -o $@ $^
 
 timing:
 	@echo "variant,n_focal,img_w,img_h,n_subapertures,total_s,per_focal_ms,median_ms,min_ms,max_ms,mpixels_s" > $(TIMING_CSV)
@@ -25,15 +26,18 @@ timing:
 		label=$$(echo $$entry | cut -d'|' -f1); \
 		flags=$$(echo $$entry | cut -d'|' -f2); \
 		echo "=== Building $$label ($$flags) ==="; \
-		g++ -std=c++17 $$flags -o bench_$$label src/bench.cpp $(DEPS_SRC); \
+		g++ -std=c++17 $$flags -o build/bench_$$label src/bench.cpp src/basic.cpp deps/lodepng.cpp; \
 		for n in $(TIMING_SIZES); do \
 			echo "  Running $$label n=$$n..."; \
-			./bench_$$label $(DATA) $$n $$label $(TIMING_CSV); \
+			./build/bench_$$label $(DATA) $$n $$label $(TIMING_CSV); \
 		done; \
 	done
 	@column -t -s, $(TIMING_CSV)
 
+$(BUILD):
+	mkdir -p $(BUILD)
+
 clean:
-	rm -f refocus bench bench_* $(TIMING_CSV)
+	rm -rf build
 
 .PHONY: all clean timing

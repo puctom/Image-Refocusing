@@ -1,4 +1,5 @@
 import os
+import sys
 import multiprocessing as mp
 import subprocess
 import zipfile
@@ -63,21 +64,21 @@ def download_test_images():
         new = os.path.join(PATH, file[0:-4] + '_.png')
         os.rename(old, new)
 
-def build_cpp():
-    subprocess.run("cd cpp_refocus && make clean && make refocus", shell=True, check=True)
+def build_cpp(target):
+    subprocess.run(f"cd cpp_refocus && make clean && make build/{target}", shell=True, check=True)
 
-def run_cpp_single(focus):
-    binary_path = os.path.join("cpp_refocus", "refocus")
+def run_cpp_single(focus, target):
+    binary_path = os.path.join("cpp_refocus", "build", target)
     output_path = os.path.join(OUT, "cpp", f"{str(focus).replace('.', '_')}.png")
     subprocess.run(
         [binary_path, PATH, str(focus), output_path],
         check=True,
     )
 
-def run_cpp():
+def run_cpp(target):
     os.makedirs(os.path.join(OUT, "cpp"), exist_ok=True)
     with mp.Pool() as pool:
-        pool.map(run_cpp_single, FOCUS_VALUES)
+        pool.starmap(run_cpp_single, zip(FOCUS_VALUES, len(FOCUS_VALUES) * [target]))
 
 def rust_results_exist():
     for focus in FOCUS_VALUES:
@@ -130,11 +131,16 @@ def compare():
 
 
 def main():
+    if len(sys.argv) != 2:
+        print("Usage: python validate.py <cpp_target_name>")
+        sys.exit(1)
+
+    target = sys.argv[1]
     if not validation_data_exists():
         print("Validation data not found, downloading...")
         download_test_images()
-    build_cpp()
-    run_cpp()
+    build_cpp(target)
+    run_cpp(target)
     if not rust_results_exist():
         run_rust()
     compare()

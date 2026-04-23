@@ -1,7 +1,5 @@
 # Build outputs
-/refocus
-*.o
-*.d
+build
 
 # macOS / Linux noise
 .DS_Store
@@ -9,6 +7,3 @@
 
 # Default output
 /refocused.png
-
-# Benchmark files
-bench*

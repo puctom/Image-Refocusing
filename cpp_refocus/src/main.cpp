@@ -1,7 +1,14 @@
+#include <cstdlib>
 #include <iostream>
 #include <stdexcept>
 
-#include "algorithm.h"
+#include "utils.hpp"
+
+#ifdef BASIC 
+#include "basic.hpp"
+#else
+#error "Method must be defined at compile time"
+#endif
 
 static std::tuple<fs::path, float, fs::path> parse_args(int argc, char **argv) {
     if (argc < 3 || argc > 4)
@@ -14,7 +21,8 @@ int main(int argc, char **argv) {
         auto [directory, focus, output] = parse_args(argc, argv);
         auto subapertures = load_subaperture_images(directory);
         std::cout << "Loaded " << subapertures.size() << " sub-aperture images\n";
-        ImageData image = refocus_shift_and_sum(subapertures, focus);
+        ImageData image;
+        image = refocus_shift_and_sum(subapertures, focus);
         save_png(output, image);
         std::cout << "Saved refocused image to " << output.string() << "\n";
     } catch (const std::exception &ex) {
