@@ -21,7 +21,7 @@ $(BUILD)/bench: src/bench.cpp src/basic.cpp deps/lodepng.cpp | $(BUILD)
 	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -march=native -ffast-math -DBASIC -o $@ $^
 
 timing: $(BUILD)/bench
-	@echo "variant,data_source,n_focal,img_w,img_h,n_subapertures,total_s,per_focal_ms,median_ms,min_ms,max_ms,mpixels_s,cycles_per_focal" > $(TIMING_CSV)
+	@echo "variant,data_source,n_focal,img_w,img_h,n_subapertures,per_focal_ms,median_ms,min_ms,max_ms,cycles_per_focal,median_cycles,min_cycles,max_cycles,cycles_per_pixel,mpixels_s,membw_gbs" > $(TIMING_CSV)
 	@echo "Running real dataset..."
 	@for n in $(TIMING_SIZES); do \
 		./$(BUILD)/bench $(DATA) $$n real_n$$n $(TIMING_CSV); \

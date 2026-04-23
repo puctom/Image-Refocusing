@@ -9,6 +9,7 @@
 #include <thread>
 #include<x86intrin.h>
 #include <filesystem>
+#include <numeric>
 
 namespace fs = std::filesystem;
 
@@ -103,55 +104,62 @@ int main(int argc, char **argv) { // run this with "make timing"
     for (int i = 0; i < warmup; ++i)
         refocus_shift_and_sum(subs, focus_vals[i]);
 
-    std::vector<double> times(n_focal);
-    uint64_t start = _rdtsc();
+    std::vector<uint64_t> n_cycles(n_focal);
 
     for (int i = 0; i < n_focal; ++i) {
         uint64_t t0 = _rdtsc();
         refocus_shift_and_sum(subs, focus_vals[i]);
-        uint64_t t1 = _rdtsc();
-        times[i] = static_cast<double>(t1 - t0) / tsc_per_s;
+        n_cycles[i] = _rdtsc() - t0;
     }
 
-    uint64_t end = _rdtsc() - start;
-
-    double total_s = static_cast<double>(end) / tsc_per_s;
-    double per_focal_ms = total_s / n_focal * 1000.0;
-    double mpixels_s = (double)W * H * n_focal / total_s / 1e6;
-    uint64_t cycles_per_focal = end / n_focal;
-
-    double min_ms = *std::min_element(times.begin(), times.end()) * 1000.0;
-    double max_ms = *std::max_element(times.begin(), times.end()) * 1000.0;
-    double median_ms = [&]() {
-        std::vector<double> t = times;
-        std::nth_element(t.begin(), t.begin() + t.size() / 2, t.end());
-        return t[t.size() / 2] * 1000.0;
+    uint64_t total_cycles = std::accumulate(n_cycles.begin(), n_cycles.end(), 0ULL);
+    uint64_t cycles_per_focal = total_cycles / n_focal;
+    double cycles_per_pixel = static_cast<double>(cycles_per_focal) / (W * H);
+    uint64_t min_cycles = *std::min_element(n_cycles.begin(), n_cycles.end());
+    uint64_t max_cycles = *std::max_element(n_cycles.begin(), n_cycles.end());
+    uint64_t median_cycles = [&]() {
+        std::vector<uint64_t> c = n_cycles;
+        std::nth_element(c.begin(), c.begin() + c.size() / 2, c.end());
+        return c[c.size() / 2];
     }();
 
-    std::cerr << "\n Timing resulsts: \n";
+    double total_s = static_cast<double>(total_cycles) / tsc_per_s;
+    double per_focal_ms = total_s / n_focal * 1000.0;
+    double mpixels_s = (double)W * H * n_focal / total_s / 1e6;
+    double bandwidth = (double)N * W * H * 3 / (total_s / n_focal) / 1e9;
+
+    double min_ms = static_cast<double>(min_cycles) / tsc_per_s * 1000.0;
+    double max_ms = static_cast<double>(max_cycles) / tsc_per_s * 1000.0;
+    double median_ms = static_cast<double>(median_cycles) / tsc_per_s * 1000.0;
+
+    std::cerr << "\n Timing results: \n";
     std::cerr << "variant : " << label << "\n";
     std::cerr << "data source : " << data_source << "\n";
     std::cerr << "focal lengths : " << n_focal << "\n";
     std::cerr << "image size : " << W << "x" << H << "\n";
     std::cerr << "n subapertures : " << N << "\n";
-    std::cerr << "total time : " << total_s << " s\n";
-    std::cerr << "time per focal : " << per_focal_ms << " ms (med=" << median_ms
-              << " min=" << min_ms << " max=" << max_ms << ")\n";
+    std::cerr << "time/focal : " << per_focal_ms << " ms (med=" << median_ms << " min=" << min_ms << " max=" << max_ms << ")\n";
+    std::cerr << "cycles/focal : " << cycles_per_focal << " (med=" << median_cycles << " min=" << min_cycles << " max=" << max_cycles << ")\n";
+    std::cerr << "cycles/pixel : " << cycles_per_pixel << "\n";
     std::cerr << "throughput : " << mpixels_s << " Mpixels/s\n";
-    std::cerr << "cycles per focal : " << cycles_per_focal << " cycles\n";
+    std::cerr << "mem bandwidth : " << bandwidth << " GB/s (est)\n";
 
-    std::string row = label + "," 
-    + data_source + ", " 
+    std::string row = label + ","
+    + data_source + ","
     + std::to_string(n_focal) + ","
     + std::to_string(W) + "," + std::to_string(H) + ","
     + std::to_string(N) + ","
-    + std::to_string(total_s) + ","
     + std::to_string(per_focal_ms) + ","
     + std::to_string(median_ms) + ","
     + std::to_string(min_ms) + ","
     + std::to_string(max_ms) + ","
+    + std::to_string(cycles_per_focal) + ","
+    + std::to_string(median_cycles) + ","
+    + std::to_string(min_cycles) + ","
+    + std::to_string(max_cycles) + ","
+    + std::to_string(cycles_per_pixel) + ","
     + std::to_string(mpixels_s) + ","
-    + std::to_string(cycles_per_focal) + "\n";
+    + std::to_string(bandwidth) + "\n";
 
     if (!csv_path.empty()) {
         std::ofstream f(csv_path, std::ios::app);
