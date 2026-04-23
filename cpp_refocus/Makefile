@@ -8,7 +8,7 @@ DATA         ?= ../in/validation
 TIMING_CSV   ?= timing_results.csv
 TIMING_SIZES ?= 10 50 200 500
 
-all: basic bench
+all: $(BUILD)/basic $(BUILD)/bench
 
 $(BUILD)/basic: src/main.cpp src/basic.cpp deps/lodepng.cpp | $(BUILD)
 	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -DBASIC -o $@ $^
