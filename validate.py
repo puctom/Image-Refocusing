@@ -64,7 +64,7 @@ def download_test_images():
         os.rename(old, new)
 
 def build_cpp():
-    subprocess.run("cd cpp_refocus && make", shell=True, check=True)
+    subprocess.run("cd cpp_refocus && make clean && make refocus", shell=True, check=True)
 
 def run_cpp_single(focus):
     binary_path = os.path.join("cpp_refocus", "refocus")

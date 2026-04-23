@@ -47,8 +47,8 @@ struct RGB {
 
 RGB sample_bilinear(const SubApertureImage& img, float x, float y){
     // Using the convention that if any RGB val is negative it is invalid
-    if(x < 0 || x >= img.data.width - 1) return RGB{-1.0, -1.0, -1.0};
-    if(y < 0 || y >= img.data.height -1) return RGB{-1.0, -1.0, -1.0};
+    if(x < 0 || x >= img.data.width - 1) return RGB{-1.0f, -1.0f, -1.0f};
+    if(y < 0 || y >= img.data.height -1) return RGB{-1.0f, -1.0f, -1.0f};
 
     const int x0 = std::floor(x);
     const int x1 = std::ceil(x);
@@ -66,9 +66,9 @@ RGB sample_bilinear(const SubApertureImage& img, float x, float y){
         const float p01 = img.data.at(x0, y1, channel);
         const float p11 = img.data.at(x1, y1, channel);
 
-        const float top    = (1.0 - dx) * p00 + dx * p10;
-        const float bottom = (1.0 - dx) * p01 + dx * p11;
-        out[channel] = (1.0 - dy) * top + dy * bottom;
+        const float top    = (1.0f - dx) * p00 + dx * p10;
+        const float bottom = (1.0f - dx) * p01 + dx * p11;
+        out[channel] = (1.0f - dy) * top + dy * bottom;
     }
 
     return RGB{out[0], out[1], out[2]};

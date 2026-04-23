@@ -1,5 +1,5 @@
 CXX      ?= g++
-CXXFLAGS ?= -O3 -march=native -ffast-math -std=c++17 -Wall -Wextra -pedantic
+CXXFLAGS ?= -O3 -march=native -std=c++17 -Wall -Wextra -pedantic
 
 DEPS_SRC := deps/lodepng.cpp
 

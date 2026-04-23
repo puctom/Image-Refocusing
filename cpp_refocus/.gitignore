@@ -9,3 +9,6 @@
 
 # Default output
 /refocused.png
+
+# Benchmark files
+bench*
