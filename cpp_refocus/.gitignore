@@ -1,7 +1,5 @@
 # Build outputs
-/refocus
-*.o
-*.d
+build
 
 # macOS / Linux noise
 .DS_Store

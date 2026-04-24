@@ -2,10 +2,10 @@
 #include <chrono>
 #include <fstream>
 #include <iostream>
-#include <numeric>
 #include <string>
 #include <vector>
-#include "algorithm.h"
+#include "utils.hpp"
+#include "basic.hpp"
 
 using Clock = std::chrono::high_resolution_clock;
 using Seconds = std::chrono::duration<double>;
