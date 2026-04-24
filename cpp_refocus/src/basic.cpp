@@ -1,4 +1,5 @@
 #include "basic.hpp"
+#include <cmath>
 
 struct RGB {
     float r;
