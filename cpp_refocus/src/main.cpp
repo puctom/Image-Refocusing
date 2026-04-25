@@ -3,12 +3,7 @@
 #include <stdexcept>
 
 #include "utils.hpp"
-
-#ifdef BASIC 
-#include "basic.hpp"
-#else
-#error "Method must be defined at compile time"
-#endif
+#include "refocus.hpp"
 
 static std::tuple<fs::path, float, fs::path> parse_args(int argc, char **argv) {
     if (argc < 3 || argc > 4)
