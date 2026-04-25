@@ -70,7 +70,6 @@ def download_test_images():
         os.rename(old, new)
 
 def build_cpp(target):
-    subprocess.run(["make", "clean"], cwd=CPP_DIR, check=True)
     subprocess.run(["make", f"build/{target}"], cwd=CPP_DIR, check=True)
 
 def run_cpp_single(focus, target):
