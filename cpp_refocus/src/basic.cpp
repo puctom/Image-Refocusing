@@ -1,5 +1,6 @@
 #include "refocus.hpp"
 #include <cmath>
+#include <algorithm>
 
 struct RGB {
     float r;

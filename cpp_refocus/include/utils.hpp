@@ -1,8 +1,10 @@
 #pragma once
 
 #include <filesystem>
-#include <algorithm>
-#include "lodepng.h"
+#include <stdexcept>
+#include <string>
+#include <tuple>
+#include <vector>
 
 namespace fs = std::filesystem;
 

@@ -3,24 +3,40 @@ CPPFLAGS  ?= -Iinclude -Ideps
 BASEFLAGS ?= -O3 -std=c++17 -Wall -Wextra -pedantic
 
 BUILD ?= build
+COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 
-all: $(BUILD)/basic $(BUILD)/bench $(BUILD)/basic-opt
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4
 
-$(BUILD)/basic: src/main.cpp src/basic.cpp src/utils.cpp deps/lodepng.cpp | $(BUILD)
-	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -DBASIC -o $@ $^
+VER_SRC.basic     := basic
+VER_SRC.basic-opt := basic
+VER_SRC.opt1      := opt1
+VER_SRC.opt2      := opt2
+VER_SRC.opt3      := opt3
+VER_SRC.opt4      := opt4
 
-$(BUILD)/basic-opt: src/main.cpp src/basic.cpp src/utils.cpp deps/lodepng.cpp | $(BUILD)
-	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -march=native -ffast-math -DBASIC -o $@ $^
+VER_FLAGS.basic     := 
+VER_FLAGS.basic-opt := -march=native -ffast-math
+VER_FLAGS.opt1      := -march=native -ffast-math
+VER_FLAGS.opt2      := -march=native -ffast-math
+VER_FLAGS.opt3      := -march=native -ffast-math
+VER_FLAGS.opt4      := -march=native -ffast-math
 
-$(BUILD)/bench: src/bench.cpp src/basic.cpp src/utils.cpp deps/lodepng.cpp | $(BUILD)
-	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -g -march=native -ffast-math -DBASIC -o $@ $^
-# -g for perf annotate, does not impact the runtime
 
-$(BUILD)/opt1: src/main.cpp src/opt1.cpp deps/lodepng.cpp | $(BUILD)
-	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -march=native -ffast-math -o $@ $^
+.PHONY: all app bench clean
 
-$(BUILD)/bench-opt1: src/bench.cpp src/opt1.cpp deps/lodepng.cpp | $(BUILD) 
-	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -march=native -ffast-math -o $@ $^
+all:   app bench
+app:  $(addprefix $(BUILD)/,$(VERSIONS))
+bench: $(addprefix $(BUILD)/bench-,$(VERSIONS))
+
+define MAKE_RULES
+$(BUILD)/$(1): src/main.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.$(1)) -o $$@ $$^
+
+$(BUILD)/bench-$(1): src/bench.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.$(1)) -o $$@ $$^
+endef
+
+$(foreach ver,$(VERSIONS),$(eval $(call MAKE_RULES,$(ver))))
 
 $(BUILD):
 	mkdir -p $(BUILD)
@@ -28,4 +44,3 @@ $(BUILD):
 clean:
 	rm -rf $(BUILD)
 
-.PHONY: all clean

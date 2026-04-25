@@ -2,6 +2,7 @@
 #include "utils.hpp"
 #include <vector>
 #include <cmath>
+#include <algorithm>
 
 /*
 *   List of Optimizations:
@@ -10,8 +11,6 @@
 *       - use better bounds for the x-y loops
 *       - use unchecked array access
 * */
-
-
 
 struct RGB {
     float r;

@@ -7,7 +7,7 @@
 #include "utils.hpp"
 #include "refocus.hpp"
 #include <thread>
-#include<x86intrin.h>
+#include <x86intrin.h>
 #include <filesystem>
 #include <numeric>
 #include "hw_counter.hpp"

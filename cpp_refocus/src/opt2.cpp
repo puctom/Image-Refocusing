@@ -2,14 +2,13 @@
 #include "utils.hpp"
 #include <vector>
 #include <cmath>
+#include <algorithm>
 
 /*
 *   List of Optimizations:
 *       - Change the loop order to [Subaperture, y, x] for improved locality
 *       - Common subexpression elimination
 * */
-
-
 
 struct RGB {
     float r;
@@ -19,8 +18,8 @@ struct RGB {
 
 RGB sample_bilinear(const SubApertureImage& img, int x, int y, float A, float B, float C, float D){
     // Using the convention that if any RGB val is negative it is invalid
-    if(x < 0 || x >= img.data.width - 1) return RGB{-1.0f, -1.0f, -1.0f};
-    if(y < 0 || y >= img.data.height -1) return RGB{-1.0f, -1.0f, -1.0f};
+    if(x < 0 || x >= (int) img.data.width - 1) return RGB{-1.0f, -1.0f, -1.0f};
+    if(y < 0 || y >= (int) img.data.height -1) return RGB{-1.0f, -1.0f, -1.0f};
 
     float out[3];
 

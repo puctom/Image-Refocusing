@@ -2,6 +2,7 @@
 #include "utils.hpp"
 #include <vector>
 #include <cmath>
+#include <algorithm>
 
 /*
 *   List of Optimizations:
@@ -9,8 +10,6 @@
 *       - Common subexpression elimination
 *       - use better bounds for the x-y loops
 * */
-
-
 
 struct RGB {
     float r;

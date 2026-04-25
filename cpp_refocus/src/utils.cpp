@@ -1,5 +1,8 @@
 #include "utils.hpp"
-#include <cmath>
+#include "lodepng.h"
+
+#include <algorithm>
+#include <limits>
 #include <stdexcept>
 
 ImageData load_png(const fs::path &path) {

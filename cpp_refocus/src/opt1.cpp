@@ -2,13 +2,12 @@
 #include "utils.hpp"
 #include <vector>
 #include <cmath>
+#include <algorithm>
 
 /*
 *   List of Optimizations:
 *       - Change the loop order to [Subaperture, y, x] for improved locality
 * */
-
-
 
 struct RGB {
     float r;
