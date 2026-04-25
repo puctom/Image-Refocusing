@@ -16,6 +16,9 @@ $(BUILD)/bench: src/bench.cpp src/basic.cpp src/utils.cpp deps/lodepng.cpp | $(B
 	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -g -march=native -ffast-math -DBASIC -o $@ $^
 # -g for perf annotate, does not impact the runtime
 
+$(BUILD)/opt1: src/main.cpp src/opt1.cpp deps/lodepng.cpp | $(BUILD)
+	$(CXX) $(CPPFLAGS) $(BASEFLAGS) -march=native -ffast-math -DBASIC -o $@ $^
+
 $(BUILD):
 	mkdir -p $(BUILD)
 
