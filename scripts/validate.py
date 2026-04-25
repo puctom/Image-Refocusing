@@ -3,16 +3,21 @@ import sys
 import multiprocessing as mp
 import subprocess
 import zipfile
-
+from pathlib import Path
 from io import BytesIO
 from urllib.request import urlopen
 
 from PIL import Image
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+CPP_DIR = PROJECT_ROOT / "cpp_refocus"
+RUST_DIR = PROJECT_ROOT / "rust_refocus"
+
 # Jelly Beans is the smallest dataset (1024 x 512)
 SOURCE       = "https://graphics.stanford.edu/data/LF/data/jelly_beans_lf/rectified.zip"
-PATH         = os.path.join("in", "validation")
-OUT          = "out"
+PATH         = PROJECT_ROOT / "in" / "validation"
+OUT          = PROJECT_ROOT / "out"
 FOCUS_VALUES = [-49.3, -20, 0, 12.352, 33.33]
 EPSILON      = 1
 
@@ -65,11 +70,12 @@ def download_test_images():
         os.rename(old, new)
 
 def build_cpp(target):
-    subprocess.run(f"cd cpp_refocus && make clean && make build/{target}", shell=True, check=True)
+    subprocess.run(["make", "clean"], cwd=CPP_DIR, check=True)
+    subprocess.run(["make", f"build/{target}"], cwd=CPP_DIR, check=True)
 
 def run_cpp_single(focus, target):
-    binary_path = os.path.join("cpp_refocus", "build", target)
-    output_path = os.path.join(OUT, "cpp", f"{str(focus).replace('.', '_')}.png")
+    binary_path = CPP_DIR / "build" / target
+    output_path = OUT / "cpp" / f"{str(focus).replace('.', '_')}.png"
     subprocess.run(
         [binary_path, PATH, str(focus), output_path],
         check=True,
@@ -88,11 +94,11 @@ def rust_results_exist():
     return True
 
 def run_rust_single(focus):
-    output_path = os.path.join(OUT, "rust", f"{str(focus).replace('.', '_')}.png")
-    manifest_path = os.path.join("rust_refocus", "Cargo.toml")
+    output_path = OUT / "rust" / f"{str(focus).replace('.', '_')}.png"
+    manifest_path = RUST_DIR / "Cargo.toml"
     subprocess.run(
         ["cargo", "run", "--release", "--manifest-path", manifest_path, "--", PATH, str(focus), output_path],
-        check=True,
+        check=True, cwd=RUST_DIR
     )
 
 def run_rust():

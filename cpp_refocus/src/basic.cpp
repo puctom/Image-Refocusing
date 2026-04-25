@@ -47,7 +47,6 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
     output.width = width;
     output.height = height;
     output.data.assign(width * height * 3, 0);
-
     for(size_t y=0; y<height; ++y){
         for(size_t x=0; x<width; ++x){
             int count = 0;

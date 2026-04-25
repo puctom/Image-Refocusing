@@ -59,7 +59,6 @@ fn refocus_shift_and_sum(subapertures: &[SubApertureImage], focus: f32) -> Image
         height,
         data,
     };
-
     for y in 0..height {
         for x in 0..width {
             let mut count = 0usize;
@@ -134,7 +133,6 @@ fn find_subaperture_files(directory: &Path) -> (Vec<(PathBuf, f32, f32)>, f32, f
         mean_u /= count;
         mean_v /= count;
     }
-
     let span_u = max_u - min_u;
     let span_v = max_v - min_v;
     let denom = if span_u > span_v { span_u } else { span_v };
