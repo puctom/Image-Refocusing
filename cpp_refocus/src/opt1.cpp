@@ -1,6 +1,7 @@
 #include "refocus.hpp"
 #include "utils.hpp"
 #include <vector>
+#include <cmath>
 
 /*
 *   List of Optimizations:
