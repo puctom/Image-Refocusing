@@ -1,6 +1,13 @@
 #include "refocus.hpp"
+#include "utils.hpp"
+#include <vector>
 #include <cmath>
 #include <algorithm>
+
+/*
+*   List of Optimizations:
+*       - Change the loop order to [Subaperture, y, x] for improved locality
+* */
 
 struct RGB {
     float r;
@@ -38,7 +45,7 @@ RGB sample_bilinear(const SubApertureImage& img, float x, float y){
 }
 
 unsigned char scale_round_clamp(float val, float scale){
-    return (unsigned char) std::clamp(std::round(val / scale), (float) 0.0f, (float) 255.0f);
+    return (unsigned char) std::clamp(std::round(val / scale), 0.0f, 255.0f);
 }
 
 ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {
@@ -48,29 +55,38 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
     output.width = width;
     output.height = height;
     output.data.assign(width * height * 3, 0);
-    for(size_t y=0; y<height; ++y){
-        for(size_t x=0; x<width; ++x){
-            int count = 0;
-            RGB sum{0.0f, 0.0f, 0.0f};
-            for(SubApertureImage& sub : subapertures){
+
+    std::vector<int16_t> counts(width * height);
+    std::vector<float> vals(width * height * 3);
+
+    for(SubApertureImage& sub : subapertures){
+        for(size_t y=0; y<height; ++y){
+            for(size_t x=0; x<width; ++x){
                 float shift_x = focus * sub.u;
                 float shift_y = focus * sub.v;
-
                 RGB sample = sample_bilinear(sub, x + shift_x, y + shift_y);
                 if(sample.r < 0) continue;
 
-                sum.r += sample.r;
-                sum.g += sample.g;
-                sum.b += sample.b;
-                ++count;
+                vals[(y*width + x)*3] += sample.r;
+                vals[(y*width + x)*3 + 1] += sample.g;
+                vals[(y*width + x)*3 + 2] += sample.b;
+                ++counts[y*width + x];
             }
-            if(count == 0) continue;
-            output.at(x, y, 0) = scale_round_clamp(sum.r, count);
-            output.at(x, y, 1) = scale_round_clamp(sum.g, count);
-            output.at(x, y, 2) = scale_round_clamp(sum.b, count);
+        }
+    }
+
+    for(size_t y=0; y<height; ++y){
+        for(size_t x=0; x<width; ++x){
+            int16_t c = counts[y * width + x];
+            if(c == 0) continue;
+
+            output.at(x, y, 0) = scale_round_clamp(vals[(y*width + x)*3], c);
+            output.at(x, y, 1) = scale_round_clamp(vals[(y*width + x)*3 + 1], c);
+            output.at(x, y, 2) = scale_round_clamp(vals[(y*width + x)*3 + 2], c);
         }
     }
 
     return output;
 }
+
 

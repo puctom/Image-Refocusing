@@ -5,13 +5,12 @@
 #include <string>
 #include <vector>
 #include "utils.hpp"
+#include "refocus.hpp"
 #include <thread>
-#include<x86intrin.h>
+#include <x86intrin.h>
 #include <filesystem>
 #include <numeric>
 #include "hw_counter.hpp"
-// TODO: perhaps also should depend on the compile flag
-#include "basic.hpp"
 
 // Number of repetitions to run per a given focus parameter (later TODO: extend to a focal stack)
 // to acheive more stable measurements (median)
