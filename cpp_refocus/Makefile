@@ -5,7 +5,7 @@ BASEFLAGS ?= -O3 -std=c++17 -Wall -Wextra -pedantic
 BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -15,6 +15,7 @@ VER_SRC.opt3      := opt3
 VER_SRC.opt4      := opt4
 VER_SRC.opt5      := opt5
 VER_SRC.opt6      := opt6
+VER_SRC.opt7      := opt7
 
 VER_FLAGS.basic     := -fno-tree-vectorize
 VER_FLAGS.basic-opt := -march=native -ffast-math -fno-tree-vectorize
@@ -24,6 +25,7 @@ VER_FLAGS.opt3      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt4      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt5      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt6      := -march=native -ffast-math -fno-tree-vectorize
+VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
 
 
 .PHONY: all app bench clean
