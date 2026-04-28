@@ -12,7 +12,7 @@
 *       - use unchecked array access
 *       - function inlining
 *       - unroll channel loop to expose independent scalar ops for ILP
-*       - reduce number of loads by 2
+*       - reduce number of loads in innermost loop
 * */
 
 ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {
