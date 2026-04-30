@@ -5,6 +5,8 @@ import sys
 from pathlib import Path
 import datetime
 
+# If this script is in /scripts directory it should be runnable from anywhere.
+# For example: python3 ../scripts/benchmark.py basic --focus 3.319 --sizes 128 256 512
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 CPP_DIR = PROJECT_ROOT / "cpp_refocus"
