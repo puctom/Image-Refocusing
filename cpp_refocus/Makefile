@@ -5,7 +5,7 @@ BASEFLAGS ?= -O3 -std=c++17 -Wall -Wextra -pedantic
 BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt8
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -16,6 +16,7 @@ VER_SRC.opt4      := opt4
 VER_SRC.opt5      := opt5
 VER_SRC.opt6      := opt6
 VER_SRC.opt7      := opt7
+VER_SRC.opt8      := opt8
 
 VER_FLAGS.basic     := -fno-tree-vectorize
 VER_FLAGS.basic-opt := -march=native -ffast-math -fno-tree-vectorize
@@ -26,27 +27,43 @@ VER_FLAGS.opt4      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt5      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt6      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
+VER_FLAGS.opt8      := -march=native -ffast-math -fno-tree-vectorize
 
+STACK_VERSIONS := stack-basic stack-opt7
 
-.PHONY: all app bench clean
+STACK_UNDER.stack-basic := basic
+STACK_UNDER.stack-opt7  := opt7
 
-all:   app bench
-app:  $(addprefix $(BUILD)/,$(VERSIONS))
+STACK_FLAGS.stack-basic := -fno-tree-vectorize
+STACK_FLAGS.stack-opt7  := -march=native -ffast-math -fno-tree-vectorize
+
+.PHONY: all app bench stack clean
+
+all:   app bench stack
+app:   $(addprefix $(BUILD)/,$(VERSIONS))
 bench: $(addprefix $(BUILD)/bench-,$(VERSIONS))
+stack: $(addprefix $(BUILD)/,$(STACK_VERSIONS))
 
 define MAKE_RULES
 $(BUILD)/$(1): src/main.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.$(1)) -o $$@ $$^
 
-$(BUILD)/bench-$(1): src/bench.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
+# bench links stack_basic.cpp so --stack mode works in the same binary
+$(BUILD)/bench-$(1): src/bench.cpp src/stack_basic.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.$(1)) -o $$@ $$^
 endef
 
 $(foreach ver,$(VERSIONS),$(eval $(call MAKE_RULES,$(ver))))
+
+define MAKE_STACK_RULES
+$(BUILD)/$(1): src/stack_main.cpp src/stack_basic.cpp $$(COMMON_SRC) src/$$(STACK_UNDER.$(1)).cpp | $(BUILD)
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(STACK_FLAGS.$(1)) -o $$@ $$^
+endef
+
+$(foreach ver,$(STACK_VERSIONS),$(eval $(call MAKE_STACK_RULES,$(ver))))
 
 $(BUILD):
 	mkdir -p $(BUILD)
 
 clean:
 	rm -rf $(BUILD)
-

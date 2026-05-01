@@ -91,6 +91,7 @@ def parse_args(raw_args=None):
                         help=f"Focus parameter (default: {DEFAULT_FOCUS})")
     parser.add_argument("--sizes", type=int, nargs="+", default=DEFAULT_SIZES,
                         metavar="N", help=f"Square image sizes to generate (default: {DEFAULT_SIZES})")
+    parser.add_argument("--stack", action="store_true", help="Benchmark the focal stack (--stack mode, no focus argument)")
     parser.add_argument("--profile", action="store_true",
                         help="Run with Linux perf to generate assembly bottlenecks")
     return parser.parse_args(raw_args)
@@ -99,15 +100,24 @@ def main():
     args = parse_args()
     build_bench_binary(args.target)
 
-    timing_csv = RESULTS_DIR / f"timing_{args.target}_{timestamp}.csv"
+    if args.stack:
+        timing_csv = RESULTS_DIR / f"timing_{args.target}_focus_{args.focus}_{timestamp}.csv"
+    else:
+        timing_csv = RESULTS_DIR / f"timing_{args.target}_{timestamp}.csv"
 
     print("\n--- Running Real Dataset ---")
-    run_benchmark(args.target, [DATA_DIR, args.focus, "real_data_1", timing_csv], label="real_data", profile=args.profile)
+    if args.stack:
+        run_benchmark(args.target, ["--stack", DATA_DIR, args.focus, "real_data_1", timing_csv], label="real_data", profile=args.profile)
+    else:
+        run_benchmark(args.target, [DATA_DIR, args.focus, "real_data_1", timing_csv], label="real_data", profile=args.profile)
 
     print("\n--- Running Generated Dataset ---")
     for wh in args.sizes:
         label = f"gen_{wh}x{wh}_1"
-        run_benchmark(args.target, ["--generate", wh, wh, args.focus, label, timing_csv], label=label, profile=args.profile)
+        if args.stack:
+            run_benchmark(args.target, ["--stack", "--generate", wh, wh, label, timing_csv], label=label, profile=args.profile)
+        else:  
+            run_benchmark(args.target, ["--generate", wh, wh, args.focus, label, timing_csv], label=label, profile=args.profile)
 
     print(f"\n[SUCCESS] Benchmarks complete. Results saved to {timing_csv}")
 
