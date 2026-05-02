@@ -24,8 +24,7 @@ PROFILING_DIR.mkdir(parents=True, exist_ok=True)
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
 DEFAULT_FOCUS = 6.7
-DEFAULT_SIZES = [128, 256, 512, 1024, 2048, 4096]
-
+DEFAULT_SIZES = [16, 32, 64,128, 256, 512, 1024, 2048]
 
 def save_detailed_perf_annotate(label, perf_data_file):
     annotation_file = PROFILING_DIR / f"annotation_{label}_{timestamp}.txt"
@@ -100,10 +99,7 @@ def main():
     args = parse_args()
     build_bench_binary(args.target)
 
-    if args.stack:
-        timing_csv = RESULTS_DIR / f"timing_{args.target}_focus_{args.focus}_{timestamp}.csv"
-    else:
-        timing_csv = RESULTS_DIR / f"timing_{args.target}_{timestamp}.csv"
+    timing_csv = RESULTS_DIR / f"timing_{args.target}_{timestamp}.csv"
 
     print("\n--- Running Real Dataset ---")
     if args.stack:
