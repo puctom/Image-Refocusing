@@ -38,6 +38,9 @@ STACK_BENCH_SRC.stack_opt2  := src/stack_opt2.cpp
 define MAKE_STACK_BENCH_RULES
 $(BUILD)/bench-$(1): src/bench.cpp $$(STACK_BENCH_SRC.$(1)) src/basic.cpp $$(COMMON_SRC) | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.basic-opt) -o $$@ $$^
+
+$(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) src/basic.cpp $$(COMMON_SRC) | $(BUILD)
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.basic-opt) -o $$@ $$^
 endef
 
 $(foreach ver,$(STACK_BENCH_VERSIONS),$(eval $(call MAKE_STACK_BENCH_RULES,$(ver))))
@@ -47,7 +50,7 @@ $(foreach ver,$(STACK_BENCH_VERSIONS),$(eval $(call MAKE_STACK_BENCH_RULES,$(ver
 all:   app bench stack
 app:   $(addprefix $(BUILD)/,$(VERSIONS))
 bench: $(addprefix $(BUILD)/bench-,$(VERSIONS))
-stack: $(addprefix $(BUILD)/bench-,$(STACK_BENCH_VERSIONS))
+stack: $(addprefix $(BUILD)/bench-,$(STACK_BENCH_VERSIONS)) $(addprefix $(BUILD)/,$(STACK_BENCH_VERSIONS))
 
 define MAKE_RULES
 $(BUILD)/$(1): src/main.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
