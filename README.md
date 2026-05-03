@@ -5,3 +5,17 @@ This repository contains the Rust reference implementation for the light field r
 ### Input Data
 
 The input light fields we use in this project can be found [here](https://graphics.stanford.edu/data/LF/lfs.html). Download the "Rectified and cropped images" zip file and extract the archive. The resulting directory should contain sub-aperture PNG images named like `out_00_00_-780.134705_-3355.331299_.png`; the path to this directory is the input passed to the implementations.
+
+### STREAM Benchmark
+
+Build the STREAM benchmark from STREAM directory with the following command:
+
+```bash
+gcc -O3 -march=native -fopenmp -DSTREAM_ARRAY_SIZE=100000000 stream.c -o stream
+```
+
+Run the benchmark:
+
+```bash
+OMP_NUM_THREADS=1 taskset -c 0 ./stream
+```
