@@ -24,13 +24,19 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
     output.height = height;
     output.data.assign(width * height * 3, 0);
 
+    
     std::vector<int16_t> counts(width * height);
     std::vector<float> vals(width * height * 3);
-    float contributions[256][4];
-    contributions[0][0] = 0;
-    contributions[0][1] = 0;
-    contributions[0][2] = 0;
-    contributions[0][3] = 0;
+    
+    std::vector<float> precomp_A(256, 0.0f);
+    std::vector<float> precomp_B(256, 0.0f);
+    std::vector<float> precomp_C(256, 0.0f);
+    std::vector<float> precomp_D(256, 0.0f);
+    
+    std::vector<std::vector<float>> precomp_AB(256, std::vector<float>(256, 0.0f));
+    std::vector<std::vector<float>> precomp_CD(256, std::vector<float>(256, 0.0f));
+
+
     const int w = static_cast<int>(width);
     const int h = static_cast<int>(height);
 
@@ -48,16 +54,19 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
         float C = (1 - dx) * dy;
         float D = dx * dy;
         
-        for(int i=2;i<256;i++) {
-            contributions[i][0] = A * i;
-            contributions[i][1] = B * i;
-            contributions[i][2] = C * i;
-            contributions[i][3] = D * i;
+        for(int i=1;i<256;i++) {
+            precomp_A[i] = A * i;
+            precomp_B[i] = B * i;
+            precomp_C[i] = C * i;
+            precomp_D[i] = D * i;
         }
-        contributions[1][0] = A;
-        contributions[1][1] = B;
-        contributions[1][2] = C;
-        contributions[1][3] = D;
+
+        for(int i = 0; i < 256; i++){
+            for(int j = 0; j < 256; j++){
+                precomp_AB[i][j] = precomp_A[i] + precomp_B[j];
+                precomp_CD[i][j] = precomp_C[i] + precomp_D[j];
+            }
+        }
 
         const int x_begin = std::max(0, -sx);
         const int x_end = std::min(w, w - sx - 1);
@@ -92,9 +101,9 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                 const unsigned char pBRg = sub.data.data[ind_bot_r + 1];
                 const unsigned char pBRb = sub.data.data[ind_bot_r + 2];
 
-                const float outr = contributions[pTLr][0] + contributions[pTRr][1] + contributions[pBLr][2] + contributions[pBRr][3];
-                const float outg = contributions[pTLg][0] + contributions[pTRg][1] + contributions[pBLg][2] + contributions[pBRg][3];
-                const float outb = contributions[pTLb][0] + contributions[pTRb][1] + contributions[pBLb][2] + contributions[pBRb][3]; 
+                const float outr = precomp_AB[pTLr][pTRr] + precomp_CD[pBLr][pBRr];
+                const float outg = precomp_AB[pTLg][pTRg] + precomp_CD[pBLg][pBRg];
+                const float outb = precomp_AB[pTLb][pTRb] + precomp_CD[pBLb][pBRb]; 
 
                 const size_t idx = static_cast<size_t>(y) * width + static_cast<size_t>(x);
                 vals[idx*3]     += outr;
