@@ -12,6 +12,11 @@ struct RGB {
     float b;
 };
 
+/*
+*   List of Optimizations:
+*       - inline the call to `refocus_shift_and_sum`, loop order now: sub- y - x - f
+* */
+
 static inline RGB sample_bilinear(const SubApertureImage& img, float x, float y){
     if(x < 0 || x >= img.data.width - 1) return {-1.0f, -1.0f, -1.0f};
     if(y < 0 || y >= img.data.height -1) return {-1.0f, -1.0f, -1.0f};

@@ -28,8 +28,8 @@ def compare_single(focus, stack_out_dir: Path):
     rust = Image.open(v.OUT / "rust" / fname)
     cpp  = Image.open(stack_out_dir / f"stack_{idx}.png")
 
-    rust_data = list(rust.getdata())
-    cpp_data  = list(cpp.getdata())
+    rust_data = rust.get_flattened_data()
+    cpp_data  = cpp.get_flattened_data()
 
     if len(rust_data) != len(cpp_data):
         raise RuntimeError(f"Rust and CPP versions of {fname} have different sizes!")
@@ -66,9 +66,9 @@ def main():
         ok = compare_single(f, stack_out)
         results.append(ok)
     if all(results):
-        print("VALIDATION SUCCESSFUL")
+        print("\u001b[32mVALIDATION SUCCESSFUL\u001b[0m")
     else:
-        print("VALIDATION FAILED")
+        print("\u001b[31mVALIDATION FAILED\u001b[0m")
         sys.exit(1)
 
 if __name__ == "__main__":
