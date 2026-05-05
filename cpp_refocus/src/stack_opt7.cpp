@@ -14,7 +14,14 @@ struct RGB {
 
 /*
 *   List of Optimizations:
-*       - all from single focus value up to opt7
+*       - all from single focus value up to opt7:
+    *       - Change the loop order to [Subaperture, y, x] for improved locality
+    *       - Common subexpression elimination
+    *       - use better bounds for the x-y loops
+    *       - use unchecked array access
+    *       - function inlining
+    *       - unroll channel loop to expose independent scalar ops for ILP
+    *       - reduce number of loads in innermost loop
 * */
 
 
