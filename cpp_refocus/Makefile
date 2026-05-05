@@ -29,10 +29,9 @@ VER_FLAGS.opt6      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt8      := -march=native -ffast-math -fno-tree-vectorize
 
-STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt7
+STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt7
 STACK_BENCH_SRC.stack_basic := src/stack_basic.cpp
 STACK_BENCH_SRC.stack_opt1  := src/stack_opt1.cpp
-STACK_BENCH_SRC.stack_opt2  := src/stack_opt2.cpp
 STACK_BENCH_SRC.stack_opt7  := src/stack_opt7.cpp
 
 define MAKE_STACK_BENCH_RULES
