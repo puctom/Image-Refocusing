@@ -25,12 +25,8 @@ import matplotlib.ticker as mticker
 # Each dict needs: path, label, color.
 # Optional: filter (a callable that takes a DataFrame and returns a mask).
 SERIES = [
-    {"path": "timing_basic_20260425_181206.csv",     "label": "basic (scalar)",                "color": "#1f4e9e"},
-    {"path": "timing_basic-opt_20260425_193644.csv", "label": "basic + compiler opt",          "color": "#2ca02c"},
-    {"path": "timing_opt1_20260425_204021.csv",      "label": "loop reordering",               "color": "#d62728"},
-    {"path": "timing_opt2_20260425_212215.csv",      "label": "+ common subexp elimination",   "color": "#9467bd"},
-    {"path": "timing_opt3_20260425_215043.csv",      "label": "+ better bounds for x and y",   "color": "#ff7f0e"},
-    {"path": "timing_opt4_20260425_221727.csv",      "label": "+ unchecked array access",      "color": "#17becf"},
+    {"path": "scripts/timing_results/timing_stack_basic_20260502_051536.csv",     "label": "basic (scalar)",                "color": "#1f4e9e"},
+    {"path": "scripts/timing_results/timing_stack_opt2_20260502_075851.csv",      "label": "+ tiling",      "color": "#17becf"},
 ]
 
 # Shared x and y columns (same across all CSVs).

@@ -24,8 +24,7 @@ PROFILING_DIR.mkdir(parents=True, exist_ok=True)
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
 DEFAULT_FOCUS = 6.7
-DEFAULT_SIZES = [128, 256, 512, 1024, 2048, 4096]
-
+DEFAULT_SIZES = [16, 32, 64,128, 256, 512, 1024, 2048]
 
 def save_detailed_perf_annotate(label, perf_data_file):
     annotation_file = PROFILING_DIR / f"annotation_{label}_{timestamp}.txt"
@@ -91,6 +90,7 @@ def parse_args(raw_args=None):
                         help=f"Focus parameter (default: {DEFAULT_FOCUS})")
     parser.add_argument("--sizes", type=int, nargs="+", default=DEFAULT_SIZES,
                         metavar="N", help=f"Square image sizes to generate (default: {DEFAULT_SIZES})")
+    parser.add_argument("--stack", action="store_true", help="Benchmark the focal stack (--stack mode, no focus argument)")
     parser.add_argument("--profile", action="store_true",
                         help="Run with Linux perf to generate assembly bottlenecks")
     return parser.parse_args(raw_args)
@@ -102,12 +102,18 @@ def main():
     timing_csv = RESULTS_DIR / f"timing_{args.target}_{timestamp}.csv"
 
     print("\n--- Running Real Dataset ---")
-    run_benchmark(args.target, [DATA_DIR, args.focus, "real_data_1", timing_csv], label="real_data", profile=args.profile)
+    if args.stack:
+        run_benchmark(args.target, ["--stack", DATA_DIR, args.focus, "real_data_1", timing_csv], label="real_data", profile=args.profile)
+    else:
+        run_benchmark(args.target, [DATA_DIR, args.focus, "real_data_1", timing_csv], label="real_data", profile=args.profile)
 
     print("\n--- Running Generated Dataset ---")
     for wh in args.sizes:
         label = f"gen_{wh}x{wh}_1"
-        run_benchmark(args.target, ["--generate", wh, wh, args.focus, label, timing_csv], label=label, profile=args.profile)
+        if args.stack:
+            run_benchmark(args.target, ["--stack", "--generate", wh, wh, label, timing_csv], label=label, profile=args.profile)
+        else:  
+            run_benchmark(args.target, ["--generate", wh, wh, args.focus, label, timing_csv], label=label, profile=args.profile)
 
     print(f"\n[SUCCESS] Benchmarks complete. Results saved to {timing_csv}")
 

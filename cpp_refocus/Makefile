@@ -29,12 +29,27 @@ VER_FLAGS.opt6      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt9      := -march=native -ffast-math
 
+STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt7
+STACK_BENCH_SRC.stack_basic := src/stack_basic.cpp
+STACK_BENCH_SRC.stack_opt1  := src/stack_opt1.cpp
+STACK_BENCH_SRC.stack_opt7  := src/stack_opt7.cpp
 
-.PHONY: all app bench clean
+define MAKE_STACK_BENCH_RULES
+$(BUILD)/bench-$(1): src/bench.cpp $$(STACK_BENCH_SRC.$(1)) src/basic.cpp $$(COMMON_SRC) | $(BUILD)
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.basic-opt) -o $$@ $$^
 
-all:   app bench
-app:  $(addprefix $(BUILD)/,$(VERSIONS))
+$(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) src/basic.cpp $$(COMMON_SRC) | $(BUILD)
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.basic-opt) -o $$@ $$^
+endef
+
+$(foreach ver,$(STACK_BENCH_VERSIONS),$(eval $(call MAKE_STACK_BENCH_RULES,$(ver))))
+
+.PHONY: all app bench stack clean
+
+all:   app bench stack
+app:   $(addprefix $(BUILD)/,$(VERSIONS))
 bench: $(addprefix $(BUILD)/bench-,$(VERSIONS))
+stack: $(addprefix $(BUILD)/bench-,$(STACK_BENCH_VERSIONS)) $(addprefix $(BUILD)/,$(STACK_BENCH_VERSIONS))
 
 define MAKE_RULES
 $(BUILD)/$(1): src/main.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
@@ -51,4 +66,3 @@ $(BUILD):
 
 clean:
 	rm -rf $(BUILD)
-

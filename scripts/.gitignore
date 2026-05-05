@@ -1,2 +1,3 @@
 timing_results/
 profiling_reports/
+__pycache__/
