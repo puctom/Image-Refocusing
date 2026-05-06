@@ -5,6 +5,19 @@
 #include <algorithm>
 #include <immintrin.h>
 
+/*
+*   List of Optimizations:
+*       - Change the loop order to [Subaperture, y, x] for improved locality
+*       - Common subexpression elimination
+*       - use better bounds for the x-y loops
+*       - use unchecked array access
+*       - function inlining
+*       - unroll channel loop to expose independent scalar ops for ILP
+*       - reduce number of loads in innermost loop
+*       - use AVX float32 FMA with unaligned loads
+*       - use block tiles for better cache performance
+* */
+
 namespace {
 struct SubParams {
     int sx, sy;
@@ -160,10 +173,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                     float inv_c = 1.0f / static_cast<float>(c);
                     for (int ch = 0; ch < 3; ++ch) {
                         float v = vp[x*3 + ch] * inv_c;
-                        int iv = static_cast<int>(v + 0.5f); // round
-                        if (iv < 0) iv = 0;                  // clamp   
-                        if (iv > 255) iv = 255;
-                        outp[x*3 + ch] = static_cast<unsigned char>(iv);
+                        outp[x*3 + ch] = static_cast<unsigned char>(v);
                     }
                 }
             }
