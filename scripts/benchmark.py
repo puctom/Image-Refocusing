@@ -5,26 +5,24 @@ import sys
 from pathlib import Path
 import datetime
 
-# If this script is in /scripts directory it should be runnable from anywhere.
-# For example: python3 ../scripts/benchmark.py basic --profile --focus 3.319 --sizes 128 256 512
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 CPP_DIR = PROJECT_ROOT / "cpp_refocus"
-
 BUILD_DIR = CPP_DIR / "build"
-
 DATA_DIR = PROJECT_ROOT / "in" / "validation"
+
 RESULTS_DIR = SCRIPT_DIR / "timing_results"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-# Create a dedicated directory for profiling outputs (assembly annotations)
 PROFILING_DIR = SCRIPT_DIR / "profiling_reports"
 PROFILING_DIR.mkdir(parents=True, exist_ok=True)
 
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
+# configuration defaults
 DEFAULT_FOCUS = 6.7
-DEFAULT_SIZES = [16, 32, 64,128, 256, 512, 1024, 2048]
+DEFAULT_STACK_FOCUSES = [-49.3, -20.0, 0.0, 5.0, 12.352, 33.33, 49.0]
+DEFAULT_SIZES = [16, 32, 64, 128, 256, 512, 1024, 2048]
 
 def save_detailed_perf_annotate(label, perf_data_file):
     annotation_file = PROFILING_DIR / f"annotation_{label}_{timestamp}.txt"
@@ -41,7 +39,6 @@ def save_detailed_perf_annotate(label, perf_data_file):
         subprocess.run(annotate_cmd, stdout=f, stderr=subprocess.DEVNULL, check=True)
         
     print(f"  -> Profiling report saved to: {annotation_file}")
-
 
 def make_bench_cmd(target, bench_args, perf_data_file=None):
     bench_args_str = [str(a) for a in bench_args]
@@ -70,8 +67,6 @@ def run_benchmark(target, bench_args, label, profile=False):
     # Profiling post-processing: if profiled, generate detailed assembly annotation
     if perf_data_file and perf_data_file.exists():
         save_detailed_perf_annotate(label, perf_data_file)
-        
-
 def build_bench_binary(target):
     print(f"--- Building Bench Target in {CPP_DIR} ---")
     try:
@@ -86,12 +81,20 @@ def parse_args(raw_args=None):
     # Otherwise the default ones are used.
     parser = argparse.ArgumentParser()
     parser.add_argument("target", type=str)
+    
+    # Configuration arguments
     parser.add_argument("--focus", type=float, default=DEFAULT_FOCUS,
-                        help=f"Focus parameter (default: {DEFAULT_FOCUS})")
+                        help=f"Focus parameter for single image (default: {DEFAULT_FOCUS})")
+    
+    # New: List of focuses for the stack execution
+    parser.add_argument("--focuses", type=float, nargs="+", default=DEFAULT_STACK_FOCUSES,
+                        help=f"List of focus parameters for stack (default: {DEFAULT_STACK_FOCUSES})")
+                        
     parser.add_argument("--sizes", type=int, nargs="+", default=DEFAULT_SIZES,
                         metavar="N", help=f"Square image sizes to generate (default: {DEFAULT_SIZES})")
-    parser.add_argument("--stack", action="store_true", help="Benchmark the focal stack (--stack mode, no focus argument)")
-    parser.add_argument("--profile", action="store_true",
+                        
+    parser.add_argument("--stack", action="store_true", help="Benchmark the focal stack")
+    parser.add_argument("--profile", action="store_true", 
                         help="Run with Linux perf to generate assembly bottlenecks")
     return parser.parse_args(raw_args)
 
@@ -103,17 +106,23 @@ def main():
 
     print("\n--- Running Real Dataset ---")
     if args.stack:
-        run_benchmark(args.target, ["--stack", DATA_DIR, args.focus, "real_data_1", timing_csv], label="real_data", profile=args.profile)
+        # Pass the unpacked list of focuses for the stack binary
+        cmd_args = [DATA_DIR, "real_data_1", timing_csv] + args.focuses
+        run_benchmark(args.target, cmd_args, label="real_data", profile=args.profile)
     else:
-        run_benchmark(args.target, [DATA_DIR, args.focus, "real_data_1", timing_csv], label="real_data", profile=args.profile)
+        # Pass the single focus
+        cmd_args = [DATA_DIR, args.focus, "real_data_1", timing_csv]
+        run_benchmark(args.target, cmd_args, label="real_data", profile=args.profile)
 
     print("\n--- Running Generated Dataset ---")
     for wh in args.sizes:
         label = f"gen_{wh}x{wh}_1"
         if args.stack:
-            run_benchmark(args.target, ["--stack", "--generate", wh, wh, label, timing_csv], label=label, profile=args.profile)
+            cmd_args = ["--generate", wh, wh, label, timing_csv] + args.focuses
+            run_benchmark(args.target, cmd_args, label=label, profile=args.profile)
         else:  
-            run_benchmark(args.target, ["--generate", wh, wh, args.focus, label, timing_csv], label=label, profile=args.profile)
+            cmd_args = ["--generate", wh, wh, args.focus, label, timing_csv]
+            run_benchmark(args.target, cmd_args, label=label, profile=args.profile)
 
     print(f"\n[SUCCESS] Benchmarks complete. Results saved to {timing_csv}")
 
