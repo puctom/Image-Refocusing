@@ -5,6 +5,7 @@ LDLIBS    ?= /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
 
 BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
+BENCH_COMMON_SRC := src/bench_common.cpp
 
 VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt9 opt10 opt11
 
@@ -52,15 +53,15 @@ STACK_VER_FLAGS.stack_opt4  := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_opt5  := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_avx   := -march=native -ffast-math -mavx2 -mfma
 
-define MAKE_STACK_BENCH_RULES
-$(BUILD)/bench-$(1): src/bench_stack.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
-	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
-
+define MAKE_STACK_RULES
 $(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
+
+$(BUILD)/bench-$(1): src/bench_stack.cpp $$(STACK_BENCH_SRC.$(1)) $$(BENCH_COMMON_SRC) $$(COMMON_SRC) | $(BUILD)
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
 endef
 
-$(foreach ver,$(STACK_BENCH_VERSIONS),$(eval $(call MAKE_STACK_BENCH_RULES,$(ver))))
+$(foreach ver,$(STACK_BENCH_VERSIONS),$(eval $(call MAKE_STACK_RULES,$(ver))))
 
 .PHONY: all app bench stack clean
 
@@ -73,7 +74,7 @@ define MAKE_RULES
 $(BUILD)/$(1): src/main.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
 
-$(BUILD)/bench-$(1): src/bench.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
+$(BUILD)/bench-$(1): src/bench.cpp $$(COMMON_SRC) $$(BENCH_COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
 endef
 

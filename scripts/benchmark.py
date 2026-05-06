@@ -7,6 +7,8 @@ import datetime
 
 # If this script is in /scripts directory it should be runnable from anywhere.
 # For example: python3 ../scripts/benchmark.py basic --focus 3.319 --sizes 128 256 512
+# For example (stack): python3 ../scripts/benchmark.py --stack basic --focuses 3.319 --sizes 128 256 512
+#                                                                    NOTE ^ the focuses here
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 CPP_DIR = PROJECT_ROOT / "cpp_refocus"
@@ -23,7 +25,7 @@ timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
 # configuration defaults
 DEFAULT_FOCUS = 6.7
-DEFAULT_STACK_FOCUSES = [-49.3, -20.0, 0.0, 5.0, 12.352, 33.33, 49.0]
+DEFAULT_STACK_FOCUSES = [-49.3, -20.12, 0.10, 5.34, 12.352, 33.33, 49.0]
 DEFAULT_SIZES = [16, 32, 64, 128, 256, 512, 1024, 2048]
 
 def save_detailed_perf_annotate(label, perf_data_file):
@@ -94,7 +96,7 @@ def parse_args(raw_args=None):
                         
     parser.add_argument("--sizes", type=int, nargs="+", default=DEFAULT_SIZES,
                         metavar="N", help=f"Square image sizes to generate (default: {DEFAULT_SIZES})")
-                        
+    parser.add_argument("--real", action="store_true", help="Include a run benchmark on the real dataset")
     parser.add_argument("--stack", action="store_true", help="Benchmark the focal stack")
     parser.add_argument("--profile", action="store_true", 
                         help="Run with Linux perf to generate assembly bottlenecks")
@@ -105,16 +107,16 @@ def main():
     build_bench_binary(args.target)
 
     timing_csv = RESULTS_DIR / f"timing_{args.target}_{timestamp}.csv"
-
-    print("\n--- Running Real Dataset ---")
-    if args.stack:
-        # Pass the unpacked list of focuses for the stack binary
-        cmd_args = [DATA_DIR, "real_data_1", timing_csv] + args.focuses
-        run_benchmark(args.target, cmd_args, label="real_data", profile=args.profile)
-    else:
-        # Pass the single focus
-        cmd_args = [DATA_DIR, args.focus, "real_data_1", timing_csv]
-        run_benchmark(args.target, cmd_args, label="real_data", profile=args.profile)
+    if args.real:
+        print("\n--- Running Real Dataset ---")
+        if args.stack:
+            # Pass the unpacked list of focuses for the stack binary
+            cmd_args = [DATA_DIR, "real_data_1", timing_csv] + args.focuses
+            run_benchmark(args.target, cmd_args, label="real_data", profile=args.profile)
+        else:
+            # Pass the single focus
+            cmd_args = [DATA_DIR, args.focus, "real_data_1", timing_csv]
+            run_benchmark(args.target, cmd_args, label="real_data", profile=args.profile)
 
     print("\n--- Running Generated Dataset ---")
     for wh in args.sizes:

@@ -245,9 +245,7 @@ fig, axs = plt.subplots(nrows=nrows, ncols=ncols, figsize=(fig_width, fig_height
 fig.subplots_adjust(hspace=0.4, wspace=0.25, top=0.88, bottom=0.08, left=0.05, right=0.95)
 
 # Overall Figure Title
-fig.suptitle("Memory Hierarchy Performance Profile", fontsize=16, fontweight="bold", color="#222222", y=0.96)
-if SUBTITLE:
-    fig.text(0.5, 0.92, SUBTITLE, fontsize=12, color="#333333", ha="center")
+fig.suptitle("Memory Hierarchy Performance Profile (probably not so useful though)", fontsize=16, fontweight="bold", color="#222222", y=0.96)
 
 axs_flat = axs.flatten()
 
