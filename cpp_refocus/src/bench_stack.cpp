@@ -5,18 +5,16 @@
 #include <string>
 #include <vector>
 #include "utils.hpp"
-#include "refocus.hpp"
+#include "refocus_stack.hpp"
 #include <thread>
 #include <x86intrin.h>
 #include <filesystem>
 #include <numeric>
 #include "hw_counter.hpp"
 
-// Number of repetitions to run per a given focus parameter
-// to acheive more stable measurements (median)
 const int NUM_REPS = 10;
-static const char CSV_HEADER[] =
-    "variant,data_source,focus_parameter,num_reps,img_w,img_h,n_subapertures,"
+static const char CSV_HEADER_STACK[] =
+    "variant,data_source,num_focuses,num_reps,img_w,img_h,n_subapertures,"
     "avg_ms,median_ms,min_ms,max_ms,avg_cycles,median_cycles,min_cycles,max_cycles,"
     "cycles_per_pixel,mpixels_s,membw_gbs,avg_cache_refs,avg_cache_misses,cache_miss_rate,"
     "avg_branch_instr,avg_branch_misses,branch_miss_rate,avg_instructions,ipc\n";
@@ -58,43 +56,49 @@ static std::vector<SubApertureImage> generate_size(size_t new_w, size_t new_h) {
     return subs;
 }
 
-
 // Run this as follows:
-// bench <directory> <focus> <label> <csv>
-// Or with generation of an image: bench --generate <W> <H> <focus> <label> <csv>
-int main(int argc, char **argv) { // run this with "make timing"
+// Focal stack: bench-stack <directory> <label> <csv> <focus1> <focus2> ...
+// Or with generation of an image: bench-stack --generate <W> <H> <label> <csv> <focus1> <focus2> ...
+int main(int argc, char **argv) {
     bool isGenerated = argc > 1 && std::string(argv[1]) == "--generate";
     std::vector<SubApertureImage> subs;
     std::string data_source;
-    float focus = 0.0f;
     std::string label;
     std::string csv_path;
+    std::vector<float> focuses;
+
+    int focus_start_idx = 0;
 
     if (isGenerated) {
-        if(argc != 7){
-            std::cerr << "Usage: bench --generate <W> <H> <focus> <label> <csv> \n";
+        if(argc < 7){
+            std::cerr << "Usage: bench-stack --generate <W> <H> <label> <csv> <f1> [f2...]\n";
             return 1;
         }
         size_t W = std::stoul(argv[2]);
         size_t H = std::stoul(argv[3]);
-        focus = std::stof(argv[4]);
-        label = argv[5];
-        csv_path = argv[6];
+        label = argv[4];
+        csv_path = argv[5];
+        focus_start_idx = 6;
 
         data_source = "generated " + std::to_string(W) + "*" + std::to_string(H);
         subs = generate_size(W, H);
-    } 
-    else{
+    }
+    else {
         if (argc < 5) {
-            std::cerr << "Usage: bench <directory> <focus> <label> <csv>\n";
+            std::cerr << "Usage: bench-stack <directory> <label> <csv> <f1> [f2...]\n";
             return 1;
         }
         fs::path dir = argv[1];
-        focus = std::stof(argv[2]);
-        label = argv[3];
-        csv_path = argv[4];
+        label = argv[2];
+        csv_path = argv[3];
+        focus_start_idx = 4;
         data_source = "real";
         subs = load_subaperture_images(dir);
+    }
+
+    // Extract argument focus values
+    for (int i = focus_start_idx; i < argc; ++i) {
+        focuses.push_back(std::stof(argv[i]));
     }
 
     if (csv_path.empty()) {
@@ -102,14 +106,14 @@ int main(int argc, char **argv) { // run this with "make timing"
         return 1;
     }
     std::ofstream csv(csv_path, std::ios::app);
-    // If the file is empty, append the header first
-    if (csv.tellp() == 0) { 
-        csv << CSV_HEADER;
+    if (csv.tellp() == 0) {
+        csv << (CSV_HEADER_STACK);
     }
 
     const size_t W = subs.front().data.width;
     const size_t H = subs.front().data.height;
     const size_t N = subs.size();
+    const size_t NF = focuses.size();
     std::cerr << "  " << N << " sub-apertures, " << W << "x" << H << " px each\n";
 
     uint64_t tsc_per_s = make_TSC();
@@ -118,9 +122,8 @@ int main(int argc, char **argv) { // run this with "make timing"
     // Warmup
     const int WARMUP_ITERATIONS = 1;
     for (int i = 0; i < WARMUP_ITERATIONS; ++i) {
-        refocus_shift_and_sum(subs, focus);
+        refocus_shift_and_sum_stack(subs, focuses);
     }
-
 
     HWCounter cache_miss_counter(PERF_TYPE_HARDWARE, PERF_COUNT_HW_CACHE_MISSES);
     HWCounter instr_counter(PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS);
@@ -143,8 +146,8 @@ int main(int argc, char **argv) { // run this with "make timing"
         branch_miss_counter.start();
         uint64_t t0 = _rdtsc();
 
-        refocus_shift_and_sum(subs, focus);
-        
+        refocus_shift_and_sum_stack(subs, focuses);
+
         n_cycles[i] = _rdtsc() - t0;
         
         cache_ref_counter.stop();
@@ -171,18 +174,17 @@ int main(int argc, char **argv) { // run this with "make timing"
         return c[c.size() / 2];
     }();
 
-    double avg_cycles_per_pixel = static_cast<double>(avg_cycles) / (W * H);
+    double avg_cycles_per_pixel = static_cast<double>(avg_cycles) / (NF * W * H);
 
     double total_s = static_cast<double>(total_cycles) / tsc_per_s;
     double avg_ms = total_s / NUM_REPS * 1000.0;
-    double mpixels_s = (double)W * H * NUM_REPS / total_s / 1e6;
-    double bandwidth = (double)N * W * H * 3 / (total_s / NUM_REPS) / 1e9;
+    double mpixels_s = (double)NF * W * H * NUM_REPS / total_s / 1e6;
+    double bandwidth = (double)NF * N * W * H * 3 / (total_s / NUM_REPS) / 1e9;
 
     double min_ms = static_cast<double>(min_cycles) / tsc_per_s * 1000.0;
     double max_ms = static_cast<double>(max_cycles) / tsc_per_s * 1000.0;
     double median_ms = static_cast<double>(median_cycles) / tsc_per_s * 1000.0;
 
-    // general hardware events
     double avg_cache_refs = static_cast<double>(total_cache_refs) / NUM_REPS;
     double avg_cache_misses = static_cast<double>(total_cache_misses) / NUM_REPS;
     double avg_branch_instr = static_cast<double>(total_branch_instr) / NUM_REPS;
@@ -191,7 +193,6 @@ int main(int argc, char **argv) { // run this with "make timing"
     double avg_instructions = static_cast<double>(total_instructions) / NUM_REPS;
     double ipc = avg_instructions / avg_cycles;
 
-    // convenience figures for insights:
     double cache_miss_rate = total_cache_refs > 0 ? 
                              (static_cast<double>(total_cache_misses) / total_cache_refs) : 0.0;
     double branch_miss_rate = total_branch_instr > 0 ? 
@@ -200,7 +201,7 @@ int main(int argc, char **argv) { // run this with "make timing"
     std::cerr << "\n Timing results: \n";
     std::cerr << "variant : " << label << "\n";
     std::cerr << "data source : " << data_source << "\n";
-    std::cerr << "focus : " << focus << "\n";
+    std::cerr << "num_focuses : " << NF << "\n";
     std::cerr << "runs : " << NUM_REPS << "\n";
     std::cerr << "image size : " << W << "x" << H << "\n";
     std::cerr << "n subapertures : " << N << "\n";
@@ -217,7 +218,7 @@ int main(int argc, char **argv) { // run this with "make timing"
 
     std::string row = label + ","
     + data_source + ","
-    + std::to_string(focus) + ","
+    + std::to_string(NF) + ","
     + std::to_string(NUM_REPS) + ","
     + std::to_string(W) + "," + std::to_string(H) + ","
     + std::to_string(N) + ","

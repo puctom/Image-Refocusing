@@ -35,10 +35,10 @@ STACK_BENCH_SRC.stack_opt1  := src/stack_opt1.cpp
 STACK_BENCH_SRC.stack_opt7  := src/stack_opt7.cpp
 
 define MAKE_STACK_BENCH_RULES
-$(BUILD)/bench-$(1): src/bench.cpp $$(STACK_BENCH_SRC.$(1)) src/basic.cpp $$(COMMON_SRC) | $(BUILD)
+$(BUILD)/bench-$(1): src/bench_stack.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.basic-opt) -o $$@ $$^
 
-$(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) src/basic.cpp $$(COMMON_SRC) | $(BUILD)
+$(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.basic-opt) -o $$@ $$^
 endef
 
