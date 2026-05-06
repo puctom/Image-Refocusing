@@ -54,10 +54,11 @@ STACK_VER_FLAGS.stack_opt5  := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_avx   := -march=native -ffast-math -mavx2 -mfma
 
 define MAKE_STACK_RULES
-$(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
+# `src/basic.cpp` included to link against bench_basic.cpp
+$(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) src/basic.cpp | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
 
-$(BUILD)/bench-$(1): src/bench_stack.cpp $$(STACK_BENCH_SRC.$(1)) $$(BENCH_COMMON_SRC) $$(COMMON_SRC) | $(BUILD)
+$(BUILD)/bench-$(1): src/bench_stack.cpp $$(STACK_BENCH_SRC.$(1)) $$(BENCH_COMMON_SRC) $$(COMMON_SRC) src/basic.cpp | $(BUILD)
 	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
 endef
 
