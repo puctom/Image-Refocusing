@@ -31,24 +31,24 @@ VER_FLAGS.opt6      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt9      := -march=native -ffast-math
 VER_FLAGS.opt10     := -march=native -ffast-math
-VER_FLAGS.opt11    := -march=native -ffast-math
 VER_FLAGS.opt11     := -march=native -ffast-math -mavx2 -mfma
 
-STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt7 stack_opt9 stack_opt10 stack_avx
+STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx
 
-
-STACK_BENCH_SRC.stack_basic := src/stack_basic.cpp
+STACK_BENCH_SRC.stack_basic := src/stack_basic.cpp src/basic.cpp
 STACK_BENCH_SRC.stack_opt1  := src/stack_opt1.cpp
-STACK_BENCH_SRC.stack_opt7  := src/stack_opt7.cpp
-STACK_BENCH_SRC.stack_opt9  := src/stack_opt9.cpp
-STACK_BENCH_SRC.stack_opt10 := src/stack_opt10.cpp
+STACK_BENCH_SRC.stack_opt2  := src/stack_opt2.cpp
+STACK_BENCH_SRC.stack_opt3  := src/stack_opt3.cpp
+STACK_BENCH_SRC.stack_opt4  := src/stack_opt4.cpp
+STACK_BENCH_SRC.stack_opt5  := src/stack_opt5.cpp
 STACK_BENCH_SRC.stack_avx   := src/stack_avx.cpp
 
 STACK_VER_FLAGS.stack_basic := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_opt1  := -march=native -ffast-math -fno-tree-vectorize
-STACK_VER_FLAGS.stack_opt7  := -march=native -ffast-math -fno-tree-vectorize
-STACK_VER_FLAGS.stack_opt9  := -march=native -ffast-math
-STACK_VER_FLAGS.stack_opt10 := -march=native -ffast-math
+STACK_VER_FLAGS.stack_opt2  := -march=native -ffast-math -fno-tree-vectorize
+STACK_VER_FLAGS.stack_opt3  := -march=native -ffast-math -fno-tree-vectorize
+STACK_VER_FLAGS.stack_opt4  := -march=native -ffast-math -fno-tree-vectorize
+STACK_VER_FLAGS.stack_opt5  := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_avx   := -march=native -ffast-math -mavx2 -mfma
 
 define MAKE_STACK_BENCH_RULES
