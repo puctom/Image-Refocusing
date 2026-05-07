@@ -16,6 +16,7 @@
 *       - reduce number of loads in innermost loop
 *       - use AVX float32 FMA with unaligned loads
 *       - use block tiles for better cache performance
+*       - calculate counts using prefix sum technique
 * */
 
 namespace {
