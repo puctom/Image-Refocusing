@@ -13,9 +13,8 @@
 *     - tile-local accumulator fitting in L1 (from single-focus opt11)
 *     - AVX2 FMA kernel (from single-focus opt11)
 *     - precomputed per(sub, f) parameters
-*     - loop order: tile_y, tile_x, f, sub, y, x
-*       tile_vals (24 KB) stays in L1 across all subapertures for one focus value. 
-*     - fixed normalization: uses round + clamp
+*     - bascially klejdis opt11 but for stack
+*     - fixed normalization, round + clamp
 */
 
 namespace {
@@ -109,9 +108,9 @@ std::vector<ImageData> refocus_shift_and_sum_stack(
                 std::fill(tile_vals.begin(), tile_vals.begin() + tile_floats, 0.0f);
                 for (const SubParams& p : params[f]) {
                     const int y_begin = std::max(ty, p.y_begin);
-                    const int y_end   = std::min(tile_y_end, p.y_end);
+                    const int y_end = std::min(tile_y_end, p.y_end);
                     const int x_begin = std::max(tx, p.x_begin);
-                    const int x_end   = std::min(tile_x_end, p.x_end);
+                    const int x_end = std::min(tile_x_end, p.x_end);
                     if (x_begin >= x_end || y_begin >= y_end) continue;
 
                     const __m256 Avx = _mm256_set1_ps(p.A);
@@ -179,7 +178,7 @@ std::vector<ImageData> refocus_shift_and_sum_stack(
                         int c = counts[f][y * w + (tx + x)];
                         if (c == 0) continue;
                         float inv_c = 1.0f / static_cast<float>(c);
-                        outp[x * 3]     = static_cast<unsigned char>(std::clamp(std::round(vp[x * 3]     * inv_c), 0.0f, 255.0f));
+                        outp[x * 3]     = static_cast<unsigned char>(std::clamp(std::round(vp[x * 3] * inv_c), 0.0f, 255.0f));
                         outp[x * 3 + 1] = static_cast<unsigned char>(std::clamp(std::round(vp[x * 3 + 1] * inv_c), 0.0f, 255.0f));
                         outp[x * 3 + 2] = static_cast<unsigned char>(std::clamp(std::round(vp[x * 3 + 2] * inv_c), 0.0f, 255.0f));
                     }

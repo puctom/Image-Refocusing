@@ -31,9 +31,11 @@ VER_FLAGS.opt6      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt9      := -march=native -ffast-math
 VER_FLAGS.opt10     := -march=native -ffast-math
+VER_FLAGS.opt11    := -march=native -ffast-math
 VER_FLAGS.opt11     := -march=native -ffast-math -mavx2 -mfma
 
 STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt7 stack_opt9 stack_opt10 stack_avx
+
 
 STACK_BENCH_SRC.stack_basic := src/stack_basic.cpp
 STACK_BENCH_SRC.stack_opt1  := src/stack_opt1.cpp

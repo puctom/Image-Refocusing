@@ -26,7 +26,9 @@ import matplotlib.ticker as mticker
 # Optional: filter (a callable that takes a DataFrame and returns a mask).
 SERIES = [
     {"path": "scripts/timing_results/timing_stack_basic_20260502_051536.csv",     "label": "basic (scalar)",                "color": "#1f4e9e"},
-    {"path": "scripts/timing_results/timing_stack_opt2_20260502_075851.csv",      "label": "+ tiling",      "color": "#17becf"},
+    {"path": "scripts/timing_results/timing_stack_opt9_20260506_103625.csv",      "label": "+ opt9",      "color": "#17becf"},
+    {"path": "scripts/timing_results/timing_stack_opt10_20260507_052914.csv",   "label": "+ precompute counts",   "color": "#bcbd22"},
+    {"path": "scripts/timing_results/timing_stack_avx_20260507_051400.csv",     "label": "+ AVX2",      "color": "#bcbd22"},
 ]
 
 # Shared x and y columns (same across all CSVs).
