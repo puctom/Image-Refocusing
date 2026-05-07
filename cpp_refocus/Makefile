@@ -5,7 +5,7 @@ BASEFLAGS ?= -O3 -std=c++17 -Wall -Wextra -pedantic
 BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt9 opt10
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt9 opt10 opt11
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -17,7 +17,8 @@ VER_SRC.opt5      := opt5
 VER_SRC.opt6      := opt6
 VER_SRC.opt7      := opt7
 VER_SRC.opt9      := opt9
-VER_SRC.opt10      := opt10
+VER_SRC.opt10     := opt10
+VER_SRC.opt11     := opt11
 
 VER_FLAGS.basic     := -fno-tree-vectorize
 VER_FLAGS.basic-opt := -march=native -ffast-math -fno-tree-vectorize
@@ -29,20 +30,31 @@ VER_FLAGS.opt5      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt6      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt9      := -march=native -ffast-math
-VER_FLAGS.opt10      := -march=native -ffast-math
+VER_FLAGS.opt10     := -march=native -ffast-math
+VER_FLAGS.opt11     := -march=native -ffast-math -mavx2 -mfma
 
-STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt7 stack_opt9
+STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt7 stack_opt9 stack_opt10 stack_avx
+
 STACK_BENCH_SRC.stack_basic := src/stack_basic.cpp
 STACK_BENCH_SRC.stack_opt1  := src/stack_opt1.cpp
 STACK_BENCH_SRC.stack_opt7  := src/stack_opt7.cpp
-STACK_BENCH_SRC.stack_opt9 := src/stack_opt9.cpp
+STACK_BENCH_SRC.stack_opt9  := src/stack_opt9.cpp
+STACK_BENCH_SRC.stack_opt10 := src/stack_opt10.cpp
+STACK_BENCH_SRC.stack_avx   := src/stack_avx.cpp
+
+STACK_VER_FLAGS.stack_basic := -march=native -ffast-math -fno-tree-vectorize
+STACK_VER_FLAGS.stack_opt1  := -march=native -ffast-math -fno-tree-vectorize
+STACK_VER_FLAGS.stack_opt7  := -march=native -ffast-math -fno-tree-vectorize
+STACK_VER_FLAGS.stack_opt9  := -march=native -ffast-math
+STACK_VER_FLAGS.stack_opt10 := -march=native -ffast-math
+STACK_VER_FLAGS.stack_avx   := -march=native -ffast-math -mavx2 -mfma
 
 define MAKE_STACK_BENCH_RULES
 $(BUILD)/bench-$(1): src/bench_stack.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
-	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.basic-opt) -o $$@ $$^
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^
 
 $(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
-	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.basic-opt) -o $$@ $$^
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^
 endef
 
 $(foreach ver,$(STACK_BENCH_VERSIONS),$(eval $(call MAKE_STACK_BENCH_RULES,$(ver))))
