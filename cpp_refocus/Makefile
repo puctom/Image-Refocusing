@@ -7,7 +7,7 @@ BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 BENCH_COMMON_SRC := src/bench_common.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt9 opt10 opt11
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt_compiler_vec opt9 opt10 opt11
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -21,6 +21,8 @@ VER_SRC.opt7      := opt7
 VER_SRC.opt9      := opt9
 VER_SRC.opt10     := opt10
 VER_SRC.opt11     := opt11
+# Best compiler vectorization without intrinsics in code:
+VER_SRC.opt_compiler_vec      := opt7
 
 VER_FLAGS.basic     := -fno-tree-vectorize
 VER_FLAGS.basic-opt := -march=native -ffast-math -fno-tree-vectorize
@@ -34,6 +36,7 @@ VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt9      := -march=native -ffast-math
 VER_FLAGS.opt10     := -march=native -ffast-math
 VER_FLAGS.opt11     := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt_compiler_vec	:= -march=native -ffast-math
 
 STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx
 
