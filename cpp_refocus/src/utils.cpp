@@ -124,7 +124,7 @@ std::vector<SubApertureImage> load_subaperture_images(const fs::path &directory)
     return subapertures;
 }
 
-static void flush_caches() {
+void flush_caches() {
     static std::vector<unsigned char> buffer(64 * 1024 * 1024, 1);
     volatile unsigned int sink = 0;
     for (size_t i = 0; i < buffer.size(); i += 64) {

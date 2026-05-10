@@ -1,4 +1,5 @@
 import argparse
+import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -10,8 +11,9 @@ CPP_DIR = PROJECT_ROOT / "cpp_refocus"
 
 
 def run_cmd(cmd, source_setvars=False, capture_output=False):
+    cmd = " ".join(cmd) 
     if source_setvars:
-        cmd = "source /opt/intel/oneapi/setvars.sh && " + cmd 
+        cmd = "source /opt/intel/oneapi/setvars.sh --force ; " + cmd 
 
     print("Running:", cmd)
     return subprocess.run(
@@ -27,7 +29,7 @@ def build_target(target):
     run_cmd(["make", f"build/{target}"])
 
 
-def collect_survey(project_dir, target, dataset, focus, output_png):
+def collect_survey(project_dir, target, dataset, focus):
     run_cmd(
         [
             "advisor",
@@ -40,13 +42,13 @@ def collect_survey(project_dir, target, dataset, focus, output_png):
             f"./build/{target}",
             dataset,
             str(focus),
-            output_png,
+            "/tmp/out.png",
         ],
         source_setvars=True,
     )
 
 
-def collect_tripcounts(project_dir, target, dataset, focus, output_png):
+def collect_tripcounts(project_dir, target, dataset, focus):
     run_cmd(
         [
             "advisor",
@@ -62,7 +64,7 @@ def collect_tripcounts(project_dir, target, dataset, focus, output_png):
             f"./build/{target}",
             dataset,
             str(focus),
-            output_png,
+            "/tmp/out.png",
         ],
         source_setvars=True,
     )
@@ -79,7 +81,7 @@ def read_survey_csv(project_dir):
             "--format=csv",
             "--limit=20",
         ],
-        True,
+        source_setvars=True,
         capture_output=True,
     )
     return result.stdout
@@ -105,6 +107,7 @@ def generate_roofline_report(project_dir):
             f"--project-dir={project_dir}",
             f"--report-output={project_dir}/roofline.html",
         ],
+        source_setvars=True,
     )
 
 
@@ -141,15 +144,16 @@ def main():
     build_target(args.target)
 
     # Remove the intel advisor project tree
-    shutil.rmtree(full_project_dir)
+    shutil.rmtree(full_project_dir, ignore_errors=True)
+    os.makedirs(full_project_dir, exist_ok=True)
 
     # We have to do the collection in two steps: Survey -> Trip Counts
     # because because otherwise we can't "exclude initialization"
-    collect_survey(project_dir, args.target, args.dataset, args.focus, args.output)
+    collect_survey(project_dir, args.target, args.dataset, args.focus)
     survey_csv = read_survey_csv(project_dir)
     ensure_kernel_only_survey(survey_csv)
 
-    collect_tripcounts(project_dir, args.target, args.dataset, args.focus, args.output)
+    collect_tripcounts(project_dir, args.target, args.dataset, args.focus)
     generate_roofline_report(project_dir)
 
     roofline_path = full_project_dir / "roofline.html"
