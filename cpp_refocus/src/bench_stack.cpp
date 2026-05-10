@@ -139,6 +139,7 @@ int main(int argc, char **argv) {
     uint64_t total_branch_instr = 0;
 
     for (int i = 0; i < NUM_REPS; ++i) {
+        flush_caches();
         instr_counter.start();
         cache_ref_counter.start();
         cache_miss_counter.start();

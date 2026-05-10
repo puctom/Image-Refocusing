@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
+#include <ittnotify.h>
 
 #include "utils.hpp"
 #include "refocus.hpp"
@@ -11,13 +12,17 @@ static std::tuple<fs::path, float, fs::path> parse_args(int argc, char **argv) {
     return {argv[1], std::stof(argv[2]), argc > 3 ? fs::path(argv[3]) : fs::path("refocused.png")};
 }
 
+
 int main(int argc, char **argv) {
     try {
         auto [directory, focus, output] = parse_args(argc, argv);
         auto subapertures = load_subaperture_images(directory);
         std::cout << "Loaded " << subapertures.size() << " sub-aperture images\n";
+        flush_caches();
         ImageData image;
+        __itt_resume();
         image = refocus_shift_and_sum(subapertures, focus);
+        __itt_pause();
         save_png(output, image);
         std::cout << "Saved refocused image to " << output.string() << "\n";
     } catch (const std::exception &ex) {
