@@ -33,7 +33,7 @@ VER_FLAGS.opt9      := -march=native -ffast-math
 VER_FLAGS.opt10     := -march=native -ffast-math
 VER_FLAGS.opt11     := -march=native -ffast-math -mavx2 -mfma
 
-STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx
+STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx stack_opt6
 
 STACK_BENCH_SRC.stack_basic := src/stack_basic.cpp src/basic.cpp
 STACK_BENCH_SRC.stack_opt1  := src/stack_opt1.cpp
@@ -42,6 +42,7 @@ STACK_BENCH_SRC.stack_opt3  := src/stack_opt3.cpp
 STACK_BENCH_SRC.stack_opt4  := src/stack_opt4.cpp
 STACK_BENCH_SRC.stack_opt5  := src/stack_opt5.cpp
 STACK_BENCH_SRC.stack_avx   := src/stack_avx.cpp
+STACK_BENCH_SRC.stack_opt6  := src/stack_opt6.cpp
 
 STACK_VER_FLAGS.stack_basic := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_opt1  := -march=native -ffast-math -fno-tree-vectorize
@@ -50,6 +51,7 @@ STACK_VER_FLAGS.stack_opt3  := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_opt4  := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_opt5  := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_avx   := -march=native -ffast-math -mavx2 -mfma
+STACK_VER_FLAGS.stack_opt6  := -march=native -ffast-math -mavx2 -mfma
 
 define MAKE_STACK_BENCH_RULES
 $(BUILD)/bench-$(1): src/bench_stack.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
