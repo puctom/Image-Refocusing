@@ -322,6 +322,76 @@ print(f"  [saved] {out_file}")
 
 
 # ---------------------------------------------------------------------------
+# Cycles Per Pixel Plot
+# ---------------------------------------------------------------------------
+fig, ax = plt.subplots(figsize=(9, 6))
+fig.subplots_adjust(left=0.12, right=0.95, top=0.80, bottom=0.13)
+
+all_x = set()
+has_cpp_data = False
+
+for entry in loaded:
+    df = entry["df"]
+    if "cycles_per_pixel" not in df.columns:
+        continue
+    
+    has_cpp_data = True
+    x = df[X_COL].to_numpy()
+    y = df["cycles_per_pixel"].to_numpy()
+    all_x.update(x.tolist())
+
+    ax.plot(x, y,
+            marker="s", markersize=5.5, linewidth=1.6,
+            color=entry["color"], markerfacecolor=entry["color"],
+            markeredgecolor=entry["color"], label=entry["label"])
+
+if has_cpp_data:
+    apply_scale(ax, "x", X_SCALE)
+    # Linear scale for cycles_per_pixel
+    apply_scale(ax, "y", "linear")
+
+    # X ticks
+    x_ticks = sorted(all_x)
+    if X_SCALE in ("log", "log2"):
+        ax.set_xticks(x_ticks)
+        ax.xaxis.set_minor_locator(mticker.NullLocator())
+        if len(x_ticks) > 1:
+            ax.set_xlim(x_ticks[0] * 0.85, x_ticks[-1] * 1.15)
+    if X_TICK_FORMAT == "human_size":
+        ax.set_xticks(x_ticks)
+        ax.set_xticklabels([human_size(v) for v in x_ticks])
+
+    # Axis labels
+    ax.set_xlabel(X_LABEL, fontsize=10, color="#333333", labelpad=6)
+    ax.set_ylabel("Cycles per Pixel", fontsize=10, color="#333333",
+                  labelpad=6, rotation=90)
+
+    # Title block
+    fig.text(0.12, 0.87, "Cycles Per Pixel (Linear Scale)",
+             fontsize=12, fontweight="bold", color="#222222", ha="left")
+    fig.text(0.12, 0.83, "Linear cycles per pixel vs. input size  (generated data, square images)",
+             fontsize=10, color="#333333", ha="left")
+
+    style_axes(ax)
+
+    # Legend
+    if LEGEND_LOC is not None:
+        handles, labels = ax.get_legend_handles_labels()
+        ax.legend(handles, labels,
+                  loc=LEGEND_LOC,
+                  frameon=True, fontsize=9, labelcolor="#333333",
+                  handlelength=2.2, borderaxespad=0.8,
+                  facecolor="white", edgecolor="none",
+                  framealpha=0.92)
+
+    fig.savefig("cycles_per_pixel.png", dpi=160, bbox_inches="tight")
+    print(f"Saved cycles_per_pixel plot to cycles_per_pixel.png")
+else:
+    print("  [skip] cycles_per_pixel column not found in any data files")
+    plt.close(fig)
+
+
+# ---------------------------------------------------------------------------
 # Summary
 # ---------------------------------------------------------------------------
 print("\nData plotted:")
