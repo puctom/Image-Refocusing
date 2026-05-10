@@ -133,8 +133,7 @@ void PerfMonitor::compute(const BenchContext& ctx,
 
                           
     if (ctx.csv_path.empty()) {
-        std::cerr << "Error: no CSV path provided\n";
-        // return 1; TODO: break the program here
+        throw std::runtime_error("Error: no CSV path provided");
     }       
     std::ofstream csv(ctx.csv_path, std::ios::app);
     // If the file is empty, append the header first
