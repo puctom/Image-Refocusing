@@ -96,7 +96,13 @@ def parse_args(raw_args=None):
                         
     parser.add_argument("--sizes", type=int, nargs="+", default=DEFAULT_SIZES,
                         metavar="N", help=f"Square image sizes to generate (default: {DEFAULT_SIZES})")
-    parser.add_argument("--real", action="store_true", help="Include a run benchmark on the real dataset")
+    parser.add_argument(
+        "--exclude-real", 
+        dest="real", 
+        action="store_false", 
+        default=True, # Since dest="real", by default it is enabled
+        help="Exclude the benchmark run on the real dataset"
+    )
     parser.add_argument("--stack", action="store_true", help="Benchmark the focal stack")
     parser.add_argument("--profile", action="store_true", 
                         help="Run with Linux perf to generate assembly bottlenecks")
