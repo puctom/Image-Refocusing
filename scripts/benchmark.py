@@ -8,7 +8,7 @@ import datetime
 # If this script is in /scripts directory it should be runnable from anywhere.
 # For example: python3 ../scripts/benchmark.py basic --focus 3.319 --sizes 128 256 512
 # For example (stack): python3 ../scripts/benchmark.py --stack basic --focuses 3.319 --sizes 128 256 512
-#                                                                    NOTE ^ the focuses here
+#                                                   ^NOTE^ the stack flag ^NOTE^ the focuses here
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 CPP_DIR = PROJECT_ROOT / "cpp_refocus"
