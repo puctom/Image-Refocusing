@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
     }
 
     CycleStats stats = compute_cycle_stats(n_cycles);
-    perf.compute(ctx, stats, tsc_per_s);
+    perf.compute_and_report(ctx, stats, tsc_per_s);
 
     return 0;
 }
