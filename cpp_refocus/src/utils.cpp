@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <limits>
 #include <stdexcept>
+#include <vector>
 
 ImageData load_png(const fs::path &path) {
     std::vector<unsigned char> rgb;
@@ -122,3 +123,14 @@ std::vector<SubApertureImage> load_subaperture_images(const fs::path &directory)
     }
     return subapertures;
 }
+
+static void flush_caches() {
+    static std::vector<unsigned char> buffer(64 * 1024 * 1024, 1);
+    volatile unsigned int sink = 0;
+    for (size_t i = 0; i < buffer.size(); i += 64) {
+        buffer[i] ^= 1;
+        sink += buffer[i];
+    }
+    (void)sink;
+}
+

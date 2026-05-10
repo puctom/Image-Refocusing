@@ -47,3 +47,4 @@ std::vector<std::string> split(const std::string &value, char delimiter);
 std::tuple<std::vector<std::tuple<fs::path, float, float>>, float, float, float>
 find_subaperture_files(const fs::path &directory);
 std::vector<SubApertureImage> load_subaperture_images(const fs::path &directory);
+static void flush_caches();

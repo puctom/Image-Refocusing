@@ -1,6 +1,7 @@
 CXX        = g++-16
-CPPFLAGS  ?= -Iinclude -Ideps
+CPPFLAGS  ?= -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include
 BASEFLAGS ?= -O3 -std=c++17 -Wall -Wextra -pedantic
+LDLIBS    ?= /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
 
 BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
@@ -53,10 +54,10 @@ STACK_VER_FLAGS.stack_avx   := -march=native -ffast-math -mavx2 -mfma
 
 define MAKE_STACK_BENCH_RULES
 $(BUILD)/bench-$(1): src/bench_stack.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
-	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
 
 $(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) | $(BUILD)
-	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(STACK_VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
 endef
 
 $(foreach ver,$(STACK_BENCH_VERSIONS),$(eval $(call MAKE_STACK_BENCH_RULES,$(ver))))
@@ -70,10 +71,10 @@ stack: $(addprefix $(BUILD)/bench-,$(STACK_BENCH_VERSIONS)) $(addprefix $(BUILD)
 
 define MAKE_RULES
 $(BUILD)/$(1): src/main.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
-	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.$(1)) -o $$@ $$^
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
 
 $(BUILD)/bench-$(1): src/bench.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
-	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.$(1)) -o $$@ $$^
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
 endef
 
 $(foreach ver,$(VERSIONS),$(eval $(call MAKE_RULES,$(ver))))
