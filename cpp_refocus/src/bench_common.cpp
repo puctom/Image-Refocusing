@@ -73,7 +73,7 @@ CycleStats compute_cycle_stats(std::vector<uint64_t>& cycles) {
     return stats;
 }
 
-void PerfMonitor::compute(const BenchContext& ctx, 
+void PerfMonitor::compute_and_report(const BenchContext& ctx, 
                                      const CycleStats& stats, 
                                      uint64_t tsc_per_s) {
     double avg_cycles_per_pixel = static_cast<double>(stats.avg) / (ctx.NF() * ctx.W * ctx.H);

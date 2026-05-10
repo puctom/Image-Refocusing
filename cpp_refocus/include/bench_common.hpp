@@ -3,19 +3,19 @@
 #include <vector>
 #include <string>
 #include <cstdint>
-#include "utils.hpp" // For SubApertureImage
+#include "utils.hpp" 
 #include "hw_counter.hpp"
 
-// --- Hardware Cache Configuration Macros ---
+// for specifying the corresponding value
 #define HW_CACHE_CONFIG(id, op, result) \
     ((id) | ((op) << 8) | ((result) << 16))
 
-// L1 Data Cache
+// L1 data Cache
 constexpr uint64_t L1D_LOADS        = HW_CACHE_CONFIG(PERF_COUNT_HW_CACHE_L1D,  PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_ACCESS);
 constexpr uint64_t L1D_LOAD_MISSES  = HW_CACHE_CONFIG(PERF_COUNT_HW_CACHE_L1D,  PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_MISS);
 constexpr uint64_t L1D_STORES       = HW_CACHE_CONFIG(PERF_COUNT_HW_CACHE_L1D,  PERF_COUNT_HW_CACHE_OP_WRITE, PERF_COUNT_HW_CACHE_RESULT_ACCESS);
 
-// L1 Instruction Cache
+// L1 instr Cache
 constexpr uint64_t L1I_LOAD_MISSES  = HW_CACHE_CONFIG(PERF_COUNT_HW_CACHE_L1I,  PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_MISS);
 
 // Last Level Cache (LLC)
@@ -33,7 +33,7 @@ constexpr uint64_t DTLB_STORE_MISSES = HW_CACHE_CONFIG(PERF_COUNT_HW_CACHE_DTLB,
 // Instruction TLB
 constexpr uint64_t ITLB_LOAD_MISSES  = HW_CACHE_CONFIG(PERF_COUNT_HW_CACHE_ITLB, PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_MISS);
 
-// --- Shared Constants ---
+// shared constants for benchmarks
 constexpr int NUM_REPS = 10;
 constexpr int WARMUP_ITERATIONS = 1;
 
@@ -41,7 +41,7 @@ constexpr int WARMUP_ITERATIONS = 1;
 uint64_t make_TSC();
 std::vector<SubApertureImage> generate_size(size_t new_w, size_t new_h);
 
-// --- Statistical Math ---
+// statistics related to cycles
 struct CycleStats {
     uint64_t total;
     uint64_t avg;
@@ -68,7 +68,7 @@ struct BenchContext {
         return focuses.size() > 1; 
     }
 
-    // Helper to format the list of focuses into a single string
+    // Helper to format the list of focuses into a single string, e.g: "-2.137;-2.037;-1.987;-1.75"
     std::string get_focus_string(char delimiter = ';') const {
         std::ostringstream oss;
         for (size_t i = 0; i < focuses.size(); ++i) {
@@ -79,6 +79,7 @@ struct BenchContext {
     }
 };
 
+// struct for collective gathering of the metrics
 struct PerfMonitor {
     
     HWCounter l1d_load_counter{PERF_TYPE_HW_CACHE, L1D_LOADS};
@@ -86,23 +87,18 @@ struct PerfMonitor {
     HWCounter llc_load_counter{PERF_TYPE_HW_CACHE, LLC_LOADS};
     HWCounter llc_miss_counter{PERF_TYPE_HW_CACHE, LLC_LOAD_MISSES};
 
-    // --- L1 Data Cache {Stores} ---
     HWCounter l1d_store_counter{PERF_TYPE_HW_CACHE, L1D_STORES};
 
-    // --- L1 Instruction Cache ---
     HWCounter l1i_miss_counter{PERF_TYPE_HW_CACHE, L1I_LOAD_MISSES};
 
-    // --- Last Level Cache {Stores} ---
     HWCounter llc_store_counter{PERF_TYPE_HW_CACHE, LLC_STORES};
     HWCounter llc_store_miss_counter{PERF_TYPE_HW_CACHE, LLC_STORE_MISSES};
 
-    // --- Data TLB {Loads & Stores} ---
     HWCounter dtlb_load_counter{PERF_TYPE_HW_CACHE, DTLB_LOADS};
     HWCounter dtlb_load_miss_counter{PERF_TYPE_HW_CACHE, DTLB_LOAD_MISSES};
     HWCounter dtlb_store_counter{PERF_TYPE_HW_CACHE, DTLB_STORES};
     HWCounter dtlb_store_miss_counter{PERF_TYPE_HW_CACHE, DTLB_STORE_MISSES};
 
-    // --- Instruction TLB ---
     HWCounter itlb_load_miss_counter{PERF_TYPE_HW_CACHE, ITLB_LOAD_MISSES};
 
     HWCounter instr_counter{PERF_TYPE_HARDWARE, PERF_COUNT_HW_INSTRUCTIONS};
@@ -111,8 +107,6 @@ struct PerfMonitor {
 
     HWCounter major_fault_counter{PERF_TYPE_SOFTWARE, PERF_COUNT_SW_PAGE_FAULTS_MAJ};
     HWCounter minor_fault_counter{PERF_TYPE_SOFTWARE, PERF_COUNT_SW_PAGE_FAULTS_MIN};
-
-
     
     uint64_t total_l1d_loads = 0;
     uint64_t total_l1d_misses = 0;
@@ -195,7 +189,7 @@ struct PerfMonitor {
         total_branch_instr += branch_instr_counter.read();
         total_branch_misses += branch_miss_counter.read();
     }
-    void compute(const BenchContext& ctx, 
+    void (const BenchContext& ctx, 
                             const CycleStats& stats, 
                             uint64_t tsc_freq);
 };
