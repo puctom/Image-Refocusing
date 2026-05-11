@@ -20,6 +20,7 @@ int main(int argc, char** argv) {
         fs::create_directories(out_dir);
         auto subapertures = load_subaperture_images(directory);
         std::cout << "Loaded " << subapertures.size() << " sub-aperture images\n";
+        flush_caches();
         auto images = refocus_shift_and_sum_stack(subapertures, focuses);
         for (size_t i = 0; i < images.size(); ++i) {
             auto output = out_dir / ("stack_" + std::to_string(i) + ".png");
