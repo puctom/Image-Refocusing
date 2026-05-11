@@ -6,6 +6,21 @@
 #include <algorithm>
 #include <immintrin.h>
 
+/*
+*   List of Optimizations:
+*       - all from single focus value up to opt8:
+    *       - Change the loop order to [Subaperture, f, y, x] for improved locality
+    *       - Common subexpression elimination
+    *       - use better bounds for the x-y loops
+    *       - use unchecked array access
+    *       - function inlining
+    *       - unroll channel loop to expose independent scalar ops for ILP
+    *       - reduce number of loads in innermost loop
+    *       - 2x2 output block unrolling (from opt8)
+*           - precompute
+*           - AVX + vector ILP unrolling + y - unroll
+* */
+
 namespace {
 
 struct SubParams {
