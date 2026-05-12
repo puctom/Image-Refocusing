@@ -17,6 +17,7 @@
 *       - use AVX float32 FMA with unaligned loads
 *       - use block tiles for better cache performance
 *       - calculate counts using prefix sum technique
+*       - unroll the main vectorized loop to increase ILP for independent vectors accumulations
 * */
 
 namespace {
@@ -130,8 +131,53 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                     int x = (x_begin - tx) * 3;
                     const int x_stop = (x_end - tx) * 3;
 
-                    // Main loop
-                    for (; x + 8 <= x_stop; x += 8) {
+                    // Main loop - unrolled by factor of 2 to increase the ILP on vector registers
+                    // In the loop we process two blocks of 8 floats of output 
+                    for (; x + 16 <= x_stop; x += 16) { 
+                        __m128i ltop_b_0 = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_ltop));
+                        __m128i lbot_b_0 = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_lbot));
+                        __m128i rtop_b_0 = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_rtop));
+                        __m128i rbot_b_0 = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_rbot));
+                        
+                        __m128i ltop_b_1 = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_ltop + 8));
+                        __m128i lbot_b_1 = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_lbot + 8));
+                        __m128i rtop_b_1 = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_rtop + 8));
+                        __m128i rbot_b_1 = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_rbot + 8));
+
+                        __m256 ltop_f_0 = _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(ltop_b_0));
+                        __m256 lbot_f_0 = _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(lbot_b_0));
+                        __m256 rtop_f_0 = _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(rtop_b_0));
+                        __m256 rbot_f_0 = _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(rbot_b_0));
+
+                        __m256 ltop_f_1 = _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(ltop_b_1));
+                        __m256 lbot_f_1 = _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(lbot_b_1));
+                        __m256 rtop_f_1 = _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(rtop_b_1));
+                        __m256 rbot_f_1 = _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(rbot_b_1));
+
+
+                        __m256 val_0 = _mm256_loadu_ps(vp);
+                        __m256 val_1 = _mm256_loadu_ps(vp + 8);
+
+                        val_0 = _mm256_fmadd_ps(Avx, ltop_f_0, val_0); 
+                        val_1 = _mm256_fmadd_ps(Avx, ltop_f_1, val_1); 
+
+                        val_0 = _mm256_fmadd_ps(Bvx, rtop_f_0, val_0); 
+                        val_1 = _mm256_fmadd_ps(Bvx, rtop_f_1, val_1);
+
+                        val_0 = _mm256_fmadd_ps(Cvx, lbot_f_0, val_0);
+                        val_1 = _mm256_fmadd_ps(Cvx, lbot_f_1, val_1);
+
+                        val_0 = _mm256_fmadd_ps(Dvx, rbot_f_0, val_0);
+                        val_1 = _mm256_fmadd_ps(Dvx, rbot_f_1, val_1);
+
+                        _mm256_storeu_ps(vp, val_0);
+                        _mm256_storeu_ps(vp + 8, val_1);
+
+                        vp += 16;
+                        ind_ltop += 16; ind_lbot += 16;
+                        ind_rtop += 16; ind_rbot += 16;
+                    }
+                    if(x + 8 <= x_stop) {
                         __m128i ltop_b = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_ltop));
                         __m128i lbot_b = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_lbot));
                         __m128i rtop_b = _mm_loadl_epi64(reinterpret_cast<const __m128i*>(p.SUB + ind_rtop));
@@ -152,9 +198,9 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                         vp += 8;
                         ind_ltop += 8; ind_lbot += 8;
                         ind_rtop += 8; ind_rbot += 8;
+                        x += 8;
                     }
-
-                    // Handle tail
+                    // Handle tail 
                     int remaining = x_stop - x;
                     for (int k = 0; k < remaining; ++k) {
                         float TL = p.SUB[ind_ltop + k];
