@@ -91,8 +91,8 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
 
     // vals_tile = TILE_H * TILE_W * 3 * 4 B
     // TODO: play around with these values, the tile should fit in L1
-    const int TILE_H = 8;
-    const int TILE_W = 256;
+    const int TILE_H = 6;
+    const int TILE_W = 2032;
 
     // Per-tile vals accumulator
     std::vector<float> tile_vals(TILE_H * TILE_W * 3);
@@ -361,7 +361,6 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                     int c = counts[y * width + (tx + x)];
 
                     if (c == 0) {
-                        outp[x*3] = outp[x*3+1] = outp[x*3+2] = 0;
                         continue;
                     }
 
