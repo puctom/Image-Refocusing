@@ -1,0 +1,18 @@
+program: scripts/sweep.py
+method: bayes
+metric:
+  name: median_cycles
+  goal: minimize
+parameters:
+  tile_h:
+    distribution: q_log_uniform_values
+    min: 2
+    max: 512
+    q: 1
+  tile_w:
+    distribution: q_log_uniform_values
+    min: 64
+    max: 2048
+    q: 8
+
+
