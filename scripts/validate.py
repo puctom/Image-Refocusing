@@ -23,6 +23,7 @@ EPSILON      = 1
 
 
 def validation_data_exists():
+    # return True
     if not os.path.exists(PATH):
         return False
     
@@ -86,6 +87,7 @@ def run_cpp(target):
         pool.starmap(run_cpp_single, zip(FOCUS_VALUES, len(FOCUS_VALUES) * [target]))
 
 def rust_results_exist():
+    # return False
     for focus in FOCUS_VALUES:
         fname = str(focus).replace(".", "_") + ".png"
         if not os.path.isfile(os.path.join(OUT, "rust", fname)):
