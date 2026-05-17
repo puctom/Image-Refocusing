@@ -48,7 +48,7 @@ VER_FLAGS.opt15     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt16     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt_compiler_vec	:= -march=native -ffast-math
 
-STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx stack_opt6 stack_opt7 stack_opt8
+STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx stack_opt6 stack_opt7 stack_opt8 stack_opt9
 
 STACK_BENCH_SRC.stack_basic := src/stack_basic.cpp src/basic.cpp
 STACK_BENCH_SRC.stack_opt1  := src/stack_opt1.cpp
@@ -60,6 +60,7 @@ STACK_BENCH_SRC.stack_avx   := src/stack_avx.cpp
 STACK_BENCH_SRC.stack_opt6  := src/stack_opt6.cpp
 STACK_BENCH_SRC.stack_opt7  := src/stack_opt7.cpp
 STACK_BENCH_SRC.stack_opt8  := src/stack_opt8.cpp
+STACK_BENCH_SRC.stack_opt9  := src/stack_opt9.cpp
 
 STACK_VER_FLAGS.stack_basic := -march=native -ffast-math -fno-tree-vectorize
 STACK_VER_FLAGS.stack_opt1  := -march=native -ffast-math -fno-tree-vectorize
@@ -71,6 +72,7 @@ STACK_VER_FLAGS.stack_avx   := -march=native -ffast-math -mavx2 -mfma
 STACK_VER_FLAGS.stack_opt6  := -march=native -ffast-math -mavx2 -mfma
 STACK_VER_FLAGS.stack_opt7  := -march=native -ffast-math -mavx2 -mfma
 STACK_VER_FLAGS.stack_opt8  := -march=native -ffast-math -mavx2 -mfma
+STACK_VER_FLAGS.stack_opt9  := -march=native -ffast-math -mavx2 -mfma
 
 define MAKE_STACK_RULES
 # `src/basic.cpp` included to link against bench_basic.cpp
