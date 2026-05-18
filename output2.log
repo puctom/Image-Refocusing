@@ -1,0 +1,745 @@
+g++-16 -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include -O3 -std=c++17 -Wall -Wextra -pedantic -g -march=native -ffast-math -mavx2 -mfma -o build/bench-opt99_basic_unpack32 src/bench.cpp src/utils.cpp deps/lodepng.cpp src/bench_common.cpp src/opt99_basic_unpack32.cpp /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
+  289 sub-apertures, 1024x512 px each
+TSC frequency: 2.41941 GHz
+
+ Timing results: 
+variant : real_data_1
+data source : real
+focus : 6.700
+runs : 10
+image size : 1024x512
+n subapertures : 289
+time: 1.374 s (avg = 137.431ms med=137.430 min=135.862 max=140.351)
+cycles/whole image: total: 3325020500, avg: 332502050 (med=332498787 min=328706867 max=339565466)
+cycles/pixel : avg: 634.197
+throughput : 3.815 Mpixels/s
+mem bandwidth : 3.308 GB/s (est)
+avg_instructions : 261515765.900 (IPC: 0.787)
+cache L1D: loads=71523867.800 misses=4525492.200 (miss rate: 6.327%)
+cache L1D (stores): stores=9003404.700
+L1I: load misses=2373.500
+cache LLC: loads=545494.900 misses=281050.600 (miss rate: 51.522%)
+cache LLC (stores): stores=5615.900 misses=3572.000 (miss rate: 63.605%)
+DTLB: loads=40639768.200 misses=58191.400 (miss rate: 0.143%), stores=8856531.500 misses=2629.800 (miss rate: 0.030%)
+ITLB: load misses=466.800
+page faults: major=0.000 minor=1378.000
+branches : instr=14375436.700 misses=234996.000 (miss rate: 1.635%)
+  289 sub-apertures, 16x16 px each
+TSC frequency: 2.41925 GHz
+
+ Timing results: 
+variant : gen_16x16_1
+data source : generated 16*16
+focus : 6.700
+runs : 10
+image size : 16x16
+n subapertures : 289
+time: 0.001 s (avg = 0.108ms med=0.107 min=0.101 max=0.122)
+cycles/whole image: total: 2622699, avg: 262269 (med=257960 min=244964 max=294501)
+cycles/pixel : avg: 1024.488
+throughput : 2.361 Mpixels/s
+mem bandwidth : 2.047 GB/s (est)
+avg_instructions : 116998.600 (IPC: 0.446)
+cache L1D: loads=34325.800 misses=1281.700 (miss rate: 3.734%)
+cache L1D (stores): stores=29934.000
+L1I: load misses=110.700
+cache LLC: loads=34.700 misses=27.300 (miss rate: 78.674%)
+cache LLC (stores): stores=90.700 misses=72.000 (miss rate: 79.383%)
+DTLB: loads=137010.800 misses=0.200 (miss rate: 0.000%), stores=22410.900 misses=0.000 (miss rate: 0.000%)
+ITLB: load misses=3.600
+page faults: major=0.000 minor=0.100
+branches : instr=6052.200 misses=21.900 (miss rate: 0.362%)
+  289 sub-apertures, 32x32 px each
+TSC frequency: 2.41925 GHz
+
+ Timing results: 
+variant : gen_32x32_1
+data source : generated 32*32
+focus : 6.700
+runs : 10
+image size : 32x32
+n subapertures : 289
+time: 0.003 s (avg = 0.339ms med=0.331 min=0.317 max=0.431)
+cycles/whole image: total: 8195115, avg: 819511 (med=800771 min=766779 max=1041707)
+cycles/pixel : avg: 800.304
+throughput : 3.023 Mpixels/s
+mem bandwidth : 2.621 GB/s (est)
+avg_instructions : 952145.800 (IPC: 1.162)
+cache L1D: loads=301959.700 misses=7972.700 (miss rate: 2.640%)
+cache L1D (stores): stores=53895.900
+L1I: load misses=96.500
+cache LLC: loads=333.700 misses=89.600 (miss rate: 26.850%)
+cache LLC (stores): stores=113.800 misses=136.700 (miss rate: 120.123%)
+DTLB: loads=257687.800 misses=1.100 (miss rate: 0.000%), stores=35886.600 misses=0.000 (miss rate: 0.000%)
+ITLB: load misses=2.200
+page faults: major=0.000 minor=0.000
+branches : instr=45946.300 misses=77.800 (miss rate: 0.169%)
+  289 sub-apertures, 64x64 px each
+TSC frequency: 2.41925 GHz
+
+ Timing results: 
+variant : gen_64x64_1
+data source : generated 64*64
+focus : 6.700
+runs : 10
+image size : 64x64
+n subapertures : 289
+time: 0.009 s (avg = 0.930ms med=0.924 min=0.888 max=1.014)
+cycles/whole image: total: 22494237, avg: 2249423 (med=2235099 min=2148934 max=2453962)
+cycles/pixel : avg: 549.176
+throughput : 4.405 Mpixels/s
+mem bandwidth : 3.819 GB/s (est)
+avg_instructions : 1900426.200 (IPC: 0.845)
+cache L1D: loads=463796.800 misses=14786.800 (miss rate: 3.188%)
+cache L1D (stores): stores=191234.800
+L1I: load misses=114.800
+cache LLC: loads=479.800 misses=137.800 (miss rate: 28.720%)
+cache LLC (stores): stores=371.600 misses=205.700 (miss rate: 55.355%)
+DTLB: loads=695593.100 misses=5.400 (miss rate: 0.001%), stores=189792.800 misses=0.400 (miss rate: 0.000%)
+ITLB: load misses=1.400
+page faults: major=0.000 minor=0.000
+branches : instr=85564.000 misses=182.100 (miss rate: 0.213%)
+  289 sub-apertures, 128x128 px each
+TSC frequency: 2.41926 GHz
+
+ Timing results: 
+variant : gen_128x128_1
+data source : generated 128*128
+focus : 6.700
+runs : 10
+image size : 128x128
+n subapertures : 289
+time: 0.030 s (avg = 3.011ms med=2.991 min=2.905 max=3.248)
+cycles/whole image: total: 72840107, avg: 7284010 (med=7235846 min=7028723 max=7857299)
+cycles/pixel : avg: 444.581
+throughput : 5.442 Mpixels/s
+mem bandwidth : 4.718 GB/s (est)
+avg_instructions : 8324160.100 (IPC: 1.143)
+cache L1D: loads=3216115.100 misses=139002.900 (miss rate: 4.322%)
+cache L1D (stores): stores=481454.600
+L1I: load misses=170.700
+cache LLC: loads=4026.500 misses=1271.000 (miss rate: 31.566%)
+cache LLC (stores): stores=370.200 misses=399.200 (miss rate: 107.834%)
+DTLB: loads=1389162.400 misses=37.100 (miss rate: 0.003%), stores=286586.600 misses=36.400 (miss rate: 0.013%)
+ITLB: load misses=10.200
+page faults: major=0.000 minor=20.000
+branches : instr=531266.200 misses=11513.100 (miss rate: 2.167%)
+  289 sub-apertures, 256x256 px each
+TSC frequency: 2.41928 GHz
+
+ Timing results: 
+variant : gen_256x256_1
+data source : generated 256*256
+focus : 6.700
+runs : 10
+image size : 256x256
+n subapertures : 289
+time: 0.109 s (avg = 10.890ms med=10.752 min=10.321 max=13.417)
+cycles/whole image: total: 263458447, avg: 26345844 (med=26011710 min=24970274 max=32459870)
+cycles/pixel : avg: 402.006
+throughput : 6.018 Mpixels/s
+mem bandwidth : 5.218 GB/s (est)
+avg_instructions : 28885980.000 (IPC: 1.096)
+cache L1D: loads=9557288.500 misses=447964.600 (miss rate: 4.687%)
+cache L1D (stores): stores=1597749.500
+L1I: load misses=502.900
+cache LLC: loads=17821.900 misses=3643.000 (miss rate: 20.441%)
+cache LLC (stores): stores=1111.400 misses=848.700 (miss rate: 76.363%)
+DTLB: loads=4502511.300 misses=363.900 (miss rate: 0.008%), stores=1060774.800 misses=278.700 (miss rate: 0.026%)
+ITLB: load misses=25.500
+page faults: major=0.000 minor=106.700
+branches : instr=1659841.100 misses=23119.400 (miss rate: 1.393%)
+  289 sub-apertures, 512x512 px each
+TSC frequency: 2.41928 GHz
+
+ Timing results: 
+variant : gen_512x512_1
+data source : generated 512*512
+focus : 6.700
+runs : 10
+image size : 512x512
+n subapertures : 289
+time: 0.503 s (avg = 50.257ms med=48.290 min=47.669 max=64.778)
+cycles/whole image: total: 1215854413, avg: 121585441 (med=116825944 min=115323504 max=156716457)
+cycles/pixel : avg: 463.812
+throughput : 5.216 Mpixels/s
+mem bandwidth : 4.522 GB/s (est)
+avg_instructions : 123586407.100 (IPC: 1.016)
+cache L1D: loads=35918270.500 misses=2171900.200 (miss rate: 6.047%)
+cache L1D (stores): stores=5067991.800
+L1I: load misses=1198.600
+cache LLC: loads=125719.600 misses=49775.400 (miss rate: 39.592%)
+cache LLC (stores): stores=2170.900 misses=3377.200 (miss rate: 155.567%)
+DTLB: loads=20802337.400 misses=5682.900 (miss rate: 0.027%), stores=4155140.900 misses=913.300 (miss rate: 0.022%)
+ITLB: load misses=162.400
+page faults: major=0.000 minor=506.100
+branches : instr=6991470.000 misses=106532.100 (miss rate: 1.524%)
+  289 sub-apertures, 1024x1024 px each
+TSC frequency: 2.41926 GHz
+
+ Timing results: 
+variant : gen_1024x1024_1
+data source : generated 1024*1024
+focus : 6.700
+runs : 10
+image size : 1024x1024
+n subapertures : 289
+time: 2.731 s (avg = 273.080ms med=261.234 min=252.993 max=379.984)
+cycles/whole image: total: 6606517878, avg: 660651787 (med=631993114 min=612056688 max=919281738)
+cycles/pixel : avg: 630.047
+throughput : 3.840 Mpixels/s
+mem bandwidth : 3.329 GB/s (est)
+avg_instructions : 534048672.600 (IPC: 0.808)
+cache L1D: loads=144229786.300 misses=9011887.900 (miss rate: 6.248%)
+cache L1D (stores): stores=17504732.100
+L1I: load misses=7703.100
+cache LLC: loads=860881.100 misses=308205.100 (miss rate: 35.801%)
+cache LLC (stores): stores=58719.500 misses=52257.800 (miss rate: 88.996%)
+DTLB: loads=82087233.000 misses=48980.400 (miss rate: 0.060%), stores=18015763.100 misses=1363.400 (miss rate: 0.008%)
+ITLB: load misses=91.800
+page faults: major=0.000 minor=1078.700
+branches : instr=29158685.500 misses=467657.100 (miss rate: 1.604%)
+  289 sub-apertures, 2048x2048 px each
+TSC frequency: 2.41928 GHz
+
+ Timing results: 
+variant : gen_2048x2048_1
+data source : generated 2048*2048
+focus : 6.700
+runs : 10
+image size : 2048x2048
+n subapertures : 289
+time: 9.878 s (avg = 987.819ms med=976.224 min=952.654 max=1064.398)
+cycles/whole image: total: 23898083784, avg: 2389808378 (med=2361758210 min=2304735589 max=2575073379)
+cycles/pixel : avg: 569.775
+throughput : 4.246 Mpixels/s
+mem bandwidth : 3.681 GB/s (est)
+avg_instructions : 2075985827.700 (IPC: 0.869)
+cache L1D: loads=560826918.800 misses=35944839.600 (miss rate: 6.409%)
+cache L1D (stores): stores=70648334.800
+L1I: load misses=11920.600
+cache LLC: loads=3647632.800 misses=1728049.000 (miss rate: 47.375%)
+cache LLC (stores): stores=48773.400 misses=44883.500 (miss rate: 92.025%)
+DTLB: loads=322532747.300 misses=310981.400 (miss rate: 0.096%), stores=70786848.500 misses=12103.300 (miss rate: 0.017%)
+ITLB: load misses=232.200
+page faults: major=0.000 minor=2038.500
+branches : instr=113856115.500 misses=1821659.100 (miss rate: 1.600%)
+--- Building Bench Target in /home/team15/tomasz-worktree-dir/cpp_refocus ---
+
+--- Running Real Dataset ---
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unpack32 /home/team15/tomasz-worktree-dir/in/validation 6.7 real_data_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+
+--- Running Generated Dataset ---
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unpack32 --generate 16 16 6.7 gen_16x16_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unpack32 --generate 32 32 6.7 gen_32x32_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unpack32 --generate 64 64 6.7 gen_64x64_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unpack32 --generate 128 128 6.7 gen_128x128_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unpack32 --generate 256 256 6.7 gen_256x256_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unpack32 --generate 512 512 6.7 gen_512x512_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unpack32 --generate 1024 1024 6.7 gen_1024x1024_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unpack32 --generate 2048 2048 6.7 gen_2048x2048_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+
+[SUCCESS] Benchmarks complete. Results saved to /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv
+g++-16 -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include -O3 -std=c++17 -Wall -Wextra -pedantic -g -march=native -ffast-math -mavx2 -mfma -o build/bench-opt99_basic_unrolled_unpack32 src/bench.cpp src/utils.cpp deps/lodepng.cpp src/bench_common.cpp src/opt99_basic_unrolled_unpack32.cpp /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
+  289 sub-apertures, 1024x512 px each
+TSC frequency: 2.41926 GHz
+
+ Timing results: 
+variant : real_data_1
+data source : real
+focus : 6.700
+runs : 10
+image size : 1024x512
+n subapertures : 289
+time: 1.521 s (avg = 152.083ms med=138.397 min=129.544 max=223.125)
+cycles/whole image: total: 3679295087, avg: 367929508 (med=334818468 min=313401605 max=539797145)
+cycles/pixel : avg: 701.770
+throughput : 3.447 Mpixels/s
+mem bandwidth : 2.989 GB/s (est)
+avg_instructions : 231746667.600 (IPC: 0.630)
+cache L1D: loads=71549418.500 misses=4541968.600 (miss rate: 6.348%)
+cache L1D (stores): stores=8484660.900
+L1I: load misses=6566.000
+cache LLC: loads=580555.400 misses=246049.600 (miss rate: 42.382%)
+cache LLC (stores): stores=5550.000 misses=5329.200 (miss rate: 96.022%)
+DTLB: loads=41592361.600 misses=58657.700 (miss rate: 0.141%), stores=8874374.000 misses=1461.800 (miss rate: 0.016%)
+ITLB: load misses=251.000
+page faults: major=0.000 minor=1378.000
+branches : instr=8445438.800 misses=234506.300 (miss rate: 2.777%)
+  289 sub-apertures, 16x16 px each
+TSC frequency: 2.41925 GHz
+
+ Timing results: 
+variant : gen_16x16_1
+data source : generated 16*16
+focus : 6.700
+runs : 10
+image size : 16x16
+n subapertures : 289
+time: 0.001 s (avg = 0.108ms med=0.106 min=0.099 max=0.127)
+cycles/whole image: total: 2605784, avg: 260578 (med=255450 min=240673 max=307645)
+cycles/pixel : avg: 1017.883
+throughput : 2.377 Mpixels/s
+mem bandwidth : 2.061 GB/s (est)
+avg_instructions : 502.200 (IPC: 0.002)
+cache L1D: loads=32294.000 misses=1288.700 (miss rate: 3.991%)
+cache L1D (stores): stores=37645.900
+L1I: load misses=163.800
+cache LLC: loads=32.200 misses=33.400 (miss rate: 103.727%)
+cache LLC (stores): stores=154.600 misses=130.600 (miss rate: 84.476%)
+DTLB: loads=118201.200 misses=0.000 (miss rate: 0.000%), stores=6987.600 misses=0.000 (miss rate: 0.000%)
+ITLB: load misses=0.000
+page faults: major=0.000 minor=0.100
+branches : instr=99.600 misses=13.400 (miss rate: 13.454%)
+  289 sub-apertures, 32x32 px each
+TSC frequency: 2.41926 GHz
+
+ Timing results: 
+variant : gen_32x32_1
+data source : generated 32*32
+focus : 6.700
+runs : 10
+image size : 32x32
+n subapertures : 289
+time: 0.003 s (avg = 0.333ms med=0.336 min=0.318 max=0.343)
+cycles/whole image: total: 8052690, avg: 805269 (med=813198 min=769888 max=830494)
+cycles/pixel : avg: 786.396
+throughput : 3.076 Mpixels/s
+mem bandwidth : 2.667 GB/s (est)
+avg_instructions : 306699.900 (IPC: 0.381)
+cache L1D: loads=84195.800 misses=3881.900 (miss rate: 4.611%)
+cache L1D (stores): stores=71071.600
+L1I: load misses=141.800
+cache LLC: loads=358.800 misses=175.400 (miss rate: 48.885%)
+cache LLC (stores): stores=155.100 misses=104.900 (miss rate: 67.634%)
+DTLB: loads=336485.600 misses=1.100 (miss rate: 0.000%), stores=53264.100 misses=0.000 (miss rate: 0.000%)
+ITLB: load misses=0.900
+page faults: major=0.000 minor=0.000
+branches : instr=13662.800 misses=20.900 (miss rate: 0.153%)
+  289 sub-apertures, 64x64 px each
+TSC frequency: 2.41927 GHz
+
+ Timing results: 
+variant : gen_64x64_1
+data source : generated 64*64
+focus : 6.700
+runs : 10
+image size : 64x64
+n subapertures : 289
+time: 0.009 s (avg = 0.916ms med=0.911 min=0.875 max=0.997)
+cycles/whole image: total: 22167910, avg: 2216791 (med=2202823 min=2115708 max=2412382)
+cycles/pixel : avg: 541.209
+throughput : 4.470 Mpixels/s
+mem bandwidth : 3.876 GB/s (est)
+avg_instructions : 2685231.700 (IPC: 1.211)
+cache L1D: loads=803264.600 misses=22167.900 (miss rate: 2.760%)
+cache L1D (stores): stores=154092.700
+L1I: load misses=145.400
+cache LLC: loads=471.300 misses=164.800 (miss rate: 34.967%)
+cache LLC (stores): stores=370.300 misses=215.400 (miss rate: 58.169%)
+DTLB: loads=684557.200 misses=1.700 (miss rate: 0.000%), stores=94790.400 misses=0.200 (miss rate: 0.000%)
+ITLB: load misses=4.200
+page faults: major=0.000 minor=0.000
+branches : instr=101495.500 misses=167.300 (miss rate: 0.165%)
+  289 sub-apertures, 128x128 px each
+TSC frequency: 2.41925 GHz
+
+ Timing results: 
+variant : gen_128x128_1
+data source : generated 128*128
+focus : 6.700
+runs : 10
+image size : 128x128
+n subapertures : 289
+time: 0.029 s (avg = 2.908ms med=2.874 min=2.802 max=3.164)
+cycles/whole image: total: 70340657, avg: 7034065 (med=6953664 min=6779785 max=7654435)
+cycles/pixel : avg: 429.325
+throughput : 5.635 Mpixels/s
+mem bandwidth : 4.886 GB/s (est)
+avg_instructions : 8545961.500 (IPC: 1.215)
+cache L1D: loads=3010958.000 misses=139359.500 (miss rate: 4.628%)
+cache L1D (stores): stores=506881.000
+L1I: load misses=212.600
+cache LLC: loads=5489.300 misses=1364.900 (miss rate: 24.865%)
+cache LLC (stores): stores=378.400 misses=307.600 (miss rate: 81.290%)
+DTLB: loads=1139001.300 misses=45.800 (miss rate: 0.004%), stores=421276.800 misses=48.600 (miss rate: 0.012%)
+ITLB: load misses=11.300
+page faults: major=0.000 minor=20.000
+branches : instr=407261.500 misses=609.100 (miss rate: 0.150%)
+  289 sub-apertures, 256x256 px each
+TSC frequency: 2.41926 GHz
+
+ Timing results: 
+variant : gen_256x256_1
+data source : generated 256*256
+focus : 6.700
+runs : 10
+image size : 256x256
+n subapertures : 289
+time: 0.105 s (avg = 10.465ms med=10.391 min=10.193 max=11.419)
+cycles/whole image: total: 253183742, avg: 25318374 (med=25139579 min=24658918 max=27625281)
+cycles/pixel : avg: 386.328
+throughput : 6.262 Mpixels/s
+mem bandwidth : 5.429 GB/s (est)
+avg_instructions : 26584256.300 (IPC: 1.050)
+cache L1D: loads=8975148.700 misses=464407.600 (miss rate: 5.174%)
+cache L1D (stores): stores=1555246.600
+L1I: load misses=451.400
+cache LLC: loads=20939.700 misses=3848.800 (miss rate: 18.380%)
+cache LLC (stores): stores=1100.500 misses=1549.200 (miss rate: 140.772%)
+DTLB: loads=5037803.700 misses=350.700 (miss rate: 0.007%), stores=1055767.700 misses=184.300 (miss rate: 0.017%)
+ITLB: load misses=21.000
+page faults: major=0.000 minor=106.700
+branches : instr=1071955.000 misses=23109.100 (miss rate: 2.156%)
+  289 sub-apertures, 512x512 px each
+TSC frequency: 2.41928 GHz
+
+ Timing results: 
+variant : gen_512x512_1
+data source : generated 512*512
+focus : 6.700
+runs : 10
+image size : 512x512
+n subapertures : 289
+time: 0.495 s (avg = 49.465ms med=49.189 min=48.522 max=51.315)
+cycles/whole image: total: 1196684894, avg: 119668489 (med=119001812 min=117389133 max=124144577)
+cycles/pixel : avg: 456.499
+throughput : 5.300 Mpixels/s
+mem bandwidth : 4.595 GB/s (est)
+avg_instructions : 98785853.700 (IPC: 0.825)
+cache L1D: loads=34250520.300 misses=2136452.400 (miss rate: 6.238%)
+cache L1D (stores): stores=5037025.900
+L1I: load misses=1320.700
+cache LLC: loads=137963.000 misses=56559.900 (miss rate: 40.996%)
+cache LLC (stores): stores=2146.200 misses=1908.900 (miss rate: 88.943%)
+DTLB: loads=21263529.600 misses=5882.700 (miss rate: 0.028%), stores=4060720.500 misses=1314.900 (miss rate: 0.032%)
+ITLB: load misses=84.100
+page faults: major=0.000 minor=506.100
+branches : instr=4115277.400 misses=104621.300 (miss rate: 2.542%)
+  289 sub-apertures, 1024x1024 px each
+TSC frequency: 2.41927 GHz
+
+ Timing results: 
+variant : gen_1024x1024_1
+data source : generated 1024*1024
+focus : 6.700
+runs : 10
+image size : 1024x1024
+n subapertures : 289
+time: 2.653 s (avg = 265.282ms med=261.496 min=257.724 max=284.992)
+cycles/whole image: total: 6417870868, avg: 641787086 (med=632627899 min=623502916 max=689471264)
+cycles/pixel : avg: 612.056
+throughput : 3.953 Mpixels/s
+mem bandwidth : 3.427 GB/s (est)
+avg_instructions : 471829831.500 (IPC: 0.735)
+cache L1D: loads=141495713.700 misses=8838296.000 (miss rate: 6.246%)
+cache L1D (stores): stores=17790744.300
+L1I: load misses=4073.700
+cache LLC: loads=989756.000 misses=327080.800 (miss rate: 33.047%)
+cache LLC (stores): stores=26111.900 misses=24432.800 (miss rate: 93.570%)
+DTLB: loads=81295952.500 misses=43732.400 (miss rate: 0.054%), stores=17277256.700 misses=3223.600 (miss rate: 0.019%)
+ITLB: load misses=223.900
+page faults: major=0.000 minor=1078.700
+branches : instr=16957366.700 misses=467263.600 (miss rate: 2.756%)
+  289 sub-apertures, 2048x2048 px each
+TSC frequency: 2.4193 GHz
+
+ Timing results: 
+variant : gen_2048x2048_1
+data source : generated 2048*2048
+focus : 6.700
+runs : 10
+image size : 2048x2048
+n subapertures : 289
+time: 10.799 s (avg = 1079.936ms med=1087.144 min=976.931 max=1171.889)
+cycles/whole image: total: 26126898412, avg: 2612689841 (med=2630126539 min=2363488955 max=2835150232)
+cycles/pixel : avg: 622.914
+throughput : 3.884 Mpixels/s
+mem bandwidth : 3.367 GB/s (est)
+avg_instructions : 1871169744.400 (IPC: 0.716)
+cache L1D: loads=562227622.600 misses=36264241.200 (miss rate: 6.450%)
+cache L1D (stores): stores=69057531.700
+L1I: load misses=25345.800
+cache LLC: loads=3927240.100 misses=2051384.400 (miss rate: 52.235%)
+cache LLC (stores): stores=37983.200 misses=28650.000 (miss rate: 75.428%)
+DTLB: loads=318073265.000 misses=250646.000 (miss rate: 0.079%), stores=67869110.200 misses=121754.300 (miss rate: 0.179%)
+ITLB: load misses=2356.400
+page faults: major=0.000 minor=8272.700
+branches : instr=66826722.200 misses=1819757.900 (miss rate: 2.723%)
+--- Building Bench Target in /home/team15/tomasz-worktree-dir/cpp_refocus ---
+
+--- Running Real Dataset ---
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unrolled_unpack32 /home/team15/tomasz-worktree-dir/in/validation 6.7 real_data_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+
+--- Running Generated Dataset ---
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unrolled_unpack32 --generate 16 16 6.7 gen_16x16_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unrolled_unpack32 --generate 32 32 6.7 gen_32x32_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unrolled_unpack32 --generate 64 64 6.7 gen_64x64_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unrolled_unpack32 --generate 128 128 6.7 gen_128x128_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unrolled_unpack32 --generate 256 256 6.7 gen_256x256_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unrolled_unpack32 --generate 512 512 6.7 gen_512x512_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unrolled_unpack32 --generate 1024 1024 6.7 gen_1024x1024_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_unrolled_unpack32 --generate 2048 2048 6.7 gen_2048x2048_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+
+[SUCCESS] Benchmarks complete. Results saved to /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv
+g++-16 -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include -O3 -std=c++17 -Wall -Wextra -pedantic -g -march=native -ffast-math -mavx2 -mfma -o build/bench-opt99_basic_upack32_reg_peel_for_loads src/bench.cpp src/utils.cpp deps/lodepng.cpp src/bench_common.cpp src/opt99_basic_upack32_reg_peel_for_loads.cpp /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
+src/opt99_basic_upack32_reg_peel_for_loads.cpp: In function ‘ImageData refocus_shift_and_sum(std::vector<SubApertureImage>&, float)’:
+src/opt99_basic_upack32_reg_peel_for_loads.cpp:239:30: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+  239 |                     for (; x < peel_target; ++x) {
+      |                            ~~^~~~~~~~~~~~~
+src/opt99_basic_upack32_reg_peel_for_loads.cpp:269:30: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+  269 |                     for (; x < vec_stop; x += 16) {
+      |                            ~~^~~~~~~~~~
+  289 sub-apertures, 1024x512 px each
+TSC frequency: 2.41924 GHz
+
+ Timing results: 
+variant : real_data_1
+data source : real
+focus : 6.700
+runs : 10
+image size : 1024x512
+n subapertures : 289
+time: 1.354 s (avg = 135.405ms med=135.249 min=133.789 max=137.164)
+cycles/whole image: total: 3275761760, avg: 327576176 (med=327200626 min=323667467 max=331832564)
+cycles/pixel : avg: 624.802
+throughput : 3.872 Mpixels/s
+mem bandwidth : 3.357 GB/s (est)
+avg_instructions : 287977433.000 (IPC: 0.879)
+cache L1D: loads=73823626.500 misses=4533043.300 (miss rate: 6.140%)
+cache L1D (stores): stores=9689813.300
+L1I: load misses=3294.100
+cache LLC: loads=497557.700 misses=154075.900 (miss rate: 30.966%)
+cache LLC (stores): stores=5107.200 misses=3805.000 (miss rate: 74.503%)
+DTLB: loads=42145103.100 misses=57656.500 (miss rate: 0.137%), stores=9761088.900 misses=3674.400 (miss rate: 0.038%)
+ITLB: load misses=305.600
+page faults: major=0.000 minor=1378.000
+branches : instr=14837603.500 misses=236933.700 (miss rate: 1.597%)
+  289 sub-apertures, 16x16 px each
+TSC frequency: 2.41926 GHz
+
+ Timing results: 
+variant : gen_16x16_1
+data source : generated 16*16
+focus : 6.700
+runs : 10
+image size : 16x16
+n subapertures : 289
+time: 0.001 s (avg = 0.115ms med=0.115 min=0.107 max=0.133)
+cycles/whole image: total: 2788198, avg: 278819 (med=279214 min=258502 max=322759)
+cycles/pixel : avg: 1089.137
+throughput : 2.221 Mpixels/s
+mem bandwidth : 1.926 GB/s (est)
+avg_instructions : 133240.900 (IPC: 0.478)
+cache L1D: loads=37621.300 misses=1257.700 (miss rate: 3.343%)
+cache L1D (stores): stores=41987.200
+L1I: load misses=124.800
+cache LLC: loads=26.000 misses=17.100 (miss rate: 65.769%)
+cache LLC (stores): stores=89.000 misses=69.400 (miss rate: 77.978%)
+DTLB: loads=150192.800 misses=0.100 (miss rate: 0.000%), stores=31450.800 misses=0.000 (miss rate: 0.000%)
+ITLB: load misses=0.700
+page faults: major=0.000 minor=0.100
+branches : instr=6404.700 misses=18.000 (miss rate: 0.281%)
+  289 sub-apertures, 32x32 px each
+TSC frequency: 2.41925 GHz
+
+ Timing results: 
+variant : gen_32x32_1
+data source : generated 32*32
+focus : 6.700
+runs : 10
+image size : 32x32
+n subapertures : 289
+time: 0.003 s (avg = 0.335ms med=0.335 min=0.318 max=0.373)
+cycles/whole image: total: 8097175, avg: 809717 (med=809253 min=768819 max=901560)
+cycles/pixel : avg: 790.739
+throughput : 3.059 Mpixels/s
+mem bandwidth : 2.653 GB/s (est)
+avg_instructions : 357927.200 (IPC: 0.442)
+cache L1D: loads=93028.200 misses=4000.100 (miss rate: 4.300%)
+cache L1D (stores): stores=97575.200
+L1I: load misses=109.300
+cache LLC: loads=235.200 misses=100.700 (miss rate: 42.815%)
+cache LLC (stores): stores=146.200 misses=118.600 (miss rate: 81.122%)
+DTLB: loads=371815.200 misses=3.000 (miss rate: 0.001%), stores=73141.800 misses=0.000 (miss rate: 0.000%)
+ITLB: load misses=1.100
+page faults: major=0.000 minor=0.000
+branches : instr=16147.100 misses=22.100 (miss rate: 0.137%)
+  289 sub-apertures, 64x64 px each
+TSC frequency: 2.41925 GHz
+
+ Timing results: 
+variant : gen_64x64_1
+data source : generated 64*64
+focus : 6.700
+runs : 10
+image size : 64x64
+n subapertures : 289
+time: 0.009 s (avg = 0.924ms med=0.914 min=0.897 max=1.015)
+cycles/whole image: total: 22354361, avg: 2235436 (med=2211044 min=2169263 max=2456395)
+cycles/pixel : avg: 545.761
+throughput : 4.433 Mpixels/s
+mem bandwidth : 3.843 GB/s (est)
+avg_instructions : 4219253.400 (IPC: 1.887)
+cache L1D: loads=985850.000 misses=29163.500 (miss rate: 2.958%)
+cache L1D (stores): stores=153480.600
+L1I: load misses=103.300
+cache LLC: loads=540.800 misses=104.700 (miss rate: 19.360%)
+cache LLC (stores): stores=92.200 misses=98.800 (miss rate: 107.158%)
+DTLB: loads=614326.000 misses=12.000 (miss rate: 0.002%), stores=244312.400 misses=1.200 (miss rate: 0.000%)
+ITLB: load misses=8.000
+page faults: major=0.000 minor=0.000
+branches : instr=177332.000 misses=335.600 (miss rate: 0.189%)
+  289 sub-apertures, 128x128 px each
+TSC frequency: 2.41926 GHz
+
+ Timing results: 
+variant : gen_128x128_1
+data source : generated 128*128
+focus : 6.700
+runs : 10
+image size : 128x128
+n subapertures : 289
+time: 0.034 s (avg = 3.358ms med=3.284 min=3.174 max=3.845)
+cycles/whole image: total: 81246914, avg: 8124691 (med=7945019 min=7677779 max=9301347)
+cycles/pixel : avg: 495.892
+throughput : 4.879 Mpixels/s
+mem bandwidth : 4.230 GB/s (est)
+avg_instructions : 7854628.200 (IPC: 0.967)
+cache L1D: loads=3517876.700 misses=137958.900 (miss rate: 3.922%)
+cache L1D (stores): stores=477821.900
+L1I: load misses=310.900
+cache LLC: loads=2912.700 misses=1087.600 (miss rate: 37.340%)
+cache LLC (stores): stores=372.500 misses=259.400 (miss rate: 69.638%)
+DTLB: loads=2144102.700 misses=63.700 (miss rate: 0.003%), stores=275596.600 misses=34.700 (miss rate: 0.013%)
+ITLB: load misses=10.400
+page faults: major=0.000 minor=20.000
+branches : instr=451744.500 misses=9440.100 (miss rate: 2.090%)
+  289 sub-apertures, 256x256 px each
+TSC frequency: 2.41926 GHz
+
+ Timing results: 
+variant : gen_256x256_1
+data source : generated 256*256
+focus : 6.700
+runs : 10
+image size : 256x256
+n subapertures : 289
+time: 0.108 s (avg = 10.753ms med=10.727 min=10.567 max=11.039)
+cycles/whole image: total: 260136122, avg: 26013612 (med=25952026 min=25563821 max=26705442)
+cycles/pixel : avg: 396.936
+throughput : 6.095 Mpixels/s
+mem bandwidth : 5.284 GB/s (est)
+avg_instructions : 33390722.300 (IPC: 1.284)
+cache L1D: loads=9667117.300 misses=487782.700 (miss rate: 5.046%)
+cache L1D (stores): stores=1707182.700
+L1I: load misses=430.700
+cache LLC: loads=17431.600 misses=3115.200 (miss rate: 17.871%)
+cache LLC (stores): stores=1082.000 misses=1037.600 (miss rate: 95.896%)
+DTLB: loads=5215054.000 misses=320.900 (miss rate: 0.006%), stores=1157444.600 misses=190.100 (miss rate: 0.016%)
+ITLB: load misses=14.500
+page faults: major=0.000 minor=106.700
+branches : instr=1794701.100 misses=24626.800 (miss rate: 1.372%)
+  289 sub-apertures, 512x512 px each
+TSC frequency: 2.41927 GHz
+
+ Timing results: 
+variant : gen_512x512_1
+data source : generated 512*512
+focus : 6.700
+runs : 10
+image size : 512x512
+n subapertures : 289
+time: 0.480 s (avg = 48.008ms med=48.233 min=46.652 max=50.036)
+cycles/whole image: total: 1161447356, avg: 116144735 (med=116689504 min=112862694 max=121050929)
+cycles/pixel : avg: 443.057
+throughput : 5.460 Mpixels/s
+mem bandwidth : 4.734 GB/s (est)
+avg_instructions : 140024587.500 (IPC: 1.206)
+cache L1D: loads=37951008.300 misses=2251749.400 (miss rate: 5.933%)
+cache L1D (stores): stores=5463019.200
+L1I: load misses=1353.500
+cache LLC: loads=110790.900 misses=39625.700 (miss rate: 35.766%)
+cache LLC (stores): stores=3986.200 misses=3692.200 (miss rate: 92.625%)
+DTLB: loads=20679467.100 misses=5905.400 (miss rate: 0.029%), stores=4723554.600 misses=1313.400 (miss rate: 0.028%)
+ITLB: load misses=135.400
+page faults: major=0.000 minor=506.100
+branches : instr=7444427.200 misses=110708.300 (miss rate: 1.487%)
+  289 sub-apertures, 1024x1024 px each
+TSC frequency: 2.41927 GHz
+
+ Timing results: 
+variant : gen_1024x1024_1
+data source : generated 1024*1024
+focus : 6.700
+runs : 10
+image size : 1024x1024
+n subapertures : 289
+time: 2.742 s (avg = 274.186ms med=265.253 min=255.786 max=313.650)
+cycles/whole image: total: 6633288619, avg: 663328861 (med=641718522 min=618814899 max=758802790)
+cycles/pixel : avg: 632.600
+throughput : 3.824 Mpixels/s
+mem bandwidth : 3.316 GB/s (est)
+avg_instructions : 562439335.000 (IPC: 0.848)
+cache L1D: loads=148629579.000 misses=9093069.400 (miss rate: 6.118%)
+cache L1D (stores): stores=19538940.400
+L1I: load misses=6086.400
+cache LLC: loads=800403.500 misses=234541.500 (miss rate: 29.303%)
+cache LLC (stores): stores=42287.700 misses=37909.800 (miss rate: 89.647%)
+DTLB: loads=83387541.900 misses=45997.100 (miss rate: 0.055%), stores=18640575.700 misses=3048.200 (miss rate: 0.016%)
+ITLB: load misses=398.200
+page faults: major=0.000 minor=1027.600
+branches : instr=29750250.400 misses=449451.800 (miss rate: 1.511%)
+  289 sub-apertures, 2048x2048 px each
+TSC frequency: 2.41926 GHz
+
+ Timing results: 
+variant : gen_2048x2048_1
+data source : generated 2048*2048
+focus : 6.700
+runs : 10
+image size : 2048x2048
+n subapertures : 289
+time: 9.585 s (avg = 958.496ms med=958.060 min=945.854 max=985.575)
+cycles/whole image: total: 23188567997, avg: 2318856799 (med=2317800453 min=2288271538 max=2384365845)
+cycles/pixel : avg: 552.859
+throughput : 4.376 Mpixels/s
+mem bandwidth : 3.794 GB/s (est)
+avg_instructions : 2290089820.700 (IPC: 0.988)
+cache L1D: loads=582072637.800 misses=35820078.900 (miss rate: 6.154%)
+cache L1D (stores): stores=76384130.300
+L1I: load misses=13496.600
+cache LLC: loads=3235018.700 misses=1408976.900 (miss rate: 43.554%)
+cache LLC (stores): stores=56256.900 misses=54826.100 (miss rate: 97.457%)
+DTLB: loads=329814304.800 misses=213227.100 (miss rate: 0.065%), stores=77810537.400 misses=29522.600 (miss rate: 0.038%)
+ITLB: load misses=272.000
+page faults: major=0.000 minor=6131.700
+branches : instr=118391525.400 misses=1831485.900 (miss rate: 1.547%)
+--- Building Bench Target in /home/team15/tomasz-worktree-dir/cpp_refocus ---
+
+--- Running Real Dataset ---
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_upack32_reg_peel_for_loads /home/team15/tomasz-worktree-dir/in/validation 6.7 real_data_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+
+--- Running Generated Dataset ---
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_upack32_reg_peel_for_loads --generate 16 16 6.7 gen_16x16_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_upack32_reg_peel_for_loads --generate 32 32 6.7 gen_32x32_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_upack32_reg_peel_for_loads --generate 64 64 6.7 gen_64x64_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_upack32_reg_peel_for_loads --generate 128 128 6.7 gen_128x128_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_upack32_reg_peel_for_loads --generate 256 256 6.7 gen_256x256_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_upack32_reg_peel_for_loads --generate 512 512 6.7 gen_512x512_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_upack32_reg_peel_for_loads --generate 1024 1024 6.7 gen_1024x1024_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+Running: /home/team15/tomasz-worktree-dir/cpp_refocus/build/bench-opt99_basic_upack32_reg_peel_for_loads --generate 2048 2048 6.7 gen_2048x2048_1 /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+
+[SUCCESS] Benchmarks complete. Results saved to /home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv
+Traceback (most recent call last):
+  File "/home/team15/tomasz-worktree-dir/./scripts/validate.py", line 10, in <module>
+    from PIL import Image
+ModuleNotFoundError: No module named 'PIL'
+Traceback (most recent call last):
+  File "/home/team15/tomasz-worktree-dir/./scripts/validate.py", line 10, in <module>
+    from PIL import Image
+ModuleNotFoundError: No module named 'PIL'
+Traceback (most recent call last):
+  File "/home/team15/tomasz-worktree-dir/./scripts/validate.py", line 10, in <module>
+    from PIL import Image
+ModuleNotFoundError: No module named 'PIL'

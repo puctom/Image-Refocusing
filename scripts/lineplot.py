@@ -26,18 +26,13 @@ import math
 # Each dict needs: path, label, color.
 # Optional: filter (a callable that takes a DataFrame and returns a mask).
 SERIES = [
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt1_20260430_201942.csv",     "label": "opt1",                "color": "#b85300"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt7_20260510_160738.csv",     "label": "opt7",      "color": "#987905"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt8_20260510_160449.csv",     "label": "opt7 + compiler vectorization",      "color": "#cca703"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt9_20260510_155907.csv",     "label": "opt9 (simple AVX)",      "color": "#17cf8f"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt10_20260510_155115.csv",    "label": "opt10, AVX + tiling",      "color": "#07c26b"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260510_155002.csv",    "label": "opt11 AVX, counts prefix 2D ",   "color": "#41bd22"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260510_182336.csv",     "label": "+ FMA loop unrolling",      "color": "#A21ECB"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260510_184910.csv",     "label": "+ vector tail of the loop",      "color": "#2A00E8"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260511_064004.csv",     "label": "opt12: proper unrolling (2 stage)",      "color": "#2A00E8"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_20260511_074648.csv",     "label": "opt99 (32bit, unpackl, madd)",      "color": "#7A4F00"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_20260511_080659.csv",     "label": "opt99 not unrolled",      "color": "#372403"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_mulhi_20260512_051535.csv",     "label": "opt99 (16bit, mulhi)",      "color": "#FD0A88"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260518_060333.csv",                "label": "opt11 AVX, counts prefix 2D ",   "color": "#41bd22"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260518_060415.csv",                "label": "opt12: proper unrolling (2 stage)",      "color": "#2A00E8"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_mulhi_20260518_060454.csv",    "label": "opt99_basic_mulhi",      "color": "#7A4F00"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv",                "label": "opt99_basic_unpack32",      "color": "#372403"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv",    "label": "opt99_basic_unrolled_unpack32",      "color": "#FD0A88"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv",    "label": "opt99_basic_upack32_reg_peel_for_loads",      "color": "#F05CA8"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt13_20260518_072632.csv",    "label": "opt13: reuse registers (columnwise within a tile)",      "color": "#E9DE09"},
 ]
 
 # Shared x and y columns (same across all CSVs).

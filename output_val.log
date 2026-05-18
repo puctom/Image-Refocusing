@@ -1,0 +1,109 @@
+g++-16 -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include -O3 -std=c++17 -Wall -Wextra -pedantic -march=native -ffast-math -mavx2 -mfma -o build/opt11 src/main.cpp src/utils.cpp deps/lodepng.cpp src/opt11.cpp /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/33_33.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/12_352.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/0.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-20.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-49_3.png
+Rust and CPP pixel values differ by 2 on position 1015 band 2 in image 12_352.png
+Rust and CPP pixel values differ by 2 on position 1037 band 2 in image -20.png
+Rust and CPP pixel values differ by 2 on position 59837 band 2 in image 0.png
+Rust and CPP pixel values differ by 2 on position 1 band 1 in image 33_33.png
+Rust and CPP pixel values differ by 2 on position 32326 band 0 in image -49_3.png
+[31mVALIDATION FAILED[0m
+g++-16 -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include -O3 -std=c++17 -Wall -Wextra -pedantic -march=native -ffast-math -mavx2 -mfma -o build/opt12 src/main.cpp src/utils.cpp deps/lodepng.cpp src/opt12.cpp /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/12_352.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-20.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-49_3.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/33_33.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/0.png
+Rust and CPP pixel values differ by 2 on position 1015 band 2 in image 12_352.png
+Rust and CPP pixel values differ by 2 on position 1037 band 2 in image -20.png
+Rust and CPP pixel values differ by 2 on position 59837 band 2 in image 0.png
+Rust and CPP pixel values differ by 2 on position 1 band 1 in image 33_33.png
+Rust and CPP pixel values differ by 2 on position 32326 band 0 in image -49_3.png
+[31mVALIDATION FAILED[0m
+g++-16 -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include -O3 -std=c++17 -Wall -Wextra -pedantic -march=native -ffast-math -mavx2 -mfma -o build/opt99_basic_unpack32 src/main.cpp src/utils.cpp deps/lodepng.cpp src/opt99_basic_unpack32.cpp /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/12_352.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/0.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-49_3.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/33_33.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-20.png
+Rust and CPP pixel values differ by 2 on position 1 band 1 in image 33_33.png
+Rust and CPP pixel values differ by 2 on position 33324 band 0 in image -49_3.png
+Rust and CPP pixel values differ by 2 on position 61885 band 2 in image -20.png
+Rust and CPP pixel values differ by 2 on position 54713 band 2 in image 0.png
+Rust and CPP pixel values differ by 2 on position 1016 band 2 in image 12_352.png
+[31mVALIDATION FAILED[0m
+g++-16 -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include -O3 -std=c++17 -Wall -Wextra -pedantic -march=native -ffast-math -mavx2 -mfma -o build/opt99_basic_unrolled_unpack32 src/main.cpp src/utils.cpp deps/lodepng.cpp src/opt99_basic_unrolled_unpack32.cpp /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/33_33.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-20.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-49_3.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/12_352.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/0.png
+Rust and CPP pixel values differ by 2 on position 1016 band 2 in image 12_352.png
+Rust and CPP pixel values differ by 2 on position 33324 band 0 in image -49_3.png
+Rust and CPP pixel values differ by 2 on position 54713 band 2 in image 0.png
+Rust and CPP pixel values differ by 2 on position 1 band 1 in image 33_33.png
+Rust and CPP pixel values differ by 2 on position 61885 band 2 in image -20.png
+[31mVALIDATION FAILED[0m
+g++-16 -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include -O3 -std=c++17 -Wall -Wextra -pedantic -march=native -ffast-math -mavx2 -mfma -o build/opt99_basic_upack32_reg_peel_for_loads src/main.cpp src/utils.cpp deps/lodepng.cpp src/opt99_basic_upack32_reg_peel_for_loads.cpp /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
+src/opt99_basic_upack32_reg_peel_for_loads.cpp: In function ‘ImageData refocus_shift_and_sum(std::vector<SubApertureImage>&, float)’:
+src/opt99_basic_upack32_reg_peel_for_loads.cpp:239:30: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+  239 |                     for (; x < peel_target; ++x) {
+      |                            ~~^~~~~~~~~~~~~
+src/opt99_basic_upack32_reg_peel_for_loads.cpp:269:30: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+  269 |                     for (; x < vec_stop; x += 16) {
+      |                            ~~^~~~~~~~~~
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/12_352.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-20.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/0.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/33_33.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-49_3.png
+Rust and CPP pixel values differ by 2 on position 61885 band 2 in image -20.png
+Rust and CPP pixel values differ by 2 on position 33324 band 0 in image -49_3.png
+Rust and CPP pixel values differ by 2 on position 1 band 1 in image 33_33.png
+Rust and CPP pixel values differ by 2 on position 1016 band 2 in image 12_352.png
+Rust and CPP pixel values differ by 2 on position 54713 band 2 in image 0.png
+[31mVALIDATION FAILED[0m
+g++-16 -Iinclude -Ideps -I/opt/intel/oneapi/advisor/latest/sdk/include -O3 -std=c++17 -Wall -Wextra -pedantic -march=native -ffast-math -mavx2 -mfma -o build/opt99_basic_mulhi src/main.cpp src/utils.cpp deps/lodepng.cpp src/opt99_basic_mulhi.cpp /opt/intel/oneapi/advisor/latest/sdk/lib64/libittnotify.a
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/0.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/33_33.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-49_3.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/12_352.png
+Loaded 289 sub-aperture images
+Saved refocused image to /home/team15/tomasz-worktree-dir/out/cpp/-20.png
+Rust and CPP pixel values differ by 2 on position 0 band 0 in image -20.png
+Rust and CPP pixel values differ by 3 on position 0 band 0 in image -49_3.png
+Rust and CPP pixel values differ by 3 on position 0 band 0 in image 33_33.png
+Rust and CPP pixel values differ by 2 on position 0 band 0 in image 12_352.png
+Rust and CPP pixel values differ by 2 on position 0 band 0 in image 0.png
+[31mVALIDATION FAILED[0m

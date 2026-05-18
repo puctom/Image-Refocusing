@@ -1,10 +1,10 @@
 #!/bin/bash
 
-TARGET_DIR="in/validation2"
+TARGET_DIR="in/validation1515"
 
 # Regular expression matching the specific zero-padded numbers
 # 00, 04, 08, 12, 16
-ALLOWED_RE="^(00|04|08|12|16)$"
+ALLOWED_RE="^(00|04|08|12|01|05|09|13|02|06|10|14|03|07|11)$"
 
 # Loop safely over the glob. This avoids the pitfalls of parsing 'ls'
 for filepath in "$TARGET_DIR"/out_*_*_*.png; do
