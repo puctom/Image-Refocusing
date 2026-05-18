@@ -19,9 +19,6 @@
 *       - calculate counts using prefix sum technique
 *       - 2-row y unroll (shared middle row)
 *       - AVX-512
-*       - 2x2 vector block unrolling
-*       - reguster pinning and accumulators
-*       - row load sharing
 * */
 
 namespace {
@@ -49,6 +46,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
     output.height = height;
     output.data.assign(width * height * 3, 0);
     
+    // Precalculate subaperture parameters
     std::vector<SubParams> params;
     params.reserve(subapertures.size());
     for (auto& sub : subapertures) {
@@ -91,7 +89,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
     }
 
     const int TILE_H = 6;
-    const int TILE_W = 2032; 
+    const int TILE_W = 2032;
 
     std::vector<float> tile_vals(TILE_H * TILE_W * 3);
 
@@ -118,97 +116,67 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                 const __m512 Dvx = _mm512_set1_ps(p.D);
 
                 int y = y_begin;
+
+                // 2-row y-unroll
                 for (; y + 1 < y_end; y += 2) {
                     size_t ind_ltop = ((y + p.sy) * width + (x_begin + p.sx)) * 3;
                     size_t ind_lbot = ind_ltop + width * 3;
                     size_t ind_rtop = ind_ltop + 3;
                     size_t ind_rbot = ind_lbot + 3;
 
-                    float* vp0 = tile_vals.data() + (y - ty) * tile_w_actual * 3 + (x_begin - tx) * 3;
+                    float* vp0 = tile_vals.data()
+                                + (y - ty) * tile_w_actual * 3
+                                + (x_begin - tx) * 3;
+
                     float* vp1 = vp0 + tile_w_actual * 3;
 
-                    int x_off = (x_begin - tx) * 3;
+                    int x = (x_begin - tx) * 3;
                     const int x_stop = (x_end - tx) * 3;
-
-                    for (; x_off + 32 <= x_stop; x_off += 32) {
-                        __m512 r0la = load_cvt16(p.SUB + ind_ltop);
-                        __m512 r0lb = load_cvt16(p.SUB + ind_ltop + 16);
-                        __m512 r0ra = load_cvt16(p.SUB + ind_rtop);
-                        __m512 r0rb = load_cvt16(p.SUB + ind_rtop + 16);
-                        
-                        __m512 r1la = load_cvt16(p.SUB + ind_lbot);
-                        __m512 r1lb = load_cvt16(p.SUB + ind_lbot + 16);
-                        __m512 r1ra = load_cvt16(p.SUB + ind_rbot);
-                        __m512 r1rb = load_cvt16(p.SUB + ind_rbot + 16);
-
-                        __m512 v0a = _mm512_loadu_ps(vp0);
-                        __m512 v0b = _mm512_loadu_ps(vp0 + 16);
-                        __m512 v1a = _mm512_loadu_ps(vp1);
-                        __m512 v1b = _mm512_loadu_ps(vp1 + 16);
-
-                        v0a = _mm512_fmadd_ps(Avx, r0la, v0a);
-                        v0b = _mm512_fmadd_ps(Avx, r0lb, v0b);
-                        v0a = _mm512_fmadd_ps(Bvx, r0ra, v0a);
-                        v0b = _mm512_fmadd_ps(Bvx, r0rb, v0b);
-                        v0a = _mm512_fmadd_ps(Cvx, r1la, v0a);
-                        v0b = _mm512_fmadd_ps(Cvx, r1lb, v0b);
-                        v0a = _mm512_fmadd_ps(Dvx, r1ra, v0a);
-                        v0b = _mm512_fmadd_ps(Dvx, r1rb, v0b);
-
-                        __m512 r2la = load_cvt16(p.SUB + ind_lbot + width * 3);
-                        __m512 r2lb = load_cvt16(p.SUB + ind_lbot + width * 3 + 16);
-                        __m512 r2ra = load_cvt16(p.SUB + ind_rbot + width * 3);
-                        __m512 r2rb = load_cvt16(p.SUB + ind_rbot + width * 3 + 16);
-
-                        v1a = _mm512_fmadd_ps(Avx, r1la, v1a);
-                        v1b = _mm512_fmadd_ps(Avx, r1lb, v1b);
-                        v1a = _mm512_fmadd_ps(Bvx, r1ra, v1a);
-                        v1b = _mm512_fmadd_ps(Bvx, r1rb, v1b);
-                        v1a = _mm512_fmadd_ps(Cvx, r2la, v1a);
-                        v1b = _mm512_fmadd_ps(Cvx, r2lb, v1b);
-                        v1a = _mm512_fmadd_ps(Dvx, r2ra, v1a);
-                        v1b = _mm512_fmadd_ps(Dvx, r2rb, v1b);
-
-                        _mm512_storeu_ps(vp0, v0a);
-                        _mm512_storeu_ps(vp0 + 16, v0b);
-                        _mm512_storeu_ps(vp1, v1a);
-                        _mm512_storeu_ps(vp1 + 16, v1b);
-
-                        vp0 += 32; vp1 += 32;
-                        ind_ltop += 32; ind_lbot += 32; ind_rtop += 32; ind_rbot += 32;
-                    }
-
-                    if (x_off + 16 <= x_stop) {
+                    for (; x + 16 <= x_stop; x += 16) {
                         __m512 r0l = load_cvt16(p.SUB + ind_ltop);
                         __m512 r0r = load_cvt16(p.SUB + ind_rtop);
                         __m512 r1l = load_cvt16(p.SUB + ind_lbot);
                         __m512 r1r = load_cvt16(p.SUB + ind_rbot);
-                        __m512 r2l = load_cvt16(p.SUB + ind_lbot + width * 3);
-                        __m512 r2r = load_cvt16(p.SUB + ind_rbot + width * 3);
-
                         __m512 v0 = _mm512_loadu_ps(vp0);
+
                         v0 = _mm512_fmadd_ps(Avx, r0l, v0);
                         v0 = _mm512_fmadd_ps(Bvx, r0r, v0);
                         v0 = _mm512_fmadd_ps(Cvx, r1l, v0);
                         v0 = _mm512_fmadd_ps(Dvx, r1r, v0);
+
                         _mm512_storeu_ps(vp0, v0);
 
+                        __m512 r2l = load_cvt16(p.SUB + ind_lbot + width * 3);
+                        __m512 r2r = load_cvt16(p.SUB + ind_rbot + width * 3);
                         __m512 v1 = _mm512_loadu_ps(vp1);
+
                         v1 = _mm512_fmadd_ps(Avx, r1l, v1);
                         v1 = _mm512_fmadd_ps(Bvx, r1r, v1);
                         v1 = _mm512_fmadd_ps(Cvx, r2l, v1);
                         v1 = _mm512_fmadd_ps(Dvx, r2r, v1);
+
                         _mm512_storeu_ps(vp1, v1);
 
-                        vp0 += 16; vp1 += 16;
-                        ind_ltop += 16; ind_lbot += 16; ind_rtop += 16; ind_rbot += 16;
-                        x_off += 16;
+                        vp0 += 16;
+                        vp1 += 16;
+
+                        ind_ltop += 16;
+                        ind_lbot += 16;
+                        ind_rtop += 16;
+                        ind_rbot += 16;
                     }
 
-                    for (int k = 0; k < (x_stop - x_off); ++k) {
-                        float r0l = p.SUB[ind_ltop + k], r0r = p.SUB[ind_rtop + k];
-                        float r1l = p.SUB[ind_lbot + k], r1r = p.SUB[ind_rbot + k];
-                        float r2l = p.SUB[ind_lbot + width * 3 + k], r2r = p.SUB[ind_rbot + width * 3 + k];
+                    int remaining = x_stop - x;
+                    for (int k = 0; k < remaining; ++k) {
+                        float r0l = p.SUB[ind_ltop + k];
+                        float r0r = p.SUB[ind_rtop + k];
+
+                        float r1l = p.SUB[ind_lbot + k];
+                        float r1r = p.SUB[ind_rbot + k];
+
+                        float r2l = p.SUB[ind_lbot + width * 3 + k];
+                        float r2r = p.SUB[ind_rbot + width * 3 + k];
+
                         vp0[k] += p.A * r0l + p.B * r0r + p.C * r1l + p.D * r1r;
                         vp1[k] += p.A * r1l + p.B * r1r + p.C * r2l + p.D * r2r;
                     }
@@ -219,21 +187,43 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                     size_t ind_lbot = ind_ltop + width * 3;
                     size_t ind_rtop = ind_ltop + 3;
                     size_t ind_rbot = ind_lbot + 3;
+
                     float* vp = tile_vals.data() + (y - ty) * tile_w_actual * 3 + (x_begin - tx) * 3;
-                    int x_off = (x_begin - tx) * 3;
+
+                    int x = (x_begin - tx) * 3;
                     const int x_stop = (x_end - tx) * 3;
 
-                    for (; x_off + 16 <= x_stop; x_off += 16) {
-                        __m512 v = _mm512_loadu_ps(vp);
-                        v = _mm512_fmadd_ps(Avx, load_cvt16(p.SUB + ind_ltop), v);
-                        v = _mm512_fmadd_ps(Bvx, load_cvt16(p.SUB + ind_rtop), v);
-                        v = _mm512_fmadd_ps(Cvx, load_cvt16(p.SUB + ind_lbot), v);
-                        v = _mm512_fmadd_ps(Dvx, load_cvt16(p.SUB + ind_rbot), v);
-                        _mm512_storeu_ps(vp, v);
-                        vp += 16; ind_ltop += 16; ind_lbot += 16; ind_rtop += 16; ind_rbot += 16;
+                    for (; x + 16 <= x_stop; x += 16) {
+                        __m512 ltop_f = load_cvt16(p.SUB + ind_ltop);
+                        __m512 lbot_f = load_cvt16(p.SUB + ind_lbot);
+                        __m512 rtop_f = load_cvt16(p.SUB + ind_rtop);
+                        __m512 rbot_f = load_cvt16(p.SUB + ind_rbot);
+
+                        __m512 val = _mm512_loadu_ps(vp);
+
+                        val = _mm512_fmadd_ps(Avx, ltop_f, val);
+                        val = _mm512_fmadd_ps(Bvx, rtop_f, val);
+                        val = _mm512_fmadd_ps(Cvx, lbot_f, val);
+                        val = _mm512_fmadd_ps(Dvx, rbot_f, val);
+
+                        _mm512_storeu_ps(vp, val);
+
+                        vp += 16;
+
+                        ind_ltop += 16;
+                        ind_lbot += 16;
+                        ind_rtop += 16;
+                        ind_rbot += 16;
                     }
-                    for (int k = 0; k < (x_stop - x_off); ++k) {
-                        vp[k] += p.A * p.SUB[ind_ltop+k] + p.B * p.SUB[ind_rtop+k] + p.C * p.SUB[ind_lbot+k] + p.D * p.SUB[ind_rbot+k];
+
+                    int remaining = x_stop - x;
+                    for (int k = 0; k < remaining; ++k) {
+                        float TL = p.SUB[ind_ltop + k];
+                        float TR = p.SUB[ind_rtop + k];
+                        float BL = p.SUB[ind_lbot + k];
+                        float BR = p.SUB[ind_rbot + k];
+
+                        vp[k] += p.A*TL + p.B*TR + p.C*BL + p.D*BR;
                     }
                 }
             }
@@ -243,16 +233,18 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                 unsigned char* outp = output.data.data() + (y * width + tx) * 3;
                 for (int x = 0; x < tile_w_actual; ++x) {
                     int c = counts[y * width + (tx + x)];
-                    if (c > 0) {
-                        float inv_c = 1.0f / static_cast<float>(c);
-                        outp[x*3 + 0] = static_cast<unsigned char>(vp[x*3 + 0] * inv_c);
-                        outp[x*3 + 1] = static_cast<unsigned char>(vp[x*3 + 1] * inv_c);
-                        outp[x*3 + 2] = static_cast<unsigned char>(vp[x*3 + 2] * inv_c);
+                    if (c == 0) {
+                        continue;
+                    }
+                    float inv_c = 1.0f / static_cast<float>(c);
+                    for (int ch = 0; ch < 3; ++ch) {
+                        float v = vp[x*3 + ch] * inv_c;
+                        outp[x*3 + ch] = static_cast<unsigned char>(v);
                     }
                 }
             }
         }
     }
+
     return output;
 }
-

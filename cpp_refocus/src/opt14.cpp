@@ -14,11 +14,11 @@
 *       - function inlining
 *       - unroll channel loop to expose independent scalar ops for ILP
 *       - reduce number of loads in innermost loop
-*       - use AVX-512 float32 FMA with unaligned loads
+*       - use AVX float32 FMA with unaligned loads
 *       - use block tiles for better cache performance
 *       - calculate counts using prefix sum technique
-*       - 2-row y unroll (shared middle row)
-*       - AVX-512
+*       - unroll the main vectorized loop to increase ILP for independent vectors accumulations
+*       - 2-row y unroll
 * */
 
 namespace {
@@ -30,9 +30,9 @@ struct SubParams {
 };
 }
 
-static inline __m512 load_cvt16(const unsigned char* ptr) {
-    return _mm512_cvtepi32_ps(_mm512_cvtepu8_epi32(
-        _mm_loadu_si128(reinterpret_cast<const __m128i*>(ptr))));
+static inline __m256 load_cvt8(const unsigned char* ptr) {
+    return _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(
+        _mm_loadl_epi64(reinterpret_cast<const __m128i*>(ptr))));
 }
 
 ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {
@@ -58,9 +58,9 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
         float dx = shift_x - p.sx;
         float dy = shift_y - p.sy;
         p.A = (1 - dx) * (1 - dy);
-        p.B = dx * (1 - dy);
+        p.B = dx       * (1 - dy);
         p.C = (1 - dx) * dy;
-        p.D = dx * dy;
+        p.D = dx       * dy;
         p.x_begin = std::max(0, -p.sx);
         p.x_end   = std::min(w, w - p.sx - 1);
         p.y_begin = std::max(0, -p.sy);
@@ -70,14 +70,15 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
         params.push_back(p);
     }
 
+    // Precalculate counts 
     std::vector<int> counts(width * height, 0);
     std::vector<int> diff((width + 1) * (height + 1), 0);
 
     for (const auto& p : params) {
         diff[p.y_begin * (width + 1) + p.x_begin] += 1;
-        diff[p.y_begin * (width + 1) + p.x_end] -= 1;
-        diff[p.y_end * (width + 1) + p.x_begin] -= 1;
-        diff[p.y_end * (width + 1) + p.x_end] += 1;
+        diff[p.y_begin * (width + 1) + p.x_end  ] -= 1;
+        diff[p.y_end   * (width + 1) + p.x_begin] -= 1;
+        diff[p.y_end   * (width + 1) + p.x_end  ] += 1;
     }
 
     for (int y = 0; y < h; ++y) {
@@ -88,9 +89,12 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
         }
     }
 
+    // vals_tile = TILE_H * TILE_W * 3 * 4 B
+    // TODO: play around with these values, the tile should fit in L1
     const int TILE_H = 6;
     const int TILE_W = 2032;
 
+    // Per-tile vals accumulator
     std::vector<float> tile_vals(TILE_H * TILE_W * 3);
 
     for (int ty = 0; ty < h; ty += TILE_H) {
@@ -101,23 +105,27 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
             const int tile_x_end = std::min(tx + TILE_W, w);
             const int tile_w_actual = tile_x_end - tx;
 
-            std::fill(tile_vals.begin(), tile_vals.begin() + tile_h_actual * tile_w_actual * 3, 0.0f);
+            // Zero the tile accumulator
+            std::fill(tile_vals.begin(),
+                      tile_vals.begin() + tile_h_actual * tile_w_actual * 3,
+                      0.0f);
 
+            // Subaperture inner loop over this tile
             for (const SubParams& p : params) {
                 const int y_begin = std::max(ty, p.y_begin);
-                const int y_end = std::min(tile_y_end, p.y_end);
+                const int y_end   = std::min(tile_y_end, p.y_end);
                 const int x_begin = std::max(tx, p.x_begin);
-                const int x_end = std::min(tile_x_end, p.x_end);
+                const int x_end   = std::min(tile_x_end, p.x_end);
                 if (x_begin >= x_end || y_begin >= y_end) continue;
 
-                const __m512 Avx = _mm512_set1_ps(p.A);
-                const __m512 Bvx = _mm512_set1_ps(p.B);
-                const __m512 Cvx = _mm512_set1_ps(p.C);
-                const __m512 Dvx = _mm512_set1_ps(p.D);
+                const __m256 Avx = _mm256_set1_ps(p.A);
+                const __m256 Bvx = _mm256_set1_ps(p.B);
+                const __m256 Cvx = _mm256_set1_ps(p.C);
+                const __m256 Dvx = _mm256_set1_ps(p.D);
 
                 int y = y_begin;
 
-                // 2-row y-unroll
+                // 2-row y-unrolled main loop
                 for (; y + 1 < y_end; y += 2) {
                     size_t ind_ltop = ((y + p.sy) * width + (x_begin + p.sx)) * 3;
                     size_t ind_lbot = ind_ltop + width * 3;
@@ -132,30 +140,61 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
 
                     int x = (x_begin - tx) * 3;
                     const int x_stop = (x_end - tx) * 3;
+
                     for (; x + 16 <= x_stop; x += 16) {
-                        __m512 r0l = load_cvt16(p.SUB + ind_ltop);
-                        __m512 r0r = load_cvt16(p.SUB + ind_rtop);
-                        __m512 r1l = load_cvt16(p.SUB + ind_lbot);
-                        __m512 r1r = load_cvt16(p.SUB + ind_rbot);
-                        __m512 v0 = _mm512_loadu_ps(vp0);
+                        __m256 r0l_lo = load_cvt8(p.SUB + ind_ltop);
+                        __m256 r0l_hi = load_cvt8(p.SUB + ind_ltop + 8);
 
-                        v0 = _mm512_fmadd_ps(Avx, r0l, v0);
-                        v0 = _mm512_fmadd_ps(Bvx, r0r, v0);
-                        v0 = _mm512_fmadd_ps(Cvx, r1l, v0);
-                        v0 = _mm512_fmadd_ps(Dvx, r1r, v0);
+                        __m256 r0r_lo = load_cvt8(p.SUB + ind_rtop);
+                        __m256 r0r_hi = load_cvt8(p.SUB + ind_rtop + 8);
 
-                        _mm512_storeu_ps(vp0, v0);
+                        __m256 r1l_lo = load_cvt8(p.SUB + ind_lbot);
+                        __m256 r1l_hi = load_cvt8(p.SUB + ind_lbot + 8);
 
-                        __m512 r2l = load_cvt16(p.SUB + ind_lbot + width * 3);
-                        __m512 r2r = load_cvt16(p.SUB + ind_rbot + width * 3);
-                        __m512 v1 = _mm512_loadu_ps(vp1);
+                        __m256 r1r_lo = load_cvt8(p.SUB + ind_rbot);
+                        __m256 r1r_hi = load_cvt8(p.SUB + ind_rbot + 8);
 
-                        v1 = _mm512_fmadd_ps(Avx, r1l, v1);
-                        v1 = _mm512_fmadd_ps(Bvx, r1r, v1);
-                        v1 = _mm512_fmadd_ps(Cvx, r2l, v1);
-                        v1 = _mm512_fmadd_ps(Dvx, r2r, v1);
+                        __m256 v0_lo = _mm256_loadu_ps(vp0);
+                        __m256 v0_hi = _mm256_loadu_ps(vp0 + 8);
 
-                        _mm512_storeu_ps(vp1, v1);
+                        v0_lo = _mm256_fmadd_ps(Avx, r0l_lo, v0_lo);
+                        v0_hi = _mm256_fmadd_ps(Avx, r0l_hi, v0_hi);
+
+                        v0_lo = _mm256_fmadd_ps(Bvx, r0r_lo, v0_lo);
+                        v0_hi = _mm256_fmadd_ps(Bvx, r0r_hi, v0_hi);
+
+                        v0_lo = _mm256_fmadd_ps(Cvx, r1l_lo, v0_lo);
+                        v0_hi = _mm256_fmadd_ps(Cvx, r1l_hi, v0_hi);
+
+                        v0_lo = _mm256_fmadd_ps(Dvx, r1r_lo, v0_lo);
+                        v0_hi = _mm256_fmadd_ps(Dvx, r1r_hi, v0_hi);
+
+                        _mm256_storeu_ps(vp0, v0_lo);
+                        _mm256_storeu_ps(vp0 + 8, v0_hi);
+
+                        __m256 r2l_lo = load_cvt8(p.SUB + ind_lbot + width * 3);
+                        __m256 r2l_hi = load_cvt8(p.SUB + ind_lbot + width * 3 + 8);
+
+                        __m256 r2r_lo = load_cvt8(p.SUB + ind_rbot + width * 3);
+                        __m256 r2r_hi = load_cvt8(p.SUB + ind_rbot + width * 3 + 8);
+
+                        __m256 v1_lo = _mm256_loadu_ps(vp1);
+                        __m256 v1_hi = _mm256_loadu_ps(vp1 + 8);
+
+                        v1_lo = _mm256_fmadd_ps(Avx, r1l_lo, v1_lo);
+                        v1_hi = _mm256_fmadd_ps(Avx, r1l_hi, v1_hi);
+
+                        v1_lo = _mm256_fmadd_ps(Bvx, r1r_lo, v1_lo);
+                        v1_hi = _mm256_fmadd_ps(Bvx, r1r_hi, v1_hi);
+
+                        v1_lo = _mm256_fmadd_ps(Cvx, r2l_lo, v1_lo);
+                        v1_hi = _mm256_fmadd_ps(Cvx, r2l_hi, v1_hi);
+
+                        v1_lo = _mm256_fmadd_ps(Dvx, r2r_lo, v1_lo);
+                        v1_hi = _mm256_fmadd_ps(Dvx, r2r_hi, v1_hi);
+
+                        _mm256_storeu_ps(vp1, v1_lo);
+                        _mm256_storeu_ps(vp1 + 8, v1_hi);
 
                         vp0 += 16;
                         vp1 += 16;
@@ -166,6 +205,46 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                         ind_rbot += 16;
                     }
 
+                    if (x + 8 <= x_stop) {
+                        __m256 r0l = load_cvt8(p.SUB + ind_ltop);
+                        __m256 r0r = load_cvt8(p.SUB + ind_rtop);
+
+                        __m256 r1l = load_cvt8(p.SUB + ind_lbot);
+                        __m256 r1r = load_cvt8(p.SUB + ind_rbot);
+
+                        __m256 r2l = load_cvt8(p.SUB + ind_lbot + width * 3);
+                        __m256 r2r = load_cvt8(p.SUB + ind_rbot + width * 3);
+
+                        __m256 v0 = _mm256_loadu_ps(vp0);
+
+                        v0 = _mm256_fmadd_ps(Avx, r0l, v0);
+                        v0 = _mm256_fmadd_ps(Bvx, r0r, v0);
+                        v0 = _mm256_fmadd_ps(Cvx, r1l, v0);
+                        v0 = _mm256_fmadd_ps(Dvx, r1r, v0);
+
+                        _mm256_storeu_ps(vp0, v0);
+
+                        __m256 v1 = _mm256_loadu_ps(vp1);
+
+                        v1 = _mm256_fmadd_ps(Avx, r1l, v1);
+                        v1 = _mm256_fmadd_ps(Bvx, r1r, v1);
+                        v1 = _mm256_fmadd_ps(Cvx, r2l, v1);
+                        v1 = _mm256_fmadd_ps(Dvx, r2r, v1);
+
+                        _mm256_storeu_ps(vp1, v1);
+
+                        vp0 += 8;
+                        vp1 += 8;
+
+                        ind_ltop += 8;
+                        ind_lbot += 8;
+                        ind_rtop += 8;
+                        ind_rbot += 8;
+
+                        x += 8;
+                    }
+
+                    // scalar tail
                     int remaining = x_stop - x;
                     for (int k = 0; k < remaining; ++k) {
                         float r0l = p.SUB[ind_ltop + k];
@@ -182,31 +261,50 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                     }
                 }
 
+                // leftover single row
                 if (y < y_end) {
                     size_t ind_ltop = ((y + p.sy) * width + (x_begin + p.sx)) * 3;
                     size_t ind_lbot = ind_ltop + width * 3;
                     size_t ind_rtop = ind_ltop + 3;
                     size_t ind_rbot = ind_lbot + 3;
 
-                    float* vp = tile_vals.data() + (y - ty) * tile_w_actual * 3 + (x_begin - tx) * 3;
+                    float* vp = tile_vals.data()
+                                + (y - ty) * tile_w_actual * 3
+                                + (x_begin - tx) * 3;
 
                     int x = (x_begin - tx) * 3;
                     const int x_stop = (x_end - tx) * 3;
 
                     for (; x + 16 <= x_stop; x += 16) {
-                        __m512 ltop_f = load_cvt16(p.SUB + ind_ltop);
-                        __m512 lbot_f = load_cvt16(p.SUB + ind_lbot);
-                        __m512 rtop_f = load_cvt16(p.SUB + ind_rtop);
-                        __m512 rbot_f = load_cvt16(p.SUB + ind_rbot);
+                        __m256 ltop_f_0 = load_cvt8(p.SUB + ind_ltop);
+                        __m256 ltop_f_1 = load_cvt8(p.SUB + ind_ltop + 8);
 
-                        __m512 val = _mm512_loadu_ps(vp);
+                        __m256 lbot_f_0 = load_cvt8(p.SUB + ind_lbot);
+                        __m256 lbot_f_1 = load_cvt8(p.SUB + ind_lbot + 8);
 
-                        val = _mm512_fmadd_ps(Avx, ltop_f, val);
-                        val = _mm512_fmadd_ps(Bvx, rtop_f, val);
-                        val = _mm512_fmadd_ps(Cvx, lbot_f, val);
-                        val = _mm512_fmadd_ps(Dvx, rbot_f, val);
+                        __m256 rtop_f_0 = load_cvt8(p.SUB + ind_rtop);
+                        __m256 rtop_f_1 = load_cvt8(p.SUB + ind_rtop + 8);
 
-                        _mm512_storeu_ps(vp, val);
+                        __m256 rbot_f_0 = load_cvt8(p.SUB + ind_rbot);
+                        __m256 rbot_f_1 = load_cvt8(p.SUB + ind_rbot + 8);
+
+                        __m256 val_0 = _mm256_loadu_ps(vp);
+                        __m256 val_1 = _mm256_loadu_ps(vp + 8);
+
+                        val_0 = _mm256_fmadd_ps(Avx, ltop_f_0, val_0); 
+                        val_1 = _mm256_fmadd_ps(Avx, ltop_f_1, val_1); 
+
+                        val_0 = _mm256_fmadd_ps(Bvx, rtop_f_0, val_0); 
+                        val_1 = _mm256_fmadd_ps(Bvx, rtop_f_1, val_1);
+
+                        val_0 = _mm256_fmadd_ps(Cvx, lbot_f_0, val_0);
+                        val_1 = _mm256_fmadd_ps(Cvx, lbot_f_1, val_1);
+
+                        val_0 = _mm256_fmadd_ps(Dvx, rbot_f_0, val_0);
+                        val_1 = _mm256_fmadd_ps(Dvx, rbot_f_1, val_1);
+
+                        _mm256_storeu_ps(vp, val_0);
+                        _mm256_storeu_ps(vp + 8, val_1);
 
                         vp += 16;
 
@@ -216,6 +314,32 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                         ind_rbot += 16;
                     }
 
+                    if(x + 8 <= x_stop) {
+                        __m256 ltop_f = load_cvt8(p.SUB + ind_ltop);
+                        __m256 lbot_f = load_cvt8(p.SUB + ind_lbot);
+                        __m256 rtop_f = load_cvt8(p.SUB + ind_rtop);
+                        __m256 rbot_f = load_cvt8(p.SUB + ind_rbot);
+
+                        __m256 val = _mm256_loadu_ps(vp);
+
+                        val = _mm256_fmadd_ps(Avx, ltop_f, val);
+                        val = _mm256_fmadd_ps(Bvx, rtop_f, val);
+                        val = _mm256_fmadd_ps(Cvx, lbot_f, val);
+                        val = _mm256_fmadd_ps(Dvx, rbot_f, val);
+
+                        _mm256_storeu_ps(vp, val);
+
+                        vp += 8;
+
+                        ind_ltop += 8;
+                        ind_lbot += 8;
+                        ind_rtop += 8;
+                        ind_rbot += 8;
+
+                        x += 8;
+                    }
+
+                    // Handle tail 
                     int remaining = x_stop - x;
                     for (int k = 0; k < remaining; ++k) {
                         float TL = p.SUB[ind_ltop + k];
@@ -228,15 +352,20 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                 }
             }
 
+            // Tile complete: write to output
             for (int y = ty; y < tile_y_end; ++y) {
                 const float* vp = tile_vals.data() + (y - ty) * tile_w_actual * 3;
                 unsigned char* outp = output.data.data() + (y * width + tx) * 3;
+
                 for (int x = 0; x < tile_w_actual; ++x) {
                     int c = counts[y * width + (tx + x)];
+
                     if (c == 0) {
                         continue;
                     }
+
                     float inv_c = 1.0f / static_cast<float>(c);
+
                     for (int ch = 0; ch < 3; ++ch) {
                         float v = vp[x*3 + ch] * inv_c;
                         outp[x*3 + ch] = static_cast<unsigned char>(v);
