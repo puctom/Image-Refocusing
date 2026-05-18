@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <immintrin.h>
 
-/*
+/* DOESNT PASS VALIDATION
 *   List of Optimizations:
 *       - all from single focus value up to opt8:
     *       - Change the loop order to [Subaperture, f, y, x] for improved locality
