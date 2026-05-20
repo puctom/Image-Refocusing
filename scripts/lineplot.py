@@ -26,13 +26,11 @@ import math
 # Each dict needs: path, label, color.
 # Optional: filter (a callable that takes a DataFrame and returns a mask).
 SERIES = [
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260518_060333.csv",                "label": "opt11 AVX, counts prefix 2D ",   "color": "#41bd22"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260518_060415.csv",                "label": "opt12: proper unrolling (2 stage)",      "color": "#2A00E8"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_mulhi_20260518_060454.csv",    "label": "opt99_basic_mulhi",      "color": "#7A4F00"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260518_061531.csv",                "label": "opt99_basic_unpack32",      "color": "#372403"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unrolled_unpack32_20260518_061610.csv",    "label": "opt99_basic_unrolled_unpack32",      "color": "#FD0A88"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_upack32_reg_peel_for_loads_20260518_061651.csv",    "label": "opt99_basic_upack32_reg_peel_for_loads",      "color": "#F05CA8"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt13_20260518_072632.csv",    "label": "opt13: reuse registers (columnwise within a tile)",      "color": "#E9DE09"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260519_094336.csv",                                "label": "opt12 first unrolling",      "color": "#12BBEE"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_20260519_094441.csv",                                "label": "opt17: more unrolling, columnwise access ",   "color": "#007bff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_unpack32_20260519_094529.csv",                 "label": "opt99_basic_unpack32",      "color": "#F9D34ADD"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt99_basic_mulhi_20260519_094631.csv",                    "label": "opt99_basic_mulhi (incorrect)",      "color": "#F2EA51"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt1799_16_32_bits_20260519_094727.csv",                   "label": "opt1799_16_32_bits (opt17 but on 16/32bit)",      "color": "#0AFD7B"},
 ]
 
 # Shared x and y columns (same across all CSVs).

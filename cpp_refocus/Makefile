@@ -7,7 +7,7 @@ BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 BENCH_COMMON_SRC := src/bench_common.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt99_basic_upack32_reg_peel_for_loads opt99_basic_unrolled_unpack32 opt99_basic_unpack32 opt99_basic_mulhi
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt99_basic_upack32_reg_peel_for_loads opt99_basic_unrolled_unpack32 opt99_basic_unpack32 opt99_basic_mulhi opt1799_16_32_bits
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -32,6 +32,7 @@ VER_SRC.opt99_basic_upack32_reg_peel_for_loads     	:= opt99_basic_upack32_reg_p
 VER_SRC.opt99_basic_unrolled_unpack32     			:= opt99_basic_unrolled_unpack32
 VER_SRC.opt99_basic_unpack32     					:= opt99_basic_unpack32
 VER_SRC.opt99_basic_mulhi     						:= opt99_basic_mulhi
+VER_SRC.opt1799_16_32_bits     						:= opt1799_16_32_bits
 # Best compiler vectorization without intrinsics in code:
 VER_SRC.opt_compiler_vec      := opt7
 
@@ -59,7 +60,8 @@ VER_FLAGS.opt99_basic     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt99_basic_upack32_reg_peel_for_loads     		:= -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt99_basic_unrolled_unpack32     				:= -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt99_basic_unpack32     							:= -march=native -ffast-math -mavx2 -mfma
-VER_FLAGS.opt99_basic_mulhi     							:= -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt99_basic_unpack32     							:= -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt1799_16_32_bits     							:= -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt_compiler_vec	:= -march=native -ffast-math
 
 STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx stack_opt6 stack_opt7 stack_opt8 stack_opt9 stack_opt10

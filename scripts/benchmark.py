@@ -26,7 +26,7 @@ timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 # configuration defaults
 DEFAULT_FOCUS = 6.7
 DEFAULT_STACK_FOCUSES = [-49.3, -20.12, 0.10, 5.34, 12.352, 33.33, 49.0]
-DEFAULT_SIZES = [16, 32, 64, 128, 256, 512, 1024, 2048]
+DEFAULT_SIZES = [16, 32, 64, 128, 256] + list(range(512, 2049, 256))
 
 def save_detailed_perf_annotate(label, perf_data_file):
     annotation_file = PROFILING_DIR / f"annotation_{label}_{timestamp}.txt"
