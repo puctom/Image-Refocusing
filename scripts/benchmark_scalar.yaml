@@ -1,7 +1,7 @@
 seed: 1234
 
 benchmarks:
-  - target: stack_from_basic_opt
+  - target: stack_from_basic-opt
     stack: true
     real: false
     profile: false
