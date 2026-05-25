@@ -7,7 +7,7 @@ BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 BENCH_COMMON_SRC := src/bench_common.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -18,6 +18,7 @@ VER_SRC.opt4      := opt4
 VER_SRC.opt5      := opt5
 VER_SRC.opt6      := opt6
 VER_SRC.opt7      := opt7
+VER_SRC.opt8      := opt8
 VER_SRC.opt9      := opt9
 VER_SRC.opt10     := opt10
 VER_SRC.opt11     := opt11
@@ -39,6 +40,7 @@ VER_FLAGS.opt4      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt5      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt6      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
+VER_FLAGS.opt8      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt9      := -march=native -ffast-math
 VER_FLAGS.opt10     := -march=native -ffast-math
 VER_FLAGS.opt11     := -march=native -ffast-math -mavx2 -mfma
