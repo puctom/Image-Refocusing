@@ -80,6 +80,8 @@ STACK_VER_FLAGS.stack_opt8  := -march=native -ffast-math -mavx2 -mfma
 STACK_VER_FLAGS.stack_opt9  := -march=native -ffast-math -mavx2 -mfma
 STACK_VER_FLAGS.stack_opt10 := -march=native -ffast-math -mavx2 -mfma
 
+STACK_FROM_VERSIONS := $(addprefix stack_from_,$(VERSIONS))
+
 define MAKE_STACK_RULES
 # `src/basic.cpp` included to link against bench_basic.cpp
 $(BUILD)/$(1): src/stack_main.cpp $$(STACK_BENCH_SRC.$(1)) $$(COMMON_SRC) src/basic.cpp | $(BUILD)
@@ -91,12 +93,23 @@ endef
 
 $(foreach ver,$(STACK_BENCH_VERSIONS),$(eval $(call MAKE_STACK_RULES,$(ver))))
 
-.PHONY: all app bench stack clean
+define MAKE_STACK_FROM_RULES
+$(BUILD)/stack_from_$(1): src/stack_main.cpp src/stack_basic.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) $$(VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
+
+$(BUILD)/bench-stack_from_$(1): src/bench_stack.cpp src/stack_basic.cpp $$(BENCH_COMMON_SRC) $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)
+	$$(CXX) $$(CPPFLAGS) $$(BASEFLAGS) -g $$(VER_FLAGS.$(1)) -o $$@ $$^ $$(LDLIBS)
+endef
+
+$(foreach ver,$(VERSIONS),$(eval $(call MAKE_STACK_FROM_RULES,$(ver))))
+
+.PHONY: all app bench stack stack-from clean
 
 all:   app bench stack
 app:   $(addprefix $(BUILD)/,$(VERSIONS))
 bench: $(addprefix $(BUILD)/bench-,$(VERSIONS))
 stack: $(addprefix $(BUILD)/bench-,$(STACK_BENCH_VERSIONS)) $(addprefix $(BUILD)/,$(STACK_BENCH_VERSIONS))
+stack-from: $(addprefix $(BUILD)/bench-,$(STACK_FROM_VERSIONS)) $(addprefix $(BUILD)/,$(STACK_FROM_VERSIONS))
 
 define MAKE_RULES
 $(BUILD)/$(1): src/main.cpp $$(COMMON_SRC) src/$$(VER_SRC.$(1)).cpp | $(BUILD)

@@ -82,12 +82,28 @@ def random_focuses(length):
     return [random.uniform(-50.0, 50.0) for _ in range(length)]
 
 def make_generated_cases(bench):
+    explicit_cases = bench.get("cases")
+    if explicit_cases:
+        for index, case in enumerate(explicit_cases, start=1):
+            if isinstance(case, dict):
+                h = int(case["height"])
+                w = int(case["width"])
+                stack_len = case.get("focal_stack_length", case.get("focal_stack_size", case.get("focalStackSize")))
+            else:
+                h, w, stack_len = case
+                h = int(h)
+                w = int(w)
+            if w % 16 != 0:
+                raise ValueError(f"width must be divisible by 16 in YAML mode, got {w}")
+            yield w, h, f"gen_case{index}_{w}x{h}", int(stack_len)
+        return
+
     pixel_spec = bench.get("pixels", bench.get("pixel_count"))
     pixel_values = range_values(pixel_spec, "pixels")
     if pixel_values:
         for pixels in pixel_values:
             w, h = choose_square_like_dimensions(pixels)
-            yield w, h, f"gen_{pixels}px_{w}x{h}"
+            yield w, h, f"gen_{pixels}px_{w}x{h}", None
         return
 
     widths = range_values(bench.get("width"), "width")
@@ -95,14 +111,14 @@ def make_generated_cases(bench):
     if not widths or not heights:
         sizes = range_values(bench.get("sizes", DEFAULT_SIZES), "sizes")
         for wh in sizes:
-            yield wh, wh, f"gen_{wh}x{wh}"
+            yield wh, wh, f"gen_{wh}x{wh}", None
         return
 
     for h in heights:
         for w in widths:
             if w % 16 != 0:
                 raise ValueError(f"width must be divisible by 16 in YAML mode, got {w}")
-            yield w, h, f"gen_{w}x{h}"
+            yield w, h, f"gen_{w}x{h}", None
 
 def run_config_benchmarks(config):
     random.seed(config.get("seed"))
@@ -111,7 +127,7 @@ def run_config_benchmarks(config):
         profile = bool(bench.get("profile", False))
         include_real = bool(bench.get("real", False))
         stack_lengths = range_values(bench.get("focal_stack_length"), "focal_stack_length")
-        stack = bool(bench.get("stack", bool(stack_lengths)))
+        stack = bool(bench.get("stack", bool(stack_lengths) or bool(bench.get("cases"))))
         focus = float(bench.get("focus", DEFAULT_FOCUS))
 
         build_bench_binary(target)
@@ -127,9 +143,9 @@ def run_config_benchmarks(config):
             run_benchmark(target, cmd_args, label=f"real_data_bench{index}", profile=profile)
 
         print("\n--- Running Generated Dataset ---")
-        for w, h, label_base in make_generated_cases(bench):
+        for w, h, label_base, case_stack_len in make_generated_cases(bench):
             if stack:
-                lengths = stack_lengths or [len(DEFAULT_STACK_FOCUSES)]
+                lengths = [case_stack_len] if case_stack_len is not None else stack_lengths or [len(DEFAULT_STACK_FOCUSES)]
                 for stack_len in lengths:
                     label = f"{label_base}_stack{stack_len}_bench{index}"
                     cmd_args = ["--generate", w, h, label, timing_csv] + random_focuses(stack_len)
