@@ -14,6 +14,7 @@
 *       - unroll channel loop to expose independent scalar ops for ILP
 *       - reduce number of loads in innermost loop
 *       - calculate counts using a 2D difference array and prefix sums
+*       - tile the value accumulator across row bands to improve cache reuse
 * */
 
 namespace {
@@ -35,8 +36,6 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
     output.width = width;
     output.height = height;
     output.data.assign(width * height * 3, 0);
-
-    std::vector<float> vals(width * height * 3);
 
     std::vector<SubParams> params;
     params.reserve(subapertures.size());
@@ -86,58 +85,73 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
         }
     }
 
-    for (const SubParams& p : params) {
-        for (int y = p.y_begin; y < p.y_end; ++y) {
-            // Prime the "left column" with x = x_begin.
-            size_t ind_top = ((y + p.sy) * width + (p.x_begin + p.sx)) * 3;
-            size_t ind_bot = ind_top + width * 3;
+    const int TILE_H = 8;
+    std::vector<float> tile_vals(static_cast<size_t>(TILE_H) * width * 3);
 
-            float pTLr = p.data[ind_top];
-            float pTLg = p.data[ind_top + 1];
-            float pTLb = p.data[ind_top + 2];
+    for (int ty = 0; ty < h; ty += TILE_H) {
+        const int tile_y_end = std::min(ty + TILE_H, h);
+        const int tile_h = tile_y_end - ty;
 
-            float pBLr = p.data[ind_bot];
-            float pBLg = p.data[ind_bot + 1];
-            float pBLb = p.data[ind_bot + 2];
+        std::fill(tile_vals.begin(), tile_vals.begin() + static_cast<size_t>(tile_h) * width * 3, 0.0f);
 
-            for (int x = p.x_begin; x < p.x_end; ++x) {
-                // Load only the right column (the new pixels for this x).
-                const size_t ind_top_r = ((y + p.sy) * width + (x + p.sx + 1)) * 3;
-                const size_t ind_bot_r = ind_top_r + width * 3;
+        for (const SubParams& p : params) {
+            const int y_begin = std::max(ty, p.y_begin);
+            const int y_end = std::min(tile_y_end, p.y_end);
+            if (y_begin >= y_end) continue;
 
-                const float pTRr = p.data[ind_top_r];
-                const float pTRg = p.data[ind_top_r + 1];
-                const float pTRb = p.data[ind_top_r + 2];
+            for (int y = y_begin; y < y_end; ++y) {
+                // Prime the "left column" with x = x_begin.
+                size_t ind_top = ((y + p.sy) * width + (p.x_begin + p.sx)) * 3;
+                size_t ind_bot = ind_top + width * 3;
 
-                const float pBRr = p.data[ind_bot_r];
-                const float pBRg = p.data[ind_bot_r + 1];
-                const float pBRb = p.data[ind_bot_r + 2];
+                float pTLr = p.data[ind_top];
+                float pTLg = p.data[ind_top + 1];
+                float pTLb = p.data[ind_top + 2];
 
-                const float outr = p.A*pTLr + p.B*pTRr + p.C*pBLr + p.D*pBRr;
-                const float outg = p.A*pTLg + p.B*pTRg + p.C*pBLg + p.D*pBRg;
-                const float outb = p.A*pTLb + p.B*pTRb + p.C*pBLb + p.D*pBRb;
+                float pBLr = p.data[ind_bot];
+                float pBLg = p.data[ind_bot + 1];
+                float pBLb = p.data[ind_bot + 2];
 
-                const size_t idx = static_cast<size_t>(y) * width + static_cast<size_t>(x);
-                vals[idx*3]     += outr;
-                vals[idx*3 + 1] += outg;
-                vals[idx*3 + 2] += outb;
+                float* tile_row = tile_vals.data()
+                    + (static_cast<size_t>(y - ty) * width + static_cast<size_t>(p.x_begin)) * 3;
 
-                // Right column becomes left column for next iteration.
-                pTLr = pTRr; pTLg = pTRg; pTLb = pTRb;
-                pBLr = pBRr; pBLg = pBRg; pBLb = pBRb;
+                for (int x = p.x_begin; x < p.x_end; ++x) {
+                    // Load only the right column (the new pixels for this x).
+                    const size_t ind_top_r = ((y + p.sy) * width + (x + p.sx + 1)) * 3;
+                    const size_t ind_bot_r = ind_top_r + width * 3;
+
+                    const float pTRr = p.data[ind_top_r];
+                    const float pTRg = p.data[ind_top_r + 1];
+                    const float pTRb = p.data[ind_top_r + 2];
+
+                    const float pBRr = p.data[ind_bot_r];
+                    const float pBRg = p.data[ind_bot_r + 1];
+                    const float pBRb = p.data[ind_bot_r + 2];
+
+                    tile_row[0] += p.A*pTLr + p.B*pTRr + p.C*pBLr + p.D*pBRr;
+                    tile_row[1] += p.A*pTLg + p.B*pTRg + p.C*pBLg + p.D*pBRg;
+                    tile_row[2] += p.A*pTLb + p.B*pTRb + p.C*pBLb + p.D*pBRb;
+
+                    // Right column becomes left column for next iteration.
+                    pTLr = pTRr; pTLg = pTRg; pTLb = pTRb;
+                    pBLr = pBRr; pBLg = pBRg; pBLb = pBRb;
+                    tile_row += 3;
+                }
             }
         }
-    }
 
-    for (size_t y = 0; y < height; ++y) {
-        for (size_t x = 0; x < width; ++x) {
-            const int c = counts[y * width + x];
-            if (c == 0) continue;
+        for (int y = ty; y < tile_y_end; ++y) {
+            const float* tile_row = tile_vals.data() + static_cast<size_t>(y - ty) * width * 3;
+            for (int x = 0; x < w; ++x) {
+                const int c = counts[static_cast<size_t>(y) * width + static_cast<size_t>(x)];
+                if (c == 0) continue;
 
-            // scale_round_clamp inlining
-            output.at(x, y, 0) = (unsigned char) std::clamp(std::round(vals[(y*width + x)*3]     / c), 0.0f, 255.0f);
-            output.at(x, y, 1) = (unsigned char) std::clamp(std::round(vals[(y*width + x)*3 + 1] / c), 0.0f, 255.0f);
-            output.at(x, y, 2) = (unsigned char) std::clamp(std::round(vals[(y*width + x)*3 + 2] / c), 0.0f, 255.0f);
+                const size_t tile_idx = static_cast<size_t>(x) * 3;
+                // scale_round_clamp inlining
+                output.at(x, y, 0) = (unsigned char) std::clamp(std::round(tile_row[tile_idx]     / c), 0.0f, 255.0f);
+                output.at(x, y, 1) = (unsigned char) std::clamp(std::round(tile_row[tile_idx + 1] / c), 0.0f, 255.0f);
+                output.at(x, y, 2) = (unsigned char) std::clamp(std::round(tile_row[tile_idx + 2] / c), 0.0f, 255.0f);
+            }
         }
     }
 
