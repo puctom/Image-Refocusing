@@ -1,0 +1,47 @@
+seed: 1234
+
+benchmarks:
+  - target: stack_from_basic_opt
+    stack: true
+    real: false
+    profile: false
+    cases: &scalar_cases
+      - [256, 256, 1]
+      - [384, 384, 1]
+      - [512, 512, 1]
+      - [768, 768, 1]
+      - [1024, 1024, 1]
+      - [1536, 1536, 1]
+      - [2048, 2048, 1]
+      - [3072, 3072, 1]
+      - [4096, 4096, 1]
+
+  - target: stack_from_opt4
+    stack: true
+    real: false
+    profile: false
+    cases: *scalar_cases
+
+  - target: stack_from_opt5
+    stack: true
+    real: false
+    profile: false
+    cases: *scalar_cases
+
+  - target: stack_from_opt7
+    stack: true
+    real: false
+    profile: false
+    cases: *scalar_cases
+
+  - target: stack_from_opt7_5
+    stack: true
+    real: false
+    profile: false
+    cases: *scalar_cases
+
+  - target: stack_from_opt8
+    stack: true
+    real: false
+    profile: false
+    cases: *scalar_cases
