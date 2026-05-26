@@ -1,46 +1,22 @@
-name: opt7_5_vs_opt8_height_sweep
-description: Compare opt7_5 and opt8 on tall generated images to expose accumulator tiling effects.
+seed: 1234
 
-variants:
-  - opt7_5
-  - opt8
+benchmarks:
+  - target: opt7_5
+    real: false
+    profile: false
+    focus: 6.7
+    width: 512
+    height:
+      start: 512
+      stop: 16384
+      step: 512
 
-input:
-  type: generated
-  width: 512
-  heights:
-    - 512
-    - 1024
-    - 1536
-    - 2048
-    - 2560
-    - 3072
-    - 3584
-    - 4096
-    - 4608
-    - 5120
-    - 5632
-    - 6144
-    - 6656
-    - 7168
-    - 7680
-    - 8192
-    - 8704
-    - 9216
-    - 9728
-    - 10240
-    - 10752
-    - 11264
-    - 11776
-    - 12288
-    - 12800
-    - 13312
-    - 13824
-    - 14336
-    - 14848
-    - 15360
-    - 15872
-    - 16384
-
-focuses:
-  - 6.7
+  - target: opt8
+    real: false
+    profile: false
+    focus: 6.7
+    width: 512
+    height:
+      start: 512
+      stop: 16384
+      step: 512
