@@ -80,12 +80,11 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
         p.B = dx           * (1.0f - dy);
         p.C = (1.0f - dx) * dy;
         p.D = dx           * dy;
-        ADD_FLOPS(8); // depends on how it is compiled 
+        ADD_FLOPS(8); // depends on how it is compiled, should be insignificant
         p.x_begin = std::max(0, -p.sx);
         p.x_end   = std::min(w, w - p.sx - 1);
         p.y_begin = std::max(0, -p.sy);
         p.y_end   = std::min(h, h - p.sy - 1);
-        ADD_FLOPS(10); // counting the - as a FLOP 
         p.SUB = sub.data.data.data();
         if (p.x_begin >= p.x_end || p.y_begin >= p.y_end) continue;
         params.push_back(p);
@@ -471,11 +470,11 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                     int c = counts[y * width + (tx + x)];
                     if (c == 0) continue;
                     float inv_c = 1.0f / (float)c;
-                    ADD_FLOPS(1);
-                    outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
+                    ADD_FLOPS(2); // cast + div
+                    outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f); // mul, add, clamp (min, max), cast to char
                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
-                    ADD_FLOPS(6); // is clamp just one?
+                    ADD_FLOPS(3 * 5); // is clamp just one?
                 }
             }
         }
