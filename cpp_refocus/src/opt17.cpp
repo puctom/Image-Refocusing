@@ -25,15 +25,16 @@
 
 #ifdef COUNT_FLOPS
 #include<iostream>
-// C++17 inline global: zero overhead, no ODR (One Definition Rule) violations
+// this code will only be there if the flag is specified, otherwise this code literally does not exist
+// USAGE: make build/opt17 COUNT_FLOPS=1, then: ./build/opt17 ../in/validation 6.7 - this will print the number of flops
+// Get cycles: using benchmark.py OR $ ./build/bench-opt17 ../in/validation 6.7 output.csv
 inline unsigned long long total_flops = 0;
 
 // Simple macro to increment
 #define ADD_FLOPS(n) total_flops += (n)
 
 #else
-// Safety against some more nasty preprocessing traps
-#define ADD_FLOPS(n) do {} while(0)
+#define ADD_FLOPS(n) 
 #endif
 
 struct SubParams {
@@ -481,7 +482,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
     }
     #ifdef COUNT_FLOPS
     std::cout << "Total Algorithmic FLOPs: " << total_flops << "\n";
-    total_flops = 0; // reset if you run multiple benchmark iterations
+    total_flops = 0; 
     #endif
 
     return output;
