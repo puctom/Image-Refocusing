@@ -24,6 +24,7 @@
 * */
 
 #ifdef COUNT_FLOPS
+#include<iostream>
 // C++17 inline global: zero overhead, no ODR (One Definition Rule) violations
 inline unsigned long long total_flops = 0;
 

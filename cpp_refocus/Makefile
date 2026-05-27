@@ -92,6 +92,9 @@ VER_FLAGS.rep3      := -march=native -ffast-math
 VER_FLAGS.rep4      := -march=native -ffast-math 
 VER_FLAGS.rep5      := -march=native -ffast-math 
 VER_FLAGS.rep6      := -march=native -ffast-math 
+ifeq ($(COUNT_FLOPS), 1)
+VER_FLAGS.opt17 += -DCOUNT_FLOPS
+endif
 
 STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx stack_opt6 stack_opt7 stack_opt8 stack_opt9 stack_opt10
 
