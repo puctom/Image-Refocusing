@@ -7,7 +7,7 @@ BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 BENCH_COMMON_SRC := src/bench_common.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt7_5 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt7_5 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt17_no_ilp_no_reuse opt17_ilp_only opt17_row_reuse_only
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -29,6 +29,9 @@ VER_SRC.opt14     := opt14
 VER_SRC.opt15     := opt15
 VER_SRC.opt16     := opt16
 VER_SRC.opt17     := opt17
+VER_SRC.opt17_no_ilp_no_reuse  := opt17_no_ilp_no_reuse
+VER_SRC.opt17_ilp_only         := opt17_ilp_only
+VER_SRC.opt17_row_reuse_only   := opt17_row_reuse_only
 # Best compiler vectorization without intrinsics in code:
 VER_SRC.opt_compiler_vec      := opt7
 
@@ -52,6 +55,9 @@ VER_FLAGS.opt14     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt15     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt16     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt17     := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt17_no_ilp_no_reuse := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt17_ilp_only        := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt17_row_reuse_only  := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt_compiler_vec	:= -march=native -ffast-math
 
 STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx stack_opt6 stack_opt7 stack_opt8 stack_opt9 stack_opt10
