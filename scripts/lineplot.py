@@ -25,12 +25,46 @@ import math
 # One entry per line on the plot.
 # Each dict needs: path, label, color.
 # Optional: filter (a callable that takes a DataFrame and returns a mask).
+# SERIES = [
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#1f4e9e"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_20260602_041212.csv",      "label": "opt17",      "color": "#1eff05"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_ilp_only_20260601_203043.csv",   "label": "opt17_ilp_only",   "color": "#bcbd22"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#b30df4ff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#9a82a5ff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#e9d2f3ff"},
+
+# ]
+
+# #  FOR old_tile vs new_tile
+
+# SERIES = [
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_20260602_041212.csv",      "label": "opt17",      "color": "#20a911"},
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_ilp_only_20260601_203043.csv",   "label": "opt17_ilp_only",   "color": "#bcbd22"},
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#b4f91fff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#d83434ff"},
+
+# ]
+
+
+#  FOR register reuse
 SERIES = [
-    {"path": "scripts/timing_results/timing_stack_basic_20260502_051536.csv",     "label": "basic (scalar)",                "color": "#1f4e9e"},
-    {"path": "scripts/timing_results/timing_stack_opt9_20260506_103625.csv",      "label": "+ opt9",      "color": "#17becf"},
-    {"path": "scripts/timing_results/timing_stack_opt10_20260507_052914.csv",   "label": "+ precompute counts",   "color": "#bcbd22"},
-    {"path": "scripts/timing_results/timing_stack_avx_20260507_051400.csv",     "label": "+ AVX2",      "color": "#bcbd22"},
+    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_20260602_041212.csv",      "label": "Process 4 rows (reuse)",      "color": "#ec84f5"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_ilp_only_20260601_203043.csv",   "label": "Without reusing",   "color": "#7a1818ff"},
+    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
+    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
+    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
+    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#b4f91fff"},
+    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#d83434ff"},
+
 ]
+
 
 # Shared x and y columns (same across all CSVs).
 X_COL = "img_w"
@@ -41,7 +75,7 @@ Y_COL = "median_cycles"
 def SHARED_FILTER(df):
     return (
         df["data_source"].str.startswith("generated")
-        & (df["img_w"] == df["img_h"])
+        & (df["img_w"] == df["img_h"]) & (df["img_w"] < 3072) & (df["img_w"] > 64)
     )
 
 # Plot decoration
@@ -67,6 +101,7 @@ X_TICK_FORMAT = "human_size"
 
 CACHE_METRICS = [
     {"col": "avg_l1d_loads",     "title": "L1 Data Cache Loads",            "scale": "log"},
+    {"col": "avg_l1d_loads",     "title": "L1 Data Cache Loads Linear",            "scale": "linear"},
     {"col": "avg_l1d_misses",    "title": "L1 Data Cache Misses",           "scale": "log"},
     {"col": "avg_l1d_stores",    "title": "L1 Data Cache Stores",           "scale": "log"},
     {"col": "avg_l1d_miss_rate", "title": "L1D Miss Rate (%)",            "scale": "linear"},
@@ -80,6 +115,7 @@ CACHE_METRICS = [
     {"col": "avg_itlb_load_misses","title": "ITLB Load Misses",             "scale": "log"},
 
     {"col": "avg_llc_loads",     "title": "Last Level Cache (L3) Loads",    "scale": "log"},
+    {"col": "avg_llc_loads",     "title": "Last Level Cache (L3) Loads Linear",    "scale": "linear"},
     {"col": "avg_llc_misses",    "title": "Last Level Cache (L3) Misses",   "scale": "log"},
     {"col": "avg_llc_stores",    "title": "LLC Stores",                     "scale": "log"},
     {"col": "avg_llc_miss_rate", "title": "LLC Miss Rate (%)",            "scale": "linear"},
