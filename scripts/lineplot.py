@@ -13,6 +13,7 @@ Then run:  python3 plot_lines.py
 import os
 import sys
 
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
@@ -55,8 +56,8 @@ import math
 #  FOR register reuse
 SERIES = [
     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_20260602_041212.csv",      "label": "Process 4 rows (reuse)",      "color": "#ec84f5"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_ilp_only_20260601_203043.csv",   "label": "Without reusing",   "color": "#7a1818ff"},
+    {"path": "scripts/timing_opt17_20260602_041212.csv",      "label": "Process 4 rows (reuse)",      "color": "#ec84f5"},
+    {"path": "scripts/timing_opt17_ilp_only_20260601_203043.csv",   "label": "Without reusing",   "color": "#7a1818ff"},
     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
@@ -99,6 +100,14 @@ LEGEND_LOC = "upper left"
 # "plain"       -> matplotlib default
 X_TICK_FORMAT = "human_size"
 
+# Label of the series to use as the denominator in the normalized L1D plot.
+# Set to None to use the first loaded series.
+L1D_NORM_REF_LABEL = "Without reusing"
+
+# Sizes (img_w values) to include in the normalized L1D bar chart.
+# Set to None to include all sizes passing SHARED_FILTER.
+L1D_NORM_SIZES = [512, 1024, 2048]
+
 CACHE_METRICS = [
     {"col": "avg_l1d_loads",     "title": "L1 Data Cache Loads",            "scale": "log"},
     {"col": "avg_l1d_loads",     "title": "L1 Data Cache Loads Linear",            "scale": "linear"},
@@ -134,6 +143,18 @@ CACHE_METRICS = [
 # ---------------------------------------------------------------------------
 # Implementation
 # ---------------------------------------------------------------------------
+
+
+def fmt_count(n):
+    """Format a raw count with a K/M/G suffix, 1 decimal place."""
+    n = float(n)
+    if n >= 1e9:
+        return f"{n/1e9:.1f}G"
+    if n >= 1e6:
+        return f"{n/1e6:.1f}M"
+    if n >= 1e3:
+        return f"{n/1e3:.1f}K"
+    return f"{n:.0f}"
 
 
 def human_size(n):
@@ -426,6 +447,81 @@ else:
     print("  [skip] cycles_per_pixel column not found in any data files")
     plt.close(fig)
 
+
+# ---------------------------------------------------------------------------
+# L1D Loads Normalized Column Plot
+# ---------------------------------------------------------------------------
+_l1d_col = "avg_l1d_loads"
+_l1d_series = [(e, e["df"].set_index(X_COL)[_l1d_col])
+               for e in loaded if _l1d_col in e["df"].columns]
+
+if len(_l1d_series) >= 2:
+    # Pick reference series by label, fall back to first.
+    _ref_entry = next(
+        (e for e, _ in _l1d_series if e["label"] == L1D_NORM_REF_LABEL),
+        _l1d_series[0][0],
+    )
+    ref_label = _ref_entry["label"]
+    ref_s     = next(s for e, s in _l1d_series if e["label"] == ref_label)
+
+    common_x = sorted(set.intersection(*[set(s.index) for _, s in _l1d_series]))
+    if L1D_NORM_SIZES is not None:
+        common_x = [x for x in common_x if x in L1D_NORM_SIZES]
+
+    if not common_x:
+        print("  [skip] l1d_loads_normalized: no x values remain after size filter")
+    else:
+        n_groups = len(common_x)
+        n_bars   = len(_l1d_series)
+        bar_w    = 0.8 / n_bars
+        x_idx    = np.arange(n_groups)
+
+        fig, ax = plt.subplots(figsize=(max(10, n_groups * 0.7), 5))
+        fig.subplots_adjust(left=0.10, right=0.95, top=0.80, bottom=0.15)
+
+        for i, (entry, s) in enumerate(_l1d_series):
+            ref_vals = ref_s.reindex(common_x).to_numpy(dtype=float)
+            vals     = s.reindex(common_x).to_numpy(dtype=float)
+            normed   = vals / ref_vals
+            offsets  = x_idx + (i - (n_bars - 1) / 2.0) * bar_w
+            bars = ax.bar(offsets, normed, width=bar_w * 0.92,
+                          color=entry["color"], label=entry["label"])
+            for rect, abs_val in zip(bars, vals):
+                ax.text(rect.get_x() + rect.get_width() / 2,
+                        rect.get_height() + 0.005,
+                        fmt_count(abs_val),
+                        ha="center", va="bottom",
+                        fontsize=8, color="#333333")
+
+        ax.axhline(1.0, color="#555555", linewidth=1.0, linestyle="--")
+
+        ax.set_xticks(x_idx)
+        ax.set_xticklabels([str(v) for v in common_x],
+                           rotation=45, ha="right", fontsize=8)
+        ax.set_xlabel(X_LABEL, fontsize=10, color="#333333", labelpad=6)
+        ax.set_ylabel(f"L1D loads  /  {ref_label}", fontsize=10,
+                      color="#333333", labelpad=6)
+
+        fig.text(0.10, 0.87, "L1 Data Cache Loads — Normalized",
+                 fontsize=12, fontweight="bold", color="#222222", ha="left")
+        fig.text(0.10, 0.83, f"Each series divided by \"{ref_label}\"  (1.0 = same as reference)",
+                 fontsize=10, color="#333333", ha="left")
+
+        style_axes(ax)
+
+        if LEGEND_LOC is not None:
+            handles, labels = ax.get_legend_handles_labels()
+            ax.legend(handles, labels, loc=LEGEND_LOC,
+                      frameon=True, fontsize=9, labelcolor="#333333",
+                      handlelength=1.8, borderaxespad=0.8,
+                      facecolor="white", edgecolor="none", framealpha=0.92)
+
+        _out = "l1d_loads_normalized.png"
+        fig.savefig(_out, dpi=160, bbox_inches="tight")
+        plt.close(fig)
+        print(f"Saved l1d_loads_normalized plot to {_out}")
+else:
+    print("  [skip] l1d_loads_normalized: need at least 2 series with avg_l1d_loads")
 
 # ---------------------------------------------------------------------------
 # Summary
