@@ -30,12 +30,12 @@ REDUCED_OPS_PER_SHIFT = 30 * 289   # DP Counts and Conv. Reuse
 # One entry per available line. "key" is the name used in PLOT_CONFIGS below to
 # toggle the line on/off per plot.
 SERIES_DEFS = [
-    {"key": "dp_counts",  "path": "timing_results/timing_stack_from_opt7_5_20260531_101022_bench5.csv", "label": "DP Counts", "color": "#B56A5F", "ops_per_shift": REDUCED_OPS_PER_SHIFT},
-    {"key": "conv_reuse", "path": "timing_results/timing_stack_from_opt7_20260531_101022_bench4.csv", "label": "Conv. Reuse", "color": "#C49A4A", "ops_per_shift": REDUCED_OPS_PER_SHIFT},
-    {"key": "ilp_unroll", "path": "timing_results/timing_stack_from_opt6_20260601_130745_bench1.csv", "label": "ILP Unroll", "color": "#ccc127", "ops_per_shift": DEFAULT_OPS_PER_SHIFT},
-    {"key": "inlining",   "path": "timing_results/timing_stack_from_opt5_20260531_101022_bench3.csv", "label": "Inlining", "color": "#6F8F72", "ops_per_shift": DEFAULT_OPS_PER_SHIFT},
-    {"key": "loop_order", "path": "timing_results/timing_stack_from_opt4_20260531_101022_bench2.csv", "label": "Loop Order", "color": "#4F8A8B", "ops_per_shift": DEFAULT_OPS_PER_SHIFT},
-    {"key": "baseline",   "path": "timing_results/timing_stack_from_basic-opt_20260531_101022_bench1.csv", "label": "Baseline", "color": "#5B6C8F", "ops_per_shift": DEFAULT_OPS_PER_SHIFT},
+    {"key": "dp_counts",  "path": "timing_results/timing_stack_from_opt7_6_20260614_153157_bench3.csv", "label": "DP Counts", "color": "#5F4B8B", "ops_per_shift": REDUCED_OPS_PER_SHIFT},
+    {"key": "conv_reuse", "path": "timing_results/timing_stack_from_opt7_fma_20260614_153157_bench2.csv", "label": "Conv. Reuse", "color": "#B66A3C", "ops_per_shift": REDUCED_OPS_PER_SHIFT},
+    {"key": "ilp_unroll", "path": "timing_results/timing_stack_from_opt5_fma_20260614_153157_bench1.csv", "label": "ILP Unroll", "color": "#557A3D", "ops_per_shift": DEFAULT_OPS_PER_SHIFT},
+    {"key": "inlining",   "path": "timing_results/timing_stack_from_opt5_20260531_101022_bench3.csv", "label": "Inlining", "color": "#2F6F73", "ops_per_shift": DEFAULT_OPS_PER_SHIFT},
+    {"key": "loop_order", "path": "timing_results/timing_stack_from_opt4_20260531_101022_bench2.csv", "label": "Loop Order", "color": "#9B4F5A", "ops_per_shift": DEFAULT_OPS_PER_SHIFT},
+    {"key": "baseline",   "path": "timing_results/timing_stack_from_basic-opt_20260531_101022_bench1.csv", "label": "Baseline", "color": "#53616E", "ops_per_shift": DEFAULT_OPS_PER_SHIFT},
 ]
 
 # --- Peak definitions -------------------------------------------------------
@@ -54,69 +54,70 @@ PEAK_DEFS = [
 # keys defined in SERIES_DEFS and PEAK_DEFS above. Anything omitted defaults to
 # False. Plots are numbered 1..n and written to perf_scalar_<n>.png.
 PLOT_CONFIGS = [
-    {
-        "loop_order": True,
-        "baseline": True,
-    },
+    # {
+    #     "loop_order": True,
+    #     "baseline": True,
+    # },
+    # {
+    #     "loop_order": True,
+    #     "baseline": True, 
+    #     "inlining": True,
+    # },
+    # {
+    #     "loop_order": True,
+    #     "baseline": True, 
+    #     "inlining": True,
+    #     "scalar_peak": True,
+    # },
+    # {
+    #     "loop_order": True,
+    #     "baseline": True, 
+    #     "inlining": True,
+    #     "scalar_peak": True,
+    #     "instr_mix": True,
+    # },
+    # {
+    #     "loop_order": True,
+    #     "baseline": True, 
+    #     "inlining": True,
+    #     "scalar_peak": True,
+    #     "instr_mix": True,
+    #     "instr_mix_compiled": True,
+    # },
+    # {
+    #     "loop_order": True,
+    #     "baseline": True, 
+    #     "inlining": True,
+    #     "scalar_peak": True,
+    #     "conv_reuse": True,
+    # },
+    # {
+    #     "loop_order": True,
+    #     "baseline": True, 
+    #     "inlining": True,
+    #     "scalar_peak": True,
+    #     "conv_reuse": True,
+    #     "dp_counts": True,
+    # },
+    # {
+    #     "loop_order": True,
+    #     "baseline": True, 
+    #     "inlining": True,
+    #     "scalar_peak": True,
+    #     "conv_reuse": True,
+    #     "dp_counts": True,
+    #     "instr_mix_conv_reuse": True,
+    # },
     {
         "loop_order": True,
         "baseline": True, 
         "inlining": True,
-    },
-    {
-        "loop_order": True,
-        "baseline": True, 
-        "inlining": True,
-        "scalar_peak": True,
-    },
-    {
-        "loop_order": True,
-        "baseline": True, 
-        "inlining": True,
-        "scalar_peak": True,
-        "instr_mix": True,
-    },
-    {
-        "loop_order": True,
-        "baseline": True, 
-        "inlining": True,
-        "scalar_peak": True,
-        "instr_mix": True,
-        "instr_mix_compiled": True,
-    },
-    {
-        "loop_order": True,
-        "baseline": True, 
-        "inlining": True,
-        "scalar_peak": True,
-        "conv_reuse": True,
-    },
-    {
-        "loop_order": True,
-        "baseline": True, 
-        "inlining": True,
-        "scalar_peak": True,
+        "ilp_unroll": True,
+        "scalar_peak": False,
         "conv_reuse": True,
         "dp_counts": True,
-    },
-    {
-        "loop_order": True,
-        "baseline": True, 
-        "inlining": True,
-        "scalar_peak": True,
-        "conv_reuse": True,
-        "dp_counts": True,
-        "instr_mix_conv_reuse": True,
-    },
-    {
-        "loop_order": True,
-        "baseline": True, 
-        "inlining": True,
-        "scalar_peak": True,
-        "conv_reuse": True,
-        "dp_counts": True,
-        "instr_mix_conv_reuse": True,
-        "instr_mix_conv_reuse_compiled": True,
+        "instr_mix_conv_reuse": False,
+        # "instr_mix_conv_reuse_compiled": True,
     },
 ]
 
@@ -138,24 +139,26 @@ def SHARED_FILTER(df):
     )
 
 # Plot decoration
-TITLE       = "Performance (single precision) on Intel Tiger Lake, 2.4 GHz"
+TITLE       = "Performance (single precision) on Intel Tiger Lake"
 FLAGS       = "-march=native -ffast-math -fno-tree-vectorize"
 # Y-axis descriptor, drawn centered just above the top of the y-axis spine.
 Y_AXIS_DESC = "[flops / cycle]"
 X_LABEL     = "input size (image width = height)  [pixels]"
-OUTPUT_PATH = "perf_scalar.png"
+OUTPUT_PATH = "perf_scalar.svg"
 
 # Axis scales: "linear", "log", or "log2".
 # Performance plots conventionally use linear y so the peak line is a flat
 # ceiling and improvements are visually proportional.
-X_SCALE = "linear"
+X_SCALE = "log"
 Y_SCALE = "linear"
+X_MIN = 256
+X_MAX = 4096
 
-LEGEND_LOC = "upper right"
+LEGEND_LOC = None
 
 # X-axis tick formatting: "exact", "human_size", or "plain"
 X_TICK_FORMAT = "exact"
-X_TICK_FONTSIZE = 8
+TICK_FONTSIZE = 12
 
 # ---------------------------------------------------------------------------
 # Implementation
@@ -171,14 +174,14 @@ def human_size(n):
 
 
 def style_axes(ax):
-    for side in ("top", "right"):
+    for side in ("top", "right", "left", "bottom"):
         ax.spines[side].set_visible(False)
-    for side in ("left", "bottom"):
-        ax.spines[side].set_linewidth(0.8)
-        ax.spines[side].set_color("#333333")
+    ax.spines["bottom"].set_visible(True)
+    ax.spines["bottom"].set_linewidth(1.8)
+    ax.spines["bottom"].set_color("#222222")
 
     ax.set_facecolor("#E5E5E5")
-    ax.yaxis.grid(True, color="white", linewidth=1.0)
+    ax.yaxis.grid(True, color="white", linewidth=2.6)
     ax.xaxis.grid(False)
     ax.set_axisbelow(True)
 
@@ -267,7 +270,7 @@ def make_plot(cfg, output_path):
         all_x.update(x.tolist())
 
         ax.plot(x, y,
-                marker="s", markersize=5.5, linewidth=2.0,
+                marker="s", markersize=6.5, linewidth=2.8,
                 color=entry["color"], markerfacecolor=entry["color"],
                 markeredgecolor=entry["color"], label=entry["label"])
 
@@ -278,7 +281,7 @@ def make_plot(cfg, output_path):
         ax.text(0.005, peak_value, f"{peak_label}  ",
                 transform=ax.get_yaxis_transform(),
                 ha="left", va="bottom",
-                fontsize=8, color="#555555")
+                fontsize=10, color="#555555")
 
     apply_scale(ax, "x", X_SCALE)
     apply_scale(ax, "y", Y_SCALE)
@@ -289,14 +292,14 @@ def make_plot(cfg, output_path):
         ax.set_xticks(x_ticks)
         ax.xaxis.set_minor_locator(mticker.NullLocator())
         if len(x_ticks) > 1:
-            ax.set_xlim(x_ticks[0] * 0.85, x_ticks[-1] * 1.15)
+            ax.set_xlim(X_MIN, X_MAX)
     if X_TICK_FORMAT == "human_size":
         ax.set_xticks(x_ticks)
         ax.set_xticklabels([human_size(v) for v in x_ticks])
     elif X_TICK_FORMAT == "exact":
         ax.set_xticks(x_ticks)
         ax.set_xticklabels([str(int(v)) for v in x_ticks])
-    ax.tick_params(axis="x", labelsize=X_TICK_FONTSIZE)
+    ax.tick_params(axis="both", labelsize=TICK_FONTSIZE)
     if X_SCALE == "linear":
         ax.set_xlim(left=0)
 
@@ -305,19 +308,19 @@ def make_plot(cfg, output_path):
         ax.set_ylim(0, 4.2)
 
     # Axis labels
-    ax.set_xlabel(X_LABEL, fontsize=10, color="#333333", labelpad=6)
+    ax.set_xlabel(X_LABEL, fontsize=13, color="#333333", labelpad=8)
 
     # Title block: title, grayed flags below it, then the y-axis descriptor
     # centered just above the top of the y-axis spine.
     fig.text(0.12, 0.87, TITLE,
-             fontsize=12, fontweight="bold", color="#222222", ha="left")
+             fontsize=15, fontweight="bold", color="#222222", ha="left")
     if FLAGS:
         fig.text(0.12, 0.83, FLAGS,
-                 fontsize=9, color="#555555", ha="left")
+                 fontsize=12, fontweight="bold", color="#555555", ha="left")
     if Y_AXIS_DESC:
         pos = ax.get_position()
         fig.text(pos.x0, pos.y1 + 0.012, Y_AXIS_DESC,
-                 fontsize=10, color="#333333", ha="center", va="bottom")
+                 fontsize=13, color="#333333", ha="center", va="bottom")
 
     style_axes(ax)
 
