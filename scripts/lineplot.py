@@ -53,16 +53,28 @@ import math
 # ]
 
 
-#  FOR register reuse
+# #  FOR register reuse
+# SERIES = [
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
+#     {"path": "scripts/timing_opt17_20260602_041212.csv",      "label": "Process 4 rows (reuse)",      "color": "#ec84f5"},
+#     {"path": "scripts/timing_opt17_ilp_only_20260601_203043.csv",   "label": "Without reusing",   "color": "#7a1818ff"},
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#b4f91fff"},
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#d83434ff"},
+
+# ]
+
+
+# #  overall vectorized code
 SERIES = [
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
-    {"path": "scripts/timing_opt17_20260602_041212.csv",      "label": "Process 4 rows (reuse)",      "color": "#ec84f5"},
-    {"path": "scripts/timing_opt17_ilp_only_20260601_203043.csv",   "label": "Without reusing",   "color": "#7a1818ff"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#b4f91fff"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#d83434ff"},
+    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_compiler_vec_20260614_184642.csv",         "label": "Compiler vectorized code",                "color": "#870d0d"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_hand_vec_no_tile_20260614_185443.csv",     "label": "Hand vectorized code",      "color": "#ca6a0f"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x256_20260614_190051.csv",           "label": "Tiling for cache, 8x256 tile size",   "color": "#afa514ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_20260614_191333.csv",          "label": "Tiling for cache, final 8x2032 tile size",   "color": "#4186e7ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_20260614_192058.csv",      "label": "ILP",   "color": "#893cb2ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_reuse_20260614_192858.csv",           "label": "Loads and conv reuse",   "color": "#d438f6ff"},
 
 ]
 
