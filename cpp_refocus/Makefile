@@ -7,7 +7,7 @@ BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 BENCH_COMMON_SRC := src/bench_common.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt5_fma opt6 opt7 opt7_fma opt7_5 opt7_6 opt7_7 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt5_fma opt6 opt7 opt7_fma opt7_5 opt7_6 opt7_7 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 rep1 rep2 rep3 rep4 rep5 rep6
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -34,7 +34,14 @@ VER_SRC.opt15     := opt15
 VER_SRC.opt16     := opt16
 VER_SRC.opt17     := opt17
 # Best compiler vectorization without intrinsics in code:
-VER_SRC.opt_compiler_vec      := opt7
+VER_SRC.opt_compiler_vec      := opt7_6
+
+VER_SRC.rep1      := opt7_6
+VER_SRC.rep2      := opt9_abl_hand_vec_no_tile
+VER_SRC.rep3      := opt10_abl_tile_8x256
+VER_SRC.rep4      := opt10_abl_tile_8x256_ilp
+VER_SRC.rep5      := opt17_0_abl_tile_8x2032_ilp
+VER_SRC.rep6      := opt17_abl_tile_8x2032_ilp_reuse
 
 VER_FLAGS.basic     := -fno-tree-vectorize
 VER_FLAGS.basic-opt := -march=native -ffast-math -fno-tree-vectorize
@@ -61,6 +68,13 @@ VER_FLAGS.opt15     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt16     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt17     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt_compiler_vec	:= -march=native -ffast-math
+
+VER_FLAGS.rep1      := -march=native -ffast-math 
+VER_FLAGS.rep2      := -march=native -ffast-math 
+VER_FLAGS.rep3      := -march=native -ffast-math 
+VER_FLAGS.rep4      := -march=native -ffast-math 
+VER_FLAGS.rep5      := -march=native -ffast-math 
+VER_FLAGS.rep6      := -march=native -ffast-math 
 
 STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx stack_opt6 stack_opt7 stack_opt8 stack_opt9 stack_opt10
 

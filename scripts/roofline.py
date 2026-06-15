@@ -29,43 +29,51 @@ def build_target(target):
     run_cmd(["make", f"build/{target}"])
 
 
-def collect_survey(project_dir, target, dataset, focus):
+def is_stack_target(target):
+    return target.startswith("stack_") or target.startswith("stack_from_")
+
+
+def target_args(target, dataset, dataset_name, focus, focuses):
+    if is_stack_target(target):
+        output_dir = f"/tmp/roofline_{target}_{dataset_name}"
+        stack_focuses = focuses if focuses is not None else [focus]
+        return [f"./build/{target}", dataset, output_dir] + [str(f) for f in stack_focuses]
+    return [f"./build/{target}", dataset, str(focus), "/tmp/out.png"]
+
+
+def collect_survey(project_dir, target, target_cmd):
+    cmd = [
+        "advisor",
+        "--collect=survey",
+        f"--project-dir={project_dir}",
+        "--search-dir",
+        "src:r=.",
+        "--",
+    ] + target_cmd
+    if not is_stack_target(target):
+        cmd.insert(2, "--start-paused")
     run_cmd(
-        [
-            "advisor",
-            "--collect=survey",
-            "--start-paused",
-            f"--project-dir={project_dir}",
-            "--search-dir",
-            "src:r=.",
-            "--",
-            f"./build/{target}",
-            dataset,
-            str(focus),
-            "/tmp/out.png",
-        ],
+        cmd,
         source_setvars=True,
     )
 
 
-def collect_tripcounts(project_dir, target, dataset, focus):
+def collect_tripcounts(project_dir, target, target_cmd):
+    cmd = [
+        "advisor",
+        "--collect=tripcounts",
+        "--flop",
+        "--no-trip-counts",
+        "--enable-cache-simulation",
+        f"--project-dir={project_dir}",
+        "--search-dir",
+        "src:r=.",
+        "--",
+    ] + target_cmd
+    if not is_stack_target(target):
+        cmd.insert(5, "--start-paused")
     run_cmd(
-        [
-            "advisor",
-            "--collect=tripcounts",
-            "--flop",
-            "--no-trip-counts",
-            "--enable-cache-simulation",
-            "--start-paused",
-            f"--project-dir={project_dir}",
-            "--search-dir",
-            "src:r=.",
-            "--",
-            f"./build/{target}",
-            dataset,
-            str(focus),
-            "/tmp/out.png",
-        ],
+        cmd,
         source_setvars=True,
     )
 
@@ -159,6 +167,13 @@ def parse_args():
         help="Focus value passed to the target (default: 6.7)",
     )
     parser.add_argument(
+        "--focuses",
+        type=float,
+        nargs="+",
+        default=None,
+        help="Focus values passed to stack targets. Defaults to --focus.",
+    )
+    parser.add_argument(
         "--project-dir",
         default="intel-advisor-mlr",
         help="Advisor project directory relative to cpp_refocus",
@@ -198,6 +213,9 @@ def main():
 
         for dataset_name in datasets:
             dataset = f"{args.input_dir}/{dataset_name}"
+            target_cmd = target_args(
+                target, dataset, dataset_name, args.focus, args.focuses
+            )
             print(f"\n=== Roofline: target={target} dataset={dataset_name} ===")
 
             # Remove the intel advisor project tree for a clean collection.
@@ -206,11 +224,12 @@ def main():
 
             # We have to do the collection in two steps: Survey -> Trip Counts
             # because otherwise we can't "exclude initialization"
-            collect_survey(project_dir, target, dataset, args.focus)
+            collect_survey(project_dir, target, target_cmd)
             survey_csv = read_survey_csv(project_dir)
-            ensure_kernel_only_survey(survey_csv)
+            if not is_stack_target(target):
+                ensure_kernel_only_survey(survey_csv)
 
-            collect_tripcounts(project_dir, target, dataset, args.focus)
+            collect_tripcounts(project_dir, target, target_cmd)
 
             # Unique name per (target, dataset) so reports never overwrite.
             report_name = f"roofline_{target}_{dataset_name}.html"
