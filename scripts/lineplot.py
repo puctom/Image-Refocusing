@@ -43,10 +43,10 @@ import math
 # SERIES = [
 #     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
 #     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_20260602_041212.csv",      "label": "opt17",      "color": "#20a911"},
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_ilp_only_20260601_203043.csv",   "label": "opt17_ilp_only",   "color": "#bcbd22"},
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_ilp_only_20260601_203043.csv",   "label": "opt17_ilp_only",   "color": "#bcbd22"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
 #     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
 #     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#b4f91fff"},
 #     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#d83434ff"},
 
@@ -67,18 +67,33 @@ import math
 # ]
 
 
-# #  overall vectorized code
+# # #  overall vectorized code
+# SERIES = [
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_compiler_vec_20260614_184642.csv",         "label": "Compiler vectorized code",                "color": "#870d0d"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_hand_vec_no_tile_20260614_185443.csv",     "label": "Hand vectorized code",      "color": "#ca6a0f"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_hand_vec_no_tile_ilp_20260615_045245.csv",           "label": "Hand vectorized + ILP, no tile",   "color": "#34de9aff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x256_20260614_190051.csv",           "label": "Tiling for cache, 8x256 tile size",   "color": "#afa514ff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x256_ilp_20260615_045509.csv",           "label": "8x256 tile + ILP",   "color": "#64670dff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_20260614_191333.csv",          "label": "Tiling for cache, final 8x2032 tile size",   "color": "#4186e7ff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_20260614_192058.csv",      "label": "ILP",   "color": "#893cb2ff"},
+#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_reuse_20260614_192858.csv",           "label": "Loads and conv reuse",   "color": "#d438f6ff"},
+#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt7_5_20260614_201838.csv",           "label": "Best scalar",   "color": "#000000ff"},
+
+# ]
+
+
+# #  FINAL ABLATION RESULTS
 SERIES = [
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_compiler_vec_20260614_184642.csv",         "label": "Compiler vectorized code",                "color": "#870d0d"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_hand_vec_no_tile_20260614_185443.csv",     "label": "Hand vectorized code",      "color": "#ca6a0f"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x256_20260614_190051.csv",           "label": "Tiling for cache, 8x256 tile size",   "color": "#afa514ff"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_20260614_191333.csv",          "label": "Tiling for cache, final 8x2032 tile size",   "color": "#4186e7ff"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_20260614_192058.csv",      "label": "ILP",   "color": "#893cb2ff"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_reuse_20260614_192858.csv",           "label": "Loads and conv reuse",   "color": "#d438f6ff"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt7_5_20260614_201838.csv",           "label": "Best scalar",   "color": "#000000ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt7_5_abl_compiler_vec_20260615_060220.csv",         "label": "Compiler vectorized code (opt7_5_abl_compiler_vec)",                "color": "#290a0a"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt9_abl_hand_vec_no_tile_20260615_060554.csv",     "label": "Hand vec (opt9_abl_hand_vec_no_tile)",      "color": "#bd5b00"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt9_abl_hand_vec_no_tile_ilp_20260615_060810.csv",     "label": "Hand vec + ILP (opt9_abl_hand_vec_no_tile_ilp)",      "color": "#cb8d53"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt10_abl_tile_8x256_20260615_061032.csv",           "label": "Hand vec + 8x256 tile (opt10_abl_tile_8x256)",   "color": "#008fd1ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt10_abl_tile_8x256_ilp_20260615_061418.csv",           "label": "Hand vec + 8x256 tile + ILP (opt10_abl_tile_8x256_ilp)",   "color": "#68b4d7ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt11_abl_tile_8x2032_20260615_061946.csv",           "label": "8x2032 (opt11_abl_tile_8x2032)",   "color": "#df04e2ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt17_0_abl_tile_8x2032_ilp_20260615_062140.csv",           "label": "8x2032 + ILP (opt17_0_abl_tile_8x2032_ilp)",   "color": "#e572e7ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt17_abl_tile_8x2032_ilp_reuse_20260615_062339.csv",           "label": "8x2032 + ILP + reuse (opt17_abl_tile_8x2032_ilp_reuse)",   "color": "#60ff38ff"},
 
 ]
-
 
 # Shared x and y columns (same across all CSVs).
 X_COL = "img_w"
