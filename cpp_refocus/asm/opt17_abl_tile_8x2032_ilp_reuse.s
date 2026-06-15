@@ -1,4 +1,4 @@
-	.file	"opt17.cpp"
+	.file	"opt17_abl_tile_8x2032_ilp_reuse.cpp"
 	.intel_syntax noprefix
 # GNU C++17 (Debian 16-20260425-1) version 16.0.1 20260425 (prerelease) [gcc-16 r16-8812-gd9c07462a22] (x86_64-linux-gnu)
 #	compiled by GNU C version 16.0.1 20260425 (prerelease) [gcc-16 r16-8812-gd9c07462a22], GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
@@ -7,7 +7,7 @@
 # options passed: -march=tigerlake -mmmx -mpopcnt -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mno-sse4a -mno-fma4 -mno-xop -mavx512f -mbmi -mbmi2 -maes -mpclmul -mavx512vl -mavx512bw -mavx512dq -mavx512cd -mavx512vbmi -mavx512ifma -mavx512vpopcntdq -mavx512vbmi2 -mgfni -mvpclmulqdq -mavx512vnni -mavx512bitalg -mno-avx512bf16 -mavx512vp2intersect -mno-3dnow -madx -mabm -mno-cldemote -mclflushopt -mclwb -mno-clzero -mcx16 -mno-enqcmd -mf16c -mfsgsbase -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe -mmovdir64b -mmovdiri -mno-mwaitx -mno-pconfig -mpku -mprfchw -mno-ptwrite -mrdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx -msha -mshstk -mno-tbm -mno-tsxldtrk -mvaes -mno-waitpkg -mno-wbnoinvd -mxsave -mxsavec -mxsaveopt -mxsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512fp16 -mno-avxifma -mno-avxvnniint8 -mno-avxneconvert -mno-cmpccxadd -mno-amx-fp16 -mno-prefetchi -mno-raoint -mno-amx-complex -mno-avxvnniint16 -mno-sm3 -mno-sha512 -mno-sm4 -mno-apxf -mno-usermsr -mno-avx10.1 -mno-avx10.2 -mno-amx-avx512 -mno-amx-tf32 -mno-amx-fp8 -mno-movrs -mno-amx-movrs -mno-avx512bmm --param=l1-cache-size=48 --param=l1-cache-line-size=64 --param=l2-cache-size=8192 -mtune=tigerlake -mavx2 -mfma -masm=intel -g -O3 -std=c++17 -ffast-math -fasynchronous-unwind-tables
 	.text
 .Ltext0:
-	.file 0 "/home/team15/tomasz-worktree-dir/cpp_refocus" "src/opt17.cpp"
+	.file 0 "/home/team15/tomasz-worktree-dir/cpp_refocus" "src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp"
 	.section	.rodata.str1.8,"aMS",@progbits,1
 	.align 8
 .LC0:
@@ -28,12 +28,12 @@
 "_Z21refocus_shift_and_sumRSt6vectorI16SubApertureImageSaIS0_EEf":
 .LVL0:
 .LFB11708:
-	.file 1 "src/opt17.cpp"
-	.loc 1 40 91 view -0
+	.file 1 "src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp"
+	.loc 1 43 91 view -0
 	.cfi_startproc
 	.cfi_personality 0x9b,"DW.ref.__gxx_personality_v0"
 	.cfi_lsda 0x1b,.LLSDA11708
-	.loc 1 40 91 is_stmt 0 view .LVU1
+	.loc 1 43 91 is_stmt 0 view .LVU1
 	push	rbp	#
 	.cfi_def_cfa_offset 16
 	.cfi_offset 6, -16
@@ -53,8 +53,8 @@
 .LBE4217:
 .LBE4216:
 .LBE4215:
-# src/opt17.cpp:40: ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {
-	.loc 1 40 91 view .LVU3
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:43: ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {
+	.loc 1 43 91 view .LVU3
 	mov	rbp, rsp	#,
 	.cfi_def_cfa_register 6
 	push	r15	#
@@ -82,11 +82,11 @@
 .LBE4234:
 .LBE4233:
 .LBE4232:
-# src/opt17.cpp:40: ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {
-	.loc 1 40 91 view .LVU5
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:43: ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {
+	.loc 1 43 91 view .LVU5
 	vmovss	DWORD PTR 472[rsp], xmm0	# %sfp, focus
 	mov	QWORD PTR 64[rsp], rdi	# %sfp, <retval>
-	.loc 1 41 5 is_stmt 1 view .LVU6
+	.loc 1 44 5 is_stmt 1 view .LVU6
 .LVL1:
 .LBB4238:
 .LBI4232:
@@ -102,8 +102,8 @@
 .LBE4236:
 .LBE4237:
 .LBE4238:
-# src/opt17.cpp:41:     const size_t width  = subapertures.front().data.width;
-	.loc 1 41 53 discriminator 1 view .LVU12
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:44:     const size_t width  = subapertures.front().data.width;
+	.loc 1 44 53 discriminator 1 view .LVU12
 	vmovdqu	xmm0, XMMWORD PTR [r14]	# MEM <vector(2) long unsigned int> [(long unsigned int *)_848], MEM <vector(2) long unsigned int> [(long unsigned int *)_848]
 .LVL2:
 .LBB4239:
@@ -129,7 +129,7 @@
 .LBE4228:
 .LBE4230:
 .LBE4239:
-	.loc 1 42 5 is_stmt 1 view .LVU16
+	.loc 1 45 5 is_stmt 1 view .LVU16
 .LBB4240:
 .LBI4240:
 	.loc 2 1334 7 view .LVU17
@@ -144,9 +144,9 @@
 .LBE4242:
 .LBE4241:
 .LBE4240:
-	.loc 1 43 5 is_stmt 1 view .LVU22
-	.loc 1 44 5 view .LVU23
-	.loc 1 46 5 view .LVU24
+	.loc 1 46 5 is_stmt 1 view .LVU22
+	.loc 1 47 5 view .LVU23
+	.loc 1 49 5 view .LVU24
 .LBB4243:
 .LBI4215:
 	.file 4 "include/utils.hpp"
@@ -180,18 +180,18 @@
 .LBE4229:
 .LBE4231:
 .LBE4243:
-	.loc 1 47 5 is_stmt 1 view .LVU34
-	.loc 1 48 5 view .LVU35
-# src/opt17.cpp:49:     output.data.assign(width * height * 3, 0);
-	.loc 1 49 30 is_stmt 0 view .LVU36
+	.loc 1 50 5 is_stmt 1 view .LVU34
+	.loc 1 51 5 view .LVU35
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:52:     output.data.assign(width * height * 3, 0);
+	.loc 1 52 30 is_stmt 0 view .LVU36
 	imul	rax, rbx	# _4, _1542
 	mov	QWORD PTR 488[rsp], rbx	# %sfp, _1542
-# src/opt17.cpp:47:     output.width = width;
-	.loc 1 47 18 view .LVU37
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:50:     output.width = width;
+	.loc 1 50 18 view .LVU37
 	vmovdqu	XMMWORD PTR [rdi], xmm0	# MEM <vector(2) long unsigned int> [(long unsigned int *)output_611(D)], MEM <vector(2) long unsigned int> [(long unsigned int *)_848]
-	.loc 1 49 5 is_stmt 1 view .LVU38
-# src/opt17.cpp:49:     output.data.assign(width * height * 3, 0);
-	.loc 1 49 30 is_stmt 0 view .LVU39
+	.loc 1 52 5 is_stmt 1 view .LVU38
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:52:     output.data.assign(width * height * 3, 0);
+	.loc 1 52 30 is_stmt 0 view .LVU39
 	mov	QWORD PTR 56[rsp], rax	# %sfp, _4
 .LVL4:
 .LBB4244:
@@ -213,7 +213,7 @@
 .LBE4246:
 .LBE4245:
 .LBE4244:
-	.loc 1 51 5 is_stmt 1 view .LVU44
+	.loc 1 54 5 is_stmt 1 view .LVU44
 .LBB4318:
 .LBI4318:
 	.loc 2 551 7 view .LVU45
@@ -240,7 +240,7 @@
 .LBE4320:
 .LBE4319:
 .LBE4318:
-	.loc 1 52 5 is_stmt 1 view .LVU53
+	.loc 1 55 5 is_stmt 1 view .LVU53
 .LBB4345:
 .LBI4345:
 	.loc 2 1107 7 view .LVU54
@@ -312,16 +312,16 @@
 .LBE4352:
 .LBE4351:
 .LBE4360:
-# src/opt17.cpp:43:     const int w = static_cast<int>(width);
-	.loc 1 43 15 view .LVU69
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:46:     const int w = static_cast<int>(width);
+	.loc 1 46 15 view .LVU69
 	mov	eax, DWORD PTR 184[rsp]	# tmp4909, %sfp
 	mov	DWORD PTR 144[rsp], eax	# %sfp, tmp4909
-# src/opt17.cpp:44:     const int h = static_cast<int>(height);
-	.loc 1 44 15 view .LVU70
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:47:     const int h = static_cast<int>(height);
+	.loc 1 47 15 view .LVU70
 	mov	eax, DWORD PTR 488[rsp]	# tmp4910, %sfp
 	mov	DWORD PTR 92[rsp], eax	# %sfp, tmp4910
 .LVL12:
-	.loc 1 53 5 is_stmt 1 view .LVU71
+	.loc 1 56 5 is_stmt 1 view .LVU71
 .LBB4361:
 .LBB4362:
 .LBI4362:
@@ -341,14 +341,14 @@
 	.loc 3 1058 7 is_stmt 0 view .LVU77
 .LBE4366:
 .LBE4365:
-	.loc 1 53 22 is_stmt 1 discriminator 5 view .LVU78
-# src/opt17.cpp:53:     for (auto& sub : subapertures) {
-	.loc 1 53 22 is_stmt 0 discriminator 6 view .LVU79
+	.loc 1 56 22 is_stmt 1 discriminator 5 view .LVU78
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:56:     for (auto& sub : subapertures) {
+	.loc 1 56 22 is_stmt 0 discriminator 6 view .LVU79
 	cmp	QWORD PTR 496[rsp], r14	# %sfp, _848
 	je	.L110	#,
 .LVL13:
 .L5:
-	.loc 1 53 22 discriminator 6 view .LVU80
+	.loc 1 56 22 discriminator 6 view .LVU80
 .LBE4361:
 .LBB4462:
 .LBB4340:
@@ -369,27 +369,27 @@
 .LBE4462:
 .LBB4463:
 .LBB4368:
-	.loc 1 54 9 is_stmt 1 view .LVU83
-	.loc 1 55 9 view .LVU84
-# src/opt17.cpp:55:         float shift_x = focus * sub.u;
-	.loc 1 55 15 is_stmt 0 view .LVU85
+	.loc 1 57 9 is_stmt 1 view .LVU83
+	.loc 1 58 9 view .LVU84
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:58:         float shift_x = focus * sub.u;
+	.loc 1 58 15 is_stmt 0 view .LVU85
 	vmovss	xmm7, DWORD PTR 472[rsp]	# focus, %sfp
-# src/opt17.cpp:66:         p.x_end   = std::min(w, w - p.sx - 1);
-	.loc 1 66 35 view .LVU86
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:69:         p.x_end   = std::min(w, w - p.sx - 1);
+	.loc 1 69 35 view .LVU86
 	mov	ebx, DWORD PTR 144[rsp]	# _1, %sfp
-# src/opt17.cpp:65:         p.x_begin = std::max(0, -p.sx);
-	.loc 1 65 33 view .LVU87
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:68:         p.x_begin = std::max(0, -p.sx);
+	.loc 1 68 33 view .LVU87
 	xor	ecx, ecx	# _16
-# src/opt17.cpp:55:         float shift_x = focus * sub.u;
-	.loc 1 55 15 view .LVU88
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:58:         float shift_x = focus * sub.u;
+	.loc 1 58 15 view .LVU88
 	vmulss	xmm4, xmm7, DWORD PTR 40[r14]	# shift_x, focus, MEM[(float *)_3528 + 40B]
 .LVL15:
-	.loc 1 56 9 is_stmt 1 view .LVU89
-# src/opt17.cpp:56:         float shift_y = focus * sub.v;
-	.loc 1 56 15 is_stmt 0 view .LVU90
+	.loc 1 59 9 is_stmt 1 view .LVU89
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:59:         float shift_y = focus * sub.v;
+	.loc 1 59 15 is_stmt 0 view .LVU90
 	vmulss	xmm2, xmm7, DWORD PTR 44[r14]	# shift_y, focus, MEM[(float *)_3528 + 44B]
 .LVL16:
-	.loc 1 57 9 is_stmt 1 view .LVU91
+	.loc 1 60 9 is_stmt 1 view .LVU91
 .LBB4369:
 .LBI4369:
 	.file 9 "/usr/include/c++/16/cmath"
@@ -403,11 +403,11 @@
 	.loc 9 265 28 view .LVU95
 .LBE4370:
 .LBE4369:
-# src/opt17.cpp:57:         p.sx = static_cast<int>(std::floor(shift_x));
-	.loc 1 57 16 discriminator 1 view .LVU96
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:60:         p.sx = static_cast<int>(std::floor(shift_x));
+	.loc 1 60 16 discriminator 1 view .LVU96
 	vcvttss2si	r9d, xmm0	# _8, _838
 .LVL18:
-	.loc 1 58 9 is_stmt 1 view .LVU97
+	.loc 1 61 9 is_stmt 1 view .LVU97
 .LBB4371:
 .LBI4371:
 	.loc 9 264 3 view .LVU98
@@ -420,40 +420,40 @@
 	.loc 9 265 28 view .LVU101
 .LBE4372:
 .LBE4371:
-# src/opt17.cpp:58:         p.sy = static_cast<int>(std::floor(shift_y));
-	.loc 1 58 16 discriminator 1 view .LVU102
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:61:         p.sy = static_cast<int>(std::floor(shift_y));
+	.loc 1 61 16 discriminator 1 view .LVU102
 	vcvttss2si	esi, xmm1	# _9, _839
 .LVL20:
-	.loc 1 59 9 is_stmt 1 view .LVU103
-	.loc 1 60 9 view .LVU104
-	.loc 1 61 9 view .LVU105
-	.loc 1 62 9 view .LVU106
-	.loc 1 63 9 view .LVU107
-	.loc 1 64 9 view .LVU108
-	.loc 1 65 9 view .LVU109
+	.loc 1 62 9 is_stmt 1 view .LVU103
+	.loc 1 63 9 view .LVU104
+	.loc 1 64 9 view .LVU105
+	.loc 1 65 9 view .LVU106
+	.loc 1 66 9 view .LVU107
+	.loc 1 67 9 view .LVU108
+	.loc 1 68 9 view .LVU109
 .LBB4373:
 .LBI4373:
 	.file 10 "/usr/include/c++/16/bits/stl_algobase.h"
 	.loc 10 256 5 view .LVU110
 .LBE4373:
-# src/opt17.cpp:65:         p.x_begin = std::max(0, -p.sx);
-	.loc 1 65 33 is_stmt 0 view .LVU111
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:68:         p.x_begin = std::max(0, -p.sx);
+	.loc 1 68 33 is_stmt 0 view .LVU111
 	mov	eax, r9d	# tmp4391, _8
 	neg	eax	# tmp4391
 	test	r9d, r9d	# _8
 	cmovs	ecx, eax	# tmp4391,, _16
 .LVL21:
-	.loc 1 66 9 is_stmt 1 view .LVU112
+	.loc 1 69 9 is_stmt 1 view .LVU112
 .LBB4374:
 .LBI4374:
 	.loc 10 232 5 view .LVU113
 .LBE4374:
-# src/opt17.cpp:66:         p.x_end   = std::min(w, w - p.sx - 1);
-	.loc 1 66 35 is_stmt 0 view .LVU114
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:69:         p.x_end   = std::min(w, w - p.sx - 1);
+	.loc 1 69 35 is_stmt 0 view .LVU114
 	mov	eax, ebx	# _18, _1
 	sub	eax, r9d	# _18, _8
-# src/opt17.cpp:66:         p.x_end   = std::min(w, w - p.sx - 1);
-	.loc 1 66 42 view .LVU115
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:69:         p.x_end   = std::min(w, w - p.sx - 1);
+	.loc 1 69 42 view .LVU115
 	dec	eax	# _19
 .LBB4377:
 .LBB4375:
@@ -463,11 +463,11 @@
 	cmovg	eax, ebx	# _19,, _19, _1
 .LBE4375:
 .LBE4377:
-# src/opt17.cpp:68:         p.y_end   = std::min(h, h - p.sy - 1);
-	.loc 1 68 35 view .LVU117
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:71:         p.y_end   = std::min(h, h - p.sy - 1);
+	.loc 1 71 35 view .LVU117
 	mov	ebx, DWORD PTR 92[rsp]	# _2, %sfp
-# src/opt17.cpp:67:         p.y_begin = std::max(0, -p.sy);
-	.loc 1 67 33 view .LVU118
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:70:         p.y_begin = std::max(0, -p.sy);
+	.loc 1 70 33 view .LVU118
 	xor	r8d, r8d	# _20
 .LBB4378:
 .LBB4376:
@@ -478,31 +478,31 @@
 	.loc 10 237 7 view .LVU120
 .LBE4376:
 .LBE4378:
-	.loc 1 67 9 is_stmt 1 view .LVU121
+	.loc 1 70 9 is_stmt 1 view .LVU121
 .LBB4379:
 .LBI4379:
 	.loc 10 256 5 view .LVU122
 .LBE4379:
-# src/opt17.cpp:67:         p.y_begin = std::max(0, -p.sy);
-	.loc 1 67 33 is_stmt 0 view .LVU123
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:70:         p.y_begin = std::max(0, -p.sy);
+	.loc 1 70 33 is_stmt 0 view .LVU123
 	mov	eax, esi	# tmp4393, _9
 .LVL23:
-	.loc 1 67 33 view .LVU124
+	.loc 1 70 33 view .LVU124
 	neg	eax	# tmp4393
 	test	esi, esi	# _9
 	cmovs	r8d, eax	# tmp4393,, _20
-	.loc 1 68 9 is_stmt 1 view .LVU125
+	.loc 1 71 9 is_stmt 1 view .LVU125
 .LVL24:
 .LBB4380:
 .LBI4380:
 	.loc 10 232 5 view .LVU126
 .LBE4380:
-# src/opt17.cpp:68:         p.y_end   = std::min(h, h - p.sy - 1);
-	.loc 1 68 35 is_stmt 0 view .LVU127
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:71:         p.y_end   = std::min(h, h - p.sy - 1);
+	.loc 1 71 35 is_stmt 0 view .LVU127
 	mov	eax, ebx	# _22, _2
 	sub	eax, esi	# _22, _9
-# src/opt17.cpp:68:         p.y_end   = std::min(h, h - p.sy - 1);
-	.loc 1 68 42 view .LVU128
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:71:         p.y_end   = std::min(h, h - p.sy - 1);
+	.loc 1 71 42 view .LVU128
 	dec	eax	# _23
 .LBB4382:
 .LBB4381:
@@ -515,26 +515,26 @@
 	.loc 10 237 7 view .LVU130
 .LBE4381:
 .LBE4382:
-	.loc 1 69 9 is_stmt 1 view .LVU131
+	.loc 1 72 9 is_stmt 1 view .LVU131
 .LBB4383:
 .LBI4383:
 	.loc 2 1385 7 view .LVU132
 	.loc 2 1385 7 is_stmt 0 view .LVU133
 .LBE4383:
-	.loc 1 70 9 is_stmt 1 view .LVU134
-# src/opt17.cpp:70:         if (p.x_begin >= p.x_end || p.y_begin >= p.y_end) continue;
-	.loc 1 70 34 is_stmt 0 discriminator 1 view .LVU135
+	.loc 1 73 9 is_stmt 1 view .LVU134
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:73:         if (p.x_begin >= p.x_end || p.y_begin >= p.y_end) continue;
+	.loc 1 73 34 is_stmt 0 discriminator 1 view .LVU135
 	cmp	ecx, r10d	# _16, _663
 	jge	.L12	#,
-	.loc 1 70 34 discriminator 1 view .LVU136
+	.loc 1 73 34 discriminator 1 view .LVU136
 	cmp	r8d, eax	# _20, _664
 	jge	.L12	#,
-# src/opt17.cpp:60:         float dy = shift_y - p.sy;
-	.loc 1 60 15 view .LVU137
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:63:         float dy = shift_y - p.sy;
+	.loc 1 63 15 view .LVU137
 	vsubss	xmm5, xmm2, xmm1	# dy, shift_y, _839
 .LVL26:
-# src/opt17.cpp:59:         float dx = shift_x - p.sx;
-	.loc 1 59 15 view .LVU138
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:62:         float dx = shift_x - p.sx;
+	.loc 1 62 15 view .LVU138
 	vsubss	xmm3, xmm4, xmm0	# dx, shift_x, _838
 .LVL27:
 .LBB4385:
@@ -551,37 +551,37 @@
 	mov	rbx, QWORD PTR 16[r14]	# _840, MEM[(unsigned char * *)_3528 + 16B]
 .LBE4384:
 .LBE4454:
-# src/opt17.cpp:61:         p.A = (1.0f - dx) * (1.0f - dy);
-	.loc 1 61 21 view .LVU141
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:64:         p.A = (1.0f - dx) * (1.0f - dy);
+	.loc 1 64 21 view .LVU141
 	vaddss	xmm0, xmm0, DWORD PTR .LC1[rip]	# _1593, _838,
 .LVL28:
-# src/opt17.cpp:61:         p.A = (1.0f - dx) * (1.0f - dy);
-	.loc 1 61 35 view .LVU142
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:64:         p.A = (1.0f - dx) * (1.0f - dy);
+	.loc 1 64 35 view .LVU142
 	vaddss	xmm1, xmm1, DWORD PTR .LC1[rip]	# _1611, _839,
 .LVL29:
-# src/opt17.cpp:61:         p.A = (1.0f - dx) * (1.0f - dy);
-	.loc 1 61 21 view .LVU143
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:64:         p.A = (1.0f - dx) * (1.0f - dy);
+	.loc 1 64 21 view .LVU143
 	vsubss	xmm0, xmm0, xmm4	# _10, _1593, shift_x
 .LVL30:
-# src/opt17.cpp:61:         p.A = (1.0f - dx) * (1.0f - dy);
-	.loc 1 61 35 view .LVU144
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:64:         p.A = (1.0f - dx) * (1.0f - dy);
+	.loc 1 64 35 view .LVU144
 	vsubss	xmm1, xmm1, xmm2	# _11, _1611, shift_y
 .LVL31:
-# src/opt17.cpp:61:         p.A = (1.0f - dx) * (1.0f - dy);
-	.loc 1 61 27 view .LVU145
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:64:         p.A = (1.0f - dx) * (1.0f - dy);
+	.loc 1 64 27 view .LVU145
 	vmulss	xmm2, xmm0, xmm1	# _12, _10, _11
 .LVL32:
-# src/opt17.cpp:62:         p.B = dx           * (1.0f - dy);
-	.loc 1 62 28 view .LVU146
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:65:         p.B = dx           * (1.0f - dy);
+	.loc 1 65 28 view .LVU146
 	vmulss	xmm1, xmm1, xmm3	# _13, _11, dx
-# src/opt17.cpp:63:         p.C = (1.0f - dx) * dy;
-	.loc 1 63 27 view .LVU147
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:66:         p.C = (1.0f - dx) * dy;
+	.loc 1 66 27 view .LVU147
 	vmulss	xmm0, xmm0, xmm5	# _14, _10, dy
-# src/opt17.cpp:64:         p.D = dx           * dy;
-	.loc 1 64 28 view .LVU148
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:67:         p.D = dx           * dy;
+	.loc 1 67 28 view .LVU148
 	vmulss	xmm3, xmm3, xmm5	# _15, dx, dy
 .LVL33:
-	.loc 1 71 9 is_stmt 1 view .LVU149
+	.loc 1 74 9 is_stmt 1 view .LVU149
 .LBB4455:
 .LBI4385:
 	.loc 2 1406 7 view .LVU150
@@ -636,20 +636,20 @@
 .LBE4451:
 .LBE4455:
 .LBE4368:
-	.loc 1 53 5 is_stmt 1 discriminator 4 view .LVU160
-	.loc 1 53 22 discriminator 5 view .LVU161
-# src/opt17.cpp:53:     for (auto& sub : subapertures) {
-	.loc 1 53 22 is_stmt 0 discriminator 6 view .LVU162
+	.loc 1 56 5 is_stmt 1 discriminator 4 view .LVU160
+	.loc 1 56 22 discriminator 5 view .LVU161
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:56:     for (auto& sub : subapertures) {
+	.loc 1 56 22 is_stmt 0 discriminator 6 view .LVU162
 	add	r14, 48	# ivtmp.960,
 .LVL37:
-	.loc 1 53 22 discriminator 6 view .LVU163
+	.loc 1 56 22 discriminator 6 view .LVU163
 	cmp	QWORD PTR 496[rsp], r14	# %sfp, ivtmp.960
 	jne	.L19	#,
 .LVL38:
 .L9:
-	.loc 1 53 22 discriminator 6 view .LVU164
+	.loc 1 56 22 discriminator 6 view .LVU164
 .LBE4463:
-	.loc 1 74 5 is_stmt 1 view .LVU165
+	.loc 1 77 5 is_stmt 1 view .LVU165
 .LBB4464:
 .LBI4464:
 	.loc 5 168 7 view .LVU166
@@ -849,9 +849,9 @@
 	.loc 6 104 7 is_stmt 0 view .LVU209
 .LBE4519:
 .LBE4518:
-	.loc 1 75 5 is_stmt 1 view .LVU210
+	.loc 1 78 5 is_stmt 1 view .LVU210
 .LBB4520:
-	.loc 1 76 9 view .LVU211
+	.loc 1 79 9 view .LVU211
 .LBB4521:
 .LBI4521:
 	.loc 5 168 7 view .LVU212
@@ -861,20 +861,20 @@
 	.loc 6 88 7 is_stmt 0 view .LVU214
 .LBE4522:
 .LBE4521:
-# src/opt17.cpp:76:         std::vector<int> diff((width + 1) * (height + 1), 0);
-	.loc 1 76 38 discriminator 1 view .LVU215
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:79:         std::vector<int> diff((width + 1) * (height + 1), 0);
+	.loc 1 79 38 discriminator 1 view .LVU215
 	mov	rax, QWORD PTR 184[rsp]	# _1357, %sfp
-# src/opt17.cpp:76:         std::vector<int> diff((width + 1) * (height + 1), 0);
-	.loc 1 76 53 discriminator 1 view .LVU216
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:79:         std::vector<int> diff((width + 1) * (height + 1), 0);
+	.loc 1 79 53 discriminator 1 view .LVU216
 	mov	r14, QWORD PTR 488[rsp]	# _1542, %sfp
-# src/opt17.cpp:76:         std::vector<int> diff((width + 1) * (height + 1), 0);
-	.loc 1 76 38 discriminator 1 view .LVU217
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:79:         std::vector<int> diff((width + 1) * (height + 1), 0);
+	.loc 1 79 38 discriminator 1 view .LVU217
 	lea	r13, 1[rax]	# _24,
-# src/opt17.cpp:76:         std::vector<int> diff((width + 1) * (height + 1), 0);
-	.loc 1 76 53 discriminator 1 view .LVU218
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:79:         std::vector<int> diff((width + 1) * (height + 1), 0);
+	.loc 1 79 53 discriminator 1 view .LVU218
 	inc	r14	# _1542
-# src/opt17.cpp:76:         std::vector<int> diff((width + 1) * (height + 1), 0);
-	.loc 1 76 60 discriminator 1 view .LVU219
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:79:         std::vector<int> diff((width + 1) * (height + 1), 0);
+	.loc 1 79 60 discriminator 1 view .LVU219
 	imul	r14, r13	# _642, _24
 .LVL45:
 .LBB4523:
@@ -1011,8 +1011,8 @@
 .LBE4547:
 .LBE4523:
 .LBB4574:
-# src/opt17.cpp:77:         for (const auto& p : params) {
-	.loc 1 77 30 discriminator 6 view .LVU254
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:80:         for (const auto& p : params) {
+	.loc 1 80 30 discriminator 6 view .LVU254
 	mov	rbx, QWORD PTR 208[rsp]	# __new_finish, %sfp
 .LBE4574:
 .LBB4594:
@@ -1052,7 +1052,7 @@
 	.loc 6 104 7 is_stmt 0 view .LVU261
 .LBE4596:
 .LBE4595:
-	.loc 1 77 9 is_stmt 1 view .LVU262
+	.loc 1 80 9 is_stmt 1 view .LVU262
 .LBB4598:
 .LBB4575:
 .LBI4575:
@@ -1072,24 +1072,24 @@
 	.loc 3 1058 7 is_stmt 0 view .LVU268
 .LBE4579:
 .LBE4578:
-	.loc 1 77 30 is_stmt 1 discriminator 5 view .LVU269
-# src/opt17.cpp:77:         for (const auto& p : params) {
-	.loc 1 77 30 is_stmt 0 discriminator 6 view .LVU270
+	.loc 1 80 30 is_stmt 1 discriminator 5 view .LVU269
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:80:         for (const auto& p : params) {
+	.loc 1 80 30 is_stmt 0 discriminator 6 view .LVU270
 	cmp	QWORD PTR 128[rsp], rbx	# %sfp, __new_finish
 	je	.L28	#,
 .LVL53:
 .L25:
-# src/opt17.cpp:77:         for (const auto& p : params) {
-	.loc 1 77 30 view .LVU271
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:80:         for (const auto& p : params) {
+	.loc 1 80 30 view .LVU271
 	mov	rax, QWORD PTR 128[rsp]	# SR.307, %sfp
 .L29:
 .LVL54:
-	.loc 1 78 13 is_stmt 1 view .LVU272
-# src/opt17.cpp:78:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
-	.loc 1 78 20 is_stmt 0 view .LVU273
+	.loc 1 81 13 is_stmt 1 view .LVU272
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:81:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
+	.loc 1 81 20 is_stmt 0 view .LVU273
 	movsxd	rdx, DWORD PTR 32[rax]	# _28, MEM[(int *)SR.307_841 + 32B]
-# src/opt17.cpp:78:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
-	.loc 1 78 46 view .LVU274
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:81:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
+	.loc 1 81 46 view .LVU274
 	movsxd	rsi, DWORD PTR 24[rax]	# _31, MEM[(int *)SR.307_841 + 24B]
 .LBB4581:
 .LBB4582:
@@ -1100,11 +1100,11 @@
 	.loc 3 1103 2 view .LVU276
 .LBE4582:
 .LBE4581:
-# src/opt17.cpp:80:             diff[p.y_end   * (width + 1) + p.x_begin] -= 1;
-	.loc 1 80 20 view .LVU277
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:83:             diff[p.y_end   * (width + 1) + p.x_begin] -= 1;
+	.loc 1 83 20 view .LVU277
 	movsxd	r8, DWORD PTR -12[rax]	# _44, MEM[(int *)SR.307_841 + 36B]
-# src/opt17.cpp:78:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
-	.loc 1 78 28 view .LVU278
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:81:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
+	.loc 1 81 28 view .LVU278
 	imul	rdx, r13	# _29, _24
 .LVL56:
 .LBB4583:
@@ -1115,18 +1115,18 @@
 	.loc 2 1253 2 is_stmt 0 discriminator 2 view .LVU281
 .LBE4584:
 .LBE4583:
-# src/opt17.cpp:80:             diff[p.y_end   * (width + 1) + p.x_begin] -= 1;
-	.loc 1 80 28 view .LVU282
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:83:             diff[p.y_end   * (width + 1) + p.x_begin] -= 1;
+	.loc 1 83 28 view .LVU282
 	imul	r8, r13	# _45, _24
-# src/opt17.cpp:78:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
-	.loc 1 78 53 view .LVU283
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:81:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
+	.loc 1 81 53 view .LVU283
 	lea	rcx, [rdx+rsi]	# _32,
-# src/opt17.cpp:78:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
-	.loc 1 78 55 discriminator 1 view .LVU284
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:81:             diff[p.y_begin * (width + 1) + p.x_begin] += 1;
+	.loc 1 81 55 discriminator 1 view .LVU284
 	inc	DWORD PTR [rdi+rcx*4]	# *_827
-	.loc 1 79 13 is_stmt 1 view .LVU285
-# src/opt17.cpp:79:             diff[p.y_begin * (width + 1) + p.x_end  ] -= 1;
-	.loc 1 79 46 is_stmt 0 view .LVU286
+	.loc 1 82 13 is_stmt 1 view .LVU285
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:82:             diff[p.y_begin * (width + 1) + p.x_end  ] -= 1;
+	.loc 1 82 46 is_stmt 0 view .LVU286
 	movsxd	rcx, DWORD PTR -20[rax]	# _39, MEM[(int *)SR.307_841 + 28B]
 .LVL57:
 .LBB4585:
@@ -1137,13 +1137,13 @@
 	.loc 2 1253 2 is_stmt 0 discriminator 2 view .LVU289
 .LBE4586:
 .LBE4585:
-# src/opt17.cpp:79:             diff[p.y_begin * (width + 1) + p.x_end  ] -= 1;
-	.loc 1 79 53 view .LVU290
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:82:             diff[p.y_begin * (width + 1) + p.x_end  ] -= 1;
+	.loc 1 82 53 view .LVU290
 	add	rdx, rcx	# _40, _39
-# src/opt17.cpp:79:             diff[p.y_begin * (width + 1) + p.x_end  ] -= 1;
-	.loc 1 79 55 discriminator 1 view .LVU291
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:82:             diff[p.y_begin * (width + 1) + p.x_end  ] -= 1;
+	.loc 1 82 55 discriminator 1 view .LVU291
 	dec	DWORD PTR [rdi+rdx*4]	# *_830
-	.loc 1 80 13 is_stmt 1 view .LVU292
+	.loc 1 83 13 is_stmt 1 view .LVU292
 .LVL58:
 .LBB4587:
 .LBI4587:
@@ -1153,13 +1153,13 @@
 	.loc 2 1253 2 is_stmt 0 discriminator 2 view .LVU295
 .LBE4588:
 .LBE4587:
-# src/opt17.cpp:80:             diff[p.y_end   * (width + 1) + p.x_begin] -= 1;
-	.loc 1 80 53 view .LVU296
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:83:             diff[p.y_end   * (width + 1) + p.x_begin] -= 1;
+	.loc 1 83 53 view .LVU296
 	lea	rdx, [rsi+r8]	# _48,
-# src/opt17.cpp:80:             diff[p.y_end   * (width + 1) + p.x_begin] -= 1;
-	.loc 1 80 55 discriminator 1 view .LVU297
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:83:             diff[p.y_end   * (width + 1) + p.x_begin] -= 1;
+	.loc 1 83 55 discriminator 1 view .LVU297
 	dec	DWORD PTR [rdi+rdx*4]	# *_832
-	.loc 1 81 13 is_stmt 1 view .LVU298
+	.loc 1 84 13 is_stmt 1 view .LVU298
 .LVL59:
 .LBB4589:
 .LBI4589:
@@ -1169,29 +1169,29 @@
 	.loc 2 1253 2 is_stmt 0 discriminator 2 view .LVU301
 .LBE4590:
 .LBE4589:
-# src/opt17.cpp:81:             diff[p.y_end   * (width + 1) + p.x_end  ] += 1;
-	.loc 1 81 53 view .LVU302
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:84:             diff[p.y_end   * (width + 1) + p.x_end  ] += 1;
+	.loc 1 84 53 view .LVU302
 	lea	rdx, [rcx+r8]	# _56,
-# src/opt17.cpp:81:             diff[p.y_end   * (width + 1) + p.x_end  ] += 1;
-	.loc 1 81 55 discriminator 1 view .LVU303
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:84:             diff[p.y_end   * (width + 1) + p.x_end  ] += 1;
+	.loc 1 84 55 discriminator 1 view .LVU303
 	inc	DWORD PTR [rdi+rdx*4]	# *_834
-	.loc 1 77 9 is_stmt 1 discriminator 4 view .LVU304
+	.loc 1 80 9 is_stmt 1 discriminator 4 view .LVU304
 .LVL60:
 .LBB4591:
 .LBI4581:
 	.loc 3 1101 7 view .LVU305
 	.loc 3 1101 7 is_stmt 0 view .LVU306
 .LBE4591:
-	.loc 1 77 30 is_stmt 1 discriminator 5 view .LVU307
-# src/opt17.cpp:77:         for (const auto& p : params) {
-	.loc 1 77 30 is_stmt 0 discriminator 6 view .LVU308
+	.loc 1 80 30 is_stmt 1 discriminator 5 view .LVU307
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:80:         for (const auto& p : params) {
+	.loc 1 80 30 is_stmt 0 discriminator 6 view .LVU308
 	cmp	rax, QWORD PTR 208[rsp]	# SR.307, %sfp
 	jne	.L29	#,
 .LVL61:
-	.loc 1 77 30 discriminator 6 view .LVU309
+	.loc 1 80 30 discriminator 6 view .LVU309
 .LBE4598:
 .LBB4599:
-	.loc 1 83 27 is_stmt 1 discriminator 2 view .LVU310
+	.loc 1 86 27 is_stmt 1 discriminator 2 view .LVU310
 	mov	r9d, DWORD PTR 92[rsp]	#, %sfp
 	test	r9d, r9d	#
 	jle	.L35	#,
@@ -1202,67 +1202,67 @@
 .L27:
 .LBB4600:
 .LBB4601:
-	.loc 1 85 31 discriminator 2 view .LVU311
+	.loc 1 88 31 discriminator 2 view .LVU311
 	mov	rax, QWORD PTR 184[rsp]	# _1357, %sfp
 .LBE4601:
-# src/opt17.cpp:84:             int row = 0;
-	.loc 1 84 17 is_stmt 0 view .LVU312
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:87:             int row = 0;
+	.loc 1 87 17 is_stmt 0 view .LVU312
 	xor	ecx, ecx	# row
 	lea	edx, -1[rax]	# _3657,
 .LBE4600:
 .LBE4599:
 .LBB4610:
-# src/opt17.cpp:77:         for (const auto& p : params) {
-	.loc 1 77 30 view .LVU313
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:80:         for (const auto& p : params) {
+	.loc 1 80 30 view .LVU313
 	xor	eax, eax	# ivtmp.946
 	lea	r9, 1[rdx]	# _2092,
 .LVL63:
 .L31:
-	.loc 1 77 30 view .LVU314
+	.loc 1 80 30 view .LVU314
 .LBE4610:
 .LBB4611:
 .LBB4606:
 .LBB4602:
-	.loc 1 86 17 is_stmt 1 view .LVU315
-# src/opt17.cpp:87:                 counts[y * w + x] = row + (y > 0 ? counts[(y - 1) * w + x] : 0);
-	.loc 1 87 35 is_stmt 0 discriminator 5 view .LVU316
+	.loc 1 89 17 is_stmt 1 view .LVU315
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:90:                 counts[y * w + x] = row + (y > 0 ? counts[(y - 1) * w + x] : 0);
+	.loc 1 90 35 is_stmt 0 discriminator 5 view .LVU316
 	mov	rbx, QWORD PTR 80[rsp]	# _1380, %sfp
-# src/opt17.cpp:86:                 row += diff[y * (width + 1) + x];
-	.loc 1 86 21 discriminator 1 view .LVU317
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:89:                 row += diff[y * (width + 1) + x];
+	.loc 1 89 21 discriminator 1 view .LVU317
 	add	ecx, DWORD PTR [rdi+rax*4]	# row, MEM[(value_type &)_634 + ivtmp.946_3697 * 4]
 .LVL64:
-	.loc 1 87 17 is_stmt 1 view .LVU318
-# src/opt17.cpp:87:                 counts[y * w + x] = row + (y > 0 ? counts[(y - 1) * w + x] : 0);
-	.loc 1 87 35 is_stmt 0 discriminator 5 view .LVU319
+	.loc 1 90 17 is_stmt 1 view .LVU318
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:90:                 counts[y * w + x] = row + (y > 0 ? counts[(y - 1) * w + x] : 0);
+	.loc 1 90 35 is_stmt 0 discriminator 5 view .LVU319
 	mov	DWORD PTR [rbx+rax*4], ecx	# MEM[(value_type &)_1380 + ivtmp.946_3697 * 4], row
-	.loc 1 85 13 is_stmt 1 discriminator 1 view .LVU320
+	.loc 1 88 13 is_stmt 1 discriminator 1 view .LVU320
 .LVL65:
-	.loc 1 85 31 discriminator 2 view .LVU321
+	.loc 1 88 31 discriminator 2 view .LVU321
 	inc	rax	# ivtmp.946
 .LVL66:
-	.loc 1 85 31 is_stmt 0 discriminator 2 view .LVU322
+	.loc 1 88 31 is_stmt 0 discriminator 2 view .LVU322
 	cmp	r9, rax	# _2092, ivtmp.946
 	jne	.L31	#,
 .LBE4602:
 .LBE4606:
-	.loc 1 83 9 is_stmt 1 discriminator 1 view .LVU323
+	.loc 1 86 9 is_stmt 1 discriminator 1 view .LVU323
 .LVL67:
-	.loc 1 83 27 discriminator 2 view .LVU324
+	.loc 1 86 27 discriminator 2 view .LVU324
 	cmp	DWORD PTR 92[rsp], 1	# %sfp,
 	jle	.L32	#,
 	mov	eax, DWORD PTR 144[rsp]	# _54, %sfp
 .LBB4607:
 .LBB4603:
-# src/opt17.cpp:85:             for (int x = 0; x < w; ++x) {
-	.loc 1 85 31 is_stmt 0 discriminator 2 view .LVU325
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:88:             for (int x = 0; x < w; ++x) {
+	.loc 1 88 31 is_stmt 0 discriminator 2 view .LVU325
 	mov	r11, r13	# ivtmp.940, _24
 	xor	ecx, ecx	# ivtmp.942
 .LVL68:
-	.loc 1 85 31 discriminator 2 view .LVU326
+	.loc 1 88 31 discriminator 2 view .LVU326
 .LBE4603:
 .LBE4607:
-# src/opt17.cpp:83:         for (int y = 0; y < h; ++y) {
-	.loc 1 83 18 view .LVU327
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:86:         for (int y = 0; y < h; ++y) {
+	.loc 1 86 18 view .LVU327
 	mov	r8d, 1	# y,
 	lea	rsi, 0[0+rax*4]	# _53,
 	lea	r10, [rbx+rsi]	# ivtmp.944,
@@ -1270,60 +1270,60 @@
 .L34:
 .LBB4608:
 .LBB4604:
-	.loc 1 85 31 is_stmt 1 discriminator 2 view .LVU328
+	.loc 1 88 31 is_stmt 1 discriminator 2 view .LVU328
 	lea	rbx, [rdi+r11*4]	# _260,
 	movsxd	rax, ecx	# _256, ivtmp.942
 .LBE4604:
-# src/opt17.cpp:84:             int row = 0;
-	.loc 1 84 17 is_stmt 0 view .LVU329
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:87:             int row = 0;
+	.loc 1 87 17 is_stmt 0 view .LVU329
 	xor	edx, edx	# row
 	add	ecx, DWORD PTR 184[rsp]	# ivtmp.942, %sfp
 	mov	QWORD PTR 496[rsp], rbx	# %sfp, _260
 	mov	rbx, QWORD PTR 80[rsp]	# _1380, %sfp
 	lea	rbx, [rbx+rax*4]	# _250,
 .LBE4608:
-# src/opt17.cpp:83:         for (int y = 0; y < h; ++y) {
-	.loc 1 83 18 view .LVU330
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:86:         for (int y = 0; y < h; ++y) {
+	.loc 1 86 18 view .LVU330
 	xor	eax, eax	# ivtmp.929
 .LVL70:
 .L33:
 .LBB4609:
 .LBB4605:
-	.loc 1 86 17 is_stmt 1 view .LVU331
-# src/opt17.cpp:86:                 row += diff[y * (width + 1) + x];
-	.loc 1 86 21 is_stmt 0 discriminator 1 view .LVU332
+	.loc 1 89 17 is_stmt 1 view .LVU331
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:89:                 row += diff[y * (width + 1) + x];
+	.loc 1 89 21 is_stmt 0 discriminator 1 view .LVU332
 	mov	r12, QWORD PTR 496[rsp]	# _260, %sfp
 	add	edx, DWORD PTR [r12+rax*4]	# row, MEM[(value_type &)_260 + ivtmp.929_264 * 4]
 .LVL71:
-	.loc 1 87 17 is_stmt 1 view .LVU333
-# src/opt17.cpp:87:                 counts[y * w + x] = row + (y > 0 ? counts[(y - 1) * w + x] : 0);
-	.loc 1 87 41 is_stmt 0 discriminator 4 view .LVU334
+	.loc 1 90 17 is_stmt 1 view .LVU333
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:90:                 counts[y * w + x] = row + (y > 0 ? counts[(y - 1) * w + x] : 0);
+	.loc 1 90 41 is_stmt 0 discriminator 4 view .LVU334
 	mov	r12d, DWORD PTR [rbx+rax*4]	# _3716, MEM[(value_type &)_250 + ivtmp.929_264 * 4]
 	add	r12d, edx	# _3716, row
-# src/opt17.cpp:87:                 counts[y * w + x] = row + (y > 0 ? counts[(y - 1) * w + x] : 0);
-	.loc 1 87 35 discriminator 5 view .LVU335
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:90:                 counts[y * w + x] = row + (y > 0 ? counts[(y - 1) * w + x] : 0);
+	.loc 1 90 35 discriminator 5 view .LVU335
 	mov	DWORD PTR [r10+rax*4], r12d	# MEM[(value_type &)_246 + ivtmp.929_264 * 4], _3716
-	.loc 1 85 13 is_stmt 1 discriminator 1 view .LVU336
+	.loc 1 88 13 is_stmt 1 discriminator 1 view .LVU336
 .LVL72:
-	.loc 1 85 31 discriminator 2 view .LVU337
+	.loc 1 88 31 discriminator 2 view .LVU337
 	inc	rax	# ivtmp.929
 .LVL73:
-	.loc 1 85 31 is_stmt 0 discriminator 2 view .LVU338
+	.loc 1 88 31 is_stmt 0 discriminator 2 view .LVU338
 	cmp	rax, r9	# ivtmp.929, _2092
 	jne	.L33	#,
 .LBE4605:
 .LBE4609:
-	.loc 1 83 9 is_stmt 1 discriminator 1 view .LVU339
+	.loc 1 86 9 is_stmt 1 discriminator 1 view .LVU339
 	inc	r8d	# y
 .LVL74:
-	.loc 1 83 27 discriminator 2 view .LVU340
+	.loc 1 86 27 discriminator 2 view .LVU340
 	add	r11, r13	# ivtmp.940, _24
 	add	r10, rsi	# ivtmp.944, _53
 	cmp	DWORD PTR 92[rsp], r8d	# %sfp, y
 	jne	.L34	#,
 .LVL75:
 .L35:
-	.loc 1 83 27 is_stmt 0 discriminator 2 view .LVU341
+	.loc 1 86 27 is_stmt 0 discriminator 2 view .LVU341
 .LBE4611:
 .LBB4612:
 .LBI4612:
@@ -1388,9 +1388,9 @@
 .LBE4615:
 .LBE4612:
 .LBE4520:
-	.loc 1 92 5 is_stmt 1 view .LVU358
-	.loc 1 93 5 view .LVU359
-	.loc 1 95 5 view .LVU360
+	.loc 1 95 5 is_stmt 1 view .LVU358
+	.loc 1 96 5 view .LVU359
+	.loc 1 98 5 view .LVU360
 .LBB4633:
 .LBI4633:
 	.loc 5 168 7 view .LVU361
@@ -1603,22 +1603,22 @@
 .LBE4693:
 .LBE4635:
 .LBB4694:
-	.loc 1 97 25 is_stmt 1 discriminator 2 view .LVU404
+	.loc 1 100 25 is_stmt 1 discriminator 2 view .LVU404
 	mov	esi, DWORD PTR 92[rsp]	#, %sfp
 	test	esi, esi	#
 	jle	.L36	#,
 .LBB4695:
-	.loc 1 98 9 view .LVU405
+	.loc 1 101 9 view .LVU405
 .LVL81:
 .LBB4696:
 .LBI4696:
 	.loc 10 232 5 view .LVU406
 	.loc 10 232 5 is_stmt 0 view .LVU407
 .LBE4696:
-	.loc 1 99 9 is_stmt 1 view .LVU408
-	.loc 1 101 9 view .LVU409
+	.loc 1 102 9 is_stmt 1 view .LVU408
+	.loc 1 104 9 view .LVU409
 .LBB4700:
-	.loc 1 101 29 discriminator 2 view .LVU410
+	.loc 1 104 29 discriminator 2 view .LVU410
 	mov	ecx, DWORD PTR 144[rsp]	#, %sfp
 	test	ecx, ecx	#
 	jle	.L116	#,
@@ -1627,8 +1627,8 @@
 .LBB4703:
 .LBB4704:
 .LBB4705:
-# src/opt17.cpp:129:                     rb[1] = rb[0] + width * 3;
-	.loc 1 129 43 is_stmt 0 view .LVU411
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:132:                     rb[1] = rb[0] + width * 3;
+	.loc 1 132 43 is_stmt 0 view .LVU411
 	mov	rbx, QWORD PTR 184[rsp]	# _1357, %sfp
 	mov	DWORD PTR 224[rsp], 0	# %sfp,
 .LBE4705:
@@ -1649,8 +1649,8 @@
 .LBE6181:
 .LBE6180:
 .LBE6179:
-# src/opt17.cpp:436:                     float inv_c = 1.0f / (float)c;
-	.loc 1 436 27 view .LVU413
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:439:                     float inv_c = 1.0f / (float)c;
+	.loc 1 439 27 view .LVU413
 	vmovss	xmm30, DWORD PTR .LC1[rip]	# tmp4420,
 .LBB6195:
 .LBB6186:
@@ -1669,8 +1669,8 @@
 .LBB6169:
 .LBB5391:
 .LBB5383:
-# src/opt17.cpp:129:                     rb[1] = rb[0] + width * 3;
-	.loc 1 129 43 view .LVU415
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:132:                     rb[1] = rb[0] + width * 3;
+	.loc 1 132 43 view .LVU415
 	mov	QWORD PTR 120[rsp], 0	# %sfp,
 	lea	rdx, [rbx+rbx*2]	# _93,
 	lea	rax, 0[0+rbx*8]	# _286,
@@ -1701,8 +1701,8 @@
 .LBB6170:
 .LBB5392:
 .LBB5384:
-# src/opt17.cpp:129:                     rb[1] = rb[0] + width * 3;
-	.loc 1 129 43 view .LVU417
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:132:                     rb[1] = rb[0] + width * 3;
+	.loc 1 132 43 view .LVU417
 	mov	QWORD PTR 136[rsp], rdx	# %sfp, _93
 	add	rdx, rdx	# tmp2523
 	mov	QWORD PTR 400[rsp], rdi	# %sfp, tmp2519
@@ -1713,7 +1713,7 @@
 	mov	edx, 8	# _896,
 .LVL82:
 .L99:
-	.loc 1 129 43 view .LVU418
+	.loc 1 132 43 view .LVU418
 .LBE5384:
 .LBE5392:
 .LBE6170:
@@ -1727,8 +1727,8 @@
 	mov	ebx, DWORD PTR 92[rsp]	# _2, %sfp
 .LBE4697:
 .LBE6270:
-# src/opt17.cpp:99:         const int tile_h_actual = tile_y_end - ty;
-	.loc 1 99 19 view .LVU420
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:102:         const int tile_h_actual = tile_y_end - ty;
+	.loc 1 102 19 view .LVU420
 	mov	QWORD PTR 176[rsp], 0	# %sfp,
 	mov	QWORD PTR 16[rsp], rax	# %sfp, _286
 .LBB6271:
@@ -1738,8 +1738,8 @@
 	cmp	edx, ebx	# _896, _2
 .LBE4698:
 .LBE6271:
-# src/opt17.cpp:99:         const int tile_h_actual = tile_y_end - ty;
-	.loc 1 99 19 view .LVU422
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:102:         const int tile_h_actual = tile_y_end - ty;
+	.loc 1 102 19 view .LVU422
 	mov	QWORD PTR 40[rsp], r14	# %sfp, ivtmp.926
 .LBB6272:
 .LBB4699:
@@ -1750,14 +1750,14 @@
 	mov	DWORD PTR 196[rsp], edx	# %sfp, _665
 .LBE4699:
 .LBE6272:
-# src/opt17.cpp:99:         const int tile_h_actual = tile_y_end - ty;
-	.loc 1 99 19 view .LVU424
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:102:         const int tile_h_actual = tile_y_end - ty;
+	.loc 1 102 19 view .LVU424
 	sub	edx, DWORD PTR 224[rsp]	# tile_h_actual, %sfp
 	mov	DWORD PTR 36[rsp], ebx	# %sfp, tmp4993
 	mov	DWORD PTR 32[rsp], edx	# %sfp, tile_h_actual
 .LVL83:
 .L97:
-	.loc 1 99 19 view .LVU425
+	.loc 1 102 19 view .LVU425
 	mov	rbx, QWORD PTR 176[rsp]	# ivtmp.919, %sfp
 .LBB6273:
 .LBB6268:
@@ -1768,12 +1768,12 @@
 	mov	edx, DWORD PTR 144[rsp]	# _1, %sfp
 .LBE6239:
 .LBE6238:
-# src/opt17.cpp:102:             const int tile_x_end    = std::min(tx + TILE_W, w);
-	.loc 1 102 51 view .LVU427
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:105:             const int tile_x_end    = std::min(tx + TILE_W, w);
+	.loc 1 105 51 view .LVU427
 	lea	eax, 2032[rbx]	# _343,
 	mov	DWORD PTR 204[rsp], ebx	# %sfp, ivtmp.919
 .LVL84:
-	.loc 1 102 13 is_stmt 1 view .LVU428
+	.loc 1 105 13 is_stmt 1 view .LVU428
 .LBB6242:
 .LBI6238:
 	.loc 10 232 5 view .LVU429
@@ -1784,8 +1784,8 @@
 	cmovg	eax, edx	# _343,, _343, _1
 .LBE6240:
 .LBE6242:
-# src/opt17.cpp:103:             const int tile_w_actual = tile_x_end - tx;
-	.loc 1 103 23 view .LVU431
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:106:             const int tile_w_actual = tile_x_end - tx;
+	.loc 1 106 23 view .LVU431
 	mov	r14d, eax	# tile_w_actual, _651
 .LBB6243:
 .LBB6241:
@@ -1796,23 +1796,23 @@
 	.loc 10 237 7 view .LVU433
 .LBE6241:
 .LBE6243:
-	.loc 1 103 13 is_stmt 1 view .LVU434
-# src/opt17.cpp:107:                       tile_vals.begin() + tile_h_actual * tile_w_actual * 3,
-	.loc 1 107 57 is_stmt 0 view .LVU435
+	.loc 1 106 13 is_stmt 1 view .LVU434
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:110:                       tile_vals.begin() + tile_h_actual * tile_w_actual * 3,
+	.loc 1 110 57 is_stmt 0 view .LVU435
 	mov	eax, DWORD PTR 32[rsp]	# _74, %sfp
-# src/opt17.cpp:103:             const int tile_w_actual = tile_x_end - tx;
-	.loc 1 103 23 view .LVU436
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:106:             const int tile_w_actual = tile_x_end - tx;
+	.loc 1 106 23 view .LVU436
 	sub	r14d, ebx	# tile_w_actual, ivtmp.919
 .LVL86:
-	.loc 1 104 13 is_stmt 1 view .LVU437
-# src/opt17.cpp:107:                       tile_vals.begin() + tile_h_actual * tile_w_actual * 3,
-	.loc 1 107 57 is_stmt 0 view .LVU438
+	.loc 1 107 13 is_stmt 1 view .LVU437
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:110:                       tile_vals.begin() + tile_h_actual * tile_w_actual * 3,
+	.loc 1 110 57 is_stmt 0 view .LVU438
 	imul	eax, r14d	# _74, tile_w_actual
-# src/opt17.cpp:104:             const size_t tile_row_stride = (size_t)tile_w_actual * 3;
-	.loc 1 104 44 view .LVU439
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:107:             const size_t tile_row_stride = (size_t)tile_w_actual * 3;
+	.loc 1 107 44 view .LVU439
 	movsxd	rbx, r14d	# _73, tile_w_actual
 .LVL87:
-	.loc 1 106 13 is_stmt 1 view .LVU440
+	.loc 1 109 13 is_stmt 1 view .LVU440
 .LBB6244:
 .LBI6244:
 	.loc 2 988 7 view .LVU441
@@ -1861,8 +1861,8 @@
 .LBE6254:
 .LBE6253:
 .LBE6252:
-# src/opt17.cpp:107:                       tile_vals.begin() + tile_h_actual * tile_w_actual * 3,
-	.loc 1 107 73 is_stmt 0 view .LVU455
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:110:                       tile_vals.begin() + tile_h_actual * tile_w_actual * 3,
+	.loc 1 110 73 is_stmt 0 view .LVU455
 	lea	edx, [rax+rax*2]	# _75,
 .LBB6261:
 .LBB6249:
@@ -1901,37 +1901,37 @@
 .LBE6260:
 .LBE6262:
 .LBB6263:
-	.loc 1 110 39 is_stmt 1 discriminator 5 view .LVU460
-# src/opt17.cpp:110:             for (const SubParams& p : params) {
-	.loc 1 110 39 is_stmt 0 discriminator 6 view .LVU461
+	.loc 1 113 39 is_stmt 1 discriminator 5 view .LVU460
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:113:             for (const SubParams& p : params) {
+	.loc 1 113 39 is_stmt 0 discriminator 6 view .LVU461
 	mov	rdx, QWORD PTR 128[rsp]	# params$_M_start, %sfp
 	cmp	rdx, QWORD PTR 208[rsp]	# params$_M_start, %sfp
 	je	.L39	#,
 .LBE6263:
-# src/opt17.cpp:104:             const size_t tile_row_stride = (size_t)tile_w_actual * 3;
-	.loc 1 104 26 view .LVU462
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:107:             const size_t tile_row_stride = (size_t)tile_w_actual * 3;
+	.loc 1 107 26 view .LVU462
 	lea	rax, [rbx+rbx*2]	# tile_row_stride_650,
 	mov	QWORD PTR 48[rsp], rbx	# %sfp, _73
 .LBB6264:
 .LBB6171:
 .LBB5393:
 .LBB5385:
-# src/opt17.cpp:135:                     float* vp1 = vp0 + tile_row_stride;
-	.loc 1 135 38 view .LVU463
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:138:                     float* vp1 = vp0 + tile_row_stride;
+	.loc 1 138 38 view .LVU463
 	lea	rdi, 0[0+rax*4]	# tmp2543,
 .LBE5385:
 .LBE5393:
 .LBE6171:
 .LBE6264:
-# src/opt17.cpp:104:             const size_t tile_row_stride = (size_t)tile_w_actual * 3;
-	.loc 1 104 26 view .LVU464
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:107:             const size_t tile_row_stride = (size_t)tile_w_actual * 3;
+	.loc 1 107 26 view .LVU464
 	mov	QWORD PTR 160[rsp], rax	# %sfp, tile_row_stride_650
 .LBB6265:
 .LBB6172:
 .LBB5394:
 .LBB5386:
-# src/opt17.cpp:135:                     float* vp1 = vp0 + tile_row_stride;
-	.loc 1 135 38 view .LVU465
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:138:                     float* vp1 = vp0 + tile_row_stride;
+	.loc 1 138 38 view .LVU465
 	mov	QWORD PTR 296[rsp], rdi	# %sfp, tmp2543
 	mov	rdi, rax	# tmp2547, tile_row_stride_650
 	add	rax, rax	# tmp2551
@@ -1946,10 +1946,10 @@
 	.p2align 4,,10
 	.p2align 3
 .L83:
-	.loc 1 135 38 view .LVU466
+	.loc 1 138 38 view .LVU466
 .LBE5386:
 .LBE5394:
-	.loc 1 111 17 is_stmt 1 view .LVU467
+	.loc 1 114 17 is_stmt 1 view .LVU467
 .LBB5395:
 .LBI5395:
 	.loc 10 256 5 view .LVU468
@@ -2017,7 +2017,7 @@
 	.loc 10 261 7 view .LVU476
 .LBE5399:
 .LBE5419:
-	.loc 1 112 17 is_stmt 1 view .LVU477
+	.loc 1 115 17 is_stmt 1 view .LVU477
 .LBB5420:
 .LBI5411:
 	.loc 10 232 5 view .LVU478
@@ -2058,7 +2058,7 @@
 	.loc 10 237 7 view .LVU484
 .LBE5415:
 .LBE5424:
-	.loc 1 113 17 is_stmt 1 view .LVU485
+	.loc 1 116 17 is_stmt 1 view .LVU485
 .LBB5425:
 .LBI5400:
 	.loc 10 256 5 view .LVU486
@@ -2080,40 +2080,40 @@
 	.loc 10 261 7 view .LVU489
 .LBE5405:
 .LBE5427:
-	.loc 1 114 17 is_stmt 1 view .LVU490
+	.loc 1 117 17 is_stmt 1 view .LVU490
 .LBB5428:
 .LBI5406:
 	.loc 10 232 5 view .LVU491
 	.loc 10 232 5 is_stmt 0 view .LVU492
 .LBE5428:
-	.loc 1 115 17 is_stmt 1 view .LVU493
+	.loc 1 118 17 is_stmt 1 view .LVU493
 	cmp	eax, ebx	# _164, _660
 	jle	.L40	#,
-	.loc 1 115 17 is_stmt 0 view .LVU494
+	.loc 1 118 17 is_stmt 0 view .LVU494
 	cmp	r13d, r8d	# _1310, y
 	jle	.L40	#,
-	.loc 1 117 17 is_stmt 1 view .LVU495
-# src/opt17.cpp:117:                 const __m256 Avx = _mm256_set1_ps(p.A);
-	.loc 1 117 53 is_stmt 0 view .LVU496
+	.loc 1 120 17 is_stmt 1 view .LVU495
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:120:                 const __m256 Avx = _mm256_set1_ps(p.A);
+	.loc 1 120 53 is_stmt 0 view .LVU496
 	vmovss	xmm4, DWORD PTR 8[rdx]	# _79, MEM[(float *)_424 + 8B]
-# src/opt17.cpp:118:                 const __m256 Bvx = _mm256_set1_ps(p.B);
-	.loc 1 118 53 view .LVU497
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:121:                 const __m256 Bvx = _mm256_set1_ps(p.B);
+	.loc 1 121 53 view .LVU497
 	vmovss	xmm5, DWORD PTR 12[rdx]	# _80, MEM[(float *)_424 + 12B]
-# src/opt17.cpp:122:                 const int x_floats = (x_end - x_begin) * 3;
-	.loc 1 122 45 view .LVU498
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:125:                 const int x_floats = (x_end - x_begin) * 3;
+	.loc 1 125 45 view .LVU498
 	sub	eax, ebx	# _83, _660
-# src/opt17.cpp:119:                 const __m256 Cvx = _mm256_set1_ps(p.C);
-	.loc 1 119 53 view .LVU499
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:122:                 const __m256 Cvx = _mm256_set1_ps(p.C);
+	.loc 1 122 53 view .LVU499
 	vmovss	xmm6, DWORD PTR 16[rdx]	# _81, MEM[(float *)_424 + 16B]
-# src/opt17.cpp:120:                 const __m256 Dvx = _mm256_set1_ps(p.D);
-	.loc 1 120 53 view .LVU500
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:123:                 const __m256 Dvx = _mm256_set1_ps(p.D);
+	.loc 1 123 53 view .LVU500
 	vmovss	xmm7, DWORD PTR 20[rdx]	# _82, MEM[(float *)_424 + 20B]
-# src/opt17.cpp:122:                 const int x_floats = (x_end - x_begin) * 3;
-	.loc 1 122 27 view .LVU501
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:125:                 const int x_floats = (x_end - x_begin) * 3;
+	.loc 1 125 27 view .LVU501
 	lea	eax, [rax+rax*2]	# x_floats_676,
 	mov	DWORD PTR 496[rsp], eax	# %sfp, x_floats_676
-# src/opt17.cpp:117:                 const __m256 Avx = _mm256_set1_ps(p.A);
-	.loc 1 117 53 view .LVU502
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:120:                 const __m256 Avx = _mm256_set1_ps(p.A);
+	.loc 1 120 53 view .LVU502
 	vbroadcastss	ymm9, xmm4	# tmp4558, _79
 .LVL95:
 .LBB5429:
@@ -2124,21 +2124,21 @@
 	.loc 13 1273 3 view .LVU504
 .LBE5430:
 .LBE5429:
-# src/opt17.cpp:118:                 const __m256 Bvx = _mm256_set1_ps(p.B);
-	.loc 1 118 53 is_stmt 0 view .LVU505
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:121:                 const __m256 Bvx = _mm256_set1_ps(p.B);
+	.loc 1 121 53 is_stmt 0 view .LVU505
 	vbroadcastss	ymm17, xmm5	# tmp4559, _80
-# src/opt17.cpp:122:                 const int x_floats = (x_end - x_begin) * 3;
-	.loc 1 122 27 view .LVU506
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:125:                 const int x_floats = (x_end - x_begin) * 3;
+	.loc 1 125 27 view .LVU506
 	mov	DWORD PTR 192[rsp], eax	# %sfp, x_floats_676
-# src/opt17.cpp:119:                 const __m256 Cvx = _mm256_set1_ps(p.C);
-	.loc 1 119 53 view .LVU507
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:122:                 const __m256 Cvx = _mm256_set1_ps(p.C);
+	.loc 1 122 53 view .LVU507
 	vbroadcastss	ymm25, xmm6	# tmp4560, _81
-# src/opt17.cpp:120:                 const __m256 Dvx = _mm256_set1_ps(p.D);
-	.loc 1 120 53 view .LVU508
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:123:                 const __m256 Dvx = _mm256_set1_ps(p.D);
+	.loc 1 123 53 view .LVU508
 	vbroadcastss	ymm11, xmm7	# tmp4561, _82
 .LBB5432:
-# src/opt17.cpp:126:                 for (; y + 3 < y_end; y += 4) {
-	.loc 1 126 26 discriminator 2 view .LVU509
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:129:                 for (; y + 3 < y_end; y += 4) {
+	.loc 1 129 26 discriminator 2 view .LVU509
 	lea	eax, 3[r8]	# _1364,
 .LBE5432:
 .LBB5433:
@@ -2150,7 +2150,7 @@
 	.loc 13 1274 25 view .LVU511
 .LBE5431:
 .LBE5433:
-	.loc 1 118 17 is_stmt 1 view .LVU512
+	.loc 1 121 17 is_stmt 1 view .LVU512
 .LBB5434:
 .LBI5434:
 	.loc 13 1271 1 view .LVU513
@@ -2163,7 +2163,7 @@
 	.loc 13 1274 25 view .LVU516
 .LBE5435:
 .LBE5434:
-	.loc 1 119 17 is_stmt 1 view .LVU517
+	.loc 1 122 17 is_stmt 1 view .LVU517
 .LBB5436:
 .LBI5436:
 	.loc 13 1271 1 view .LVU518
@@ -2176,7 +2176,7 @@
 	.loc 13 1274 25 view .LVU521
 .LBE5437:
 .LBE5436:
-	.loc 1 120 17 is_stmt 1 view .LVU522
+	.loc 1 123 17 is_stmt 1 view .LVU522
 .LBB5438:
 .LBI5438:
 	.loc 13 1271 1 view .LVU523
@@ -2189,24 +2189,24 @@
 	.loc 13 1274 25 view .LVU526
 .LBE5439:
 .LBE5438:
-	.loc 1 122 17 is_stmt 1 view .LVU527
-	.loc 1 124 17 view .LVU528
-	.loc 1 126 17 view .LVU529
+	.loc 1 125 17 is_stmt 1 view .LVU527
+	.loc 1 127 17 view .LVU528
+	.loc 1 129 17 view .LVU529
 .LBB5440:
-	.loc 1 126 30 discriminator 2 view .LVU530
+	.loc 1 129 30 discriminator 2 view .LVU530
 	cmp	r13d, eax	# _1310, _1364
 	jle	.L41	#,
 .LBB5387:
-# src/opt17.cpp:128:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 128 76 is_stmt 0 view .LVU531
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:131:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 131 76 is_stmt 0 view .LVU531
 	mov	ecx, DWORD PTR [rdx]	# _89, MEM[(int *)_424]
 	mov	eax, r8d	# _2963, y
 	mov	r10, QWORD PTR 184[rsp]	# _1357, %sfp
 .LBB4706:
 .LBB4707:
 .LBB4708:
-# src/opt17.cpp:234:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
-	.loc 1 234 60 view .LVU532
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:237:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
+	.loc 1 237 60 view .LVU532
 	mov	DWORD PTR 432[rsp], 0	# %sfp,
 .LBE4708:
 .LBE4707:
@@ -2217,8 +2217,8 @@
 .LBB5442:
 .LBB5443:
 .LBB5444:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 39 view .LVU533
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 39 view .LVU533
 	mov	r11, QWORD PTR 40[rdx]	# _374, MEM[(const unsigned char * *)_424 + 40B]
 	mov	QWORD PTR 152[rsp], rdx	# %sfp, ivtmp.914
 .LBE5444:
@@ -2227,17 +2227,17 @@
 .LBE5441:
 .LBB5882:
 .LBB5388:
-# src/opt17.cpp:128:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 128 76 view .LVU534
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:131:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 131 76 view .LVU534
 	add	ecx, ebx	# _89, _660
-# src/opt17.cpp:134:                     float* vp0 = tile_vals.data() + (size_t)(y     - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 134 111 discriminator 1 view .LVU535
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:137:                     float* vp0 = tile_vals.data() + (size_t)(y     - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 137 111 discriminator 1 view .LVU535
 	sub	ebx, edi	# _101, tx
-# src/opt17.cpp:134:                     float* vp0 = tile_vals.data() + (size_t)(y     - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 134 94 discriminator 1 view .LVU536
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:137:                     float* vp0 = tile_vals.data() + (size_t)(y     - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 137 94 discriminator 1 view .LVU536
 	movsxd	rsi, ebx	# _102, _101
-# src/opt17.cpp:128:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 128 59 view .LVU537
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:131:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 131 59 view .LVU537
 	movsxd	rcx, ecx	# _90, _89
 .LBE5388:
 .LBE5882:
@@ -2245,8 +2245,8 @@
 .LBB5875:
 .LBB5466:
 .LBB5445:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 39 view .LVU538
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 39 view .LVU538
 	mov	QWORD PTR 464[rsp], r11	# %sfp, _374
 .LBE5445:
 .LBE5466:
@@ -2254,8 +2254,8 @@
 .LBE5883:
 .LBB5884:
 .LBB5389:
-# src/opt17.cpp:134:                     float* vp0 = tile_vals.data() + (size_t)(y     - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 134 92 discriminator 1 view .LVU539
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:137:                     float* vp0 = tile_vals.data() + (size_t)(y     - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 137 92 discriminator 1 view .LVU539
 	lea	rdi, [rsi+rsi*2]	# _103,
 	mov	rsi, rax	# _2960, _2963
 	sub	rsi, QWORD PTR 120[rsp]	# _2960, %sfp
@@ -2308,28 +2308,28 @@
 	mov	QWORD PTR 320[rsp], r8	# %sfp, _615
 	mov	r8, r10	# ivtmp.906, ivtmp.906
 .LBB4928:
-# src/opt17.cpp:228:                     if (xf + 8 <= x_floats) {
-	.loc 1 228 32 view .LVU540
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:231:                     if (xf + 8 <= x_floats) {
+	.loc 1 231 32 view .LVU540
 	lea	ecx, 23[rdi]	# _168,
 	sal	rax, 4	# _3025,
 	mov	DWORD PTR 264[rsp], edi	# %sfp, _275
 .LBB4925:
-# src/opt17.cpp:229:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
-	.loc 1 229 64 view .LVU541
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:232:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
+	.loc 1 232 64 view .LVU541
 	add	edi, 16	# _3288,
 .LBE4925:
-# src/opt17.cpp:228:                     if (xf + 8 <= x_floats) {
-	.loc 1 228 32 view .LVU542
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:231:                     if (xf + 8 <= x_floats) {
+	.loc 1 231 32 view .LVU542
 	mov	DWORD PTR 268[rsp], ecx	# %sfp, _168
 	mov	r10, r11	# ivtmp.903, ivtmp.903
 	mov	QWORD PTR 256[rsp], rax	# %sfp, _3025
 .LBB4926:
-# src/opt17.cpp:229:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
-	.loc 1 229 64 view .LVU543
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:232:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
+	.loc 1 232 64 view .LVU543
 	mov	QWORD PTR 240[rsp], rdi	# %sfp, _3288
 .LBB4723:
-# src/opt17.cpp:234:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
-	.loc 1 234 60 view .LVU544
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:237:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
+	.loc 1 237 60 view .LVU544
 	sal	rdi, 2	# _3294,
 	mov	QWORD PTR 232[rsp], rdi	# %sfp, _3294
 	mov	rdi, r15	# ivtmp.907, ivtmp.907
@@ -2337,72 +2337,72 @@
 	.p2align 4,,10
 	.p2align 3
 .L50:
-	.loc 1 234 60 view .LVU545
+	.loc 1 237 60 view .LVU545
 .LBE4723:
 .LBE4926:
 .LBE4928:
-	.loc 1 127 21 is_stmt 1 view .LVU546
-	.loc 1 128 21 view .LVU547
-# src/opt17.cpp:128:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 128 85 is_stmt 0 view .LVU548
+	.loc 1 130 21 is_stmt 1 view .LVU546
+	.loc 1 131 21 view .LVU547
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:131:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 131 85 is_stmt 0 view .LVU548
 	mov	rax, QWORD PTR 312[rsp]	# _629, %sfp
 	lea	rdx, [rax+r14]	# _3345,
-# src/opt17.cpp:130:                     rb[2] = rb[1] + width * 3;
-	.loc 1 130 35 view .LVU549
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:133:                     rb[2] = rb[1] + width * 3;
+	.loc 1 133 35 view .LVU549
 	add	rax, rdi	# _3349, ivtmp.907
 	mov	QWORD PTR 472[rsp], rax	# %sfp, _3349
-# src/opt17.cpp:131:                     rb[3] = rb[2] + width * 3;
-	.loc 1 131 35 view .LVU550
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:134:                     rb[3] = rb[2] + width * 3;
+	.loc 1 134 35 view .LVU550
 	mov	rax, QWORD PTR 320[rsp]	# _615, %sfp
-# src/opt17.cpp:128:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 128 85 view .LVU551
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:131:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 131 85 view .LVU551
 	mov	QWORD PTR 488[rsp], rdx	# %sfp, _3345
 .LVL101:
-	.loc 1 129 21 is_stmt 1 view .LVU552
-# src/opt17.cpp:129:                     rb[1] = rb[0] + width * 3;
-	.loc 1 129 35 is_stmt 0 view .LVU553
+	.loc 1 132 21 is_stmt 1 view .LVU552
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:132:                     rb[1] = rb[0] + width * 3;
+	.loc 1 132 35 is_stmt 0 view .LVU553
 	mov	rdx, r9	# _3347, ivtmp.904
 .LVL102:
-# src/opt17.cpp:131:                     rb[3] = rb[2] + width * 3;
-	.loc 1 131 35 view .LVU554
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:134:                     rb[3] = rb[2] + width * 3;
+	.loc 1 134 35 view .LVU554
 	add	rax, r14	# _3351, ivtmp.905
-# src/opt17.cpp:129:                     rb[1] = rb[0] + width * 3;
-	.loc 1 129 35 view .LVU555
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:132:                     rb[1] = rb[0] + width * 3;
+	.loc 1 132 35 view .LVU555
 	sub	rdx, QWORD PTR 464[rsp]	# _3347, %sfp
-# src/opt17.cpp:131:                     rb[3] = rb[2] + width * 3;
-	.loc 1 131 35 view .LVU556
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:134:                     rb[3] = rb[2] + width * 3;
+	.loc 1 134 35 view .LVU556
 	mov	QWORD PTR 448[rsp], rax	# %sfp, _3351
-# src/opt17.cpp:132:                     rb[4] = rb[3] + width * 3;
-	.loc 1 132 35 view .LVU557
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:135:                     rb[4] = rb[3] + width * 3;
+	.loc 1 135 35 view .LVU557
 	mov	rax, QWORD PTR 336[rsp]	# _609, %sfp
-# src/opt17.cpp:129:                     rb[1] = rb[0] + width * 3;
-	.loc 1 129 35 view .LVU558
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:132:                     rb[1] = rb[0] + width * 3;
+	.loc 1 132 35 view .LVU558
 	mov	QWORD PTR 480[rsp], rdx	# %sfp, _3347
 .LVL103:
-	.loc 1 130 21 is_stmt 1 view .LVU559
-	.loc 1 131 21 view .LVU560
-	.loc 1 132 21 view .LVU561
-# src/opt17.cpp:132:                     rb[4] = rb[3] + width * 3;
-	.loc 1 132 35 is_stmt 0 view .LVU562
+	.loc 1 133 21 is_stmt 1 view .LVU559
+	.loc 1 134 21 view .LVU560
+	.loc 1 135 21 view .LVU561
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:135:                     rb[4] = rb[3] + width * 3;
+	.loc 1 135 35 is_stmt 0 view .LVU562
 	lea	r15, [rax+r14]	# _3353,
-	.loc 1 134 21 is_stmt 1 view .LVU563
+	.loc 1 137 21 is_stmt 1 view .LVU563
 .LVL104:
-	.loc 1 135 21 view .LVU564
-# src/opt17.cpp:135:                     float* vp1 = vp0 + tile_row_stride;
-	.loc 1 135 28 is_stmt 0 view .LVU565
+	.loc 1 138 21 view .LVU564
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:138:                     float* vp1 = vp0 + tile_row_stride;
+	.loc 1 138 28 is_stmt 0 view .LVU565
 	mov	rax, QWORD PTR 296[rsp]	# tmp2543, %sfp
 	lea	rdx, [rax+rbx]	# vp1,
 .LVL105:
-	.loc 1 136 21 is_stmt 1 view .LVU566
-	.loc 1 137 21 view .LVU567
-# src/opt17.cpp:137:                     float* vp3 = vp2 + tile_row_stride;
-	.loc 1 137 28 is_stmt 0 view .LVU568
+	.loc 1 139 21 is_stmt 1 view .LVU566
+	.loc 1 140 21 view .LVU567
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:140:                     float* vp3 = vp2 + tile_row_stride;
+	.loc 1 140 28 is_stmt 0 view .LVU568
 	add	rax, r12	# vp3, ivtmp.896
 .LVL106:
-	.loc 1 139 21 is_stmt 1 view .LVU569
-	.loc 1 141 21 view .LVU570
+	.loc 1 142 21 is_stmt 1 view .LVU569
+	.loc 1 144 21 view .LVU570
 .LBB4929:
-	.loc 1 141 36 discriminator 2 view .LVU571
+	.loc 1 144 36 discriminator 2 view .LVU571
 	cmp	DWORD PTR 496[rsp], 15	# %sfp,
 	jle	.L42	#,
 	mov	rsi, QWORD PTR 256[rsp]	# _3024, %sfp
@@ -2412,11 +2412,11 @@
 	.p2align 3
 .L43:
 .LBB4930:
-	.loc 1 142 25 view .LVU572
+	.loc 1 145 25 view .LVU572
 .LBB4931:
 .LBI4931:
-	.loc 1 35 22 view .LVU573
-	.loc 1 36 5 view .LVU574
+	.loc 1 38 22 view .LVU573
+	.loc 1 39 5 view .LVU574
 .LBB4932:
 .LBI4932:
 	.file 14 "/usr/lib/gcc/x86_64-linux-gnu/16/include/emmintrin.h"
@@ -2495,11 +2495,11 @@
 .LBE4942:
 .LBE4943:
 .LBE4985:
-	.loc 1 143 25 is_stmt 1 view .LVU591
+	.loc 1 146 25 is_stmt 1 view .LVU591
 .LBB4986:
 .LBI4944:
-	.loc 1 35 22 view .LVU592
-	.loc 1 36 5 view .LVU593
+	.loc 1 38 22 view .LVU592
+	.loc 1 39 5 view .LVU593
 .LBB4948:
 .LBI4948:
 	.loc 14 711 1 view .LVU594
@@ -2543,11 +2543,11 @@
 .LBE4956:
 .LBE4955:
 .LBE4986:
-	.loc 1 144 25 is_stmt 1 view .LVU608
+	.loc 1 147 25 is_stmt 1 view .LVU608
 .LBB4987:
 .LBI4957:
-	.loc 1 35 22 view .LVU609
-	.loc 1 36 5 view .LVU610
+	.loc 1 38 22 view .LVU609
+	.loc 1 39 5 view .LVU610
 .LBB4961:
 .LBI4961:
 	.loc 14 711 1 view .LVU611
@@ -2616,11 +2616,11 @@
 .LBE4970:
 .LBE4971:
 .LBE5021:
-	.loc 1 145 25 is_stmt 1 view .LVU628
+	.loc 1 148 25 is_stmt 1 view .LVU628
 .LBB5022:
 .LBI4972:
-	.loc 1 35 22 view .LVU629
-	.loc 1 36 5 view .LVU630
+	.loc 1 38 22 view .LVU629
+	.loc 1 39 5 view .LVU630
 .LBB4976:
 .LBI4976:
 	.loc 14 711 1 view .LVU631
@@ -2664,11 +2664,11 @@
 .LBE4984:
 .LBE4983:
 .LBE5022:
-	.loc 1 147 25 is_stmt 1 view .LVU645
+	.loc 1 150 25 is_stmt 1 view .LVU645
 .LBB5023:
 .LBI5023:
-	.loc 1 35 22 view .LVU646
-	.loc 1 36 5 view .LVU647
+	.loc 1 38 22 view .LVU646
+	.loc 1 39 5 view .LVU647
 .LBB5024:
 .LBI5024:
 	.loc 14 711 1 view .LVU648
@@ -2745,11 +2745,11 @@
 .LBE5034:
 .LBE5035:
 .LBE5075:
-	.loc 1 148 25 is_stmt 1 view .LVU664
+	.loc 1 151 25 is_stmt 1 view .LVU664
 .LBB5076:
 .LBI5036:
-	.loc 1 35 22 view .LVU665
-	.loc 1 36 5 view .LVU666
+	.loc 1 38 22 view .LVU665
+	.loc 1 39 5 view .LVU666
 .LBB5040:
 .LBI5040:
 	.loc 14 711 1 view .LVU667
@@ -2793,11 +2793,11 @@
 .LBE5048:
 .LBE5047:
 .LBE5076:
-	.loc 1 149 25 is_stmt 1 view .LVU681
+	.loc 1 152 25 is_stmt 1 view .LVU681
 .LBB5077:
 .LBI5049:
-	.loc 1 35 22 view .LVU682
-	.loc 1 36 5 view .LVU683
+	.loc 1 38 22 view .LVU682
+	.loc 1 39 5 view .LVU683
 .LBB5053:
 .LBI5053:
 	.loc 14 711 1 view .LVU684
@@ -2841,11 +2841,11 @@
 .LBE5061:
 .LBE5060:
 .LBE5077:
-	.loc 1 150 25 is_stmt 1 view .LVU698
+	.loc 1 153 25 is_stmt 1 view .LVU698
 .LBB5078:
 .LBI5062:
-	.loc 1 35 22 view .LVU699
-	.loc 1 36 5 view .LVU700
+	.loc 1 38 22 view .LVU699
+	.loc 1 39 5 view .LVU700
 .LBB5066:
 .LBI5066:
 	.loc 14 711 1 view .LVU701
@@ -2889,9 +2889,9 @@
 .LBE5074:
 .LBE5073:
 .LBE5078:
-	.loc 1 152 25 is_stmt 1 view .LVU715
+	.loc 1 155 25 is_stmt 1 view .LVU715
 .LBB5079:
-	.loc 1 153 29 view .LVU716
+	.loc 1 156 29 view .LVU716
 .LBB4995:
 .LBI4995:
 	.loc 13 847 1 view .LVU717
@@ -2900,7 +2900,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU719
 .LBE4996:
 .LBE4995:
-	.loc 1 154 29 is_stmt 1 view .LVU720
+	.loc 1 157 29 is_stmt 1 view .LVU720
 .LBB4997:
 .LBI4997:
 	.loc 13 847 1 view .LVU721
@@ -2909,7 +2909,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU723
 .LBE4998:
 .LBE4997:
-	.loc 1 155 29 is_stmt 1 view .LVU724
+	.loc 1 158 29 is_stmt 1 view .LVU724
 .LBB4999:
 .LBI4989:
 	.loc 16 63 1 view .LVU725
@@ -2918,7 +2918,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU727
 .LBE4991:
 .LBE4999:
-	.loc 1 156 29 is_stmt 1 view .LVU728
+	.loc 1 159 29 is_stmt 1 view .LVU728
 .LBB5000:
 .LBI4992:
 	.loc 16 63 1 view .LVU729
@@ -2927,7 +2927,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU731
 .LBE4994:
 .LBE5000:
-	.loc 1 157 29 is_stmt 1 view .LVU732
+	.loc 1 160 29 is_stmt 1 view .LVU732
 .LBB5001:
 .LBI5001:
 	.loc 16 63 1 view .LVU733
@@ -2940,7 +2940,7 @@
 	.loc 16 65 10 view .LVU736
 .LBE5002:
 .LBE5001:
-	.loc 1 158 29 is_stmt 1 view .LVU737
+	.loc 1 161 29 is_stmt 1 view .LVU737
 .LBB5003:
 .LBI5003:
 	.loc 16 63 1 view .LVU738
@@ -2953,7 +2953,7 @@
 	.loc 16 65 10 view .LVU741
 .LBE5004:
 .LBE5003:
-	.loc 1 159 29 is_stmt 1 view .LVU742
+	.loc 1 162 29 is_stmt 1 view .LVU742
 .LBB5005:
 .LBI5005:
 	.loc 16 63 1 view .LVU743
@@ -3004,7 +3004,7 @@
 	.loc 16 65 10 view .LVU748
 .LBE5007:
 .LBE5008:
-	.loc 1 160 29 is_stmt 1 view .LVU749
+	.loc 1 163 29 is_stmt 1 view .LVU749
 .LBB5009:
 .LBI5009:
 	.loc 16 63 1 view .LVU750
@@ -3017,7 +3017,7 @@
 	.loc 16 65 10 view .LVU753
 .LBE5010:
 .LBE5009:
-	.loc 1 161 29 is_stmt 1 view .LVU754
+	.loc 1 164 29 is_stmt 1 view .LVU754
 .LBB5011:
 .LBI5011:
 	.loc 16 63 1 view .LVU755
@@ -3030,7 +3030,7 @@
 	.loc 16 65 10 view .LVU758
 .LBE5012:
 .LBE5011:
-	.loc 1 162 29 is_stmt 1 view .LVU759
+	.loc 1 165 29 is_stmt 1 view .LVU759
 .LBB5013:
 .LBI5013:
 	.loc 16 63 1 view .LVU760
@@ -3043,7 +3043,7 @@
 	.loc 16 65 10 view .LVU763
 .LBE5014:
 .LBE5013:
-	.loc 1 163 29 is_stmt 1 view .LVU764
+	.loc 1 166 29 is_stmt 1 view .LVU764
 .LBB5015:
 .LBI5015:
 	.loc 13 853 1 view .LVU765
@@ -3056,7 +3056,7 @@
 	.loc 13 855 20 view .LVU768
 .LBE5016:
 .LBE5015:
-	.loc 1 164 29 is_stmt 1 view .LVU769
+	.loc 1 167 29 is_stmt 1 view .LVU769
 .LBB5017:
 .LBI5017:
 	.loc 13 853 1 view .LVU770
@@ -3087,11 +3087,11 @@
 .LBE5019:
 .LBE5020:
 .LBE5128:
-	.loc 1 167 25 is_stmt 1 view .LVU776
+	.loc 1 170 25 is_stmt 1 view .LVU776
 .LBB5129:
 .LBI5080:
-	.loc 1 35 22 view .LVU777
-	.loc 1 36 5 view .LVU778
+	.loc 1 38 22 view .LVU777
+	.loc 1 39 5 view .LVU778
 .LBB5087:
 .LBI5087:
 	.loc 14 711 1 view .LVU779
@@ -3131,11 +3131,11 @@
 .LBE5086:
 .LBE5094:
 .LBE5129:
-	.loc 1 168 25 is_stmt 1 view .LVU792
+	.loc 1 171 25 is_stmt 1 view .LVU792
 .LBB5130:
 .LBI5095:
-	.loc 1 35 22 view .LVU793
-	.loc 1 36 5 view .LVU794
+	.loc 1 38 22 view .LVU793
+	.loc 1 39 5 view .LVU794
 .LBB5102:
 .LBI5102:
 	.loc 14 711 1 view .LVU795
@@ -3175,11 +3175,11 @@
 .LBE5101:
 .LBE5109:
 .LBE5130:
-	.loc 1 169 25 is_stmt 1 view .LVU808
+	.loc 1 172 25 is_stmt 1 view .LVU808
 .LBB5131:
 .LBI5113:
-	.loc 1 35 22 view .LVU809
-	.loc 1 36 5 view .LVU810
+	.loc 1 38 22 view .LVU809
+	.loc 1 39 5 view .LVU810
 .LBB5117:
 .LBI5117:
 	.loc 14 711 1 view .LVU811
@@ -3258,11 +3258,11 @@
 .LBE5126:
 .LBE5127:
 .LBE5178:
-	.loc 1 170 25 is_stmt 1 view .LVU830
+	.loc 1 173 25 is_stmt 1 view .LVU830
 .LBB5179:
 .LBI5132:
-	.loc 1 35 22 view .LVU831
-	.loc 1 36 5 view .LVU832
+	.loc 1 38 22 view .LVU831
+	.loc 1 39 5 view .LVU832
 .LBB5136:
 .LBI5136:
 	.loc 14 711 1 view .LVU833
@@ -3306,9 +3306,9 @@
 .LBE5144:
 .LBE5143:
 .LBE5179:
-	.loc 1 172 25 is_stmt 1 view .LVU847
+	.loc 1 175 25 is_stmt 1 view .LVU847
 .LBB5180:
-	.loc 1 173 29 view .LVU848
+	.loc 1 176 29 view .LVU848
 .LBB5152:
 .LBI5152:
 	.loc 13 847 1 view .LVU849
@@ -3317,7 +3317,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU851
 .LBE5153:
 .LBE5152:
-	.loc 1 174 29 is_stmt 1 view .LVU852
+	.loc 1 177 29 is_stmt 1 view .LVU852
 .LBB5154:
 .LBI5154:
 	.loc 13 847 1 view .LVU853
@@ -3326,7 +3326,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU855
 .LBE5155:
 .LBE5154:
-	.loc 1 175 29 is_stmt 1 view .LVU856
+	.loc 1 178 29 is_stmt 1 view .LVU856
 .LBB5156:
 .LBI5146:
 	.loc 16 63 1 view .LVU857
@@ -3335,7 +3335,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU859
 .LBE5148:
 .LBE5156:
-	.loc 1 176 29 is_stmt 1 view .LVU860
+	.loc 1 179 29 is_stmt 1 view .LVU860
 .LBB5157:
 .LBI5149:
 	.loc 16 63 1 view .LVU861
@@ -3344,7 +3344,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU863
 .LBE5151:
 .LBE5157:
-	.loc 1 177 29 is_stmt 1 view .LVU864
+	.loc 1 180 29 is_stmt 1 view .LVU864
 .LBB5158:
 .LBI5158:
 	.loc 16 63 1 view .LVU865
@@ -3357,7 +3357,7 @@
 	.loc 16 65 10 view .LVU868
 .LBE5159:
 .LBE5158:
-	.loc 1 178 29 is_stmt 1 view .LVU869
+	.loc 1 181 29 is_stmt 1 view .LVU869
 .LBB5160:
 .LBI5160:
 	.loc 16 63 1 view .LVU870
@@ -3370,7 +3370,7 @@
 	.loc 16 65 10 view .LVU873
 .LBE5161:
 .LBE5160:
-	.loc 1 179 29 is_stmt 1 view .LVU874
+	.loc 1 182 29 is_stmt 1 view .LVU874
 .LBB5162:
 .LBI5162:
 	.loc 16 63 1 view .LVU875
@@ -3421,7 +3421,7 @@
 	.loc 16 65 10 view .LVU880
 .LBE5164:
 .LBE5165:
-	.loc 1 180 29 is_stmt 1 view .LVU881
+	.loc 1 183 29 is_stmt 1 view .LVU881
 .LBB5166:
 .LBI5166:
 	.loc 16 63 1 view .LVU882
@@ -3434,7 +3434,7 @@
 	.loc 16 65 10 view .LVU885
 .LBE5167:
 .LBE5166:
-	.loc 1 181 29 is_stmt 1 view .LVU886
+	.loc 1 184 29 is_stmt 1 view .LVU886
 .LBB5168:
 .LBI5168:
 	.loc 16 63 1 view .LVU887
@@ -3447,7 +3447,7 @@
 	.loc 16 65 10 view .LVU890
 .LBE5169:
 .LBE5168:
-	.loc 1 182 29 is_stmt 1 view .LVU891
+	.loc 1 185 29 is_stmt 1 view .LVU891
 .LBB5170:
 .LBI5170:
 	.loc 16 63 1 view .LVU892
@@ -3460,7 +3460,7 @@
 	.loc 16 65 10 view .LVU895
 .LBE5171:
 .LBE5170:
-	.loc 1 183 29 is_stmt 1 view .LVU896
+	.loc 1 186 29 is_stmt 1 view .LVU896
 .LBB5172:
 .LBI5172:
 	.loc 13 853 1 view .LVU897
@@ -3473,7 +3473,7 @@
 	.loc 13 855 20 view .LVU900
 .LBE5173:
 .LBE5172:
-	.loc 1 184 29 is_stmt 1 view .LVU901
+	.loc 1 187 29 is_stmt 1 view .LVU901
 .LBB5174:
 .LBI5174:
 	.loc 13 853 1 view .LVU902
@@ -3504,11 +3504,11 @@
 .LBE5176:
 .LBE5177:
 .LBE5229:
-	.loc 1 187 25 is_stmt 1 view .LVU908
+	.loc 1 190 25 is_stmt 1 view .LVU908
 .LBB5230:
 .LBI5181:
-	.loc 1 35 22 view .LVU909
-	.loc 1 36 5 view .LVU910
+	.loc 1 38 22 view .LVU909
+	.loc 1 39 5 view .LVU910
 .LBB5188:
 .LBI5188:
 	.loc 14 711 1 view .LVU911
@@ -3548,11 +3548,11 @@
 .LBE5187:
 .LBE5195:
 .LBE5230:
-	.loc 1 188 25 is_stmt 1 view .LVU924
+	.loc 1 191 25 is_stmt 1 view .LVU924
 .LBB5231:
 .LBI5196:
-	.loc 1 35 22 view .LVU925
-	.loc 1 36 5 view .LVU926
+	.loc 1 38 22 view .LVU925
+	.loc 1 39 5 view .LVU926
 .LBB5203:
 .LBI5203:
 	.loc 14 711 1 view .LVU927
@@ -3592,11 +3592,11 @@
 .LBE5202:
 .LBE5210:
 .LBE5231:
-	.loc 1 189 25 is_stmt 1 view .LVU940
+	.loc 1 192 25 is_stmt 1 view .LVU940
 .LBB5232:
 .LBI5214:
-	.loc 1 35 22 view .LVU941
-	.loc 1 36 5 view .LVU942
+	.loc 1 38 22 view .LVU941
+	.loc 1 39 5 view .LVU942
 .LBB5218:
 .LBI5218:
 	.loc 14 711 1 view .LVU943
@@ -3675,11 +3675,11 @@
 .LBE5227:
 .LBE5228:
 .LBE5279:
-	.loc 1 190 25 is_stmt 1 view .LVU962
+	.loc 1 193 25 is_stmt 1 view .LVU962
 .LBB5280:
 .LBI5233:
-	.loc 1 35 22 view .LVU963
-	.loc 1 36 5 view .LVU964
+	.loc 1 38 22 view .LVU963
+	.loc 1 39 5 view .LVU964
 .LBB5237:
 .LBI5237:
 	.loc 14 711 1 view .LVU965
@@ -3723,9 +3723,9 @@
 .LBE5245:
 .LBE5244:
 .LBE5280:
-	.loc 1 192 25 is_stmt 1 view .LVU979
+	.loc 1 195 25 is_stmt 1 view .LVU979
 .LBB5281:
-	.loc 1 193 29 view .LVU980
+	.loc 1 196 29 view .LVU980
 .LBB5253:
 .LBI5253:
 	.loc 13 847 1 view .LVU981
@@ -3734,7 +3734,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU983
 .LBE5254:
 .LBE5253:
-	.loc 1 194 29 is_stmt 1 view .LVU984
+	.loc 1 197 29 is_stmt 1 view .LVU984
 .LBB5255:
 .LBI5255:
 	.loc 13 847 1 view .LVU985
@@ -3743,7 +3743,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU987
 .LBE5256:
 .LBE5255:
-	.loc 1 195 29 is_stmt 1 view .LVU988
+	.loc 1 198 29 is_stmt 1 view .LVU988
 .LBB5257:
 .LBI5247:
 	.loc 16 63 1 view .LVU989
@@ -3752,7 +3752,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU991
 .LBE5249:
 .LBE5257:
-	.loc 1 196 29 is_stmt 1 view .LVU992
+	.loc 1 199 29 is_stmt 1 view .LVU992
 .LBB5258:
 .LBI5250:
 	.loc 16 63 1 view .LVU993
@@ -3761,7 +3761,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU995
 .LBE5252:
 .LBE5258:
-	.loc 1 197 29 is_stmt 1 view .LVU996
+	.loc 1 200 29 is_stmt 1 view .LVU996
 .LBB5259:
 .LBI5259:
 	.loc 16 63 1 view .LVU997
@@ -3774,7 +3774,7 @@
 	.loc 16 65 10 view .LVU1000
 .LBE5260:
 .LBE5259:
-	.loc 1 198 29 is_stmt 1 view .LVU1001
+	.loc 1 201 29 is_stmt 1 view .LVU1001
 .LBB5261:
 .LBI5261:
 	.loc 16 63 1 view .LVU1002
@@ -3787,7 +3787,7 @@
 	.loc 16 65 10 view .LVU1005
 .LBE5262:
 .LBE5261:
-	.loc 1 199 29 is_stmt 1 view .LVU1006
+	.loc 1 202 29 is_stmt 1 view .LVU1006
 .LBB5263:
 .LBI5263:
 	.loc 16 63 1 view .LVU1007
@@ -3822,7 +3822,7 @@
 	.loc 16 65 10 view .LVU1011
 .LBE5265:
 .LBE5266:
-	.loc 1 200 29 is_stmt 1 view .LVU1012
+	.loc 1 203 29 is_stmt 1 view .LVU1012
 .LBB5267:
 .LBI5267:
 	.loc 16 63 1 view .LVU1013
@@ -3835,7 +3835,7 @@
 	.loc 16 65 10 view .LVU1016
 .LBE5268:
 .LBE5267:
-	.loc 1 201 29 is_stmt 1 view .LVU1017
+	.loc 1 204 29 is_stmt 1 view .LVU1017
 .LBB5269:
 .LBI5269:
 	.loc 16 63 1 view .LVU1018
@@ -3848,7 +3848,7 @@
 	.loc 16 65 10 view .LVU1021
 .LBE5270:
 .LBE5269:
-	.loc 1 202 29 is_stmt 1 view .LVU1022
+	.loc 1 205 29 is_stmt 1 view .LVU1022
 .LBB5271:
 .LBI5271:
 	.loc 16 63 1 view .LVU1023
@@ -3861,7 +3861,7 @@
 	.loc 16 65 10 view .LVU1026
 .LBE5272:
 .LBE5271:
-	.loc 1 203 29 is_stmt 1 view .LVU1027
+	.loc 1 206 29 is_stmt 1 view .LVU1027
 .LBB5273:
 .LBI5273:
 	.loc 13 853 1 view .LVU1028
@@ -3874,7 +3874,7 @@
 	.loc 13 855 20 view .LVU1031
 .LBE5274:
 .LBE5273:
-	.loc 1 204 29 is_stmt 1 view .LVU1032
+	.loc 1 207 29 is_stmt 1 view .LVU1032
 .LBB5275:
 .LBI5275:
 	.loc 13 853 1 view .LVU1033
@@ -3905,11 +3905,11 @@
 .LBE5277:
 .LBE5278:
 .LBE5324:
-	.loc 1 207 25 is_stmt 1 view .LVU1039
+	.loc 1 210 25 is_stmt 1 view .LVU1039
 .LBB5325:
 .LBI5282:
-	.loc 1 35 22 view .LVU1040
-	.loc 1 36 5 view .LVU1041
+	.loc 1 38 22 view .LVU1040
+	.loc 1 39 5 view .LVU1041
 .LBB5286:
 .LBI5286:
 	.loc 14 711 1 view .LVU1042
@@ -3949,11 +3949,11 @@
 .LBE5294:
 .LBE5293:
 .LBE5325:
-	.loc 1 208 25 is_stmt 1 view .LVU1055
+	.loc 1 211 25 is_stmt 1 view .LVU1055
 .LBB5326:
 .LBI5295:
-	.loc 1 35 22 view .LVU1056
-	.loc 1 36 5 view .LVU1057
+	.loc 1 38 22 view .LVU1056
+	.loc 1 39 5 view .LVU1057
 .LBB5299:
 .LBI5299:
 	.loc 14 711 1 view .LVU1058
@@ -3993,11 +3993,11 @@
 .LBE5307:
 .LBE5306:
 .LBE5326:
-	.loc 1 209 25 is_stmt 1 view .LVU1071
+	.loc 1 212 25 is_stmt 1 view .LVU1071
 .LBB5327:
 .LBI5309:
-	.loc 1 35 22 view .LVU1072
-	.loc 1 36 5 view .LVU1073
+	.loc 1 38 22 view .LVU1072
+	.loc 1 39 5 view .LVU1073
 .LBB5313:
 .LBI5313:
 	.loc 14 711 1 view .LVU1074
@@ -4076,11 +4076,11 @@
 .LBE5322:
 .LBE5323:
 .LBE5374:
-	.loc 1 210 25 is_stmt 1 view .LVU1093
+	.loc 1 213 25 is_stmt 1 view .LVU1093
 .LBB5375:
 .LBI5328:
-	.loc 1 35 22 view .LVU1094
-	.loc 1 36 5 view .LVU1095
+	.loc 1 38 22 view .LVU1094
+	.loc 1 39 5 view .LVU1095
 .LBB5332:
 .LBI5332:
 	.loc 14 711 1 view .LVU1096
@@ -4124,9 +4124,9 @@
 .LBE5340:
 .LBE5339:
 .LBE5375:
-	.loc 1 212 25 is_stmt 1 view .LVU1110
+	.loc 1 215 25 is_stmt 1 view .LVU1110
 .LBB5376:
-	.loc 1 213 29 view .LVU1111
+	.loc 1 216 29 view .LVU1111
 .LBB5348:
 .LBI5348:
 	.loc 13 847 1 view .LVU1112
@@ -4135,7 +4135,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1114
 .LBE5349:
 .LBE5348:
-	.loc 1 214 29 is_stmt 1 view .LVU1115
+	.loc 1 217 29 is_stmt 1 view .LVU1115
 .LBB5350:
 .LBI5350:
 	.loc 13 847 1 view .LVU1116
@@ -4144,7 +4144,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1118
 .LBE5351:
 .LBE5350:
-	.loc 1 215 29 is_stmt 1 view .LVU1119
+	.loc 1 218 29 is_stmt 1 view .LVU1119
 .LBB5352:
 .LBI5342:
 	.loc 16 63 1 view .LVU1120
@@ -4153,7 +4153,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU1122
 .LBE5344:
 .LBE5352:
-	.loc 1 216 29 is_stmt 1 view .LVU1123
+	.loc 1 219 29 is_stmt 1 view .LVU1123
 .LBB5353:
 .LBI5345:
 	.loc 16 63 1 view .LVU1124
@@ -4162,7 +4162,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU1126
 .LBE5347:
 .LBE5353:
-	.loc 1 217 29 is_stmt 1 view .LVU1127
+	.loc 1 220 29 is_stmt 1 view .LVU1127
 .LBB5354:
 .LBI5354:
 	.loc 16 63 1 view .LVU1128
@@ -4175,7 +4175,7 @@
 	.loc 16 65 10 view .LVU1131
 .LBE5355:
 .LBE5354:
-	.loc 1 218 29 is_stmt 1 view .LVU1132
+	.loc 1 221 29 is_stmt 1 view .LVU1132
 .LBB5356:
 .LBI5356:
 	.loc 16 63 1 view .LVU1133
@@ -4188,7 +4188,7 @@
 	.loc 16 65 10 view .LVU1136
 .LBE5357:
 .LBE5356:
-	.loc 1 219 29 is_stmt 1 view .LVU1137
+	.loc 1 222 29 is_stmt 1 view .LVU1137
 .LBB5358:
 .LBI5358:
 	.loc 16 63 1 view .LVU1138
@@ -4211,7 +4211,7 @@
 	.loc 16 65 10 view .LVU1141
 .LBE5360:
 .LBE5364:
-	.loc 1 220 29 is_stmt 1 view .LVU1142
+	.loc 1 223 29 is_stmt 1 view .LVU1142
 .LBB5365:
 .LBI5361:
 	.loc 16 63 1 view .LVU1143
@@ -4224,7 +4224,7 @@
 	.loc 16 65 10 view .LVU1146
 .LBE5363:
 .LBE5365:
-	.loc 1 221 29 is_stmt 1 view .LVU1147
+	.loc 1 224 29 is_stmt 1 view .LVU1147
 .LBB5366:
 .LBI5366:
 	.loc 16 63 1 view .LVU1148
@@ -4237,7 +4237,7 @@
 	.loc 16 65 10 view .LVU1151
 .LBE5367:
 .LBE5366:
-	.loc 1 222 29 is_stmt 1 view .LVU1152
+	.loc 1 225 29 is_stmt 1 view .LVU1152
 .LBB5368:
 .LBI5368:
 	.loc 16 63 1 view .LVU1153
@@ -4250,7 +4250,7 @@
 	.loc 16 65 10 view .LVU1156
 .LBE5369:
 .LBE5368:
-	.loc 1 223 29 is_stmt 1 view .LVU1157
+	.loc 1 226 29 is_stmt 1 view .LVU1157
 .LBB5370:
 .LBI5370:
 	.loc 13 853 1 view .LVU1158
@@ -4263,7 +4263,7 @@
 	.loc 13 855 20 view .LVU1161
 .LBE5371:
 .LBE5370:
-	.loc 1 224 29 is_stmt 1 view .LVU1162
+	.loc 1 227 29 is_stmt 1 view .LVU1162
 .LBB5372:
 .LBI5372:
 	.loc 13 853 1 view .LVU1163
@@ -4278,15 +4278,15 @@
 .LBE5372:
 .LBE5376:
 .LBE4930:
-	.loc 1 141 21 is_stmt 1 discriminator 1 view .LVU1167
-	.loc 1 141 36 discriminator 2 view .LVU1168
+	.loc 1 144 21 is_stmt 1 discriminator 1 view .LVU1167
+	.loc 1 144 36 discriminator 2 view .LVU1168
 	add	rcx, 16	# ivtmp.876,
 .LVL170:
-	.loc 1 141 36 is_stmt 0 discriminator 2 view .LVU1169
+	.loc 1 144 36 is_stmt 0 discriminator 2 view .LVU1169
 	cmp	rsi, rcx	# _3024, ivtmp.876
 	jne	.L43	#,
 .LBE4929:
-	.loc 1 228 21 is_stmt 1 view .LVU1170
+	.loc 1 231 21 is_stmt 1 view .LVU1170
 .LBB5377:
 	mov	r11d, DWORD PTR 264[rsp]	# _275, %sfp
 	mov	r13d, DWORD PTR 496[rsp]	# x_floats_676, %sfp
@@ -4294,75 +4294,75 @@
 	cmp	DWORD PTR 268[rsp], r13d	# %sfp, x_floats_676
 	jge	.L47	#,
 .LBB4927:
-# src/opt17.cpp:229:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
-	.loc 1 229 62 is_stmt 0 view .LVU1171
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:232:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
+	.loc 1 232 62 is_stmt 0 view .LVU1171
 	mov	rsi, QWORD PTR 240[rsp]	# _3288, %sfp
 	mov	rcx, QWORD PTR 488[rsp]	# _3345, %sfp
 .LVL171:
-	.loc 1 229 62 view .LVU1172
+	.loc 1 232 62 view .LVU1172
 	add	rcx, rsi	# _3290, _3288
 	mov	QWORD PTR 424[rsp], rcx	# %sfp, _3290
-# src/opt17.cpp:231:                         __m256 rl1 = load_cvt8(p.SUB + rb[1] + xf);
-	.loc 1 231 62 view .LVU1173
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:234:                         __m256 rl1 = load_cvt8(p.SUB + rb[1] + xf);
+	.loc 1 234 62 view .LVU1173
 	mov	rcx, QWORD PTR 480[rsp]	# _3347, %sfp
 	add	rcx, rsi	# _3292, _3288
 	mov	QWORD PTR 416[rsp], rcx	# %sfp, _3292
 .LBB4724:
-# src/opt17.cpp:234:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
-	.loc 1 234 60 view .LVU1174
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:237:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
+	.loc 1 237 60 view .LVU1174
 	mov	rcx, QWORD PTR 232[rsp]	# _3294, %sfp
 	lea	r13, [rbx+rcx]	# _3296,
 	mov	QWORD PTR 408[rsp], r13	# %sfp, _3296
 .LBE4724:
-# src/opt17.cpp:241:                         __m256 rl2 = load_cvt8(p.SUB + rb[2] + xf);
-	.loc 1 241 62 view .LVU1175
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:244:                         __m256 rl2 = load_cvt8(p.SUB + rb[2] + xf);
+	.loc 1 244 62 view .LVU1175
 	mov	r13, QWORD PTR 472[rsp]	# _3349, %sfp
 	add	r13, rsi	# _3298, _3288
 	mov	QWORD PTR 384[rsp], r13	# %sfp, _3298
 .LBB4725:
-# src/opt17.cpp:244:                             __m256 v = _mm256_loadu_ps(vp1 + xf);
-	.loc 1 244 60 view .LVU1176
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:247:                             __m256 v = _mm256_loadu_ps(vp1 + xf);
+	.loc 1 247 60 view .LVU1176
 	lea	r13, [rdx+rcx]	# _3300,
 	mov	QWORD PTR 368[rsp], r13	# %sfp, _3300
 .LBE4725:
-# src/opt17.cpp:251:                         __m256 rl3 = load_cvt8(p.SUB + rb[3] + xf);
-	.loc 1 251 62 view .LVU1177
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:254:                         __m256 rl3 = load_cvt8(p.SUB + rb[3] + xf);
+	.loc 1 254 62 view .LVU1177
 	mov	r13, QWORD PTR 448[rsp]	# _3351, %sfp
 	add	r13, rsi	# _3302, _3288
-# src/opt17.cpp:261:                         __m256 rl4 = load_cvt8(p.SUB + rb[4] + xf);
-	.loc 1 261 62 view .LVU1178
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:264:                         __m256 rl4 = load_cvt8(p.SUB + rb[4] + xf);
+	.loc 1 264 62 view .LVU1178
 	add	rsi, r15	# _3306, _3353
-# src/opt17.cpp:251:                         __m256 rl3 = load_cvt8(p.SUB + rb[3] + xf);
-	.loc 1 251 62 view .LVU1179
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:254:                         __m256 rl3 = load_cvt8(p.SUB + rb[3] + xf);
+	.loc 1 254 62 view .LVU1179
 	mov	QWORD PTR 352[rsp], r13	# %sfp, _3302
 .LBB4740:
-# src/opt17.cpp:254:                             __m256 v = _mm256_loadu_ps(vp2 + xf);
-	.loc 1 254 60 view .LVU1180
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:257:                             __m256 v = _mm256_loadu_ps(vp2 + xf);
+	.loc 1 257 60 view .LVU1180
 	lea	r13, [r12+rcx]	# _3304,
 .LBE4740:
 .LBB4755:
-# src/opt17.cpp:264:                             __m256 v = _mm256_loadu_ps(vp3 + xf);
-	.loc 1 264 60 view .LVU1181
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:267:                             __m256 v = _mm256_loadu_ps(vp3 + xf);
+	.loc 1 267 60 view .LVU1181
 	add	rcx, rax	# _3308, vp3
 .LBE4755:
 .LBB4770:
-# src/opt17.cpp:254:                             __m256 v = _mm256_loadu_ps(vp2 + xf);
-	.loc 1 254 60 view .LVU1182
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:257:                             __m256 v = _mm256_loadu_ps(vp2 + xf);
+	.loc 1 257 60 view .LVU1182
 	mov	QWORD PTR 280[rsp], r13	# %sfp, _3304
 .LBE4770:
-# src/opt17.cpp:261:                         __m256 rl4 = load_cvt8(p.SUB + rb[4] + xf);
-	.loc 1 261 62 view .LVU1183
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:264:                         __m256 rl4 = load_cvt8(p.SUB + rb[4] + xf);
+	.loc 1 264 62 view .LVU1183
 	mov	QWORD PTR 272[rsp], rsi	# %sfp, _3306
-# src/opt17.cpp:271:                         xf += 8;
-	.loc 1 271 28 view .LVU1184
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:274:                         xf += 8;
+	.loc 1 274 28 view .LVU1184
 	lea	esi, 24[r11]	#,
 .LVL172:
 .L45:
-	.loc 1 229 25 is_stmt 1 view .LVU1185
+	.loc 1 232 25 is_stmt 1 view .LVU1185
 .LBB4771:
 .LBI4771:
-	.loc 1 35 22 view .LVU1186
-	.loc 1 36 5 view .LVU1187
+	.loc 1 38 22 view .LVU1186
+	.loc 1 39 5 view .LVU1187
 .LBB4772:
 .LBI4772:
 	.loc 14 711 1 view .LVU1188
@@ -4434,11 +4434,11 @@
 .LBE4782:
 .LBE4783:
 .LBE4812:
-	.loc 1 230 25 is_stmt 1 view .LVU1204
+	.loc 1 233 25 is_stmt 1 view .LVU1204
 .LBB4813:
 .LBI4784:
-	.loc 1 35 22 view .LVU1205
-	.loc 1 36 5 view .LVU1206
+	.loc 1 38 22 view .LVU1205
+	.loc 1 39 5 view .LVU1206
 .LBB4788:
 .LBI4788:
 	.loc 14 711 1 view .LVU1207
@@ -4482,11 +4482,11 @@
 .LBE4796:
 .LBE4795:
 .LBE4813:
-	.loc 1 231 25 is_stmt 1 view .LVU1221
+	.loc 1 234 25 is_stmt 1 view .LVU1221
 .LBB4814:
 .LBI4797:
-	.loc 1 35 22 view .LVU1222
-	.loc 1 36 5 view .LVU1223
+	.loc 1 38 22 view .LVU1222
+	.loc 1 39 5 view .LVU1223
 .LBB4801:
 .LBI4801:
 	.loc 14 711 1 view .LVU1224
@@ -4560,11 +4560,11 @@
 .LBE4810:
 .LBE4811:
 .LBE4829:
-	.loc 1 232 25 is_stmt 1 view .LVU1242
+	.loc 1 235 25 is_stmt 1 view .LVU1242
 .LBB4830:
 .LBI4815:
-	.loc 1 35 22 view .LVU1243
-	.loc 1 36 5 view .LVU1244
+	.loc 1 38 22 view .LVU1243
+	.loc 1 39 5 view .LVU1244
 .LBB4819:
 .LBI4819:
 	.loc 14 711 1 view .LVU1245
@@ -4608,9 +4608,9 @@
 .LBE4827:
 .LBE4826:
 .LBE4830:
-	.loc 1 233 25 is_stmt 1 view .LVU1259
+	.loc 1 236 25 is_stmt 1 view .LVU1259
 .LBB4831:
-	.loc 1 234 29 view .LVU1260
+	.loc 1 237 29 view .LVU1260
 .LBB4712:
 .LBI4712:
 	.loc 13 847 1 view .LVU1261
@@ -4619,7 +4619,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1263
 .LBE4713:
 .LBE4712:
-	.loc 1 235 29 is_stmt 1 view .LVU1264
+	.loc 1 238 29 is_stmt 1 view .LVU1264
 .LBB4714:
 .LBI4709:
 	.loc 16 63 1 view .LVU1265
@@ -4632,7 +4632,7 @@
 	.loc 16 65 10 view .LVU1268
 .LBE4711:
 .LBE4714:
-	.loc 1 236 29 is_stmt 1 view .LVU1269
+	.loc 1 239 29 is_stmt 1 view .LVU1269
 .LBB4715:
 .LBI4715:
 	.loc 16 63 1 view .LVU1270
@@ -4645,7 +4645,7 @@
 	.loc 16 65 10 view .LVU1273
 .LBE4716:
 .LBE4715:
-	.loc 1 237 29 is_stmt 1 view .LVU1274
+	.loc 1 240 29 is_stmt 1 view .LVU1274
 .LBB4717:
 .LBI4717:
 	.loc 16 63 1 view .LVU1275
@@ -4658,7 +4658,7 @@
 	.loc 16 65 10 view .LVU1278
 .LBE4718:
 .LBE4717:
-	.loc 1 238 29 is_stmt 1 view .LVU1279
+	.loc 1 241 29 is_stmt 1 view .LVU1279
 .LBB4719:
 .LBI4719:
 	.loc 16 63 1 view .LVU1280
@@ -4671,7 +4671,7 @@
 	.loc 16 65 10 view .LVU1283
 .LBE4720:
 .LBE4719:
-	.loc 1 239 29 is_stmt 1 view .LVU1284
+	.loc 1 242 29 is_stmt 1 view .LVU1284
 .LBB4721:
 .LBI4721:
 	.loc 13 853 1 view .LVU1285
@@ -4685,11 +4685,11 @@
 .LBE4722:
 .LBE4721:
 .LBE4831:
-	.loc 1 241 25 is_stmt 1 view .LVU1289
+	.loc 1 244 25 is_stmt 1 view .LVU1289
 .LBB4832:
 .LBI4832:
-	.loc 1 35 22 view .LVU1290
-	.loc 1 36 5 view .LVU1291
+	.loc 1 38 22 view .LVU1290
+	.loc 1 39 5 view .LVU1291
 .LBB4833:
 .LBI4833:
 	.loc 14 711 1 view .LVU1292
@@ -4764,11 +4764,11 @@
 .LBE4843:
 .LBE4844:
 .LBE4859:
-	.loc 1 242 25 is_stmt 1 view .LVU1310
+	.loc 1 245 25 is_stmt 1 view .LVU1310
 .LBB4860:
 .LBI4845:
-	.loc 1 35 22 view .LVU1311
-	.loc 1 36 5 view .LVU1312
+	.loc 1 38 22 view .LVU1311
+	.loc 1 39 5 view .LVU1312
 .LBB4849:
 .LBI4849:
 	.loc 14 711 1 view .LVU1313
@@ -4812,9 +4812,9 @@
 .LBE4857:
 .LBE4856:
 .LBE4860:
-	.loc 1 243 25 is_stmt 1 view .LVU1327
+	.loc 1 246 25 is_stmt 1 view .LVU1327
 .LBB4861:
-	.loc 1 244 29 view .LVU1328
+	.loc 1 247 29 view .LVU1328
 .LBB4729:
 .LBI4729:
 	.loc 13 847 1 view .LVU1329
@@ -4823,7 +4823,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1331
 .LBE4730:
 .LBE4729:
-	.loc 1 245 29 is_stmt 1 view .LVU1332
+	.loc 1 248 29 is_stmt 1 view .LVU1332
 .LBB4731:
 .LBI4726:
 	.loc 16 63 1 view .LVU1333
@@ -4836,7 +4836,7 @@
 	.loc 16 65 10 view .LVU1336
 .LBE4728:
 .LBE4731:
-	.loc 1 246 29 is_stmt 1 view .LVU1337
+	.loc 1 249 29 is_stmt 1 view .LVU1337
 .LBB4732:
 .LBI4732:
 	.loc 16 63 1 view .LVU1338
@@ -4849,7 +4849,7 @@
 	.loc 16 65 10 view .LVU1341
 .LBE4733:
 .LBE4732:
-	.loc 1 247 29 is_stmt 1 view .LVU1342
+	.loc 1 250 29 is_stmt 1 view .LVU1342
 .LBB4734:
 .LBI4734:
 	.loc 16 63 1 view .LVU1343
@@ -4862,7 +4862,7 @@
 	.loc 16 65 10 view .LVU1346
 .LBE4735:
 .LBE4734:
-	.loc 1 248 29 is_stmt 1 view .LVU1347
+	.loc 1 251 29 is_stmt 1 view .LVU1347
 .LBB4736:
 .LBI4736:
 	.loc 16 63 1 view .LVU1348
@@ -4875,7 +4875,7 @@
 	.loc 16 65 10 view .LVU1351
 .LBE4737:
 .LBE4736:
-	.loc 1 249 29 is_stmt 1 view .LVU1352
+	.loc 1 252 29 is_stmt 1 view .LVU1352
 .LBB4738:
 .LBI4738:
 	.loc 13 853 1 view .LVU1353
@@ -4889,11 +4889,11 @@
 .LBE4739:
 .LBE4738:
 .LBE4861:
-	.loc 1 251 25 is_stmt 1 view .LVU1357
+	.loc 1 254 25 is_stmt 1 view .LVU1357
 .LBB4862:
 .LBI4862:
-	.loc 1 35 22 view .LVU1358
-	.loc 1 36 5 view .LVU1359
+	.loc 1 38 22 view .LVU1358
+	.loc 1 39 5 view .LVU1359
 .LBB4863:
 .LBI4863:
 	.loc 14 711 1 view .LVU1360
@@ -4968,11 +4968,11 @@
 .LBE4873:
 .LBE4874:
 .LBE4889:
-	.loc 1 252 25 is_stmt 1 view .LVU1378
+	.loc 1 255 25 is_stmt 1 view .LVU1378
 .LBB4890:
 .LBI4875:
-	.loc 1 35 22 view .LVU1379
-	.loc 1 36 5 view .LVU1380
+	.loc 1 38 22 view .LVU1379
+	.loc 1 39 5 view .LVU1380
 .LBB4879:
 .LBI4879:
 	.loc 14 711 1 view .LVU1381
@@ -5016,9 +5016,9 @@
 .LBE4887:
 .LBE4886:
 .LBE4890:
-	.loc 1 253 25 is_stmt 1 view .LVU1395
+	.loc 1 256 25 is_stmt 1 view .LVU1395
 .LBB4891:
-	.loc 1 254 29 view .LVU1396
+	.loc 1 257 29 view .LVU1396
 .LBB4744:
 .LBI4744:
 	.loc 13 847 1 view .LVU1397
@@ -5027,7 +5027,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1399
 .LBE4745:
 .LBE4744:
-	.loc 1 255 29 is_stmt 1 view .LVU1400
+	.loc 1 258 29 is_stmt 1 view .LVU1400
 .LBB4746:
 .LBI4741:
 	.loc 16 63 1 view .LVU1401
@@ -5040,7 +5040,7 @@
 	.loc 16 65 10 view .LVU1404
 .LBE4743:
 .LBE4746:
-	.loc 1 256 29 is_stmt 1 view .LVU1405
+	.loc 1 259 29 is_stmt 1 view .LVU1405
 .LBB4747:
 .LBI4747:
 	.loc 16 63 1 view .LVU1406
@@ -5053,7 +5053,7 @@
 	.loc 16 65 10 view .LVU1409
 .LBE4748:
 .LBE4747:
-	.loc 1 257 29 is_stmt 1 view .LVU1410
+	.loc 1 260 29 is_stmt 1 view .LVU1410
 .LBB4749:
 .LBI4749:
 	.loc 16 63 1 view .LVU1411
@@ -5066,7 +5066,7 @@
 	.loc 16 65 10 view .LVU1414
 .LBE4750:
 .LBE4749:
-	.loc 1 258 29 is_stmt 1 view .LVU1415
+	.loc 1 261 29 is_stmt 1 view .LVU1415
 .LBB4751:
 .LBI4751:
 	.loc 16 63 1 view .LVU1416
@@ -5079,7 +5079,7 @@
 	.loc 16 65 10 view .LVU1419
 .LBE4752:
 .LBE4751:
-	.loc 1 259 29 is_stmt 1 view .LVU1420
+	.loc 1 262 29 is_stmt 1 view .LVU1420
 .LBB4753:
 .LBI4753:
 	.loc 13 853 1 view .LVU1421
@@ -5093,11 +5093,11 @@
 .LBE4754:
 .LBE4753:
 .LBE4891:
-	.loc 1 261 25 is_stmt 1 view .LVU1425
+	.loc 1 264 25 is_stmt 1 view .LVU1425
 .LBB4892:
 .LBI4892:
-	.loc 1 35 22 view .LVU1426
-	.loc 1 36 5 view .LVU1427
+	.loc 1 38 22 view .LVU1426
+	.loc 1 39 5 view .LVU1427
 .LBB4893:
 .LBI4893:
 	.loc 14 711 1 view .LVU1428
@@ -5182,11 +5182,11 @@
 .LBE4905:
 .LBE4906:
 .LBE4922:
-	.loc 1 262 25 is_stmt 1 view .LVU1448
+	.loc 1 265 25 is_stmt 1 view .LVU1448
 .LBB4923:
 .LBI4909:
-	.loc 1 35 22 view .LVU1449
-	.loc 1 36 5 view .LVU1450
+	.loc 1 38 22 view .LVU1449
+	.loc 1 39 5 view .LVU1450
 .LBB4913:
 .LBI4913:
 	.loc 14 711 1 view .LVU1451
@@ -5230,9 +5230,9 @@
 .LBE4921:
 .LBE4920:
 .LBE4923:
-	.loc 1 263 25 is_stmt 1 view .LVU1465
+	.loc 1 266 25 is_stmt 1 view .LVU1465
 .LBB4924:
-	.loc 1 264 29 view .LVU1466
+	.loc 1 267 29 view .LVU1466
 .LBB4759:
 .LBI4759:
 	.loc 13 847 1 view .LVU1467
@@ -5241,7 +5241,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1469
 .LBE4760:
 .LBE4759:
-	.loc 1 265 29 is_stmt 1 view .LVU1470
+	.loc 1 268 29 is_stmt 1 view .LVU1470
 .LBB4761:
 .LBI4756:
 	.loc 16 63 1 view .LVU1471
@@ -5250,7 +5250,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU1473
 .LBE4758:
 .LBE4761:
-	.loc 1 266 29 is_stmt 1 view .LVU1474
+	.loc 1 269 29 is_stmt 1 view .LVU1474
 .LBB4762:
 .LBI4762:
 	.loc 16 63 1 view .LVU1475
@@ -5263,7 +5263,7 @@
 	.loc 16 65 10 view .LVU1478
 .LBE4763:
 .LBE4762:
-	.loc 1 267 29 is_stmt 1 view .LVU1479
+	.loc 1 270 29 is_stmt 1 view .LVU1479
 .LBB4764:
 .LBI4764:
 	.loc 16 63 1 view .LVU1480
@@ -5276,7 +5276,7 @@
 	.loc 16 65 10 view .LVU1483
 .LBE4765:
 .LBE4764:
-	.loc 1 268 29 is_stmt 1 view .LVU1484
+	.loc 1 271 29 is_stmt 1 view .LVU1484
 .LBB4766:
 .LBI4766:
 	.loc 16 63 1 view .LVU1485
@@ -5289,7 +5289,7 @@
 	.loc 16 65 10 view .LVU1488
 .LBE4767:
 .LBE4766:
-	.loc 1 269 29 is_stmt 1 view .LVU1489
+	.loc 1 272 29 is_stmt 1 view .LVU1489
 .LBB4768:
 .LBI4768:
 	.loc 13 853 1 view .LVU1490
@@ -5303,54 +5303,54 @@
 .LBE4769:
 .LBE4768:
 .LBE4924:
-	.loc 1 271 25 is_stmt 1 view .LVU1494
+	.loc 1 274 25 is_stmt 1 view .LVU1494
 .L47:
-	.loc 1 271 25 is_stmt 0 view .LVU1495
+	.loc 1 274 25 is_stmt 0 view .LVU1495
 .LBE4927:
 .LBE5377:
-	.loc 1 274 21 is_stmt 1 view .LVU1496
+	.loc 1 277 21 is_stmt 1 view .LVU1496
 .LBB5378:
-	.loc 1 274 39 discriminator 2 view .LVU1497
-# src/opt17.cpp:274:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 274 50 is_stmt 0 discriminator 2 view .LVU1498
+	.loc 1 277 39 discriminator 2 view .LVU1497
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:277:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 277 50 is_stmt 0 discriminator 2 view .LVU1498
 	mov	ecx, DWORD PTR 496[rsp]	# _1557, %sfp
 	sub	ecx, esi	# _1557, xf
 	mov	DWORD PTR 424[rsp], ecx	# %sfp, _1557
-# src/opt17.cpp:274:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 274 39 discriminator 2 view .LVU1499
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:277:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 277 39 discriminator 2 view .LVU1499
 	test	ecx, ecx	# _1557
 	jle	.L48	#,
 .LBB5379:
-# src/opt17.cpp:275:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 275 48 view .LVU1500
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:278:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 278 48 view .LVU1500
 	add	QWORD PTR 488[rsp], rsi	# %sfp, _3762
 .LVL212:
-# src/opt17.cpp:279:                         float s4l = p.SUB[rb[4]+xf+k], s4r = p.SUB[rb[4]+xf+k+3];
-	.loc 1 279 48 view .LVU1501
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:282:                         float s4l = p.SUB[rb[4]+xf+k], s4r = p.SUB[rb[4]+xf+k+3];
+	.loc 1 282 48 view .LVU1501
 	add	r15, rsi	# _3353, _3762
-# src/opt17.cpp:276:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 276 48 view .LVU1502
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:279:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 279 48 view .LVU1502
 	add	QWORD PTR 480[rsp], rsi	# %sfp, _3762
 .LVL213:
-# src/opt17.cpp:277:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 277 48 view .LVU1503
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:280:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 280 48 view .LVU1503
 	add	QWORD PTR 472[rsp], rsi	# %sfp, _3762
 .LVL214:
-# src/opt17.cpp:278:                         float s3l = p.SUB[rb[3]+xf+k], s3r = p.SUB[rb[3]+xf+k+3];
-	.loc 1 278 48 view .LVU1504
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:281:                         float s3l = p.SUB[rb[3]+xf+k], s3r = p.SUB[rb[3]+xf+k+3];
+	.loc 1 281 48 view .LVU1504
 	add	QWORD PTR 448[rsp], rsi	# %sfp, _3762
 .LVL215:
 .L46:
-	.loc 1 278 48 view .LVU1505
+	.loc 1 281 48 view .LVU1505
 	sal	rsi, 2	# _3783,
 	mov	rcx, QWORD PTR 488[rsp]	# _3345, %sfp
 	mov	QWORD PTR 384[rsp], r14	# %sfp, ivtmp.905
 	add	rdx, rsi	# _3449, _3783
 .LVL216:
-	.loc 1 278 48 view .LVU1506
+	.loc 1 281 48 view .LVU1506
 	add	rax, rsi	# _3428, _3783
 .LVL217:
-	.loc 1 278 48 view .LVU1507
+	.loc 1 281 48 view .LVU1507
 	lea	r11, [rbx+rsi]	# _3764,
 	mov	QWORD PTR 368[rsp], r9	# %sfp, ivtmp.904
 	mov	QWORD PTR 408[rsp], rdx	# %sfp, _3449
@@ -5360,8 +5360,8 @@
 	mov	QWORD PTR 416[rsp], rax	# %sfp, _3428
 .LBE5379:
 .LBE5378:
-# src/opt17.cpp:139:                     int xf = 0;
-	.loc 1 139 25 view .LVU1508
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:142:                     int xf = 0;
+	.loc 1 142 25 view .LVU1508
 	xor	eax, eax	# ivtmp.854
 	mov	QWORD PTR 352[rsp], r10	# %sfp, ivtmp.903
 	mov	r10d, DWORD PTR 424[rsp]	# _1557, %sfp
@@ -5374,12 +5374,12 @@
 	mov	QWORD PTR 472[rsp], rdi	# %sfp, ivtmp.907
 	mov	rdi, QWORD PTR 416[rsp]	# _3428, %sfp
 .LVL218:
-	.loc 1 139 25 view .LVU1509
+	.loc 1 142 25 view .LVU1509
 	add	rcx, rsi	# _2523, _374
 	mov	QWORD PTR 448[rsp], r8	# %sfp, ivtmp.906
 	mov	r9, QWORD PTR 488[rsp]	# _2303, %sfp
 .LVL219:
-	.loc 1 139 25 view .LVU1510
+	.loc 1 142 25 view .LVU1510
 	add	rdx, rsi	# _3251, _374
 	add	rsi, r15	# _731, _3353
 	mov	r8, QWORD PTR 408[rsp]	# _3449, %sfp
@@ -5390,126 +5390,126 @@
 .L49:
 .LBB5381:
 .LBB5380:
-	.loc 1 275 25 is_stmt 1 view .LVU1511
-	.loc 1 276 25 view .LVU1512
-# src/opt17.cpp:276:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 276 31 is_stmt 0 view .LVU1513
+	.loc 1 278 25 is_stmt 1 view .LVU1511
+	.loc 1 279 25 view .LVU1512
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:279:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 279 31 is_stmt 0 view .LVU1513
 	movzx	r15d, BYTE PTR [r14+rax]	# MEM[(const unsigned char *)_2298 + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_2298 + ivtmp.854_2312 * 1]
 	vcvtusi2ss	xmm12, xmm10, r15d	# tmp4442, tmp4441, MEM[(const unsigned char *)_2298 + ivtmp.854_2312 * 1]
 .LVL221:
-# src/opt17.cpp:276:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 276 56 view .LVU1514
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:279:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 279 56 view .LVU1514
 	movzx	r15d, BYTE PTR 3[r14+rax]	# MEM[(const unsigned char *)_2298 + 3B + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_2298 + 3B + ivtmp.854_2312 * 1]
 	vcvtusi2ss	xmm20, xmm10, r15d	# tmp4443, tmp4441, MEM[(const unsigned char *)_2298 + 3B + ivtmp.854_2312 * 1]
 .LVL222:
-	.loc 1 277 25 is_stmt 1 view .LVU1515
-# src/opt17.cpp:277:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 277 31 is_stmt 0 view .LVU1516
+	.loc 1 280 25 is_stmt 1 view .LVU1515
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:280:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 280 31 is_stmt 0 view .LVU1516
 	movzx	r15d, BYTE PTR [rcx+rax]	# MEM[(const unsigned char *)_2523 + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_2523 + ivtmp.854_2312 * 1]
 	vcvtusi2ss	xmm8, xmm10, r15d	# tmp4444, tmp4441, MEM[(const unsigned char *)_2523 + ivtmp.854_2312 * 1]
 .LVL223:
-# src/opt17.cpp:277:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 277 56 view .LVU1517
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:280:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 280 56 view .LVU1517
 	movzx	r15d, BYTE PTR 3[rcx+rax]	# MEM[(const unsigned char *)_2523 + 3B + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_2523 + 3B + ivtmp.854_2312 * 1]
-# src/opt17.cpp:280:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 280 61 view .LVU1518
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:283:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 283 61 view .LVU1518
 	vmulss	xmm22, xmm6, xmm12	# _248, _81, s1l
-# src/opt17.cpp:277:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 277 56 view .LVU1519
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:280:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 280 56 view .LVU1519
 	vcvtusi2ss	xmm19, xmm10, r15d	# tmp4445, tmp4441, MEM[(const unsigned char *)_2523 + 3B + ivtmp.854_2312 * 1]
 .LVL224:
-	.loc 1 278 25 is_stmt 1 view .LVU1520
-# src/opt17.cpp:278:                         float s3l = p.SUB[rb[3]+xf+k], s3r = p.SUB[rb[3]+xf+k+3];
-	.loc 1 278 31 is_stmt 0 view .LVU1521
+	.loc 1 281 25 is_stmt 1 view .LVU1520
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:281:                         float s3l = p.SUB[rb[3]+xf+k], s3r = p.SUB[rb[3]+xf+k+3];
+	.loc 1 281 31 is_stmt 0 view .LVU1521
 	movzx	r15d, BYTE PTR [rdx+rax]	# MEM[(const unsigned char *)_3251 + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_3251 + ivtmp.854_2312 * 1]
 	vcvtusi2ss	xmm16, xmm10, r15d	# tmp4446, tmp4441, MEM[(const unsigned char *)_3251 + ivtmp.854_2312 * 1]
 .LVL225:
-# src/opt17.cpp:278:                         float s3l = p.SUB[rb[3]+xf+k], s3r = p.SUB[rb[3]+xf+k+3];
-	.loc 1 278 56 view .LVU1522
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:281:                         float s3l = p.SUB[rb[3]+xf+k], s3r = p.SUB[rb[3]+xf+k+3];
+	.loc 1 281 56 view .LVU1522
 	movzx	r15d, BYTE PTR 3[rdx+rax]	# MEM[(const unsigned char *)_3251 + 3B + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_3251 + 3B + ivtmp.854_2312 * 1]
 	vcvtusi2ss	xmm15, xmm10, r15d	# tmp4447, tmp4441, MEM[(const unsigned char *)_3251 + 3B + ivtmp.854_2312 * 1]
 .LVL226:
-	.loc 1 279 25 is_stmt 1 view .LVU1523
-# src/opt17.cpp:279:                         float s4l = p.SUB[rb[4]+xf+k], s4r = p.SUB[rb[4]+xf+k+3];
-	.loc 1 279 31 is_stmt 0 view .LVU1524
+	.loc 1 282 25 is_stmt 1 view .LVU1523
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:282:                         float s4l = p.SUB[rb[4]+xf+k], s4r = p.SUB[rb[4]+xf+k+3];
+	.loc 1 282 31 is_stmt 0 view .LVU1524
 	movzx	r15d, BYTE PTR [rsi+rax]	# MEM[(const unsigned char *)_731 + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_731 + ivtmp.854_2312 * 1]
 	vcvtusi2ss	xmm18, xmm10, r15d	# tmp4448, tmp4441, MEM[(const unsigned char *)_731 + ivtmp.854_2312 * 1]
 .LVL227:
-# src/opt17.cpp:279:                         float s4l = p.SUB[rb[4]+xf+k], s4r = p.SUB[rb[4]+xf+k+3];
-	.loc 1 279 56 view .LVU1525
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:282:                         float s4l = p.SUB[rb[4]+xf+k], s4r = p.SUB[rb[4]+xf+k+3];
+	.loc 1 282 56 view .LVU1525
 	movzx	r15d, BYTE PTR 3[rsi+rax]	# MEM[(const unsigned char *)_731 + 3B + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_731 + 3B + ivtmp.854_2312 * 1]
 	vcvtusi2ss	xmm14, xmm10, r15d	# tmp4449, tmp4441, MEM[(const unsigned char *)_731 + 3B + ivtmp.854_2312 * 1]
 .LVL228:
-	.loc 1 280 25 is_stmt 1 view .LVU1526
-# src/opt17.cpp:275:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 275 31 is_stmt 0 view .LVU1527
+	.loc 1 283 25 is_stmt 1 view .LVU1526
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:278:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 278 31 is_stmt 0 view .LVU1527
 	movzx	r15d, BYTE PTR [r9+rax]	# MEM[(const unsigned char *)_2303 + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_2303 + ivtmp.854_2312 * 1]
 	vcvtusi2ss	xmm13, xmm10, r15d	# tmp4450, tmp4441, MEM[(const unsigned char *)_2303 + ivtmp.854_2312 * 1]
-# src/opt17.cpp:275:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 275 56 view .LVU1528
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:278:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 278 56 view .LVU1528
 	movzx	r15d, BYTE PTR 3[r9+rax]	# MEM[(const unsigned char *)_2303 + 3B + ivtmp.854_2312 * 1], MEM[(const unsigned char *)_2303 + 3B + ivtmp.854_2312 * 1]
-# src/opt17.cpp:283:                         vp3[xf+k] += p.A*s3l + p.B*s3r + p.C*s4l + p.D*s4r;
-	.loc 1 283 61 view .LVU1529
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:286:                         vp3[xf+k] += p.A*s3l + p.B*s3r + p.C*s4l + p.D*s4r;
+	.loc 1 286 61 view .LVU1529
 	vmulss	xmm18, xmm6, xmm18	# _290, _81, s4l
 .LVL229:
-# src/opt17.cpp:275:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 275 56 view .LVU1530
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:278:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 278 56 view .LVU1530
 	vcvtusi2ss	xmm21, xmm10, r15d	# tmp4451, tmp4441, MEM[(const unsigned char *)_2303 + 3B + ivtmp.854_2312 * 1]
 	vfmadd213ss	xmm13, xmm4, DWORD PTR [r11+rax*4]	# _2613, _79, MEM[(float *)_3764 + ivtmp.854_2312 * 4]
 	vfmadd132ss	xmm21, xmm22, xmm5	# _2656, _248, _80
-# src/opt17.cpp:280:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 280 35 view .LVU1531
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:283:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 283 35 view .LVU1531
 	vfmadd231ss	xmm13, xmm7, xmm20	# tmp2823, _82, s1r
 	vaddss	xmm13, xmm13, xmm21	# _253, tmp2823, _2656
 	vmovss	DWORD PTR [r11+rax*4], xmm13	# MEM[(float *)_3764 + ivtmp.854_2312 * 4], _253
-	.loc 1 281 25 is_stmt 1 view .LVU1532
-# src/opt17.cpp:281:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 281 61 is_stmt 0 view .LVU1533
+	.loc 1 284 25 is_stmt 1 view .LVU1532
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:284:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 284 61 is_stmt 0 view .LVU1533
 	vmulss	xmm13, xmm6, xmm8	# _262, _81, s2l
 	vfmadd213ss	xmm12, xmm4, DWORD PTR [r8+rax*4]	# _1987, _79, MEM[(float *)_3449 + ivtmp.854_2312 * 4]
 .LVL230:
-	.loc 1 281 61 view .LVU1534
+	.loc 1 284 61 view .LVU1534
 	vfmadd132ss	xmm20, xmm13, xmm5	# _2296, _262, _80
 .LVL231:
-# src/opt17.cpp:281:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 281 35 view .LVU1535
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:284:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 284 35 view .LVU1535
 	vfmadd231ss	xmm12, xmm7, xmm19	# tmp2826, _82, s2r
 	vaddss	xmm12, xmm12, xmm20	# _267, tmp2826, _2296
 	vmovss	DWORD PTR [r8+rax*4], xmm12	# MEM[(float *)_3449 + ivtmp.854_2312 * 4], _267
-	.loc 1 282 25 is_stmt 1 view .LVU1536
-# src/opt17.cpp:282:                         vp2[xf+k] += p.A*s2l + p.B*s2r + p.C*s3l + p.D*s3r;
-	.loc 1 282 61 is_stmt 0 view .LVU1537
+	.loc 1 285 25 is_stmt 1 view .LVU1536
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:285:                         vp2[xf+k] += p.A*s2l + p.B*s2r + p.C*s3l + p.D*s3r;
+	.loc 1 285 61 is_stmt 0 view .LVU1537
 	vmulss	xmm12, xmm6, xmm16	# _276, _81, s3l
 	vfmadd213ss	xmm8, xmm4, DWORD PTR 0[r13+rax*4]	# _1764, _79, MEM[(float *)_3437 + ivtmp.854_2312 * 4]
 .LVL232:
-	.loc 1 282 61 view .LVU1538
+	.loc 1 285 61 view .LVU1538
 	vfmadd132ss	xmm19, xmm12, xmm5	# _1893, _276, _80
 .LVL233:
-# src/opt17.cpp:282:                         vp2[xf+k] += p.A*s2l + p.B*s2r + p.C*s3l + p.D*s3r;
-	.loc 1 282 35 view .LVU1539
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:285:                         vp2[xf+k] += p.A*s2l + p.B*s2r + p.C*s3l + p.D*s3r;
+	.loc 1 285 35 view .LVU1539
 	vfmadd231ss	xmm8, xmm7, xmm15	# tmp2829, _82, s3r
 	vfmadd132ss	xmm15, xmm18, xmm5	# _3736, _290, _80
 .LVL234:
-	.loc 1 282 35 view .LVU1540
+	.loc 1 285 35 view .LVU1540
 	vaddss	xmm8, xmm8, xmm19	# _281, tmp2829, _1893
 	vmovss	DWORD PTR 0[r13+rax*4], xmm8	# MEM[(float *)_3437 + ivtmp.854_2312 * 4], _281
-	.loc 1 283 25 is_stmt 1 view .LVU1541
+	.loc 1 286 25 is_stmt 1 view .LVU1541
 	vfmadd213ss	xmm16, xmm4, DWORD PTR [rdi+rax*4]	# _3564, _79, MEM[(float *)_3428 + ivtmp.854_2312 * 4]
 .LVL235:
-# src/opt17.cpp:283:                         vp3[xf+k] += p.A*s3l + p.B*s3r + p.C*s4l + p.D*s4r;
-	.loc 1 283 35 is_stmt 0 view .LVU1542
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:286:                         vp3[xf+k] += p.A*s3l + p.B*s3r + p.C*s4l + p.D*s4r;
+	.loc 1 286 35 is_stmt 0 view .LVU1542
 	vfmadd132ss	xmm14, xmm16, xmm7	# tmp2832, _3564, _82
 .LVL236:
-	.loc 1 283 35 view .LVU1543
+	.loc 1 286 35 view .LVU1543
 	vaddss	xmm14, xmm14, xmm15	# _295, tmp2832, _3736
 	vmovss	DWORD PTR [rdi+rax*4], xmm14	# MEM[(float *)_3428 + ivtmp.854_2312 * 4], _295
 .LBE5380:
-	.loc 1 274 21 is_stmt 1 discriminator 1 view .LVU1544
+	.loc 1 277 21 is_stmt 1 discriminator 1 view .LVU1544
 .LVL237:
-	.loc 1 274 39 discriminator 2 view .LVU1545
+	.loc 1 277 39 discriminator 2 view .LVU1545
 	inc	rax	# ivtmp.854
 .LVL238:
-	.loc 1 274 39 is_stmt 0 discriminator 2 view .LVU1546
+	.loc 1 277 39 is_stmt 0 discriminator 2 view .LVU1546
 	cmp	r10d, eax	# _1557, ivtmp.854
 	jg	.L49	#,
 	mov	rdi, QWORD PTR 472[rsp]	# ivtmp.907, %sfp
@@ -5517,23 +5517,23 @@
 	mov	r14, QWORD PTR 384[rsp]	# ivtmp.905, %sfp
 	mov	r9, QWORD PTR 368[rsp]	# ivtmp.904, %sfp
 .LVL239:
-	.loc 1 274 39 discriminator 2 view .LVU1547
+	.loc 1 277 39 discriminator 2 view .LVU1547
 	mov	r10, QWORD PTR 352[rsp]	# ivtmp.903, %sfp
 .LVL240:
 .L48:
-	.loc 1 274 39 discriminator 2 view .LVU1548
+	.loc 1 277 39 discriminator 2 view .LVU1548
 .LBE5381:
 .LBE5389:
-	.loc 1 126 17 is_stmt 1 discriminator 1 view .LVU1549
-	.loc 1 126 30 discriminator 2 view .LVU1550
+	.loc 1 129 17 is_stmt 1 discriminator 1 view .LVU1549
+	.loc 1 129 30 discriminator 2 view .LVU1550
 	mov	rax, QWORD PTR 288[rsp]	# tmp2547, %sfp
 	mov	edx, DWORD PTR 432[rsp]	# ivtmp.888, %sfp
 	add	rbx, rax	# ivtmp.894, tmp2547
 .LVL241:
-	.loc 1 126 30 is_stmt 0 discriminator 2 view .LVU1551
+	.loc 1 129 30 is_stmt 0 discriminator 2 view .LVU1551
 	add	r12, rax	# ivtmp.896, tmp2547
 .LVL242:
-	.loc 1 126 30 discriminator 2 view .LVU1552
+	.loc 1 129 30 discriminator 2 view .LVU1552
 	mov	rax, QWORD PTR 400[rsp]	# tmp2519, %sfp
 	add	r10, rax	# ivtmp.903, tmp2519
 	add	r9, rax	# ivtmp.904, tmp2519
@@ -5546,140 +5546,140 @@
 	inc	eax	# ivtmp.888
 	mov	DWORD PTR 432[rsp], eax	# %sfp, ivtmp.888
 .LVL243:
-	.loc 1 126 30 discriminator 2 view .LVU1553
+	.loc 1 129 30 discriminator 2 view .LVU1553
 	jmp	.L50	#
 	.p2align 4,,10
 	.p2align 3
 .L225:
-	.loc 1 126 30 discriminator 2 view .LVU1554
+	.loc 1 129 30 discriminator 2 view .LVU1554
 	mov	esi, DWORD PTR 148[rsp]	# _646, %sfp
 	mov	eax, DWORD PTR 252[rsp]	# y, %sfp
 	mov	rdx, QWORD PTR 152[rsp]	# ivtmp.914, %sfp
 .LVL244:
-	.loc 1 126 30 discriminator 2 view .LVU1555
+	.loc 1 129 30 discriminator 2 view .LVU1555
 	and	esi, -4	# _3677,
 .LVL245:
-	.loc 1 126 30 discriminator 2 view .LVU1556
+	.loc 1 129 30 discriminator 2 view .LVU1556
 	lea	eax, 4[rax+rsi]	# y,
 .LVL246:
-	.loc 1 126 30 discriminator 2 view .LVU1557
+	.loc 1 129 30 discriminator 2 view .LVU1557
 	mov	DWORD PTR 252[rsp], eax	# %sfp, y
 .LVL247:
 .L41:
-	.loc 1 126 30 discriminator 2 view .LVU1558
+	.loc 1 129 30 discriminator 2 view .LVU1558
 .LBE5884:
 .LBB5885:
-	.loc 1 287 30 is_stmt 1 discriminator 2 view .LVU1559
-# src/opt17.cpp:287:                 for (; y + 1 < y_end; y += 2) {
-	.loc 1 287 26 is_stmt 0 discriminator 2 view .LVU1560
+	.loc 1 290 30 is_stmt 1 discriminator 2 view .LVU1559
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:290:                 for (; y + 1 < y_end; y += 2) {
+	.loc 1 290 26 is_stmt 0 discriminator 2 view .LVU1560
 	mov	ebx, DWORD PTR 252[rsp]	# y, %sfp
 	lea	eax, 1[rbx]	# _1312,
-# src/opt17.cpp:287:                 for (; y + 1 < y_end; y += 2) {
-	.loc 1 287 30 discriminator 2 view .LVU1561
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:290:                 for (; y + 1 < y_end; y += 2) {
+	.loc 1 290 30 discriminator 2 view .LVU1561
 	cmp	DWORD PTR 248[rsp], eax	# %sfp, _1312
 	jle	.L51	#,
 .LBB5876:
-	.loc 1 288 21 is_stmt 1 view .LVU1562
-	.loc 1 289 21 view .LVU1563
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 41 is_stmt 0 view .LVU1564
+	.loc 1 291 21 is_stmt 1 view .LVU1562
+	.loc 1 292 21 view .LVU1563
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 41 is_stmt 0 view .LVU1564
 	mov	eax, DWORD PTR 4[rdx]	# _299, MEM[(int *)_424 + 4B]
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 76 view .LVU1565
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 76 view .LVU1565
 	mov	edi, DWORD PTR 228[rsp]	# _660, %sfp
 	mov	ecx, DWORD PTR [rdx]	# _303, MEM[(int *)_424]
 .LBB5467:
-# src/opt17.cpp:298:                     for (; xf + 16 <= x_floats; xf += 16) {
-	.loc 1 298 36 discriminator 2 view .LVU1566
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:301:                     for (; xf + 16 <= x_floats; xf += 16) {
+	.loc 1 301 36 discriminator 2 view .LVU1566
 	mov	r14d, DWORD PTR 496[rsp]	# x_floats_676, %sfp
 .LBE5467:
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 41 view .LVU1567
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 41 view .LVU1567
 	add	eax, ebx	# _299, y
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 64 discriminator 1 view .LVU1568
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 64 discriminator 1 view .LVU1568
 	sub	ebx, DWORD PTR 224[rsp]	# _310, %sfp
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 53 discriminator 1 view .LVU1569
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 53 discriminator 1 view .LVU1569
 	movsxd	rsi, ebx	# _311, _310
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 74 discriminator 1 view .LVU1570
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 74 discriminator 1 view .LVU1570
 	mov	rbx, QWORD PTR 160[rsp]	# _312, %sfp
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 30 view .LVU1571
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 30 view .LVU1571
 	cdqe
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 76 view .LVU1572
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 76 view .LVU1572
 	add	ecx, edi	# _303, _660
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 49 view .LVU1573
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 49 view .LVU1573
 	imul	rax, QWORD PTR 184[rsp]	# _301, %sfp
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 111 discriminator 1 view .LVU1574
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 111 discriminator 1 view .LVU1574
 	sub	edi, DWORD PTR 204[rsp]	# _313, %sfp
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 59 view .LVU1575
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 59 view .LVU1575
 	movsxd	rcx, ecx	# _304, _303
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 74 discriminator 1 view .LVU1576
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 74 discriminator 1 view .LVU1576
 	imul	rbx, rsi	# _312, _311
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 94 discriminator 1 view .LVU1577
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 94 discriminator 1 view .LVU1577
 	movsxd	rsi, edi	# _314, _313
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 119 discriminator 1 view .LVU1578
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 119 discriminator 1 view .LVU1578
 	mov	rdi, QWORD PTR 216[rsp]	# _1502, %sfp
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 92 discriminator 1 view .LVU1579
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 92 discriminator 1 view .LVU1579
 	lea	rsi, [rsi+rsi*2]	# _315,
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 57 view .LVU1580
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 57 view .LVU1580
 	add	rax, rcx	# _305, _304
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 92 discriminator 1 view .LVU1581
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 92 discriminator 1 view .LVU1581
 	add	rsi, rbx	# _316, _312
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 85 view .LVU1582
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 85 view .LVU1582
 	lea	rcx, [rax+rax*2]	# _306,
-# src/opt17.cpp:290:                     rb[1] = rb[0] + width * 3;
-	.loc 1 290 35 view .LVU1583
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:293:                     rb[1] = rb[0] + width * 3;
+	.loc 1 293 35 view .LVU1583
 	mov	rax, QWORD PTR 136[rsp]	# _93, %sfp
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 119 discriminator 1 view .LVU1584
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 119 discriminator 1 view .LVU1584
 	lea	rsi, [rdi+rsi*4]	# vp0,
-# src/opt17.cpp:294:                     float* vp1 = vp0 + tile_row_stride;
-	.loc 1 294 28 view .LVU1585
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:297:                     float* vp1 = vp0 + tile_row_stride;
+	.loc 1 297 28 view .LVU1585
 	mov	rdi, QWORD PTR 296[rsp]	# tmp2543, %sfp
-# src/opt17.cpp:289:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 289 85 view .LVU1586
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:292:                     rb[0] = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 292 85 view .LVU1586
 	mov	QWORD PTR 488[rsp], rcx	# %sfp, _306
 .LVL248:
-	.loc 1 290 21 is_stmt 1 view .LVU1587
-# src/opt17.cpp:290:                     rb[1] = rb[0] + width * 3;
-	.loc 1 290 35 is_stmt 0 view .LVU1588
+	.loc 1 293 21 is_stmt 1 view .LVU1587
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:293:                     rb[1] = rb[0] + width * 3;
+	.loc 1 293 35 is_stmt 0 view .LVU1588
 	lea	r13, [rax+rcx]	# _3522,
 .LVL249:
-	.loc 1 291 21 is_stmt 1 view .LVU1589
-# src/opt17.cpp:293:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 293 119 is_stmt 0 discriminator 1 view .LVU1590
+	.loc 1 294 21 is_stmt 1 view .LVU1589
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:296:                     float* vp0 = tile_vals.data() + (size_t)(y - ty)     * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 296 119 is_stmt 0 discriminator 1 view .LVU1590
 	mov	QWORD PTR 416[rsp], rsi	# %sfp, vp0
-# src/opt17.cpp:294:                     float* vp1 = vp0 + tile_row_stride;
-	.loc 1 294 28 view .LVU1591
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:297:                     float* vp1 = vp0 + tile_row_stride;
+	.loc 1 297 28 view .LVU1591
 	lea	r9, [rsi+rdi]	# vp1,
-# src/opt17.cpp:291:                     rb[2] = rb[1] + width * 3;
-	.loc 1 291 35 view .LVU1592
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:294:                     rb[2] = rb[1] + width * 3;
+	.loc 1 294 35 view .LVU1592
 	add	rax, r13	# _3524, _3522
 .LVL250:
-	.loc 1 293 21 is_stmt 1 view .LVU1593
-	.loc 1 294 21 view .LVU1594
-# src/opt17.cpp:294:                     float* vp1 = vp0 + tile_row_stride;
-	.loc 1 294 28 is_stmt 0 view .LVU1595
+	.loc 1 296 21 is_stmt 1 view .LVU1593
+	.loc 1 297 21 view .LVU1594
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:297:                     float* vp1 = vp0 + tile_row_stride;
+	.loc 1 297 28 is_stmt 0 view .LVU1595
 	mov	QWORD PTR 408[rsp], r9	# %sfp, vp1
 .LVL251:
-	.loc 1 296 21 is_stmt 1 view .LVU1596
-	.loc 1 298 21 view .LVU1597
+	.loc 1 299 21 is_stmt 1 view .LVU1596
+	.loc 1 301 21 view .LVU1597
 .LBB5736:
-	.loc 1 298 36 discriminator 2 view .LVU1598
+	.loc 1 301 36 discriminator 2 view .LVU1598
 	cmp	r14d, 15	# x_floats_676,
 	jle	.L52	#,
 	mov	r10d, r14d	# _3281, x_floats_676
@@ -5696,11 +5696,11 @@
 	.p2align 3
 .L53:
 .LBB5468:
-	.loc 1 299 25 view .LVU1599
+	.loc 1 302 25 view .LVU1599
 .LBB5469:
 .LBI5469:
-	.loc 1 35 22 view .LVU1600
-	.loc 1 36 5 view .LVU1601
+	.loc 1 38 22 view .LVU1600
+	.loc 1 39 5 view .LVU1601
 .LBB5470:
 .LBI5470:
 	.loc 14 711 1 view .LVU1602
@@ -5727,8 +5727,8 @@
 .LBE5502:
 .LBE5501:
 .LBE5468:
-# src/opt17.cpp:298:                     for (; xf + 16 <= x_floats; xf += 16) {
-	.loc 1 298 36 discriminator 2 view .LVU1605
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:301:                     for (; xf + 16 <= x_floats; xf += 16) {
+	.loc 1 301 36 discriminator 2 view .LVU1605
 	add	rdi, 64	# ivtmp.848,
 	sub	rsi, r13	# _3114, _3522
 .LVL253:
@@ -5778,8 +5778,8 @@
 .LBE5533:
 .LBE5532:
 .LBE5733:
-# src/opt17.cpp:298:                     for (; xf + 16 <= x_floats; xf += 16) {
-	.loc 1 298 36 discriminator 2 view .LVU1614
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:301:                     for (; xf + 16 <= x_floats; xf += 16) {
+	.loc 1 301 36 discriminator 2 view .LVU1614
 	add	r9, 64	# ivtmp.850,
 .LBB5734:
 .LBB5547:
@@ -5826,8 +5826,8 @@
 .LBE5505:
 .LBE5562:
 .LBE5734:
-# src/opt17.cpp:298:                     for (; xf + 16 <= x_floats; xf += 16) {
-	.loc 1 298 36 discriminator 2 view .LVU1621
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:301:                     for (; xf + 16 <= x_floats; xf += 16) {
+	.loc 1 301 36 discriminator 2 view .LVU1621
 	add	r8, 16	# ivtmp.847,
 .LVL255:
 .LBB5735:
@@ -5872,11 +5872,11 @@
 .LBE5484:
 .LBE5485:
 .LBE5593:
-	.loc 1 300 25 is_stmt 1 view .LVU1625
+	.loc 1 303 25 is_stmt 1 view .LVU1625
 .LBB5594:
 .LBI5548:
-	.loc 1 35 22 view .LVU1626
-	.loc 1 36 5 view .LVU1627
+	.loc 1 38 22 view .LVU1626
+	.loc 1 39 5 view .LVU1627
 .LBB5552:
 .LBI5552:
 	.loc 14 711 1 view .LVU1628
@@ -5920,11 +5920,11 @@
 .LBE5560:
 .LBE5559:
 .LBE5594:
-	.loc 1 301 25 is_stmt 1 view .LVU1642
+	.loc 1 304 25 is_stmt 1 view .LVU1642
 .LBB5595:
 .LBI5563:
-	.loc 1 35 22 view .LVU1643
-	.loc 1 36 5 view .LVU1644
+	.loc 1 38 22 view .LVU1643
+	.loc 1 39 5 view .LVU1644
 .LBB5567:
 .LBI5567:
 	.loc 14 711 1 view .LVU1645
@@ -5992,11 +5992,11 @@
 .LBE5576:
 .LBE5577:
 .LBE5629:
-	.loc 1 302 25 is_stmt 1 view .LVU1662
+	.loc 1 305 25 is_stmt 1 view .LVU1662
 .LBB5630:
 .LBI5578:
-	.loc 1 35 22 view .LVU1663
-	.loc 1 36 5 view .LVU1664
+	.loc 1 38 22 view .LVU1663
+	.loc 1 39 5 view .LVU1664
 .LBB5582:
 .LBI5582:
 	.loc 14 711 1 view .LVU1665
@@ -6040,11 +6040,11 @@
 .LBE5590:
 .LBE5589:
 .LBE5630:
-	.loc 1 303 25 is_stmt 1 view .LVU1679
+	.loc 1 306 25 is_stmt 1 view .LVU1679
 .LBB5631:
 .LBI5486:
-	.loc 1 35 22 view .LVU1680
-	.loc 1 36 5 view .LVU1681
+	.loc 1 38 22 view .LVU1680
+	.loc 1 39 5 view .LVU1681
 .LBB5493:
 .LBI5493:
 	.loc 14 711 1 view .LVU1682
@@ -6083,11 +6083,11 @@
 .LBE5492:
 .LBE5500:
 .LBE5631:
-	.loc 1 304 25 is_stmt 1 view .LVU1694
+	.loc 1 307 25 is_stmt 1 view .LVU1694
 .LBB5632:
 .LBI5501:
-	.loc 1 35 22 view .LVU1695
-	.loc 1 36 5 view .LVU1696
+	.loc 1 38 22 view .LVU1695
+	.loc 1 39 5 view .LVU1696
 .LBB5508:
 .LBI5508:
 	.loc 14 711 1 view .LVU1697
@@ -6126,11 +6126,11 @@
 .LBE5507:
 .LBE5515:
 .LBE5632:
-	.loc 1 305 25 is_stmt 1 view .LVU1709
+	.loc 1 308 25 is_stmt 1 view .LVU1709
 .LBB5633:
 .LBI5517:
-	.loc 1 35 22 view .LVU1710
-	.loc 1 36 5 view .LVU1711
+	.loc 1 38 22 view .LVU1710
+	.loc 1 39 5 view .LVU1711
 .LBB5524:
 .LBI5524:
 	.loc 14 711 1 view .LVU1712
@@ -6169,11 +6169,11 @@
 .LBE5523:
 .LBE5531:
 .LBE5633:
-	.loc 1 306 25 is_stmt 1 view .LVU1724
+	.loc 1 309 25 is_stmt 1 view .LVU1724
 .LBB5634:
 .LBI5532:
-	.loc 1 35 22 view .LVU1725
-	.loc 1 36 5 view .LVU1726
+	.loc 1 38 22 view .LVU1725
+	.loc 1 39 5 view .LVU1726
 .LBB5539:
 .LBI5539:
 	.loc 14 711 1 view .LVU1727
@@ -6212,9 +6212,9 @@
 .LBE5538:
 .LBE5546:
 .LBE5634:
-	.loc 1 307 25 is_stmt 1 view .LVU1739
+	.loc 1 310 25 is_stmt 1 view .LVU1739
 .LBB5635:
-	.loc 1 308 29 view .LVU1740
+	.loc 1 311 29 view .LVU1740
 .LBB5603:
 .LBI5603:
 	.loc 13 847 1 view .LVU1741
@@ -6223,7 +6223,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1743
 .LBE5604:
 .LBE5603:
-	.loc 1 309 29 is_stmt 1 view .LVU1744
+	.loc 1 312 29 is_stmt 1 view .LVU1744
 .LBB5605:
 .LBI5605:
 	.loc 13 847 1 view .LVU1745
@@ -6232,7 +6232,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1747
 .LBE5606:
 .LBE5605:
-	.loc 1 310 29 is_stmt 1 view .LVU1748
+	.loc 1 313 29 is_stmt 1 view .LVU1748
 .LBB5607:
 .LBI5597:
 	.loc 16 63 1 view .LVU1749
@@ -6241,7 +6241,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU1751
 .LBE5599:
 .LBE5607:
-	.loc 1 311 29 is_stmt 1 view .LVU1752
+	.loc 1 314 29 is_stmt 1 view .LVU1752
 .LBB5608:
 .LBI5600:
 	.loc 16 63 1 view .LVU1753
@@ -6250,7 +6250,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU1755
 .LBE5602:
 .LBE5608:
-	.loc 1 312 29 is_stmt 1 view .LVU1756
+	.loc 1 315 29 is_stmt 1 view .LVU1756
 .LBB5609:
 .LBI5609:
 	.loc 16 63 1 view .LVU1757
@@ -6263,7 +6263,7 @@
 	.loc 16 65 10 view .LVU1760
 .LBE5610:
 .LBE5609:
-	.loc 1 313 29 is_stmt 1 view .LVU1761
+	.loc 1 316 29 is_stmt 1 view .LVU1761
 .LBB5611:
 .LBI5611:
 	.loc 16 63 1 view .LVU1762
@@ -6276,7 +6276,7 @@
 	.loc 16 65 10 view .LVU1765
 .LBE5612:
 .LBE5611:
-	.loc 1 314 29 is_stmt 1 view .LVU1766
+	.loc 1 317 29 is_stmt 1 view .LVU1766
 .LBB5613:
 .LBI5613:
 	.loc 16 63 1 view .LVU1767
@@ -6327,7 +6327,7 @@
 	.loc 16 65 10 view .LVU1772
 .LBE5615:
 .LBE5616:
-	.loc 1 315 29 is_stmt 1 view .LVU1773
+	.loc 1 318 29 is_stmt 1 view .LVU1773
 .LBB5617:
 .LBI5617:
 	.loc 16 63 1 view .LVU1774
@@ -6340,7 +6340,7 @@
 	.loc 16 65 10 view .LVU1777
 .LBE5618:
 .LBE5617:
-	.loc 1 316 29 is_stmt 1 view .LVU1778
+	.loc 1 319 29 is_stmt 1 view .LVU1778
 .LBB5619:
 .LBI5619:
 	.loc 16 63 1 view .LVU1779
@@ -6353,7 +6353,7 @@
 	.loc 16 65 10 view .LVU1782
 .LBE5620:
 .LBE5619:
-	.loc 1 317 29 is_stmt 1 view .LVU1783
+	.loc 1 320 29 is_stmt 1 view .LVU1783
 .LBB5621:
 .LBI5621:
 	.loc 16 63 1 view .LVU1784
@@ -6366,7 +6366,7 @@
 	.loc 16 65 10 view .LVU1787
 .LBE5622:
 .LBE5621:
-	.loc 1 318 29 is_stmt 1 view .LVU1788
+	.loc 1 321 29 is_stmt 1 view .LVU1788
 .LBB5623:
 .LBI5623:
 	.loc 13 853 1 view .LVU1789
@@ -6379,7 +6379,7 @@
 	.loc 13 855 20 view .LVU1792
 .LBE5624:
 .LBE5623:
-	.loc 1 319 29 is_stmt 1 view .LVU1793
+	.loc 1 322 29 is_stmt 1 view .LVU1793
 .LBB5625:
 .LBI5625:
 	.loc 13 853 1 view .LVU1794
@@ -6410,11 +6410,11 @@
 .LBE5627:
 .LBE5628:
 .LBE5684:
-	.loc 1 321 25 is_stmt 1 view .LVU1800
+	.loc 1 324 25 is_stmt 1 view .LVU1800
 .LBB5685:
 .LBI5636:
-	.loc 1 35 22 view .LVU1801
-	.loc 1 36 5 view .LVU1802
+	.loc 1 38 22 view .LVU1801
+	.loc 1 39 5 view .LVU1802
 .LBB5643:
 .LBI5643:
 	.loc 14 711 1 view .LVU1803
@@ -6454,11 +6454,11 @@
 .LBE5642:
 .LBE5650:
 .LBE5685:
-	.loc 1 322 25 is_stmt 1 view .LVU1816
+	.loc 1 325 25 is_stmt 1 view .LVU1816
 .LBB5686:
 .LBI5651:
-	.loc 1 35 22 view .LVU1817
-	.loc 1 36 5 view .LVU1818
+	.loc 1 38 22 view .LVU1817
+	.loc 1 39 5 view .LVU1818
 .LBB5658:
 .LBI5658:
 	.loc 14 711 1 view .LVU1819
@@ -6498,11 +6498,11 @@
 .LBE5657:
 .LBE5665:
 .LBE5686:
-	.loc 1 323 25 is_stmt 1 view .LVU1832
+	.loc 1 326 25 is_stmt 1 view .LVU1832
 .LBB5687:
 .LBI5669:
-	.loc 1 35 22 view .LVU1833
-	.loc 1 36 5 view .LVU1834
+	.loc 1 38 22 view .LVU1833
+	.loc 1 39 5 view .LVU1834
 .LBB5673:
 .LBI5673:
 	.loc 14 711 1 view .LVU1835
@@ -6581,11 +6581,11 @@
 .LBE5682:
 .LBE5683:
 .LBE5730:
-	.loc 1 324 25 is_stmt 1 view .LVU1854
+	.loc 1 327 25 is_stmt 1 view .LVU1854
 .LBB5731:
 .LBI5688:
-	.loc 1 35 22 view .LVU1855
-	.loc 1 36 5 view .LVU1856
+	.loc 1 38 22 view .LVU1855
+	.loc 1 39 5 view .LVU1856
 .LBB5692:
 .LBI5692:
 	.loc 14 711 1 view .LVU1857
@@ -6629,9 +6629,9 @@
 .LBE5700:
 .LBE5699:
 .LBE5731:
-	.loc 1 325 25 is_stmt 1 view .LVU1871
+	.loc 1 328 25 is_stmt 1 view .LVU1871
 .LBB5732:
-	.loc 1 326 29 view .LVU1872
+	.loc 1 329 29 view .LVU1872
 .LBB5708:
 .LBI5708:
 	.loc 13 847 1 view .LVU1873
@@ -6640,7 +6640,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1875
 .LBE5709:
 .LBE5708:
-	.loc 1 327 29 is_stmt 1 view .LVU1876
+	.loc 1 330 29 is_stmt 1 view .LVU1876
 .LBB5710:
 .LBI5710:
 	.loc 13 847 1 view .LVU1877
@@ -6649,7 +6649,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU1879
 .LBE5711:
 .LBE5710:
-	.loc 1 328 29 is_stmt 1 view .LVU1880
+	.loc 1 331 29 is_stmt 1 view .LVU1880
 .LBB5712:
 .LBI5702:
 	.loc 16 63 1 view .LVU1881
@@ -6658,7 +6658,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU1883
 .LBE5704:
 .LBE5712:
-	.loc 1 329 29 is_stmt 1 view .LVU1884
+	.loc 1 332 29 is_stmt 1 view .LVU1884
 .LBB5713:
 .LBI5705:
 	.loc 16 63 1 view .LVU1885
@@ -6667,7 +6667,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU1887
 .LBE5707:
 .LBE5713:
-	.loc 1 330 29 is_stmt 1 view .LVU1888
+	.loc 1 333 29 is_stmt 1 view .LVU1888
 .LBB5714:
 .LBI5714:
 	.loc 16 63 1 view .LVU1889
@@ -6680,7 +6680,7 @@
 	.loc 16 65 10 view .LVU1892
 .LBE5715:
 .LBE5714:
-	.loc 1 331 29 is_stmt 1 view .LVU1893
+	.loc 1 334 29 is_stmt 1 view .LVU1893
 .LBB5716:
 .LBI5716:
 	.loc 16 63 1 view .LVU1894
@@ -6693,7 +6693,7 @@
 	.loc 16 65 10 view .LVU1897
 .LBE5717:
 .LBE5716:
-	.loc 1 332 29 is_stmt 1 view .LVU1898
+	.loc 1 335 29 is_stmt 1 view .LVU1898
 .LBB5718:
 .LBI5718:
 	.loc 16 63 1 view .LVU1899
@@ -6706,7 +6706,7 @@
 	.loc 16 65 10 view .LVU1902
 .LBE5719:
 .LBE5718:
-	.loc 1 333 29 is_stmt 1 view .LVU1903
+	.loc 1 336 29 is_stmt 1 view .LVU1903
 .LBB5720:
 .LBI5720:
 	.loc 16 63 1 view .LVU1904
@@ -6719,7 +6719,7 @@
 	.loc 16 65 10 view .LVU1907
 .LBE5721:
 .LBE5720:
-	.loc 1 334 29 is_stmt 1 view .LVU1908
+	.loc 1 337 29 is_stmt 1 view .LVU1908
 .LBB5722:
 .LBI5722:
 	.loc 16 63 1 view .LVU1909
@@ -6732,7 +6732,7 @@
 	.loc 16 65 10 view .LVU1912
 .LBE5723:
 .LBE5722:
-	.loc 1 335 29 is_stmt 1 view .LVU1913
+	.loc 1 338 29 is_stmt 1 view .LVU1913
 .LBB5724:
 .LBI5724:
 	.loc 16 63 1 view .LVU1914
@@ -6745,7 +6745,7 @@
 	.loc 16 65 10 view .LVU1917
 .LBE5725:
 .LBE5724:
-	.loc 1 336 29 is_stmt 1 view .LVU1918
+	.loc 1 339 29 is_stmt 1 view .LVU1918
 .LBB5726:
 .LBI5726:
 	.loc 13 853 1 view .LVU1919
@@ -6758,7 +6758,7 @@
 	.loc 13 855 20 view .LVU1922
 .LBE5727:
 .LBE5726:
-	.loc 1 337 29 is_stmt 1 view .LVU1923
+	.loc 1 340 29 is_stmt 1 view .LVU1923
 .LBB5728:
 .LBI5728:
 	.loc 13 853 1 view .LVU1924
@@ -6773,71 +6773,71 @@
 .LBE5728:
 .LBE5732:
 .LBE5735:
-	.loc 1 298 21 is_stmt 1 discriminator 1 view .LVU1928
-	.loc 1 298 36 discriminator 2 view .LVU1929
+	.loc 1 301 21 is_stmt 1 discriminator 1 view .LVU1928
+	.loc 1 301 36 discriminator 2 view .LVU1929
 	cmp	r10, rdi	# _2316, ivtmp.848
 	jne	.L53	#,
 	mov	esi, r11d	# _2605, _2605
 .LVL284:
-	.loc 1 298 36 is_stmt 0 discriminator 2 view .LVU1930
+	.loc 1 301 36 is_stmt 0 discriminator 2 view .LVU1930
 	and	esi, -16	# _2605,
 .LBE5736:
-	.loc 1 341 21 is_stmt 1 view .LVU1931
+	.loc 1 344 21 is_stmt 1 view .LVU1931
 .LBB5737:
-# src/opt17.cpp:341:                     if (xf + 8 <= x_floats) {
-	.loc 1 341 32 is_stmt 0 view .LVU1932
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:344:                     if (xf + 8 <= x_floats) {
+	.loc 1 344 32 is_stmt 0 view .LVU1932
 	lea	edi, 23[rsi]	# _355,
-# src/opt17.cpp:341:                     if (xf + 8 <= x_floats) {
-	.loc 1 341 21 view .LVU1933
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:344:                     if (xf + 8 <= x_floats) {
+	.loc 1 344 21 view .LVU1933
 	cmp	edi, DWORD PTR 496[rsp]	# _355, %sfp
 	jl	.L57	#,
 	lea	edi, 16[rsi]	# xf,
 	mov	DWORD PTR 424[rsp], edi	# %sfp, xf
 .LVL285:
 .L58:
-	.loc 1 341 21 view .LVU1934
+	.loc 1 344 21 view .LVU1934
 .LBE5737:
-	.loc 1 367 21 is_stmt 1 view .LVU1935
+	.loc 1 370 21 is_stmt 1 view .LVU1935
 .LBB5867:
-	.loc 1 367 39 discriminator 2 view .LVU1936
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 50 is_stmt 0 discriminator 2 view .LVU1937
+	.loc 1 370 39 discriminator 2 view .LVU1936
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 50 is_stmt 0 discriminator 2 view .LVU1937
 	mov	edi, DWORD PTR 496[rsp]	# _1547, %sfp
 	mov	esi, DWORD PTR 424[rsp]	# xf, %sfp
 	sub	edi, esi	# _1547, xf
 	mov	DWORD PTR 480[rsp], edi	# %sfp, _1547
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 39 discriminator 2 view .LVU1938
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 39 discriminator 2 view .LVU1938
 	test	edi, edi	# _1547
 	jle	.L59	#,
 .LBB5446:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 49 view .LVU1939
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 49 view .LVU1939
 	mov	edi, esi	# _2727, xf
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 48 view .LVU1940
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 48 view .LVU1940
 	lea	rsi, [rcx+rdi]	# _3520,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 49 view .LVU1941
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 49 view .LVU1941
 	mov	QWORD PTR 472[rsp], rdi	# %sfp, _2727
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 48 view .LVU1942
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 48 view .LVU1942
 	add	r13, rdi	# _3522, _2727
 .LVL286:
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 48 view .LVU1943
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 48 view .LVU1943
 	add	rax, rdi	# _3524, _2727
 .LVL287:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 48 view .LVU1944
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 48 view .LVU1944
 	mov	QWORD PTR 488[rsp], rsi	# %sfp, _3520
 	mov	r11, rdi	# _2727, _2727
 .LVL288:
 .L56:
-	.loc 1 368 48 view .LVU1945
+	.loc 1 371 48 view .LVU1945
 	mov	ecx, DWORD PTR 228[rsp]	# _2732, %sfp
 .LVL289:
-	.loc 1 368 48 view .LVU1946
+	.loc 1 371 48 view .LVU1946
 	sub	rcx, QWORD PTR 176[rsp]	# _2730, %sfp
 	lea	rsi, [rcx+rcx*2]	# _2729,
 	add	rcx, QWORD PTR 72[rsp]	# _2716, %sfp
@@ -6863,8 +6863,8 @@
 	jbe	.L121	#,
 	shr	ebx, 5	# bnd.497,
 	mov	r10, QWORD PTR 488[rsp]	# _3520, %sfp
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 39 view .LVU1947
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 39 view .LVU1947
 	vmovss	DWORD PTR 384[rsp], xmm4	# %sfp, _79
 	mov	edi, ebx	# _1633, bnd.497
 	mov	DWORD PTR 432[rsp], ebx	# %sfp, bnd.497
@@ -6887,83 +6887,83 @@
 	.p2align 4,,10
 	.p2align 3
 .L63:
-	.loc 1 368 25 is_stmt 1 view .LVU1948
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 53 is_stmt 0 discriminator 106496 view .LVU1949
+	.loc 1 371 25 is_stmt 1 view .LVU1948
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 53 is_stmt 0 discriminator 106496 view .LVU1949
 	vmovdqu	ymm5, YMMWORD PTR [r11+rdi]	# MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.513_2522 + ivtmp.827_1699 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.513_2522 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 80 discriminator 106496 view .LVU1950
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 80 discriminator 106496 view .LVU1950
 	vmovdqu	ymm4, YMMWORD PTR [r9+rdi]	# MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.507_2541 + ivtmp.827_1699 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.507_2541 + ivtmp.827_1699 * 1]
 	sub	rcx, -128	# ivtmp.825,
 	sub	rsi, -128	# ivtmp.832,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 53 discriminator 106496 view .LVU1951
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 53 discriminator 106496 view .LVU1951
 	vmovdqu	ymm13, YMMWORD PTR [r14+rdi]	# MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.525_2486 + ivtmp.827_1699 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.525_2486 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 106496 view .LVU1952
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 106496 view .LVU1952
 	vpmovzxbw	ymm7, xmm5	#, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.513_2522 + ivtmp.827_1699 * 1]
 	vextracti32x4	xmm5, ymm5, 0x1	# tmp3019, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.513_2522 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 106496 view .LVU1953
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 106496 view .LVU1953
 	vpmovzxbw	ymm6, xmm4	#, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.507_2541 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 106496 view .LVU1954
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 106496 view .LVU1954
 	vpmovzxbw	ymm5, xmm5	# vect_s1l_732.516, tmp3019
 	vpmovsxwd	ymm27, xmm7	#, vect_s1l_732.516
 	vextracti32x4	xmm16, ymm7, 0x1	# tmp3023, vect_s1l_732.516
 	vpmovsxwd	ymm26, xmm5	#, vect_s1l_732.516
 	vextracti32x4	xmm8, ymm5, 0x1	# tmp3027, vect_s1l_732.516
 	vcvtdq2ps	ymm27, ymm27	# vect_s1l_732.515, tmp3020
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 106496 view .LVU1955
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 106496 view .LVU1955
 	vpmovsxwd	ymm23, xmm6	#, vect_s0r_731.510
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 106496 view .LVU1956
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 106496 view .LVU1956
 	vmulps	ymm5, ymm2, ymm27	# vect__409.517_2512, _704, vect_s1l_732.515
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 106496 view .LVU1957
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 106496 view .LVU1957
 	vpmovsxwd	ymm16, xmm16	# tmp3022, tmp3023
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 106496 view .LVU1958
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 106496 view .LVU1958
 	vcvtdq2ps	ymm23, ymm23	# vect_s0r_731.509_2534, tmp3029
 	vextracti32x4	xmm4, ymm4, 0x1	# tmp3016, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.507_2541 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 106496 view .LVU1959
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 106496 view .LVU1959
 	vcvtdq2ps	ymm26, ymm26	# vect_s1l_732.515, tmp3024
 	vcvtdq2ps	ymm16, ymm16	# vect_s1l_732.515, tmp3022
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 106496 view .LVU1960
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 106496 view .LVU1960
 	vpmovzxbw	ymm4, xmm4	# vect_s0r_731.510, tmp3016
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 106496 view .LVU1961
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 106496 view .LVU1961
 	vpmovsxwd	ymm8, xmm8	# tmp3026, tmp3027
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 106496 view .LVU1962
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 106496 view .LVU1962
 	vextracti32x4	xmm14, ymm6, 0x1	# tmp3034, vect_s0r_731.510
 	vpmovsxwd	ymm22, xmm4	#, vect_s0r_731.510
 	vextracti32x4	xmm12, ymm4, 0x1	# tmp3042, vect_s0r_731.510
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 106496 view .LVU1963
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 106496 view .LVU1963
 	vcvtdq2ps	ymm8, ymm8	# vect_s1l_732.515, tmp3026
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 106496 view .LVU1964
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 106496 view .LVU1964
 	vpmovsxwd	ymm14, xmm14	# tmp3033, tmp3034
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 106496 view .LVU1965
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 106496 view .LVU1965
 	vmulps	ymm4, ymm2, ymm8	# vect__409.517_2509, _704, vect_s1l_732.515
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 106496 view .LVU1966
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 106496 view .LVU1966
 	vcvtdq2ps	ymm14, ymm14	# vect_s0r_731.509_2533, tmp3033
 	vpmovsxwd	ymm12, xmm12	# tmp3041, tmp3042
 	vcvtdq2ps	ymm22, ymm22	# vect_s0r_731.509_2532, tmp3037
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 106496 view .LVU1967
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 106496 view .LVU1967
 	vpmovzxbw	ymm15, xmm13	#, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.525_2486 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 106496 view .LVU1968
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 106496 view .LVU1968
 	vcvtdq2ps	ymm12, ymm12	# vect_s0r_731.509_2531, tmp3041
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 106496 view .LVU1969
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 106496 view .LVU1969
 	vpmovsxwd	ymm24, xmm15	#, vect_s0l_730.528
 	vextracti32x4	xmm15, ymm15, 0x1	# tmp3085, vect_s0l_730.528
 	vextracti32x4	xmm13, ymm13, 0x1	# tmp3013, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.525_2486 + ivtmp.827_1699 * 1]
@@ -6971,131 +6971,131 @@
 	vpmovsxwd	ymm15, xmm15	# tmp3084, tmp3085
 	vpmovzxbw	ymm13, xmm13	# vect_s0l_730.528, tmp3013
 .LVL290:
-	.loc 1 369 25 is_stmt 1 view .LVU1970
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 106496 view .LVU1971
+	.loc 1 372 25 is_stmt 1 view .LVU1970
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 106496 view .LVU1971
 	vcvtdq2ps	ymm24, ymm24	# vect_s0l_730.527_2480, tmp3079
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 106496 view .LVU1972
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 106496 view .LVU1972
 	vmulps	ymm5, ymm2, ymm16	# vect__409.517_2511, _704, vect_s1l_732.515
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 106496 view .LVU1973
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 106496 view .LVU1973
 	vcvtdq2ps	ymm15, ymm15	# vect_s0l_730.527_2479, tmp3084
 	vfmadd213ps	ymm15, ymm0, YMMWORD PTR -96[rsi]	# tmp3082, _702, MEM <vector(8) float> [(float *)_1915 + 32B]
 	vfmadd213ps	ymm24, ymm0, YMMWORD PTR -128[rsi]	# tmp3077, _702, MEM <vector(8) float> [(float *)_1915]
 	vfmadd132ps	ymm12, ymm4, ymm1	# _1892, vect__409.517_2509, _703
 .LVL291:
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 80 discriminator 106496 view .LVU1974
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 80 discriminator 106496 view .LVU1974
 	vmovdqu	ymm4, YMMWORD PTR [r8+rdi]	# MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.501_2560 + ivtmp.827_1699 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.501_2560 + ivtmp.827_1699 * 1]
 	vfmadd132ps	ymm14, ymm5, ymm1	# _2305, vect__409.517_2511, _703
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 106496 view .LVU1975
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 106496 view .LVU1975
 	vmulps	ymm5, ymm2, ymm26	# vect__409.517_2510, _704, vect_s1l_732.515
 	vfmadd132ps	ymm22, ymm5, ymm1	# _1978, vect__409.517_2510, _703
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 106496 view .LVU1976
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 106496 view .LVU1976
 	vpmovzxbw	ymm5, xmm4	#, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.501_2560 + ivtmp.827_1699 * 1]
 	vextracti32x4	xmm4, ymm4, 0x1	# tmp3046, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.501_2560 + ivtmp.827_1699 * 1]
 	vpmovsxwd	ymm31, xmm5	#, vect_s1r_733.504
 	vextracti32x4	xmm21, ymm5, 0x1	# tmp3050, vect_s1r_733.504
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 53 discriminator 106496 view .LVU1977
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 53 discriminator 106496 view .LVU1977
 	vmovdqu	ymm5, YMMWORD PTR [r12+rdi]	# MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.544_2407 + ivtmp.827_1699 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.544_2407 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 106496 view .LVU1978
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 106496 view .LVU1978
 	vpmovzxbw	ymm4, xmm4	# vect_s1r_733.504, tmp3046
 	vpmovsxwd	ymm21, xmm21	# tmp3049, tmp3050
 	vpmovsxwd	ymm28, xmm4	#, vect_s1r_733.504
 	vextracti32x4	xmm4, ymm4, 0x1	# tmp3054, vect_s1r_733.504
 	vcvtdq2ps	ymm31, ymm31	# vect_s1r_733.503, tmp3047
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 106496 view .LVU1979
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 106496 view .LVU1979
 	vpmovzxbw	ymm6, xmm5	#, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.544_2407 + ivtmp.827_1699 * 1]
 	vextracti32x4	xmm5, ymm5, 0x1	# tmp3057, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.544_2407 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 106496 view .LVU1980
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 106496 view .LVU1980
 	vcvtdq2ps	ymm21, ymm21	# vect_s1r_733.503, tmp3049
 	vpmovsxwd	ymm4, xmm4	# tmp3053, tmp3054
 	vcvtdq2ps	ymm28, ymm28	# vect_s1r_733.503, tmp3051
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 106496 view .LVU1981
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 106496 view .LVU1981
 	vextracti32x4	xmm7, ymm6, 0x1	# tmp3064, vect_s2l_734.547
 	vpmovzxbw	ymm5, xmm5	# vect_s2l_734.547, tmp3057
 	vpmovsxwd	ymm20, xmm6	#, vect_s2l_734.547
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 106496 view .LVU1982
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 106496 view .LVU1982
 	vcvtdq2ps	ymm4, ymm4	# vect_s1r_733.503, tmp3053
 .LVL292:
-	.loc 1 370 25 is_stmt 1 view .LVU1983
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 is_stmt 0 discriminator 106496 view .LVU1984
+	.loc 1 373 25 is_stmt 1 view .LVU1983
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 is_stmt 0 discriminator 106496 view .LVU1984
 	vpmovsxwd	ymm7, xmm7	# tmp3063, tmp3064
 	vfmadd231ps	ymm15, ymm3, ymm21	# _2314, _705, vect_s1r_733.503
 	vextracti32x4	xmm6, ymm5, 0x1	# tmp3072, vect_s2l_734.547
 	vcvtdq2ps	ymm20, ymm20	# vect_s2l_734.546_2401, tmp3059
 	vcvtdq2ps	ymm7, ymm7	# vect_s2l_734.546_2400, tmp3063
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 106496 view .LVU1985
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 106496 view .LVU1985
 	vmulps	ymm7, ymm7, ymm2	# vect__423.548_2396, vect_s2l_734.546_2400, _704
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 106496 view .LVU1986
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 106496 view .LVU1986
 	vpmovsxwd	ymm6, xmm6	# tmp3071, tmp3072
 	vpmovsxwd	ymm19, xmm5	#, vect_s2l_734.547
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 80 discriminator 106496 view .LVU1987
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 80 discriminator 106496 view .LVU1987
 	vmovdqu	ymm5, YMMWORD PTR [r10+rdi]	# MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.537_2434 + ivtmp.827_1699 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.537_2434 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 106496 view .LVU1988
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 106496 view .LVU1988
 	vcvtdq2ps	ymm6, ymm6	# vect_s2l_734.546_2398, tmp3071
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 106496 view .LVU1989
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 106496 view .LVU1989
 	vmulps	ymm6, ymm6, ymm2	# vect__423.548_2394, vect_s2l_734.546_2398, _704
 	vfmadd231ps	ymm24, ymm3, ymm31	# _2603, _705, vect_s1r_733.503
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 106496 view .LVU1990
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 106496 view .LVU1990
 	vcvtdq2ps	ymm19, ymm19	# vect_s2l_734.546_2399, tmp3067
 	add	rdi, 32	# ivtmp.827,
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 106496 view .LVU1991
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 106496 view .LVU1991
 	vmulps	ymm20, ymm20, ymm2	# vect__423.548_2397, vect_s2l_734.546_2401, _704
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 106496 view .LVU1992
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 106496 view .LVU1992
 	vpmovzxbw	ymm18, xmm5	#, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.537_2434 + ivtmp.827_1699 * 1]
 	vextracti32x4	xmm5, ymm5, 0x1	# tmp3076, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.537_2434 + ivtmp.827_1699 * 1]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 106496 view .LVU1993
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 106496 view .LVU1993
 	vmulps	ymm19, ymm19, ymm2	# vect__423.548_2395, vect_s2l_734.546_2399, _704
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 106496 view .LVU1994
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 106496 view .LVU1994
 	vpmovzxbw	ymm5, xmm5	# vect_s2r_735.540, tmp3076
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 106496 view .LVU1995
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 106496 view .LVU1995
 	vaddps	ymm14, ymm14, ymm15	# vect__414.533_2459, _2305, _2314
 	vfmadd231ps	ymm7, ymm1, ymm21	# _1483, _703, vect_s1r_733.503
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 106496 view .LVU1996
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 106496 view .LVU1996
 	vpmovsxwd	ymm21, xmm13	#, vect_s0l_730.528
 	vextracti32x4	xmm13, ymm13, 0x1	# tmp3096, vect_s0l_730.528
 	vpmovsxwd	ymm13, xmm13	# tmp3095, tmp3096
 	vcvtdq2ps	ymm21, ymm21	# vect_s0l_730.527_2478, tmp3089
 	vfmadd213ps	ymm21, ymm0, YMMWORD PTR -64[rsi]	# tmp3087, _702, MEM <vector(8) float> [(float *)_1915 + 64B]
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 106496 view .LVU1997
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 106496 view .LVU1997
 	vaddps	ymm23, ymm23, ymm24	# vect__414.533_2460, _2594, _2603
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 106496 view .LVU1998
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 106496 view .LVU1998
 	vcvtdq2ps	ymm13, ymm13	# vect_s0l_730.527_2477, tmp3095
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 106496 view .LVU1999
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 106496 view .LVU1999
 	vfmadd213ps	ymm13, ymm0, YMMWORD PTR -32[rsi]	# tmp3093, _702, MEM <vector(8) float> [(float *)_1915 + 96B]
 	vfmadd231ps	ymm6, ymm1, ymm4	# _3405, _703, vect_s1r_733.503
 .LVL293:
-	.loc 1 371 25 is_stmt 1 view .LVU2000
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 is_stmt 0 discriminator 106496 view .LVU2001
+	.loc 1 374 25 is_stmt 1 view .LVU2000
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 is_stmt 0 discriminator 106496 view .LVU2001
 	vmovups	YMMWORD PTR -96[rsi], ymm14	# MEM <vector(8) float> [(float *)_1915 + 32B], vect__414.533_2459
-	.loc 1 371 35 discriminator 106496 view .LVU2002
+	.loc 1 374 35 discriminator 106496 view .LVU2002
 	vfmadd231ps	ymm20, ymm1, ymm31	# _1763, _703, vect_s1r_733.503
 	vfmadd231ps	ymm19, ymm1, ymm28	# _3721, _703, vect_s1r_733.503
 	vmovups	YMMWORD PTR -128[rsi], ymm23	# MEM <vector(8) float> [(float *)_1915], vect__414.533_2460
@@ -7105,20 +7105,20 @@
 	vaddps	ymm4, ymm4, ymm12	# vect__414.533, tmp3092, _1892
 	vmovups	YMMWORD PTR -64[rsi], ymm22	# MEM <vector(8) float> [(float *)_1915 + 64B], vect__414.533_2458
 	vmovups	YMMWORD PTR -32[rsi], ymm4	# MEM <vector(8) float> [(float *)_1915 + 96B], vect__414.533
-	.loc 1 372 25 is_stmt 1 view .LVU2003
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 is_stmt 0 discriminator 106496 view .LVU2004
+	.loc 1 375 25 is_stmt 1 view .LVU2003
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 is_stmt 0 discriminator 106496 view .LVU2004
 	vpmovsxwd	ymm4, xmm18	#, vect_s2r_735.540
 	vfmadd213ps	ymm27, ymm0, YMMWORD PTR -128[rcx]	# tmp3104, _702, MEM <vector(8) float> [(float *)_1689]
 	vfmadd213ps	ymm16, ymm0, YMMWORD PTR -96[rcx]	# tmp3109, _702, MEM <vector(8) float> [(float *)_1689 + 32B]
 	vcvtdq2ps	ymm4, ymm4	# vect_s2r_735.539_2427, tmp3102
 	vfmadd213ps	ymm26, ymm0, YMMWORD PTR -64[rcx]	# tmp3114, _702, MEM <vector(8) float> [(float *)_1689 + 64B]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 106496 view .LVU2005
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 106496 view .LVU2005
 	vfmadd213ps	ymm8, ymm0, YMMWORD PTR -32[rcx]	# tmp3120, _702, MEM <vector(8) float> [(float *)_1689 + 96B]
 	vfmadd231ps	ymm27, ymm3, ymm4	# _1781, _705, vect_s2r_735.539_2427
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 106496 view .LVU2006
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 106496 view .LVU2006
 	vextracti32x4	xmm4, ymm18, 0x1	# tmp3108, vect_s2r_735.540
 	vpmovsxwd	ymm4, xmm4	# tmp3107, tmp3108
 	vcvtdq2ps	ymm4, ymm4	# vect_s2r_735.539_2426, tmp3107
@@ -7129,8 +7129,8 @@
 	vextracti32x4	xmm4, ymm5, 0x1	# tmp3119, vect_s2r_735.540
 	vpmovsxwd	ymm4, xmm4	# tmp3118, tmp3119
 	vcvtdq2ps	ymm4, ymm4	# vect_s2r_735.539_2424, tmp3118
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 106496 view .LVU2007
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 106496 view .LVU2007
 	vfmadd132ps	ymm4, ymm8, ymm3	# tmp3116, tmp3120, _705
 	vaddps	ymm20, ymm20, ymm27	# vect__428.559_2351, _1763, _1781
 	vaddps	ymm7, ymm7, ymm16	# vect__428.559_2350, _1483, _1588
@@ -7141,8 +7141,8 @@
 	vmovups	YMMWORD PTR -64[rcx], ymm19	# MEM <vector(8) float> [(float *)_1689 + 64B], vect__428.559_2349
 	vmovups	YMMWORD PTR -32[rcx], ymm4	# MEM <vector(8) float> [(float *)_1689 + 96B], vect__428.559
 .LBE5446:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU2008
-	.loc 1 367 39 discriminator 2 view .LVU2009
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU2008
+	.loc 1 370 39 discriminator 2 view .LVU2009
 	cmp	rbx, rdi	# _1627, ivtmp.827
 	jne	.L63	#,
 	mov	r9d, DWORD PTR 432[rsp]	# bnd.497, %sfp
@@ -7156,7 +7156,7 @@
 	mov	r8d, r9d	# tmp.499, niters_vector_mult_vf.498
 .LVL294:
 .L62:
-	.loc 1 367 39 is_stmt 0 discriminator 2 view .LVU2010
+	.loc 1 370 39 is_stmt 0 discriminator 2 view .LVU2010
 	mov	r10d, DWORD PTR 480[rsp]	# niters.562, %sfp
 	sub	r10d, r9d	# niters.562, niters_vector_mult_vf.498
 	lea	ecx, -1[r10]	# _2263,
@@ -7174,142 +7174,142 @@
 	add	rcx, r15	# _2054, _2712
 	lea	rcx, [r14+rcx*4]	# vectp.616,
 .LBB5447:
-	.loc 1 368 25 is_stmt 1 view .LVU2011
+	.loc 1 371 25 is_stmt 1 view .LVU2011
 	lea	rdi, [r14+rdi*4]	# vectp.585,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 53 is_stmt 0 discriminator 135168 view .LVU2012
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 53 is_stmt 0 discriminator 135168 view .LVU2012
 	mov	r14, QWORD PTR 464[rsp]	# _374, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 53 discriminator 135168 view .LVU2013
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 53 discriminator 135168 view .LVU2013
 	vmovdqu	xmm12, XMMWORD PTR [r14+rbx]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.579_2208], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.579_2208]
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 53 discriminator 135168 view .LVU2014
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 53 discriminator 135168 view .LVU2014
 	vmovdqu	xmm8, XMMWORD PTR [r14+rsi]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.591_2168], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.591_2168]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 135168 view .LVU2015
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 135168 view .LVU2015
 	vpmovzxbw	xmm15, xmm12	# vect_s1l_2614.582, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.579_2208]
 	vpsrldq	xmm12, xmm12, 8	# tmp3141, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.579_2208],
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 135168 view .LVU2016
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 135168 view .LVU2016
 	vpmovzxbw	xmm18, xmm8	# vect_s0l_2622.594, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.591_2168]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 135168 view .LVU2017
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 135168 view .LVU2017
 	vpmovzxbw	xmm12, xmm12	# vect_s1l_2614.582, tmp3141
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 135168 view .LVU2018
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 135168 view .LVU2018
 	vpsrldq	xmm8, xmm8, 8	# tmp3137, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.591_2168],
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 135168 view .LVU2019
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 135168 view .LVU2019
 	vpmovsxwd	xmm26, xmm15	# tmp3142, vect_s1l_2614.582
 	vpsrldq	xmm19, xmm15, 8	# tmp3144, vect_s1l_2614.582,
 	vpmovsxwd	xmm24, xmm12	# tmp3145, vect_s1l_2614.582
 	vcvtdq2ps	xmm26, xmm26	# vect_s1l_2614.581, tmp3142
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 135168 view .LVU2020
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 135168 view .LVU2020
 	vpmovzxbw	xmm14, xmm8	# vect_s0l_2622.594, tmp3137
 .LVL295:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 80 discriminator 135168 view .LVU2021
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 80 discriminator 135168 view .LVU2021
 	vmovdqu	xmm8, XMMWORD PTR 3[r14+rsi]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.573_2229], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.573_2229]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 135168 view .LVU2022
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 135168 view .LVU2022
 	vpsrldq	xmm15, xmm12, 8	# tmp3147, vect_s1l_2614.582,
 	vpmovsxwd	xmm19, xmm19	# tmp3143, tmp3144
 	vcvtdq2ps	xmm24, xmm24	# vect_s1l_2614.581, tmp3145
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 135168 view .LVU2023
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 135168 view .LVU2023
 	vmulps	xmm12, xmm26, xmm25	# vect__2593.583_2196, vect_s1l_2614.581, tmp4560
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 135168 view .LVU2024
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 135168 view .LVU2024
 	vpmovzxbw	xmm13, xmm8	# vect_s0r_2618.576, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.573_2229]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 135168 view .LVU2025
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 135168 view .LVU2025
 	vcvtdq2ps	xmm19, xmm19	# vect_s1l_2614.581, tmp3143
 	vpmovsxwd	xmm15, xmm15	# tmp3146, tmp3147
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 135168 view .LVU2026
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 135168 view .LVU2026
 	vpmovsxwd	xmm23, xmm13	# tmp3149, vect_s0r_2618.576
 	vpsrldq	xmm8, xmm8, 8	# tmp3139, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.573_2229],
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 135168 view .LVU2027
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 135168 view .LVU2027
 	vcvtdq2ps	xmm15, xmm15	# vect_s1l_2614.581, tmp3146
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 135168 view .LVU2028
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 135168 view .LVU2028
 	vcvtdq2ps	xmm23, xmm23	# vect_s0r_2618.575_2220, tmp3149
 	vpmovzxbw	xmm8, xmm8	# vect_s0r_2618.576, tmp3139
 .LVL296:
-	.loc 1 369 25 is_stmt 1 view .LVU2029
+	.loc 1 372 25 is_stmt 1 view .LVU2029
 	vfmadd132ps	xmm23, xmm12, xmm17	# _1418, vect__2593.583_2196, tmp3128
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 is_stmt 0 discriminator 135168 view .LVU2030
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 is_stmt 0 discriminator 135168 view .LVU2030
 	vpsrldq	xmm12, xmm13, 8	# tmp3153, vect_s0r_2618.576,
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 135168 view .LVU2031
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 135168 view .LVU2031
 	vmulps	xmm13, xmm19, xmm25	# vect__2593.583_2195, vect_s1l_2614.581, tmp4560
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 135168 view .LVU2032
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 135168 view .LVU2032
 	vpmovsxwd	xmm12, xmm12	# tmp3152, tmp3153
 	vcvtdq2ps	xmm12, xmm12	# vect_s0r_2618.575_2219, tmp3152
 	vfmadd132ps	xmm12, xmm13, xmm17	# vect_s0r_2618.575_2219, vect__2593.583_2195, tmp3128
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 135168 view .LVU2033
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 135168 view .LVU2033
 	vmulps	xmm13, xmm24, xmm25	# vect__2593.583_2194, vect_s1l_2614.581, tmp4560
 	vmovaps	XMMWORD PTR 384[rsp], xmm12	# %sfp, vect_s0r_2618.575_2219
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 135168 view .LVU2034
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 135168 view .LVU2034
 	vpmovsxwd	xmm12, xmm8	# tmp3156, vect_s0r_2618.576
 	vcvtdq2ps	xmm12, xmm12	# vect_s0r_2618.575_2218, tmp3156
 	vfmadd132ps	xmm12, xmm13, xmm17	# vect_s0r_2618.575_2218, vect__2593.583_2194, tmp3128
 	vpsrldq	xmm13, xmm8, 8	# tmp3160, vect_s0r_2618.576,
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 135168 view .LVU2035
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 135168 view .LVU2035
 	vmulps	xmm8, xmm15, xmm25	# vect__2593.583_2193, vect_s1l_2614.581, tmp4560
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 135168 view .LVU2036
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 135168 view .LVU2036
 	vpmovsxwd	xmm13, xmm13	# tmp3159, tmp3160
 	vcvtdq2ps	xmm13, xmm13	# vect_s0r_2618.575_2217, tmp3159
 	vmovaps	XMMWORD PTR 432[rsp], xmm12	# %sfp, vect_s0r_2618.575_2218
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 53 discriminator 135168 view .LVU2037
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 53 discriminator 135168 view .LVU2037
 	vmovdqu	xmm12, XMMWORD PTR [r14+r11]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.610_2083], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.610_2083]
 	vfmadd132ps	xmm13, xmm8, xmm17	# _3753, vect__2593.583_2193, tmp3128
 .LVL297:
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 80 discriminator 135168 view .LVU2038
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 80 discriminator 135168 view .LVU2038
 	vmovdqu	xmm8, XMMWORD PTR 3[r14+rbx]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.567_2250], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.567_2250]
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 135168 view .LVU2039
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 135168 view .LVU2039
 	vpmovzxbw	xmm21, xmm12	# vect_s2l_2606.613, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.610_2083]
 	vpsrldq	xmm12, xmm12, 8	# tmp3171, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.610_2083],
 	vpmovsxwd	xmm31, xmm21	# tmp3173, vect_s2l_2606.613
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 135168 view .LVU2040
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 135168 view .LVU2040
 	vpmovzxbw	xmm22, xmm8	# vect_s1r_2610.570, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.567_2250]
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 135168 view .LVU2041
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 135168 view .LVU2041
 	vpmovzxbw	xmm12, xmm12	# vect_s2l_2606.613, tmp3171
 	vcvtdq2ps	xmm31, xmm31	# vect_s2l_2606.612_2075, tmp3173
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 135168 view .LVU2042
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 135168 view .LVU2042
 	vmulps	xmm31, xmm31, xmm25	# vect__2582.614_2071, vect_s2l_2606.612_2075, tmp4560
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 135168 view .LVU2043
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 135168 view .LVU2043
 	vpsrldq	xmm21, xmm21, 8	# tmp3177, vect_s2l_2606.613,
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 135168 view .LVU2044
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 135168 view .LVU2044
 	vpmovsxwd	xmm28, xmm22	# tmp3164, vect_s1r_2610.570
 	vcvtdq2ps	xmm28, xmm28	# vect_s1r_2610.569, tmp3164
 	vpsrldq	xmm22, xmm22, 8	# tmp3166, vect_s1r_2610.570,
 	vpsrldq	xmm8, xmm8, 8	# tmp3163, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.567_2250],
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 135168 view .LVU2045
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 135168 view .LVU2045
 	vpmovsxwd	xmm21, xmm21	# tmp3176, tmp3177
 	vcvtdq2ps	xmm21, xmm21	# vect_s2l_2606.612_2074, tmp3176
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 135168 view .LVU2046
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 135168 view .LVU2046
 	vmulps	xmm21, xmm21, xmm25	# vect__2582.614_2070, vect_s2l_2606.612_2074, tmp4560
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 135168 view .LVU2047
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 135168 view .LVU2047
 	vpmovsxwd	xmm22, xmm22	# tmp3165, tmp3166
 	vpmovzxbw	xmm8, xmm8	# vect_s1r_2610.570, tmp3163
 	vcvtdq2ps	xmm22, xmm22	# vect_s1r_2610.569, tmp3165
@@ -7320,12 +7320,12 @@
 	vfmadd231ps	xmm31, xmm17, xmm28	# vect__2582.614_2071, tmp3128, vect_s1r_2610.569
 	vcvtdq2ps	xmm8, xmm8	# vect_s1r_2610.569, tmp3168
 .LVL298:
-	.loc 1 370 25 is_stmt 1 view .LVU2048
-	.loc 1 370 25 is_stmt 0 view .LVU2049
+	.loc 1 373 25 is_stmt 1 view .LVU2048
+	.loc 1 373 25 is_stmt 0 view .LVU2049
 	vfmadd231ps	xmm21, xmm17, xmm22	# vect__2582.614_2070, tmp3128, vect_s1r_2610.569
 	vmovaps	XMMWORD PTR 320[rsp], xmm31	# %sfp, vect__2582.614_2071
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 135168 view .LVU2050
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 135168 view .LVU2050
 	vpmovsxwd	xmm31, xmm18	# tmp3190, vect_s0l_2622.594
 	vpsrldq	xmm18, xmm18, 8	# tmp3195, vect_s0l_2622.594,
 	vpmovsxwd	xmm18, xmm18	# tmp3194, tmp3195
@@ -7334,25 +7334,25 @@
 	vcvtdq2ps	xmm18, xmm18	# vect_s0l_2622.593_2159, tmp3194
 	vfmadd213ps	xmm18, xmm9, XMMWORD PTR 16[rdi]	# tmp3192, tmp3132, MEM <vector(4) float> [(float *)vectp.585_2192 + 16B]
 	vmovaps	XMMWORD PTR 336[rsp], xmm21	# %sfp, vect__2582.614_2070
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 135168 view .LVU2051
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 135168 view .LVU2051
 	vpmovsxwd	xmm21, xmm12	# tmp3180, vect_s2l_2606.613
 	vpsrldq	xmm12, xmm12, 8	# tmp3184, vect_s2l_2606.613,
 	vcvtdq2ps	xmm21, xmm21	# vect_s2l_2606.612_2073, tmp3180
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 135168 view .LVU2052
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 135168 view .LVU2052
 	vmulps	xmm21, xmm21, xmm25	# vect__2582.614_2069, vect_s2l_2606.612_2073, tmp4560
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 135168 view .LVU2053
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 135168 view .LVU2053
 	vpmovsxwd	xmm12, xmm12	# tmp3183, tmp3184
 	vcvtdq2ps	xmm12, xmm12	# vect_s2l_2606.612_2072, tmp3183
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 135168 view .LVU2054
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 135168 view .LVU2054
 	vmulps	xmm12, xmm12, xmm25	# vect__2582.614_2068, vect_s2l_2606.612_2072, tmp4560
 	vfmadd231ps	xmm31, xmm28, xmm11	# _1508, vect_s1r_2610.569, tmp4561
 	vfmadd231ps	xmm18, xmm22, xmm11	# _1339, vect_s1r_2610.569, tmp4561
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 135168 view .LVU2055
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 135168 view .LVU2055
 	vpmovsxwd	xmm22, xmm14	# tmp3199, vect_s0l_2622.594
 	vpsrldq	xmm14, xmm14, 8	# tmp3205, vect_s0l_2622.594,
 	vcvtdq2ps	xmm22, xmm22	# vect_s0l_2622.593_2158, tmp3199
@@ -7360,67 +7360,67 @@
 	vpmovsxwd	xmm14, xmm14	# tmp3204, tmp3205
 	vfmadd231ps	xmm21, xmm17, xmm27	# vect__2582.614_2069, tmp3128, vect_s1r_2610.569
 	vcvtdq2ps	xmm14, xmm14	# vect_s0l_2622.593_2157, tmp3204
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 135168 view .LVU2056
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 135168 view .LVU2056
 	vfmadd213ps	xmm14, xmm9, XMMWORD PTR 48[rdi]	# tmp3202, tmp3132, MEM <vector(4) float> [(float *)vectp.585_2192 + 48B]
 	vfmadd132ps	xmm16, xmm12, xmm8	# tmp3128, vect__2582.614_2068, vect_s1r_2610.569
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 80 discriminator 135168 view .LVU2057
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 80 discriminator 135168 view .LVU2057
 	vmovdqu	xmm12, XMMWORD PTR 3[r14+r11]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.603_2112], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.603_2112]
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 135168 view .LVU2058
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 135168 view .LVU2058
 	vaddps	xmm23, xmm23, xmm31	# vect__2589.599_2140, _1418, _1508
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 135168 view .LVU2059
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 135168 view .LVU2059
 	vpmovzxbw	xmm20, xmm12	# vect_s2r_2602.606, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.603_2112]
 	vpsrldq	xmm12, xmm12, 8	# tmp3187, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.603_2112],
 	vfmadd231ps	xmm22, xmm27, xmm11	# _551, vect_s1r_2610.569, tmp4561
 	vpmovzxbw	xmm12, xmm12	# vect_s2r_2602.606, tmp3187
 .LVL299:
-	.loc 1 371 25 is_stmt 1 view .LVU2060
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 is_stmt 0 discriminator 135168 view .LVU2061
+	.loc 1 374 25 is_stmt 1 view .LVU2060
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 is_stmt 0 discriminator 135168 view .LVU2061
 	vmovups	XMMWORD PTR [rdi], xmm23	# MEM <vector(4) float> [(float *)vectp.585_2192], vect__2589.599_2140
-	.loc 1 371 35 discriminator 135168 view .LVU2062
+	.loc 1 374 35 discriminator 135168 view .LVU2062
 	vfmadd132ps	xmm8, xmm14, xmm11	# tmp3201, tmp3202, tmp4561
 	vmovaps	XMMWORD PTR 368[rsp], xmm16	# %sfp, tmp3128
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 135168 view .LVU2063
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 135168 view .LVU2063
 	vpsrldq	xmm14, xmm20, 8	# tmp3216, vect_s2r_2602.606,
 	vmovaps	xmm16, xmm9	# tmp3132, tmp4558
 	vpmovsxwd	xmm14, xmm14	# tmp3215, tmp3216
 	vmovaps	XMMWORD PTR 352[rsp], xmm21	# %sfp, vect__2582.614_2069
 	vcvtdq2ps	xmm14, xmm14	# vect_s2r_2602.605_2102, tmp3215
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 135168 view .LVU2064
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 135168 view .LVU2064
 	vaddps	xmm8, xmm8, xmm13	# vect__2589.599, tmp3201, _3753
 	vaddps	xmm13, xmm18, XMMWORD PTR 384[rsp]	# vect__2589.599_2139, _1339, %sfp
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 135168 view .LVU2065
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 135168 view .LVU2065
 	vpmovsxwd	xmm18, xmm12	# tmp3220, vect_s2r_2602.606
 	vcvtdq2ps	xmm18, xmm18	# vect_s2r_2602.605_2101, tmp3220
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 135168 view .LVU2066
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 135168 view .LVU2066
 	vmovups	XMMWORD PTR 16[rdi], xmm13	# MEM <vector(4) float> [(float *)vectp.585_2192 + 16B], vect__2589.599_2139
 	vaddps	xmm13, xmm22, XMMWORD PTR 432[rsp]	# vect__2589.599_2138, _551, %sfp
 	vmovups	XMMWORD PTR 48[rdi], xmm8	# MEM <vector(4) float> [(float *)vectp.585_2192 + 48B], vect__2589.599
-	.loc 1 372 25 is_stmt 1 view .LVU2067
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 is_stmt 0 discriminator 135168 view .LVU2068
+	.loc 1 375 25 is_stmt 1 view .LVU2067
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 is_stmt 0 discriminator 135168 view .LVU2068
 	vpsrldq	xmm8, xmm12, 8	# tmp3226, vect_s2r_2602.606,
 	vpmovsxwd	xmm8, xmm8	# tmp3225, tmp3226
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 135168 view .LVU2069
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 135168 view .LVU2069
 	vmovups	XMMWORD PTR 32[rdi], xmm13	# MEM <vector(4) float> [(float *)vectp.585_2192 + 32B], vect__2589.599_2138
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 135168 view .LVU2070
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 135168 view .LVU2070
 	vpmovsxwd	xmm13, xmm20	# tmp3211, vect_s2r_2602.606
 	vcvtdq2ps	xmm8, xmm8	# vect_s2r_2602.605_2100, tmp3225
 	vfmadd213ps	xmm26, xmm9, XMMWORD PTR [rcx]	# tmp3212, tmp3132, MEM <vector(4) float> [(float *)vectp.616_2067]
 	vfmadd213ps	xmm19, xmm9, XMMWORD PTR 16[rcx]	# tmp3217, tmp3132, MEM <vector(4) float> [(float *)vectp.616_2067 + 16B]
 	vcvtdq2ps	xmm13, xmm13	# vect_s2r_2602.605_2103, tmp3211
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 135168 view .LVU2071
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 135168 view .LVU2071
 	vfmadd213ps	xmm16, xmm15, XMMWORD PTR 48[rcx]	# tmp3227, vect_s1l_2614.581, MEM <vector(4) float> [(float *)vectp.616_2067 + 48B]
 	vfmadd213ps	xmm24, xmm9, XMMWORD PTR 32[rcx]	# tmp3221, tmp3132, MEM <vector(4) float> [(float *)vectp.616_2067 + 32B]
 	vfmadd132ps	xmm13, xmm26, xmm11	# _3720, tmp3212, tmp4561
@@ -7433,11 +7433,11 @@
 	vaddps	xmm12, xmm14, XMMWORD PTR 336[rsp]	# vect__2578.625_2022, _3403, %sfp
 	vmovups	XMMWORD PTR 48[rcx], xmm8	# MEM <vector(4) float> [(float *)vectp.616_2067 + 48B], vect__2578.625
 .LBE5447:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU2072
-	.loc 1 367 39 discriminator 2 view .LVU2073
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU2072
+	.loc 1 370 39 discriminator 2 view .LVU2073
 .LBB5448:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 is_stmt 0 discriminator 135168 view .LVU2074
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 is_stmt 0 discriminator 135168 view .LVU2074
 	vmovups	XMMWORD PTR 16[rcx], xmm12	# MEM <vector(4) float> [(float *)vectp.616_2067 + 16B], vect__2578.625_2022
 	vaddps	xmm12, xmm18, XMMWORD PTR 352[rsp]	# vect__2578.625_2021, _3314, %sfp
 	vmovups	XMMWORD PTR 32[rcx], xmm12	# MEM <vector(4) float> [(float *)vectp.616_2067 + 32B], vect__2578.625_2021
@@ -7448,15 +7448,15 @@
 	add	r8d, ecx	# tmp.499, niters_vector_mult_vf.564
 .LVL300:
 .L64:
-	.loc 1 372 35 discriminator 135168 view .LVU2075
+	.loc 1 375 35 discriminator 135168 view .LVU2075
 	sub	r10d, ecx	# niters.628, niters_vector_mult_vf.564
 	lea	esi, -1[r10]	# _1931,
 	cmp	esi, 6	# _1931,
 	jbe	.L65	#,
 	add	ecx, r9d	# _1918, niters_vector_mult_vf.498
 	mov	rbx, QWORD PTR 488[rsp]	# _3520, %sfp
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 53 discriminator 198656 view .LVU2076
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 53 discriminator 198656 view .LVU2076
 	mov	r14, QWORD PTR 464[rsp]	# _374, %sfp
 	vmovaps	xmm16, xmm17	# _1898, tmp4559
 	mov	ecx, ecx	# _1918, _1918
@@ -7466,35 +7466,35 @@
 	lea	r11, [rcx+r13]	# _1917,
 	mov	rbx, QWORD PTR 216[rsp]	# _1502, %sfp
 	vmovq	xmm8, QWORD PTR [r14+rsi]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.660_1822], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.660_1822]
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 53 discriminator 198656 view .LVU2077
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 53 discriminator 198656 view .LVU2077
 	vmovq	xmm12, QWORD PTR [r14+r11]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.647_1868], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.647_1868]
 	add	rdi, rcx	# _2726, _1918
 	lea	r9, [rcx+rax]	# _1757,
 	add	rcx, r15	# _1691, _2712
 	lea	rdi, [rbx+rdi*4]	# vectp.654,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 198656 view .LVU2078
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 198656 view .LVU2078
 	vpmovzxbw	xmm15, xmm8	# vect_s0l_2314.663, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.660_1822]
 	vpsrlq	xmm8, xmm8, 32	# tmp3246, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.660_1822],
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 198656 view .LVU2079
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 198656 view .LVU2079
 	vpmovzxbw	xmm14, xmm12	# vect_s1l_2306.650, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.647_1868]
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 198656 view .LVU2080
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 198656 view .LVU2080
 	vmovq	r12, xmm15	# vect_s0l_2314.663, vect_s0l_2314.663
 	vpmovzxbw	xmm15, xmm8	# vect_s0l_2314.663, tmp3246
 	lea	rcx, [rbx+rcx*4]	# vectp.688,
-	.loc 1 368 25 is_stmt 1 view .LVU2081
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 80 is_stmt 0 discriminator 198656 view .LVU2082
+	.loc 1 371 25 is_stmt 1 view .LVU2081
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 80 is_stmt 0 discriminator 198656 view .LVU2082
 	vmovq	xmm8, QWORD PTR 3[r14+rsi]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.640_1894], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.640_1894]
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 198656 view .LVU2083
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 198656 view .LVU2083
 	vmovq	rbx, xmm15	# vect_s0l_2314.663, vect_s0l_2314.663
 .LVL301:
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 198656 view .LVU2084
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 198656 view .LVU2084
 	vpsrlq	xmm12, xmm12, 32	# tmp3250, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.647_1868],
 	vpmovzxwd	xmm15, xmm14	# vect_s1l_2306.649_1859, vect_s1l_2306.650
 	vpsrlq	xmm14, xmm14, 32	# tmp3255, vect_s1l_2306.650,
@@ -7502,60 +7502,60 @@
 	vpmovzxbw	xmm12, xmm12	# vect_s1l_2306.650, tmp3250
 	vpmovzxwd	xmm14, xmm14	# vect_s1l_2306.649_1858, tmp3255
 	vcvtdq2ps	xmm21, xmm15	# tmp3253, tmp3252
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 198656 view .LVU2085
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 198656 view .LVU2085
 	vpmovzxbw	xmm13, xmm8	# vect_s0r_2310.643, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.640_1894]
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 198656 view .LVU2086
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 198656 view .LVU2086
 	vmulps	xmm20, xmm21, xmm25	# tmp3272, tmp3253, tmp4560
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 198656 view .LVU2087
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 198656 view .LVU2087
 	vpsrlq	xmm8, xmm8, 32	# tmp3248, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.640_1894],
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 198656 view .LVU2088
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 198656 view .LVU2088
 	vmovq	xmm14, xmm14	# tmp3256, vect_s1l_2306.649_1858
 	vcvtdq2ps	xmm15, xmm14	# tmp3257, tmp3256
 	vpmovzxwd	xmm14, xmm12	# vect_s1l_2306.649_1857, vect_s1l_2306.650
 	vpsrlq	xmm12, xmm12, 32	# tmp3262, vect_s1l_2306.650,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 198656 view .LVU2089
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 198656 view .LVU2089
 	vpmovzxbw	xmm8, xmm8	# vect_s0r_2310.643, tmp3248
 .LVL302:
-	.loc 1 369 25 is_stmt 1 view .LVU2090
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 is_stmt 0 discriminator 198656 view .LVU2091
+	.loc 1 372 25 is_stmt 1 view .LVU2090
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 is_stmt 0 discriminator 198656 view .LVU2091
 	vmovq	xmm14, xmm14	# tmp3259, vect_s1l_2306.649_1857
 	vpmovzxwd	xmm12, xmm12	# vect_s1l_2306.649_1856, tmp3262
 	vcvtdq2ps	xmm19, xmm14	# tmp3260, tmp3259
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 198656 view .LVU2092
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 198656 view .LVU2092
 	vpmovzxwd	xmm14, xmm13	# vect_s0r_2310.642_1884, vect_s0r_2310.643
 	vpsrlq	xmm13, xmm13, 32	# tmp3278, vect_s0r_2310.643,
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 198656 view .LVU2093
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 198656 view .LVU2093
 	vmovq	xmm12, xmm12	# tmp3263, vect_s1l_2306.649_1856
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 198656 view .LVU2094
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 198656 view .LVU2094
 	vmovq	xmm14, xmm14	# tmp3267, vect_s0r_2310.642_1884
 	vpmovzxwd	xmm13, xmm13	# vect_s0r_2310.642_1883, tmp3278
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 198656 view .LVU2095
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 198656 view .LVU2095
 	vcvtdq2ps	xmm12, xmm12	# tmp3264, tmp3263
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 198656 view .LVU2096
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 198656 view .LVU2096
 	vcvtdq2ps	xmm14, xmm14	# tmp3268, tmp3267
 	vfmadd132ps	xmm14, xmm20, xmm17	# tmp3268, tmp3272, _1898
 	vmovq	xmm13, xmm13	# tmp3280, vect_s0r_2310.642_1883
 	vcvtdq2ps	xmm13, xmm13	# tmp3281, tmp3280
 	vmovaps	xmm27, xmm14	# tmp3276, tmp3268
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 198656 view .LVU2097
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 198656 view .LVU2097
 	vmulps	xmm14, xmm15, xmm25	# tmp3285, tmp3257, tmp4560
 	vfmadd132ps	xmm13, xmm14, xmm17	# tmp3281, tmp3285, _1898
 	vmulps	xmm14, xmm19, xmm25	# tmp3297, tmp3260, tmp4560
 	vmovaps	xmm28, xmm13	# tmp3289, tmp3281
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 198656 view .LVU2098
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 198656 view .LVU2098
 	vpmovzxwd	xmm13, xmm8	# vect_s0r_2310.642_1882, vect_s0r_2310.643
 	vmovq	xmm13, xmm13	# tmp3292, vect_s0r_2310.642_1882
 	vpsrlq	xmm8, xmm8, 32	# tmp3303, vect_s0r_2310.643,
@@ -7565,20 +7565,20 @@
 	vmovq	xmm8, xmm8	# tmp3305, vect_s0r_2310.642_1881
 	vcvtdq2ps	xmm8, xmm8	# tmp3306, tmp3305
 	vmovaps	xmm31, xmm13	# tmp3301, tmp3293
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 198656 view .LVU2099
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 198656 view .LVU2099
 	vmulps	xmm13, xmm12, xmm25	# tmp3310, tmp3264, tmp4560
 	vfmadd132ps	xmm8, xmm13, xmm17	# tmp3306, tmp3310, _1898
 	vmovaps	xmm26, xmm8	# tmp3314, tmp3306
 .LVL303:
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 80 discriminator 198656 view .LVU2100
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 80 discriminator 198656 view .LVU2100
 	vmovq	xmm8, QWORD PTR 3[r14+r11]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.633_1920], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.633_1920]
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 53 discriminator 198656 view .LVU2101
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 53 discriminator 198656 view .LVU2101
 	mov	r11, r14	# _374, _374
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 198656 view .LVU2102
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 198656 view .LVU2102
 	vpmovzxbw	xmm13, xmm8	# vect_s1r_2302.636, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.633_1920]
 	vpsrlq	xmm8, xmm8, 32	# tmp3316, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.633_1920],
 	vpmovzxwd	xmm14, xmm13	# vect_s1r_2302.635_1910, vect_s1r_2302.636
@@ -7597,172 +7597,172 @@
 	vcvtdq2ps	xmm24, xmm13	# tmp3326, tmp3325
 	vcvtdq2ps	xmm22, xmm8	# tmp3330, tmp3329
 .LVL304:
-	.loc 1 370 25 is_stmt 1 view .LVU2103
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 53 is_stmt 0 discriminator 198656 view .LVU2104
+	.loc 1 373 25 is_stmt 1 view .LVU2103
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 53 is_stmt 0 discriminator 198656 view .LVU2104
 	vmovq	xmm8, QWORD PTR [r14+r9]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.681_1726], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.681_1726]
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 198656 view .LVU2105
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 198656 view .LVU2105
 	vpmovzxbw	xmm13, xmm8	# vect_s2l_2298.684, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.681_1726]
 	vpsrlq	xmm8, xmm8, 32	# tmp3332, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.681_1726],
 	vpmovzxbw	xmm8, xmm8	# vect_s2l_2298.684, tmp3332
 	vmovq	r14, xmm8	# vect_s2l_2298.684, vect_s2l_2298.684
-	.loc 1 370 31 discriminator 198656 view .LVU2106
+	.loc 1 373 31 discriminator 198656 view .LVU2106
 	vpmovzxwd	xmm8, xmm13	# vect_s2l_2298.683_1717, vect_s2l_2298.684
 	vpsrlq	xmm13, xmm13, 32	# tmp3346, vect_s2l_2298.684,
 	vmovq	xmm20, xmm8	# tmp3335, vect_s2l_2298.683_1717
 	vmovq	xmm8, r14	# vect_s2l_2298.684, vect_s2l_2298.684
 	vpmovzxwd	xmm13, xmm13	# vect_s2l_2298.683_1716, tmp3346
 	vcvtdq2ps	xmm20, xmm20	# tmp3336, tmp3335
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 198656 view .LVU2107
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 198656 view .LVU2107
 	vmulps	xmm20, xmm20, xmm25	# tmp3340, tmp3336, tmp4560
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 198656 view .LVU2108
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 198656 view .LVU2108
 	vmovq	xmm13, xmm13	# tmp3348, vect_s2l_2298.683_1716
 	vcvtdq2ps	xmm13, xmm13	# tmp3349, tmp3348
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 198656 view .LVU2109
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 198656 view .LVU2109
 	vmulps	xmm13, xmm13, xmm25	# tmp3353, tmp3349, tmp4560
 	vfmadd231ps	xmm20, xmm17, xmm14	# tmp3340, _1898, tmp3319
 	vfmadd231ps	xmm13, xmm17, xmm23	# tmp3353, _1898, tmp3323
 	vmovaps	XMMWORD PTR 448[rsp], xmm20	# %sfp, tmp3340
-	.loc 1 372 61 discriminator 198656 view .LVU2110
+	.loc 1 375 61 discriminator 198656 view .LVU2110
 	vmovaps	XMMWORD PTR 432[rsp], xmm13	# %sfp, tmp3353
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 198656 view .LVU2111
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 198656 view .LVU2111
 	vpmovzxwd	xmm13, xmm8	# vect_s2l_2298.683_1715, vect_s2l_2298.684
 	vpsrlq	xmm8, xmm8, 32	# tmp3371, tmp5882,
 	vmovq	xmm13, xmm13	# tmp3360, vect_s2l_2298.683_1715
 	vpmovzxwd	xmm8, xmm8	# vect_s2l_2298.683_1714, tmp3371
 	vcvtdq2ps	xmm13, xmm13	# tmp3361, tmp3360
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 198656 view .LVU2112
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 198656 view .LVU2112
 	vmulps	xmm13, xmm13, xmm25	# tmp3365, tmp3361, tmp4560
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 198656 view .LVU2113
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 198656 view .LVU2113
 	vmovq	xmm8, xmm8	# tmp3373, vect_s2l_2298.683_1714
 	vcvtdq2ps	xmm8, xmm8	# tmp3374, tmp3373
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 198656 view .LVU2114
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 198656 view .LVU2114
 	vmulps	xmm8, xmm8, xmm25	# tmp3378, tmp3374, tmp4560
 	vfmadd231ps	xmm13, xmm17, xmm24	# tmp3365, _1898, tmp3326
 	vfmadd132ps	xmm16, xmm8, xmm22	# tmp3382, tmp3378, tmp3330
 .LVL305:
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 80 discriminator 198656 view .LVU2115
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 80 discriminator 198656 view .LVU2115
 	vmovq	xmm8, QWORD PTR 3[r11+r9]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.673_1760], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.673_1760]
 	vmovaps	XMMWORD PTR 384[rsp], xmm13	# %sfp, tmp3365
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 198656 view .LVU2116
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 198656 view .LVU2116
 	vpmovzxbw	xmm13, xmm8	# vect_s2r_2294.676, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.673_1760]
 	vpsrlq	xmm8, xmm8, 32	# tmp3384, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.673_1760],
 	vpmovzxbw	xmm8, xmm8	# vect_s2r_2294.676, tmp3384
 	vmovq	rsi, xmm13	# vect_s2r_2294.676, vect_s2r_2294.676
 	vmovq	r11, xmm8	# vect_s2r_2294.676, vect_s2r_2294.676
 .LVL306:
-	.loc 1 371 25 is_stmt 1 view .LVU2117
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 198656 view .LVU2118
+	.loc 1 374 25 is_stmt 1 view .LVU2117
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 198656 view .LVU2118
 	vmovq	xmm8, r12	# vect_s0l_2314.663, vect_s0l_2314.663
 	vpmovzxwd	xmm8, xmm8	# vect_s0l_2314.662_1813, vect_s0l_2314.663
 	vmovq	xmm8, xmm8	# tmp3388, vect_s0l_2314.662_1813
 	vcvtdq2ps	xmm13, xmm8	# tmp3389, tmp3388
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 198656 view .LVU2119
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 198656 view .LVU2119
 	vmovq	xmm8, QWORD PTR [rdi]	# vect__2289.655_1833, MEM <vector(2) float> [(float *)vectp.654_1847]
 	vfmadd231ps	xmm8, xmm13, xmm9	# tmp3394, tmp3389, _1826
 	vfmadd132ps	xmm14, xmm8, xmm11	# tmp3398, tmp3394, tmp4561
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 198656 view .LVU2120
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 198656 view .LVU2120
 	vmovq	xmm8, r12	# tmp5294, vect_s0l_2314.663
 	vpsrlq	xmm8, xmm8, 32	# tmp3401, tmp5294,
 	vpmovzxwd	xmm8, xmm8	# vect_s0l_2314.662_1812, tmp3401
 	vmovq	xmm8, xmm8	# tmp3403, vect_s0l_2314.662_1812
 	vcvtdq2ps	xmm13, xmm8	# tmp3404, tmp3403
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 198656 view .LVU2121
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 198656 view .LVU2121
 	vmovq	xmm8, QWORD PTR 8[rdi]	# vect__2289.656_1831, MEM <vector(2) float> [(float *)vectp.654_1847 + 8B]
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 198656 view .LVU2122
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 198656 view .LVU2122
 	vaddps	xmm14, xmm27, xmm14	# tmp3450, tmp3276, tmp3398
 	vfmadd132ps	xmm13, xmm8, xmm9	# tmp3409, vect__2289.656_1831, _1826
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 198656 view .LVU2123
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 198656 view .LVU2123
 	vmovq	xmm8, rbx	# vect_s0l_2314.663, vect_s0l_2314.663
 	vpmovzxwd	xmm8, xmm8	# vect_s0l_2314.662_1811, vect_s0l_2314.663
 	vmovq	xmm8, xmm8	# tmp3417, vect_s0l_2314.662_1811
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 198656 view .LVU2124
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 198656 view .LVU2124
 	vmovlps	QWORD PTR [rdi], xmm14	# MEM <vector(2) float> [(float *)vectp.654_1847], tmp3450
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 198656 view .LVU2125
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 198656 view .LVU2125
 	vmovq	xmm14, rsi	# vect_s2r_2294.676, vect_s2r_2294.676
 	vfmadd231ps	xmm13, xmm23, xmm11	# tmp3413, tmp3323, tmp4561
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 198656 view .LVU2126
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 198656 view .LVU2126
 	vcvtdq2ps	xmm23, xmm8	# tmp3418, tmp3417
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 198656 view .LVU2127
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 198656 view .LVU2127
 	vmovq	xmm8, QWORD PTR 16[rdi]	# vect__2289.657_1829, MEM <vector(2) float> [(float *)vectp.654_1847 + 16B]
 	vfmadd132ps	xmm23, xmm8, xmm9	# tmp3423, vect__2289.657_1829, _1826
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 198656 view .LVU2128
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 198656 view .LVU2128
 	vmovq	xmm8, rbx	# tmp5296, vect_s0l_2314.663
 	vpsrlq	xmm8, xmm8, 32	# tmp3431, tmp5296,
 	vpmovzxwd	xmm8, xmm8	# vect_s0l_2314.662_1810, tmp3431
 	vmovq	xmm8, xmm8	# tmp3433, vect_s0l_2314.662_1810
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 198656 view .LVU2129
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 198656 view .LVU2129
 	vaddps	xmm13, xmm28, xmm13	# tmp3454, tmp3289, tmp3413
 	vfmadd231ps	xmm23, xmm24, xmm11	# tmp3427, tmp3326, tmp4561
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 198656 view .LVU2130
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 198656 view .LVU2130
 	vcvtdq2ps	xmm24, xmm8	# tmp3434, tmp3433
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 198656 view .LVU2131
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 198656 view .LVU2131
 	vmovq	xmm8, QWORD PTR 24[rdi]	# vect__2289.658_1827, MEM <vector(2) float> [(float *)vectp.654_1847 + 24B]
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 198656 view .LVU2132
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 198656 view .LVU2132
 	vmovlps	QWORD PTR 8[rdi], xmm13	# MEM <vector(2) float> [(float *)vectp.654_1847 + 8B], tmp3454
 	vfmadd132ps	xmm24, xmm8, xmm9	# tmp3439, vect__2289.658_1827, _1826
 	vmovaps	xmm8, xmm22	# tmp3330, tmp3330
 	vaddps	xmm13, xmm31, xmm23	# tmp3458, tmp3301, tmp3427
 	vfmadd132ps	xmm8, xmm24, xmm11	# tmp3330, tmp3439, tmp4561
 	vmovlps	QWORD PTR 16[rdi], xmm13	# MEM <vector(2) float> [(float *)vectp.654_1847 + 16B], tmp3458
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 198656 view .LVU2133
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 198656 view .LVU2133
 	vpmovzxwd	xmm13, xmm14	# vect_s2r_2294.675_1750, vect_s2r_2294.676
 	vmovq	xmm13, xmm13	# tmp3461, vect_s2r_2294.675_1750
 	vcvtdq2ps	xmm13, xmm13	# tmp3462, tmp3461
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 198656 view .LVU2134
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 198656 view .LVU2134
 	vaddps	xmm8, xmm8, xmm26	# tmp3446, tmp3443, tmp3314
 	vmovlps	QWORD PTR 24[rdi], xmm8	# MEM <vector(2) float> [(float *)vectp.654_1847 + 24B], tmp3446
-	.loc 1 372 25 is_stmt 1 view .LVU2135
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 33 is_stmt 0 discriminator 198656 view .LVU2136
+	.loc 1 375 25 is_stmt 1 view .LVU2135
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 33 is_stmt 0 discriminator 198656 view .LVU2136
 	vmovq	xmm8, QWORD PTR [rcx]	# vect__2278.689_1687, MEM <vector(2) float> [(float *)vectp.688_1705]
 	vfmadd132ps	xmm21, xmm8, xmm9	# tmp3468, vect__2278.689_1687, _1826
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 198656 view .LVU2137
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 198656 view .LVU2137
 	vpsrlq	xmm8, xmm14, 32	# tmp3474, tmp5299,
 	vpmovzxwd	xmm8, xmm8	# vect_s2r_2294.675_1749, tmp3474
 	vmovq	xmm14, xmm8	# tmp3476, vect_s2r_2294.675_1749
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 33 discriminator 198656 view .LVU2138
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 33 discriminator 198656 view .LVU2138
 	vmovq	xmm8, QWORD PTR 8[rcx]	# vect__2278.690_1685, MEM <vector(2) float> [(float *)vectp.688_1705 + 8B]
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 198656 view .LVU2139
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 198656 view .LVU2139
 	vcvtdq2ps	xmm14, xmm14	# tmp3477, tmp3476
 	vfmadd132ps	xmm15, xmm8, xmm9	# tmp3483, vect__2278.690_1685, _1826
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 33 discriminator 198656 view .LVU2140
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 33 discriminator 198656 view .LVU2140
 	vmovq	xmm8, QWORD PTR 16[rcx]	# vect__2278.691_1683, MEM <vector(2) float> [(float *)vectp.688_1705 + 16B]
 	vfmadd132ps	xmm13, xmm21, xmm11	# tmp3472, tmp3468, tmp4561
 	vfmadd132ps	xmm19, xmm8, xmm9	# tmp3497, vect__2278.691_1683, _1826
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 198656 view .LVU2141
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 198656 view .LVU2141
 	vmovq	xmm8, r11	# tmp5301, vect_s2r_2294.676
 	vpsrlq	xmm8, xmm8, 32	# tmp3504, tmp5301,
 	vpmovzxwd	xmm8, xmm8	# vect_s2r_2294.675_1747, tmp3504
@@ -7770,20 +7770,20 @@
 	vmovq	xmm15, r11	# vect_s2r_2294.676, vect_s2r_2294.676
 	vmovq	xmm8, xmm8	# tmp3506, vect_s2r_2294.675_1747
 	vpmovzxwd	xmm15, xmm15	# vect_s2r_2294.675_1748, vect_s2r_2294.676
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 198656 view .LVU2142
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 198656 view .LVU2142
 	vaddps	xmm13, xmm13, XMMWORD PTR 448[rsp]	# tmp3524, tmp3472, %sfp
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 198656 view .LVU2143
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 198656 view .LVU2143
 	vmovq	xmm15, xmm15	# tmp3490, vect_s2r_2294.675_1748
 	vcvtdq2ps	xmm15, xmm15	# tmp3491, tmp3490
 	vfmadd132ps	xmm15, xmm19, xmm11	# tmp3501, tmp3497, tmp4561
 	vcvtdq2ps	xmm19, xmm8	# tmp3507, tmp3506
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 33 discriminator 198656 view .LVU2144
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 33 discriminator 198656 view .LVU2144
 	vmovq	xmm8, QWORD PTR 24[rcx]	# vect__2278.692_1681, MEM <vector(2) float> [(float *)vectp.688_1705 + 24B]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 198656 view .LVU2145
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 198656 view .LVU2145
 	vmovlps	QWORD PTR [rcx], xmm13	# MEM <vector(2) float> [(float *)vectp.688_1705], tmp3524
 	vfmadd132ps	xmm18, xmm8, xmm12	# tmp3513, vect__2278.692_1681, tmp3264
 	vmovaps	xmm8, xmm19	# tmp3507, tmp3507
@@ -7795,8 +7795,8 @@
 	vaddps	xmm8, xmm8, xmm16	# tmp3520, tmp3517, tmp3382
 	vmovlps	QWORD PTR 24[rcx], xmm8	# MEM <vector(2) float> [(float *)vectp.688_1705 + 24B], tmp3520
 .LBE5448:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU2146
-	.loc 1 367 39 discriminator 2 view .LVU2147
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU2146
+	.loc 1 370 39 discriminator 2 view .LVU2147
 	mov	ecx, r10d	# niters_vector_mult_vf.630, niters.628
 	and	ecx, -8	# niters_vector_mult_vf.630,
 	and	r10d, 7	# niters.628,
@@ -7804,7 +7804,7 @@
 	add	r8d, ecx	# tmp.499, niters_vector_mult_vf.630
 .LVL307:
 .L65:
-	.loc 1 367 39 is_stmt 0 discriminator 2 view .LVU2148
+	.loc 1 370 39 is_stmt 0 discriminator 2 view .LVU2148
 	mov	edi, DWORD PTR 480[rsp]	# _1547, %sfp
 	lea	r9d, 1[r8]	# k,
 	lea	ebx, -2[rdi]	# _2910,
@@ -7847,7 +7847,7 @@
 	mov	DWORD PTR 368[rsp], r9d	# %sfp, D__lsm2.720
 	mov	edx, DWORD PTR 352[rsp]	# D__lsm1.722, %sfp
 .LVL308:
-	.loc 1 367 39 discriminator 2 view .LVU2149
+	.loc 1 370 39 discriminator 2 view .LVU2149
 	mov	DWORD PTR 320[rsp], esi	# %sfp, D__lsm1.716
 	mov	rsi, QWORD PTR 432[rsp]	# _1303, %sfp
 	mov	DWORD PTR 432[rsp], r15d	# %sfp, D__lsm0.721
@@ -7858,239 +7858,239 @@
 .L67:
 .LVL309:
 .LBB5449:
-	.loc 1 368 25 is_stmt 1 view .LVU2150
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 163840 view .LVU2151
+	.loc 1 371 25 is_stmt 1 view .LVU2150
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 163840 view .LVU2151
 	vcvtusi2ss	xmm8, xmm10, DWORD PTR 432[rsp]	# tmp4452, tmp4441, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 163840 view .LVU2152
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 163840 view .LVU2152
 	movzx	eax, BYTE PTR 3[r11+rcx]	# D__lsm0.718, MEM[(const unsigned char *)_1871 + 3B + ivtmp.808_2602 * 1]
 	vmovaps	xmm16, xmm6	# _3399, _81
 	mov	QWORD PTR 368[rsp], rcx	# %sfp, ivtmp.808
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 163840 view .LVU2153
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 163840 view .LVU2153
 	vcvtusi2ss	xmm12, xmm10, DWORD PTR 472[rsp]	# tmp4455, tmp4441, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 163840 view .LVU2154
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 163840 view .LVU2154
 	vcvtusi2ss	xmm13, xmm10, DWORD PTR 448[rsp]	# tmp4453, tmp4441, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 163840 view .LVU2155
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 163840 view .LVU2155
 	mov	DWORD PTR 448[rsp], eax	# %sfp, D__lsm0.718
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 163840 view .LVU2156
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 163840 view .LVU2156
 	vmovaps	xmm15, xmm8	# s0l, tmp4452
 .LVL310:
-	.loc 1 369 25 is_stmt 1 view .LVU2157
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 is_stmt 0 discriminator 163840 view .LVU2158
+	.loc 1 372 25 is_stmt 1 view .LVU2157
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 is_stmt 0 discriminator 163840 view .LVU2158
 	vcvtusi2ss	xmm8, xmm10, eax	# tmp4454, tmp4441, D__lsm0.718
 .LVL311:
-	.loc 1 370 25 is_stmt 1 view .LVU2159
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 is_stmt 0 discriminator 163840 view .LVU2160
+	.loc 1 373 25 is_stmt 1 view .LVU2159
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 is_stmt 0 discriminator 163840 view .LVU2160
 	movzx	eax, BYTE PTR 3[r14+rcx]	# D__lsm0.721, MEM[(const unsigned char *)_3627 + 3B + ivtmp.808_2602 * 1]
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 163840 view .LVU2161
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 163840 view .LVU2161
 	vmovaps	xmm14, xmm12	# s2l, tmp4455
 .LVL312:
-	.loc 1 371 25 is_stmt 1 view .LVU2162
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 is_stmt 0 discriminator 163840 view .LVU2163
+	.loc 1 374 25 is_stmt 1 view .LVU2162
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 is_stmt 0 discriminator 163840 view .LVU2163
 	vcvtusi2ss	xmm12, xmm10, eax	# tmp4456, tmp4441, D__lsm0.721
 .LVL313:
-	.loc 1 368 56 discriminator 163840 view .LVU2164
+	.loc 1 371 56 discriminator 163840 view .LVU2164
 	vfmadd213ss	xmm16, xmm13, DWORD PTR [rdi+rcx*4]	# _3399, s1l, MEM[(float *)_1688 + ivtmp.808_2602 * 4]
 	mov	DWORD PTR 432[rsp], eax	# %sfp, D__lsm0.721
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 163840 view .LVU2165
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 163840 view .LVU2165
 	movzx	eax, BYTE PTR 3[r12+rcx]	# D__lsm0.715, MEM[(const unsigned char *)_539 + 3B + ivtmp.808_2602 * 1]
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 71 discriminator 163840 view .LVU2166
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 71 discriminator 163840 view .LVU2166
 	vmulss	xmm18, xmm7, xmm8	# _1952, _82, s1r
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 163840 view .LVU2167
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 163840 view .LVU2167
 	mov	DWORD PTR 472[rsp], eax	# %sfp, D__lsm0.715
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 163840 view .LVU2168
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 163840 view .LVU2168
 	vfmadd132ss	xmm12, xmm18, xmm5	# tmp3544, _1952, _80
 	vaddss	xmm12, xmm12, xmm16	# _3591, tmp3544, _3399
 	vmovaps	xmm16, xmm6	# _3207, _81
 	vfmadd231ss	xmm12, xmm4, xmm15	# tmp3543, _79, s0l
 	vmovss	DWORD PTR [rdi+rcx*4], xmm12	# MEM[(float *)_1688 + ivtmp.808_2602 * 4], tmp3543
-	.loc 1 372 25 is_stmt 1 view .LVU2169
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 is_stmt 0 discriminator 163840 view .LVU2170
+	.loc 1 375 25 is_stmt 1 view .LVU2169
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 is_stmt 0 discriminator 163840 view .LVU2170
 	vcvtusi2ss	xmm12, xmm10, eax	# tmp4457, tmp4441, D__lsm0.715
 	vfmadd213ss	xmm13, xmm4, DWORD PTR [rsi+rcx*4]	# _3266, _79, MEM[(float *)_1303 + ivtmp.808_2602 * 4]
 .LVL314:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 71 discriminator 163840 view .LVU2171
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 71 discriminator 163840 view .LVU2171
 	vmulss	xmm12, xmm12, xmm7	# _1941, s2r_1963, _82
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 163840 view .LVU2172
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 163840 view .LVU2172
 	vfmadd132ss	xmm8, xmm12, xmm5	# tmp3550, _1941, _80
 .LVL315:
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 163840 view .LVU2173
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 163840 view .LVU2173
 	vcvtusi2ss	xmm12, xmm10, r13d	# tmp4461, tmp4441, D__lsm1.716
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 163840 view .LVU2174
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 163840 view .LVU2174
 	movzx	r13d, BYTE PTR 4[r12+rcx]	# D__lsm1.716, MEM[(const unsigned char *)_539 + 4B + ivtmp.808_2602 * 1]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 163840 view .LVU2175
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 163840 view .LVU2175
 	vaddss	xmm8, xmm8, xmm13	# _3391, tmp3550, _3266
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 163840 view .LVU2176
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 163840 view .LVU2176
 	vcvtusi2ss	xmm13, xmm10, r8d	# tmp4459, tmp4441, D__lsm1.719
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 163840 view .LVU2177
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 163840 view .LVU2177
 	movzx	r8d, BYTE PTR 4[r11+rcx]	# D__lsm1.719, MEM[(const unsigned char *)_1871 + 4B + ivtmp.808_2602 * 1]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 163840 view .LVU2178
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 163840 view .LVU2178
 	vfmadd231ss	xmm8, xmm6, xmm14	# tmp3549, _81, s2l
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 163840 view .LVU2179
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 163840 view .LVU2179
 	vmovaps	xmm14, xmm12	# s2l, tmp4461
 .LVL316:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 163840 view .LVU2180
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 163840 view .LVU2180
 	vmovss	DWORD PTR [rsi+rcx*4], xmm8	# MEM[(float *)_1303 + ivtmp.808_2602 * 4], tmp3549
 .LBE5449:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU2181
-	.loc 1 367 39 discriminator 2 view .LVU2182
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU2181
+	.loc 1 370 39 discriminator 2 view .LVU2182
 .LVL317:
 .LBB5450:
-	.loc 1 368 25 view .LVU2183
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 163840 view .LVU2184
+	.loc 1 371 25 view .LVU2183
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 163840 view .LVU2184
 	vcvtusi2ss	xmm8, xmm10, edx	# tmp4458, tmp4441, D__lsm1.722
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 163840 view .LVU2185
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 163840 view .LVU2185
 	movzx	edx, BYTE PTR 4[r14+rcx]	# D__lsm1.722, MEM[(const unsigned char *)_3627 + 4B + ivtmp.808_2602 * 1]
 	vfmadd213ss	xmm16, xmm13, DWORD PTR 4[rdi+rcx*4]	# _3207, s1l, MEM[(float *)_1688 + 4B + ivtmp.808_2602 * 4]
 	vcvtusi2ss	xmm12, xmm10, edx	# tmp4462, tmp4441, D__lsm1.722
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 163840 view .LVU2186
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 163840 view .LVU2186
 	vmovaps	xmm15, xmm8	# s0l, tmp4458
 .LVL318:
-	.loc 1 369 25 is_stmt 1 view .LVU2187
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 is_stmt 0 discriminator 163840 view .LVU2188
+	.loc 1 372 25 is_stmt 1 view .LVU2187
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 is_stmt 0 discriminator 163840 view .LVU2188
 	vcvtusi2ss	xmm8, xmm10, r8d	# tmp4460, tmp4441, D__lsm1.719
 .LVL319:
-	.loc 1 370 25 is_stmt 1 view .LVU2189
-	.loc 1 371 25 view .LVU2190
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 71 is_stmt 0 discriminator 163840 view .LVU2191
+	.loc 1 373 25 is_stmt 1 view .LVU2189
+	.loc 1 374 25 view .LVU2190
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 71 is_stmt 0 discriminator 163840 view .LVU2191
 	vmulss	xmm18, xmm7, xmm8	# _3607, _82, s1r
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 163840 view .LVU2192
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 163840 view .LVU2192
 	vfmadd132ss	xmm12, xmm18, xmm5	# tmp3560, _3607, _80
 	vaddss	xmm12, xmm12, xmm16	# _3247, tmp3560, _3207
 	vmovaps	xmm16, xmm6	# _2660, _81
 	vfmadd231ss	xmm12, xmm4, xmm15	# tmp3559, _79, s0l
 	vmovss	DWORD PTR 4[rdi+rcx*4], xmm12	# MEM[(float *)_1688 + 4B + ivtmp.808_2602 * 4], tmp3559
-	.loc 1 372 25 is_stmt 1 view .LVU2193
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 is_stmt 0 discriminator 163840 view .LVU2194
+	.loc 1 375 25 is_stmt 1 view .LVU2193
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 is_stmt 0 discriminator 163840 view .LVU2194
 	vcvtusi2ss	xmm12, xmm10, r13d	# tmp4463, tmp4441, D__lsm1.716
 	vfmadd213ss	xmm13, xmm4, DWORD PTR 4[rsi+rcx*4]	# _3146, _79, MEM[(float *)_1303 + 4B + ivtmp.808_2602 * 4]
 .LVL320:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 71 discriminator 163840 view .LVU2195
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 71 discriminator 163840 view .LVU2195
 	vmulss	xmm12, xmm12, xmm7	# _523, s2r_550, _82
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 163840 view .LVU2196
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 163840 view .LVU2196
 	vfmadd132ss	xmm8, xmm12, xmm5	# tmp3566, _523, _80
 .LVL321:
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 163840 view .LVU2197
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 163840 view .LVU2197
 	vcvtusi2ss	xmm12, xmm10, r9d	# tmp4467, tmp4441, D__lsm2.717
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 163840 view .LVU2198
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 163840 view .LVU2198
 	movzx	r9d, BYTE PTR 5[r12+rcx]	# D__lsm2.717, MEM[(const unsigned char *)_539 + 5B + ivtmp.808_2602 * 1]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 163840 view .LVU2199
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 163840 view .LVU2199
 	vaddss	xmm8, xmm8, xmm13	# _3193, tmp3566, _3146
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 163840 view .LVU2200
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 163840 view .LVU2200
 	vcvtusi2ss	xmm13, xmm10, ebx	# tmp4465, tmp4441, D__lsm2.720
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 163840 view .LVU2201
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 163840 view .LVU2201
 	movzx	ebx, BYTE PTR 5[r11+rcx]	# D__lsm2.720, MEM[(const unsigned char *)_1871 + 5B + ivtmp.808_2602 * 1]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 163840 view .LVU2202
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 163840 view .LVU2202
 	vfmadd231ss	xmm8, xmm6, xmm14	# tmp3565, _81, s2l
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 163840 view .LVU2203
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 163840 view .LVU2203
 	vmovaps	xmm14, xmm12	# s2l, tmp4467
 .LVL322:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 163840 view .LVU2204
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 163840 view .LVU2204
 	vmovss	DWORD PTR 4[rsi+rcx*4], xmm8	# MEM[(float *)_1303 + 4B + ivtmp.808_2602 * 4], tmp3565
 .LBE5450:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU2205
-	.loc 1 367 39 discriminator 2 view .LVU2206
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU2205
+	.loc 1 370 39 discriminator 2 view .LVU2206
 .LVL323:
 .LBB5451:
-	.loc 1 368 25 view .LVU2207
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 163840 view .LVU2208
+	.loc 1 371 25 view .LVU2207
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 163840 view .LVU2208
 	vcvtusi2ss	xmm8, xmm10, r10d	# tmp4464, tmp4441, D__lsm2.723
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 163840 view .LVU2209
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 163840 view .LVU2209
 	movzx	r10d, BYTE PTR 5[r14+rcx]	# D__lsm2.723, MEM[(const unsigned char *)_3627 + 5B + ivtmp.808_2602 * 1]
 	vfmadd213ss	xmm16, xmm13, DWORD PTR 8[rdi+rcx*4]	# _2660, s1l, MEM[(float *)_1688 + 8B + ivtmp.808_2602 * 4]
 	vcvtusi2ss	xmm12, xmm10, r10d	# tmp4468, tmp4441, D__lsm2.723
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 163840 view .LVU2210
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 163840 view .LVU2210
 	vmovaps	xmm15, xmm8	# s0l, tmp4464
 .LVL324:
-	.loc 1 369 25 is_stmt 1 view .LVU2211
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 is_stmt 0 discriminator 163840 view .LVU2212
+	.loc 1 372 25 is_stmt 1 view .LVU2211
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 is_stmt 0 discriminator 163840 view .LVU2212
 	vcvtusi2ss	xmm8, xmm10, ebx	# tmp4466, tmp4441, D__lsm2.720
 .LVL325:
-	.loc 1 370 25 is_stmt 1 view .LVU2213
-	.loc 1 371 25 view .LVU2214
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 71 is_stmt 0 discriminator 163840 view .LVU2215
+	.loc 1 373 25 is_stmt 1 view .LVU2213
+	.loc 1 374 25 view .LVU2214
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 71 is_stmt 0 discriminator 163840 view .LVU2215
 	vmulss	xmm18, xmm7, xmm8	# _1730, _82, s1r
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 163840 view .LVU2216
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 163840 view .LVU2216
 	vfmadd132ss	xmm12, xmm18, xmm5	# tmp3576, _1730, _80
 	vaddss	xmm12, xmm12, xmm16	# _2676, tmp3576, _2660
 	vfmadd231ss	xmm12, xmm4, xmm15	# tmp3575, _79, s0l
 	vmovss	DWORD PTR 8[rdi+rcx*4], xmm12	# MEM[(float *)_1688 + 8B + ivtmp.808_2602 * 4], tmp3575
-	.loc 1 372 25 is_stmt 1 view .LVU2217
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 is_stmt 0 discriminator 163840 view .LVU2218
+	.loc 1 375 25 is_stmt 1 view .LVU2217
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 is_stmt 0 discriminator 163840 view .LVU2218
 	vcvtusi2ss	xmm12, xmm10, r9d	# tmp4469, tmp4441, D__lsm2.717
 	vfmadd213ss	xmm13, xmm4, DWORD PTR 8[rsi+rcx*4]	# _2599, _79, MEM[(float *)_1303 + 8B + ivtmp.808_2602 * 4]
 .LVL326:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 71 discriminator 163840 view .LVU2219
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 71 discriminator 163840 view .LVU2219
 	vmulss	xmm12, xmm12, xmm7	# _1695, s2r_1785, _82
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 163840 view .LVU2220
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 163840 view .LVU2220
 	vfmadd132ss	xmm8, xmm12, xmm5	# tmp3582, _1695, _80
 .LVL327:
-	.loc 1 372 35 discriminator 163840 view .LVU2221
+	.loc 1 375 35 discriminator 163840 view .LVU2221
 	vaddss	xmm8, xmm8, xmm13	# _2654, tmp3582, _2599
 	vfmadd231ss	xmm8, xmm6, xmm14	# tmp3581, _81, s2l
 	vmovss	DWORD PTR 8[rsi+rcx*4], xmm8	# MEM[(float *)_1303 + 8B + ivtmp.808_2602 * 4], tmp3581
 .LBE5451:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU2222
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU2222
 .LVL328:
-	.loc 1 367 39 discriminator 2 view .LVU2223
+	.loc 1 370 39 discriminator 2 view .LVU2223
 	add	rcx, 3	# ivtmp.808,
 .LVL329:
-	.loc 1 367 39 is_stmt 0 discriminator 2 view .LVU2224
+	.loc 1 370 39 is_stmt 0 discriminator 2 view .LVU2224
 	lea	r15d, 1[rcx]	# _1843,
 	cmp	r15d, DWORD PTR 384[rsp]	# _1843, %sfp
 	jl	.L67	#,
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 21 discriminator 163841 view .LVU2225
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 21 discriminator 163841 view .LVU2225
 	mov	rbx, QWORD PTR 368[rsp]	# ivtmp.808, %sfp
 	mov	rdx, QWORD PTR 312[rsp]	# ivtmp.914, %sfp
 	mov	r13, QWORD PTR 304[rsp]	# _3522, %sfp
@@ -8100,359 +8100,359 @@
 .LVL330:
 .L66:
 .LBB5452:
-	.loc 1 368 25 is_stmt 1 view .LVU2226
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 is_stmt 0 discriminator 360448 view .LVU2227
+	.loc 1 371 25 is_stmt 1 view .LVU2226
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 is_stmt 0 discriminator 360448 view .LVU2227
 	mov	rbx, QWORD PTR 464[rsp]	# _374, %sfp
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 52 discriminator 360448 view .LVU2228
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 52 discriminator 360448 view .LVU2228
 	mov	ecx, r8d	# _3575, tmp.499
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 51 discriminator 360448 view .LVU2229
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 51 discriminator 360448 view .LVU2229
 	mov	r11, QWORD PTR 488[rsp]	# _3520, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 51 discriminator 360448 view .LVU2230
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 51 discriminator 360448 view .LVU2230
 	lea	rsi, 0[r13+rcx]	# _3464,
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 360448 view .LVU2231
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 360448 view .LVU2231
 	mov	r12d, DWORD PTR 424[rsp]	# xf, %sfp
 	mov	r14, QWORD PTR 416[rsp]	# vp0, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 360448 view .LVU2232
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 360448 view .LVU2232
 	movzx	edi, BYTE PTR [rbx+rsi]	# *_3573, *_3573
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 360448 view .LVU2233
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 360448 view .LVU2233
 	movzx	esi, BYTE PTR 3[rbx+rsi]	# *_1584, *_1584
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 51 discriminator 360448 view .LVU2234
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 51 discriminator 360448 view .LVU2234
 	lea	r10, [r11+rcx]	# _3476,
 .LVL331:
-	.loc 1 369 25 is_stmt 1 view .LVU2235
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 51 is_stmt 0 discriminator 360448 view .LVU2236
+	.loc 1 372 25 is_stmt 1 view .LVU2235
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 51 is_stmt 0 discriminator 360448 view .LVU2236
 	add	rcx, rax	# _1579, _3524
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 33 discriminator 360448 view .LVU2237
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 33 discriminator 360448 view .LVU2237
 	mov	r15, QWORD PTR 408[rsp]	# vp1, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 360448 view .LVU2238
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 360448 view .LVU2238
 	vcvtusi2ss	xmm13, xmm10, esi	# tmp4471, tmp4441, *_1584
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 360448 view .LVU2239
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 360448 view .LVU2239
 	movzx	esi, BYTE PTR [rbx+rcx]	# *_1573, *_1573
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 360448 view .LVU2240
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 360448 view .LVU2240
 	movzx	ecx, BYTE PTR 3[rbx+rcx]	# *_1555, *_1555
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 360448 view .LVU2241
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 360448 view .LVU2241
 	vcvtusi2ss	xmm14, xmm10, edi	# tmp4470, tmp4441, *_3573
 .LVL332:
-	.loc 1 370 25 is_stmt 1 view .LVU2242
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 360448 view .LVU2243
+	.loc 1 373 25 is_stmt 1 view .LVU2242
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 360448 view .LVU2243
 	movzx	edi, BYTE PTR [rbx+r10]	# *_3478, *_3478
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 360448 view .LVU2244
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 360448 view .LVU2244
 	vcvtusi2ss	xmm8, xmm10, esi	# tmp4472, tmp4441, *_1573
 .LVL333:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 360448 view .LVU2245
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 360448 view .LVU2245
 	vmulss	xmm18, xmm6, xmm14	# _1504, _81, s1l
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 360448 view .LVU2246
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 360448 view .LVU2246
 	vmulss	xmm15, xmm6, xmm8	# _1489, _81, tmp4472
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 360448 view .LVU2247
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 360448 view .LVU2247
 	vcvtusi2ss	xmm8, xmm10, ecx	# tmp4473, tmp4441, *_1555
 .LVL334:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 360448 view .LVU2248
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 360448 view .LVU2248
 	lea	ecx, [r12+r8]	# _1527,
 	sal	rcx, 2	# _1525,
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 360448 view .LVU2249
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 360448 view .LVU2249
 	vmovaps	xmm12, xmm8	# s2r, tmp4473
 .LVL335:
-	.loc 1 371 25 is_stmt 1 view .LVU2250
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 360448 view .LVU2251
+	.loc 1 374 25 is_stmt 1 view .LVU2250
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 360448 view .LVU2251
 	vcvtusi2ss	xmm8, xmm10, edi	# tmp4474, tmp4441, *_3478
 .LVL336:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 360448 view .LVU2252
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 360448 view .LVU2252
 	movzx	edi, BYTE PTR 3[rbx+r10]	# *_3462, *_3462
 	vcvtusi2ss	xmm16, xmm10, edi	# tmp4475, tmp4441, *_3462
 	vfmadd213ss	xmm8, xmm4, DWORD PTR [r14+rcx]	# _2558, _79, *_1521
 	vfmadd132ss	xmm16, xmm18, xmm5	# _2582, _1504, _80
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 360448 view .LVU2253
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 360448 view .LVU2253
 	vfmadd231ss	xmm8, xmm7, xmm13	# tmp3600, _82, s1r
 	vfmadd132ss	xmm13, xmm15, xmm5	# _2521, _1489, _80
 .LVL337:
-	.loc 1 371 35 discriminator 360448 view .LVU2254
+	.loc 1 374 35 discriminator 360448 view .LVU2254
 	vaddss	xmm8, xmm8, xmm16	# _1498, tmp3600, _2582
 	vmovss	DWORD PTR [r14+rcx], xmm8	# *_1521, _1498
-	.loc 1 372 25 is_stmt 1 view .LVU2255
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 is_stmt 0 discriminator 360448 view .LVU2256
+	.loc 1 375 25 is_stmt 1 view .LVU2255
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 is_stmt 0 discriminator 360448 view .LVU2256
 	vmovaps	xmm8, xmm12	# s2r, s2r
 	vfmadd213ss	xmm14, xmm4, DWORD PTR [r15+rcx]	# _2499, _79, *_1495
 .LVL338:
-	.loc 1 372 35 discriminator 360448 view .LVU2257
+	.loc 1 375 35 discriminator 360448 view .LVU2257
 	vfmadd132ss	xmm8, xmm14, xmm7	# s2r, _2499, _82
 	vaddss	xmm8, xmm8, xmm13	# _1485, tmp3603, _2521
 	vmovss	DWORD PTR [r15+rcx], xmm8	# *_1495, _1485
 .LBE5452:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU2258
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU2258
 .LVL339:
-	.loc 1 367 39 discriminator 2 view .LVU2259
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 39 is_stmt 0 discriminator 360450 view .LVU2260
+	.loc 1 370 39 discriminator 2 view .LVU2259
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 39 is_stmt 0 discriminator 360450 view .LVU2260
 	cmp	r9d, DWORD PTR 480[rsp]	# k, %sfp
 	jge	.L59	#,
 .LBB5453:
-	.loc 1 368 25 is_stmt 1 view .LVU2261
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 52 is_stmt 0 discriminator 393216 view .LVU2262
+	.loc 1 371 25 is_stmt 1 view .LVU2261
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 52 is_stmt 0 discriminator 393216 view .LVU2262
 	mov	ecx, r9d	# _1479, k
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 51 discriminator 393216 view .LVU2263
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 51 discriminator 393216 view .LVU2263
 	lea	rsi, [rcx+r13]	# _1462,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 51 discriminator 393216 view .LVU2264
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 51 discriminator 393216 view .LVU2264
 	lea	r10, [rcx+r11]	# _1474,
 .LVL340:
-	.loc 1 369 25 is_stmt 1 view .LVU2265
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 51 is_stmt 0 discriminator 393216 view .LVU2266
+	.loc 1 372 25 is_stmt 1 view .LVU2265
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 51 is_stmt 0 discriminator 393216 view .LVU2266
 	add	rcx, rax	# _1445, _3524
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 393216 view .LVU2267
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 393216 view .LVU2267
 	movzx	edi, BYTE PTR [rbx+rsi]	# *_1457, *_1457
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 393216 view .LVU2268
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 393216 view .LVU2268
 	movzx	esi, BYTE PTR 3[rbx+rsi]	# *_1449, *_1449
 	vcvtusi2ss	xmm13, xmm10, esi	# tmp4477, tmp4441, *_1449
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 393216 view .LVU2269
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 393216 view .LVU2269
 	movzx	esi, BYTE PTR [rbx+rcx]	# *_1443, *_1443
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 393216 view .LVU2270
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 393216 view .LVU2270
 	movzx	ecx, BYTE PTR 3[rbx+rcx]	# *_1422, *_1422
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 393216 view .LVU2271
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 393216 view .LVU2271
 	vcvtusi2ss	xmm14, xmm10, edi	# tmp4476, tmp4441, *_1457
 .LVL341:
-	.loc 1 370 25 is_stmt 1 view .LVU2272
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 is_stmt 0 discriminator 393216 view .LVU2273
+	.loc 1 373 25 is_stmt 1 view .LVU2272
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 is_stmt 0 discriminator 393216 view .LVU2273
 	vcvtusi2ss	xmm8, xmm10, esi	# tmp4478, tmp4441, *_1443
 .LVL342:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 393216 view .LVU2274
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 393216 view .LVU2274
 	movzx	esi, BYTE PTR [rbx+r10]	# *_1473, *_1473
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 393216 view .LVU2275
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 393216 view .LVU2275
 	vmulss	xmm18, xmm6, xmm14	# _1394, _81, s1l
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 393216 view .LVU2276
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 393216 view .LVU2276
 	vmulss	xmm15, xmm6, xmm8	# _1379, _81, tmp4478
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 393216 view .LVU2277
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 393216 view .LVU2277
 	vcvtusi2ss	xmm8, xmm10, ecx	# tmp4479, tmp4441, *_1422
 .LVL343:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 393216 view .LVU2278
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 393216 view .LVU2278
 	lea	ecx, [r12+r9]	# _1414,
 	lea	rdi, 0[0+rcx*4]	# _1407,
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 393216 view .LVU2279
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 393216 view .LVU2279
 	vmovaps	xmm12, xmm8	# s2r, tmp4479
 .LVL344:
-	.loc 1 371 25 is_stmt 1 view .LVU2280
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 393216 view .LVU2281
+	.loc 1 374 25 is_stmt 1 view .LVU2280
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 393216 view .LVU2281
 	vcvtusi2ss	xmm8, xmm10, esi	# tmp4480, tmp4441, *_1473
 .LVL345:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 393216 view .LVU2282
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 393216 view .LVU2282
 	movzx	esi, BYTE PTR 3[rbx+r10]	# *_1467, *_1467
 	vcvtusi2ss	xmm16, xmm10, esi	# tmp4481, tmp4441, *_1467
 	vfmadd213ss	xmm8, xmm4, DWORD PTR [r14+rdi]	# _3725, _79, *_1406
 	vfmadd132ss	xmm16, xmm18, xmm5	# _3747, _1394, _80
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 393216 view .LVU2283
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 393216 view .LVU2283
 	vfmadd231ss	xmm8, xmm7, xmm13	# tmp3617, _82, s1r
 	vfmadd132ss	xmm13, xmm15, xmm5	# _3713, _1379, _80
 .LVL346:
-	.loc 1 371 35 discriminator 393216 view .LVU2284
+	.loc 1 374 35 discriminator 393216 view .LVU2284
 	vaddss	xmm8, xmm8, xmm16	# _1389, tmp3617, _3747
 	vmovss	DWORD PTR [r14+rdi], xmm8	# *_1406, _1389
-	.loc 1 372 25 is_stmt 1 view .LVU2285
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 is_stmt 0 discriminator 393216 view .LVU2286
+	.loc 1 375 25 is_stmt 1 view .LVU2285
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 is_stmt 0 discriminator 393216 view .LVU2286
 	vmovaps	xmm8, xmm12	# s2r, s2r
 	vfmadd213ss	xmm14, xmm4, DWORD PTR [r15+rdi]	# _3651, _79, *_1387
 .LVL347:
-	.loc 1 372 35 discriminator 393216 view .LVU2287
+	.loc 1 375 35 discriminator 393216 view .LVU2287
 	vfmadd132ss	xmm8, xmm14, xmm7	# s2r, _3651, _82
 	vaddss	xmm8, xmm8, xmm13	# _1373, tmp3620, _3713
 	vmovss	DWORD PTR [r15+rdi], xmm8	# *_1387, _1373
 .LBE5453:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU2288
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 21 is_stmt 0 discriminator 393217 view .LVU2289
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU2288
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 21 is_stmt 0 discriminator 393217 view .LVU2289
 	lea	edi, 2[r8]	# k,
 .LVL348:
-	.loc 1 367 39 is_stmt 1 discriminator 2 view .LVU2290
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 39 is_stmt 0 discriminator 393218 view .LVU2291
+	.loc 1 370 39 is_stmt 1 discriminator 2 view .LVU2290
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 39 is_stmt 0 discriminator 393218 view .LVU2291
 	cmp	edi, DWORD PTR 480[rsp]	# k, %sfp
 	jge	.L59	#,
 .LBB5454:
-	.loc 1 368 25 is_stmt 1 view .LVU2292
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 52 is_stmt 0 discriminator 163840 view .LVU2293
+	.loc 1 371 25 is_stmt 1 view .LVU2292
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 52 is_stmt 0 discriminator 163840 view .LVU2293
 	mov	r8d, edi	# _1583, k
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 51 discriminator 163840 view .LVU2294
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 51 discriminator 163840 view .LVU2294
 	lea	rcx, [r8+r13]	# _3784,
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 51 discriminator 163840 view .LVU2295
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 51 discriminator 163840 view .LVU2295
 	add	rax, r8	# _3498, _1583
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 51 discriminator 163840 view .LVU2296
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 51 discriminator 163840 view .LVU2296
 	lea	r9, [r11+r8]	# _1461,
 .LVL349:
-	.loc 1 369 25 is_stmt 1 view .LVU2297
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 is_stmt 0 discriminator 163840 view .LVU2298
+	.loc 1 372 25 is_stmt 1 view .LVU2297
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 is_stmt 0 discriminator 163840 view .LVU2298
 	movzx	esi, BYTE PTR [rbx+rcx]	# *_3502, *_3502
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 163840 view .LVU2299
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 163840 view .LVU2299
 	movzx	ecx, BYTE PTR 3[rbx+rcx]	# *_3645, *_3645
 	vcvtusi2ss	xmm13, xmm10, ecx	# tmp4483, tmp4441, *_3645
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 163840 view .LVU2300
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 163840 view .LVU2300
 	movzx	ecx, BYTE PTR [rbx+rax]	# *_3643, *_3643
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 163840 view .LVU2301
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 163840 view .LVU2301
 	movzx	eax, BYTE PTR 3[rbx+rax]	# *_3615, *_3615
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 163840 view .LVU2302
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 163840 view .LVU2302
 	vcvtusi2ss	xmm14, xmm10, esi	# tmp4482, tmp4441, *_3502
 .LVL350:
-	.loc 1 370 25 is_stmt 1 view .LVU2303
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 is_stmt 0 discriminator 163840 view .LVU2304
+	.loc 1 373 25 is_stmt 1 view .LVU2303
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 is_stmt 0 discriminator 163840 view .LVU2304
 	vcvtusi2ss	xmm8, xmm10, ecx	# tmp4484, tmp4441, *_3643
 .LVL351:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 163840 view .LVU2305
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 163840 view .LVU2305
 	vmulss	xmm15, xmm6, xmm8	# _3632, _81, tmp4484
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 163840 view .LVU2306
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 163840 view .LVU2306
 	vcvtusi2ss	xmm8, xmm10, eax	# tmp4485, tmp4441, *_3615
 .LVL352:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 163840 view .LVU2307
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 163840 view .LVU2307
 	lea	eax, [r12+rdi]	# _3641,
 	lea	rsi, 0[0+rax*4]	# _3480,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 163840 view .LVU2308
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 163840 view .LVU2308
 	movzx	eax, BYTE PTR [rbx+r9]	# *_1416, *_1416
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 163840 view .LVU2309
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 163840 view .LVU2309
 	vmovaps	xmm12, xmm8	# s2r, tmp4485
 .LVL353:
-	.loc 1 371 25 is_stmt 1 view .LVU2310
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 163840 view .LVU2311
+	.loc 1 374 25 is_stmt 1 view .LVU2310
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 163840 view .LVU2311
 	vcvtusi2ss	xmm8, xmm10, eax	# tmp4486, tmp4441, *_1416
 .LVL354:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 163840 view .LVU2312
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 163840 view .LVU2312
 	movzx	eax, BYTE PTR 3[rbx+r9]	# *_824, *_824
 	vfmadd213ss	xmm8, xmm4, DWORD PTR [r14+rsi]	# _86, _79, *_3640
 .LVL355:
 .L221:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 65536 view .LVU2313
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 65536 view .LVU2313
 	vmulss	xmm18, xmm6, xmm14	# _423, _81, s1l
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 65536 view .LVU2314
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 65536 view .LVU2314
 	vcvtusi2ss	xmm16, xmm10, eax	# tmp4523, tmp4441, *_733
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 65536 view .LVU2315
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 65536 view .LVU2315
 	vfmadd231ss	xmm8, xmm7, xmm13	# tmp3734, _82, s1r
 	vfmadd132ss	xmm13, xmm15, xmm5	# _135, _685, _80
 .LVL356:
-	.loc 1 371 35 discriminator 65536 view .LVU2316
+	.loc 1 374 35 discriminator 65536 view .LVU2316
 	vfmadd132ss	xmm16, xmm18, xmm5	# _138, _423, _80
 	vaddss	xmm8, xmm8, xmm16	# _428, tmp3734, _138
 	vmovss	DWORD PTR [r14+rsi], xmm8	#* _414, _428
-	.loc 1 372 25 is_stmt 1 view .LVU2317
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 is_stmt 0 discriminator 65536 view .LVU2318
+	.loc 1 375 25 is_stmt 1 view .LVU2317
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 is_stmt 0 discriminator 65536 view .LVU2318
 	vmovaps	xmm8, xmm12	# s2r, s2r
 	vfmadd213ss	xmm14, xmm4, DWORD PTR [r15+rsi]	# _134, _79,* _414
 .LVL357:
-	.loc 1 372 35 discriminator 65536 view .LVU2319
+	.loc 1 375 35 discriminator 65536 view .LVU2319
 	vfmadd132ss	xmm8, xmm14, xmm7	# s2r, _134, _82
 	vaddss	xmm8, xmm8, xmm13	# _686, tmp3737, _135
 	vmovss	DWORD PTR [r15+rsi], xmm8	#* _414, _686
 .LBE5454:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU2320
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU2320
 .LVL358:
-	.loc 1 367 39 discriminator 2 view .LVU2321
+	.loc 1 370 39 discriminator 2 view .LVU2321
 .L59:
-	.loc 1 367 39 is_stmt 0 discriminator 2 view .LVU2322
+	.loc 1 370 39 is_stmt 0 discriminator 2 view .LVU2322
 .LBE5867:
 .LBE5876:
-	.loc 1 287 17 is_stmt 1 discriminator 1 view .LVU2323
-# src/opt17.cpp:287:                 for (; y + 1 < y_end; y += 2) {
-	.loc 1 287 41 is_stmt 0 discriminator 1 view .LVU2324
+	.loc 1 290 17 is_stmt 1 discriminator 1 view .LVU2323
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:290:                 for (; y + 1 < y_end; y += 2) {
+	.loc 1 290 41 is_stmt 0 discriminator 1 view .LVU2324
 	add	DWORD PTR 252[rsp], 2	# %sfp,
 .LVL359:
-	.loc 1 287 30 is_stmt 1 discriminator 2 view .LVU2325
+	.loc 1 290 30 is_stmt 1 discriminator 2 view .LVU2325
 .L51:
-	.loc 1 287 30 is_stmt 0 discriminator 2 view .LVU2326
+	.loc 1 290 30 is_stmt 0 discriminator 2 view .LVU2326
 .LBE5885:
-	.loc 1 376 17 is_stmt 1 view .LVU2327
+	.loc 1 379 17 is_stmt 1 view .LVU2327
 .LBB5886:
 	mov	ebx, DWORD PTR 252[rsp]	# y, %sfp
 	cmp	DWORD PTR 248[rsp], ebx	# %sfp, y
 	jle	.L40	#,
 .LBB5887:
-	.loc 1 377 21 view .LVU2328
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 46 is_stmt 0 view .LVU2329
+	.loc 1 380 21 view .LVU2328
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 46 is_stmt 0 view .LVU2329
 	mov	eax, DWORD PTR 4[rdx]	# _432, MEM[(int *)_424 + 4B]
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 81 view .LVU2330
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 81 view .LVU2330
 	mov	ecx, DWORD PTR 228[rsp]	# _436, %sfp
-# src/opt17.cpp:380:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 380 69 discriminator 1 view .LVU2331
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:383:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 383 69 discriminator 1 view .LVU2331
 	mov	r11, QWORD PTR 160[rsp]	# _442, %sfp
 .LBB5888:
-# src/opt17.cpp:384:                     for (; xf + 16 <= x_floats; xf += 16) {
-	.loc 1 384 36 discriminator 2 view .LVU2332
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:387:                     for (; xf + 16 <= x_floats; xf += 16) {
+	.loc 1 387 36 discriminator 2 view .LVU2332
 	mov	esi, DWORD PTR 496[rsp]	# x_floats_676, %sfp
 .LBE5888:
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 46 view .LVU2333
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 46 view .LVU2333
 	add	eax, ebx	# _432, y
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 81 view .LVU2334
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 81 view .LVU2334
 	add	ecx, DWORD PTR [rdx]	# _436, MEM[(int *)_424]
-# src/opt17.cpp:380:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 380 63 discriminator 1 view .LVU2335
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:383:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 383 63 discriminator 1 view .LVU2335
 	sub	ebx, DWORD PTR 224[rsp]	# y, %sfp
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 35 view .LVU2336
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 35 view .LVU2336
 	cdqe
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 64 view .LVU2337
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 64 view .LVU2337
 	movsxd	rcx, ecx	# _437, _436
 .LBE5887:
 .LBE5886:
@@ -8460,8 +8460,8 @@
 .LBB5877:
 .LBB5868:
 .LBB5455:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 39 view .LVU2338
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 39 view .LVU2338
 	mov	r8, QWORD PTR 40[rdx]	# pretmp_3781, MEM[(const unsigned char * *)_424 + 40B]
 .LBE5455:
 .LBE5868:
@@ -8469,56 +8469,56 @@
 .LBE6159:
 .LBB6160:
 .LBB6155:
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 54 view .LVU2339
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 54 view .LVU2339
 	imul	rax, QWORD PTR 184[rsp]	# _434, %sfp
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 62 view .LVU2340
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 62 view .LVU2340
 	add	rax, rcx	# _438, _437
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 28 view .LVU2341
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 28 view .LVU2341
 	lea	rdi, [rax+rax*2]	# rb0_677,
-# src/opt17.cpp:378:                     size_t rb1 = rb0 + width * 3;
-	.loc 1 378 28 view .LVU2342
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:381:                     size_t rb1 = rb0 + width * 3;
+	.loc 1 381 28 view .LVU2342
 	mov	rax, QWORD PTR 136[rsp]	# _93, %sfp
-# src/opt17.cpp:377:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-	.loc 1 377 28 view .LVU2343
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:380:                     size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+	.loc 1 380 28 view .LVU2343
 	mov	r13, rdi	# rb0, rb0_677
 .LVL360:
-	.loc 1 378 21 is_stmt 1 view .LVU2344
-# src/opt17.cpp:378:                     size_t rb1 = rb0 + width * 3;
-	.loc 1 378 28 is_stmt 0 view .LVU2345
+	.loc 1 381 21 is_stmt 1 view .LVU2344
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:381:                     size_t rb1 = rb0 + width * 3;
+	.loc 1 381 28 is_stmt 0 view .LVU2345
 	lea	r9, [rax+rdi]	# rb1,
 .LVL361:
-	.loc 1 380 21 is_stmt 1 view .LVU2346
-# src/opt17.cpp:380:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 380 52 is_stmt 0 discriminator 1 view .LVU2347
+	.loc 1 383 21 is_stmt 1 view .LVU2346
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:383:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 383 52 is_stmt 0 discriminator 1 view .LVU2347
 	movsxd	rax, ebx	# _441, _440
-# src/opt17.cpp:380:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 380 114 discriminator 1 view .LVU2348
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:383:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 383 114 discriminator 1 view .LVU2348
 	mov	rbx, QWORD PTR 216[rsp]	# _1502, %sfp
-# src/opt17.cpp:380:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 380 69 discriminator 1 view .LVU2349
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:383:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 383 69 discriminator 1 view .LVU2349
 	imul	r11, rax	# _442, _441
-# src/opt17.cpp:380:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 380 106 discriminator 1 view .LVU2350
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:383:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 383 106 discriminator 1 view .LVU2350
 	mov	eax, DWORD PTR 228[rsp]	# _443, %sfp
 	sub	eax, DWORD PTR 204[rsp]	# _443, %sfp
-# src/opt17.cpp:380:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 380 89 discriminator 1 view .LVU2351
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:383:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 383 89 discriminator 1 view .LVU2351
 	cdqe
-# src/opt17.cpp:380:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 380 87 discriminator 1 view .LVU2352
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:383:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 383 87 discriminator 1 view .LVU2352
 	lea	rax, [rax+rax*2]	# _445,
 	add	rax, r11	# _446, _442
-# src/opt17.cpp:380:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
-	.loc 1 380 114 discriminator 1 view .LVU2353
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:383:                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
+	.loc 1 383 114 discriminator 1 view .LVU2353
 	lea	r14, [rbx+rax*4]	# vp,
 .LVL362:
-	.loc 1 382 21 is_stmt 1 view .LVU2354
-	.loc 1 384 21 view .LVU2355
+	.loc 1 385 21 is_stmt 1 view .LVU2354
+	.loc 1 387 21 view .LVU2355
 .LBB6053:
-	.loc 1 384 36 discriminator 2 view .LVU2356
+	.loc 1 387 36 discriminator 2 view .LVU2356
 	cmp	esi, 15	# x_floats_676,
 	jle	.L70	#,
 	mov	r10d, esi	# _3215, x_floats_676
@@ -8533,11 +8533,11 @@
 	.p2align 3
 .L71:
 .LBB5889:
-	.loc 1 385 25 view .LVU2357
+	.loc 1 388 25 view .LVU2357
 .LBB5890:
 .LBI5890:
-	.loc 1 35 22 view .LVU2358
-	.loc 1 36 5 view .LVU2359
+	.loc 1 38 22 view .LVU2358
+	.loc 1 39 5 view .LVU2359
 .LBB5891:
 .LBI5891:
 	.loc 14 711 1 view .LVU2360
@@ -8564,8 +8564,8 @@
 .LBE5923:
 .LBE5922:
 .LBE5889:
-# src/opt17.cpp:384:                     for (; xf + 16 <= x_floats; xf += 16) {
-	.loc 1 384 36 discriminator 2 view .LVU2363
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:387:                     for (; xf + 16 <= x_floats; xf += 16) {
+	.loc 1 387 36 discriminator 2 view .LVU2363
 	add	rax, 64	# ivtmp.783,
 	sub	rsi, r9	# _2705, rb1
 .LVL364:
@@ -8615,8 +8615,8 @@
 .LBE5954:
 .LBE5953:
 .LBE6051:
-# src/opt17.cpp:384:                     for (; xf + 16 <= x_floats; xf += 16) {
-	.loc 1 384 36 discriminator 2 view .LVU2372
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:387:                     for (; xf + 16 <= x_floats; xf += 16) {
+	.loc 1 387 36 discriminator 2 view .LVU2372
 	add	rcx, 16	# ivtmp.782,
 .LBB6052:
 .LBB5968:
@@ -8703,11 +8703,11 @@
 .LBE5905:
 .LBE5906:
 .LBE6014:
-	.loc 1 386 25 is_stmt 1 view .LVU2382
+	.loc 1 389 25 is_stmt 1 view .LVU2382
 .LBB6015:
 .LBI5969:
-	.loc 1 35 22 view .LVU2383
-	.loc 1 36 5 view .LVU2384
+	.loc 1 38 22 view .LVU2383
+	.loc 1 39 5 view .LVU2384
 .LBB5973:
 .LBI5973:
 	.loc 14 711 1 view .LVU2385
@@ -8751,11 +8751,11 @@
 .LBE5981:
 .LBE5980:
 .LBE6015:
-	.loc 1 387 25 is_stmt 1 view .LVU2399
+	.loc 1 390 25 is_stmt 1 view .LVU2399
 .LBB6016:
 .LBI5984:
-	.loc 1 35 22 view .LVU2400
-	.loc 1 36 5 view .LVU2401
+	.loc 1 38 22 view .LVU2400
+	.loc 1 39 5 view .LVU2401
 .LBB5988:
 .LBI5988:
 	.loc 14 711 1 view .LVU2402
@@ -8821,11 +8821,11 @@
 .LBE5997:
 .LBE5998:
 .LBE6023:
-	.loc 1 388 25 is_stmt 1 view .LVU2419
+	.loc 1 391 25 is_stmt 1 view .LVU2419
 .LBB6024:
 .LBI5999:
-	.loc 1 35 22 view .LVU2420
-	.loc 1 36 5 view .LVU2421
+	.loc 1 38 22 view .LVU2420
+	.loc 1 39 5 view .LVU2421
 .LBB6003:
 .LBI6003:
 	.loc 14 711 1 view .LVU2422
@@ -8869,11 +8869,11 @@
 .LBE6011:
 .LBE6010:
 .LBE6024:
-	.loc 1 389 25 is_stmt 1 view .LVU2436
+	.loc 1 392 25 is_stmt 1 view .LVU2436
 .LBB6025:
 .LBI5907:
-	.loc 1 35 22 view .LVU2437
-	.loc 1 36 5 view .LVU2438
+	.loc 1 38 22 view .LVU2437
+	.loc 1 39 5 view .LVU2438
 .LBB5914:
 .LBI5914:
 	.loc 14 711 1 view .LVU2439
@@ -8912,11 +8912,11 @@
 .LBE5913:
 .LBE5921:
 .LBE6025:
-	.loc 1 390 25 is_stmt 1 view .LVU2451
+	.loc 1 393 25 is_stmt 1 view .LVU2451
 .LBB6026:
 .LBI5922:
-	.loc 1 35 22 view .LVU2452
-	.loc 1 36 5 view .LVU2453
+	.loc 1 38 22 view .LVU2452
+	.loc 1 39 5 view .LVU2453
 .LBB5929:
 .LBI5929:
 	.loc 14 711 1 view .LVU2454
@@ -8955,11 +8955,11 @@
 .LBE5928:
 .LBE5936:
 .LBE6026:
-	.loc 1 391 25 is_stmt 1 view .LVU2466
+	.loc 1 394 25 is_stmt 1 view .LVU2466
 .LBB6027:
 .LBI5938:
-	.loc 1 35 22 view .LVU2467
-	.loc 1 36 5 view .LVU2468
+	.loc 1 38 22 view .LVU2467
+	.loc 1 39 5 view .LVU2468
 .LBB5945:
 .LBI5945:
 	.loc 14 711 1 view .LVU2469
@@ -8998,11 +8998,11 @@
 .LBE5944:
 .LBE5952:
 .LBE6027:
-	.loc 1 392 25 is_stmt 1 view .LVU2481
+	.loc 1 395 25 is_stmt 1 view .LVU2481
 .LBB6028:
 .LBI5953:
-	.loc 1 35 22 view .LVU2482
-	.loc 1 36 5 view .LVU2483
+	.loc 1 38 22 view .LVU2482
+	.loc 1 39 5 view .LVU2483
 .LBB5960:
 .LBI5960:
 	.loc 14 711 1 view .LVU2484
@@ -9041,7 +9041,7 @@
 .LBE5959:
 .LBE5967:
 .LBE6028:
-	.loc 1 393 25 is_stmt 1 view .LVU2496
+	.loc 1 396 25 is_stmt 1 view .LVU2496
 .LBB6029:
 .LBI6029:
 	.loc 13 847 1 view .LVU2497
@@ -9050,7 +9050,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU2499
 .LBE6030:
 .LBE6029:
-	.loc 1 394 25 is_stmt 1 view .LVU2500
+	.loc 1 397 25 is_stmt 1 view .LVU2500
 .LBB6031:
 .LBI6031:
 	.loc 13 847 1 view .LVU2501
@@ -9059,7 +9059,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU2503
 .LBE6032:
 .LBE6031:
-	.loc 1 395 25 is_stmt 1 view .LVU2504
+	.loc 1 398 25 is_stmt 1 view .LVU2504
 .LBB6033:
 .LBI6017:
 	.loc 16 63 1 view .LVU2505
@@ -9068,7 +9068,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU2507
 .LBE6019:
 .LBE6033:
-	.loc 1 396 25 is_stmt 1 view .LVU2508
+	.loc 1 399 25 is_stmt 1 view .LVU2508
 .LBB6034:
 .LBI6020:
 	.loc 16 63 1 view .LVU2509
@@ -9077,7 +9077,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU2511
 .LBE6022:
 .LBE6034:
-	.loc 1 397 25 is_stmt 1 view .LVU2512
+	.loc 1 400 25 is_stmt 1 view .LVU2512
 .LBB6035:
 .LBI6035:
 	.loc 16 63 1 view .LVU2513
@@ -9090,7 +9090,7 @@
 	.loc 16 65 10 view .LVU2516
 .LBE6036:
 .LBE6035:
-	.loc 1 398 25 is_stmt 1 view .LVU2517
+	.loc 1 401 25 is_stmt 1 view .LVU2517
 .LBB6037:
 .LBI6037:
 	.loc 16 63 1 view .LVU2518
@@ -9103,7 +9103,7 @@
 	.loc 16 65 10 view .LVU2521
 .LBE6038:
 .LBE6037:
-	.loc 1 399 25 is_stmt 1 view .LVU2522
+	.loc 1 402 25 is_stmt 1 view .LVU2522
 .LBB6039:
 .LBI6039:
 	.loc 16 63 1 view .LVU2523
@@ -9116,7 +9116,7 @@
 	.loc 16 65 10 view .LVU2526
 .LBE6040:
 .LBE6039:
-	.loc 1 400 25 is_stmt 1 view .LVU2527
+	.loc 1 403 25 is_stmt 1 view .LVU2527
 .LBB6041:
 .LBI6041:
 	.loc 16 63 1 view .LVU2528
@@ -9129,7 +9129,7 @@
 	.loc 16 65 10 view .LVU2531
 .LBE6042:
 .LBE6041:
-	.loc 1 401 25 is_stmt 1 view .LVU2532
+	.loc 1 404 25 is_stmt 1 view .LVU2532
 .LBB6043:
 .LBI6043:
 	.loc 16 63 1 view .LVU2533
@@ -9142,7 +9142,7 @@
 	.loc 16 65 10 view .LVU2536
 .LBE6044:
 .LBE6043:
-	.loc 1 402 25 is_stmt 1 view .LVU2537
+	.loc 1 405 25 is_stmt 1 view .LVU2537
 .LBB6045:
 .LBI6045:
 	.loc 16 63 1 view .LVU2538
@@ -9155,7 +9155,7 @@
 	.loc 16 65 10 view .LVU2541
 .LBE6046:
 .LBE6045:
-	.loc 1 403 25 is_stmt 1 view .LVU2542
+	.loc 1 406 25 is_stmt 1 view .LVU2542
 .LBB6047:
 .LBI6047:
 	.loc 13 853 1 view .LVU2543
@@ -9168,7 +9168,7 @@
 	.loc 13 855 20 view .LVU2546
 .LBE6048:
 .LBE6047:
-	.loc 1 404 25 is_stmt 1 view .LVU2547
+	.loc 1 407 25 is_stmt 1 view .LVU2547
 .LBB6049:
 .LBI6049:
 	.loc 13 853 1 view .LVU2548
@@ -9182,49 +9182,49 @@
 .LBE6050:
 .LBE6049:
 .LBE6052:
-	.loc 1 384 21 is_stmt 1 discriminator 1 view .LVU2552
-	.loc 1 384 36 discriminator 2 view .LVU2553
+	.loc 1 387 21 is_stmt 1 discriminator 1 view .LVU2552
+	.loc 1 387 36 discriminator 2 view .LVU2553
 	cmp	r10, rax	# _1896, ivtmp.783
 	jne	.L71	#,
 	mov	eax, ebx	# _65, _65
 	and	eax, -16	# _65,
 .LBE6053:
-	.loc 1 407 21 view .LVU2554
+	.loc 1 410 21 view .LVU2554
 .LBB6054:
-# src/opt17.cpp:407:                     if (xf + 8 <= x_floats) {
-	.loc 1 407 32 is_stmt 0 view .LVU2555
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:410:                     if (xf + 8 <= x_floats) {
+	.loc 1 410 32 is_stmt 0 view .LVU2555
 	lea	ecx, 23[rax]	# _472,
 .LVL380:
-	.loc 1 407 32 view .LVU2556
+	.loc 1 410 32 view .LVU2556
 	lea	r15d, 16[rax]	# xf,
-# src/opt17.cpp:407:                     if (xf + 8 <= x_floats) {
-	.loc 1 407 21 view .LVU2557
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:410:                     if (xf + 8 <= x_floats) {
+	.loc 1 410 21 view .LVU2557
 	cmp	ecx, DWORD PTR 496[rsp]	# _472, %sfp
 	jge	.L76	#,
 .LBB6055:
-# src/opt17.cpp:408:                         __m256 rl0 = load_cvt8(p.SUB + rb0 + xf);
-	.loc 1 408 62 view .LVU2558
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:411:                         __m256 rl0 = load_cvt8(p.SUB + rb0 + xf);
+	.loc 1 411 62 view .LVU2558
 	lea	esi, 16[rax]	# _3656,
 .LVL381:
-# src/opt17.cpp:418:                         xf += 8;
-	.loc 1 418 28 view .LVU2559
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:421:                         xf += 8;
+	.loc 1 421 28 view .LVU2559
 	lea	r15d, 24[rax]	# xf,
-# src/opt17.cpp:408:                         __m256 rl0 = load_cvt8(p.SUB + rb0 + xf);
-	.loc 1 408 60 view .LVU2560
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:411:                         __m256 rl0 = load_cvt8(p.SUB + rb0 + xf);
+	.loc 1 411 60 view .LVU2560
 	lea	rcx, [rdi+rsi]	# _3658,
-# src/opt17.cpp:410:                         __m256 rl1 = load_cvt8(p.SUB + rb1 + xf);
-	.loc 1 410 60 view .LVU2561
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:413:                         __m256 rl1 = load_cvt8(p.SUB + rb1 + xf);
+	.loc 1 413 60 view .LVU2561
 	lea	r10, [r9+rsi]	# _3660,
-# src/opt17.cpp:412:                         __m256 v = _mm256_loadu_ps(vp + xf);
-	.loc 1 412 55 view .LVU2562
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:415:                         __m256 v = _mm256_loadu_ps(vp + xf);
+	.loc 1 415 55 view .LVU2562
 	lea	rsi, [r14+rsi*4]	# _3664,
 .LVL382:
 .L73:
-	.loc 1 408 25 is_stmt 1 view .LVU2563
+	.loc 1 411 25 is_stmt 1 view .LVU2563
 .LBB6056:
 .LBI6056:
-	.loc 1 35 22 view .LVU2564
-	.loc 1 36 5 view .LVU2565
+	.loc 1 38 22 view .LVU2564
+	.loc 1 39 5 view .LVU2565
 .LBB6057:
 .LBI6057:
 	.loc 14 711 1 view .LVU2566
@@ -9301,11 +9301,11 @@
 .LBE6067:
 .LBE6068:
 .LBE6110:
-	.loc 1 409 25 is_stmt 1 view .LVU2582
+	.loc 1 412 25 is_stmt 1 view .LVU2582
 .LBB6111:
 .LBI6069:
-	.loc 1 35 22 view .LVU2583
-	.loc 1 36 5 view .LVU2584
+	.loc 1 38 22 view .LVU2583
+	.loc 1 39 5 view .LVU2584
 .LBB6073:
 .LBI6073:
 	.loc 14 711 1 view .LVU2585
@@ -9364,11 +9364,11 @@
 .LBE6082:
 .LBE6083:
 .LBE6115:
-	.loc 1 410 25 is_stmt 1 view .LVU2601
+	.loc 1 413 25 is_stmt 1 view .LVU2601
 .LBB6116:
 .LBI6084:
-	.loc 1 35 22 view .LVU2602
-	.loc 1 36 5 view .LVU2603
+	.loc 1 38 22 view .LVU2602
+	.loc 1 39 5 view .LVU2603
 .LBB6088:
 .LBI6088:
 	.loc 14 711 1 view .LVU2604
@@ -9412,11 +9412,11 @@
 .LBE6096:
 .LBE6095:
 .LBE6116:
-	.loc 1 411 25 is_stmt 1 view .LVU2618
+	.loc 1 414 25 is_stmt 1 view .LVU2618
 .LBB6117:
 .LBI6097:
-	.loc 1 35 22 view .LVU2619
-	.loc 1 36 5 view .LVU2620
+	.loc 1 38 22 view .LVU2619
+	.loc 1 39 5 view .LVU2620
 .LBB6101:
 .LBI6101:
 	.loc 14 711 1 view .LVU2621
@@ -9460,7 +9460,7 @@
 .LBE6109:
 .LBE6108:
 .LBE6117:
-	.loc 1 412 25 is_stmt 1 view .LVU2635
+	.loc 1 415 25 is_stmt 1 view .LVU2635
 .LBB6118:
 .LBI6118:
 	.loc 13 847 1 view .LVU2636
@@ -9469,7 +9469,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU2638
 .LBE6119:
 .LBE6118:
-	.loc 1 413 25 is_stmt 1 view .LVU2639
+	.loc 1 416 25 is_stmt 1 view .LVU2639
 .LBB6120:
 .LBI6112:
 	.loc 16 63 1 view .LVU2640
@@ -9478,7 +9478,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU2642
 .LBE6114:
 .LBE6120:
-	.loc 1 414 25 is_stmt 1 view .LVU2643
+	.loc 1 417 25 is_stmt 1 view .LVU2643
 .LBB6121:
 .LBI6121:
 	.loc 16 63 1 view .LVU2644
@@ -9491,7 +9491,7 @@
 	.loc 16 65 10 view .LVU2647
 .LBE6122:
 .LBE6121:
-	.loc 1 415 25 is_stmt 1 view .LVU2648
+	.loc 1 418 25 is_stmt 1 view .LVU2648
 .LBB6123:
 .LBI6123:
 	.loc 16 63 1 view .LVU2649
@@ -9504,7 +9504,7 @@
 	.loc 16 65 10 view .LVU2652
 .LBE6124:
 .LBE6123:
-	.loc 1 416 25 is_stmt 1 view .LVU2653
+	.loc 1 419 25 is_stmt 1 view .LVU2653
 .LBB6125:
 .LBI6125:
 	.loc 16 63 1 view .LVU2654
@@ -9517,7 +9517,7 @@
 	.loc 16 65 10 view .LVU2657
 .LBE6126:
 .LBE6125:
-	.loc 1 417 25 is_stmt 1 view .LVU2658
+	.loc 1 420 25 is_stmt 1 view .LVU2658
 .LBB6127:
 .LBI6127:
 	.loc 13 853 1 view .LVU2659
@@ -9530,42 +9530,42 @@
 	.loc 13 855 20 view .LVU2662
 .LBE6128:
 .LBE6127:
-	.loc 1 418 25 is_stmt 1 view .LVU2663
+	.loc 1 421 25 is_stmt 1 view .LVU2663
 .L76:
-	.loc 1 418 25 is_stmt 0 view .LVU2664
+	.loc 1 421 25 is_stmt 0 view .LVU2664
 .LBE6055:
 .LBE6054:
-	.loc 1 421 21 is_stmt 1 view .LVU2665
+	.loc 1 424 21 is_stmt 1 view .LVU2665
 .LBB6129:
-	.loc 1 421 39 discriminator 2 view .LVU2666
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 50 is_stmt 0 discriminator 2 view .LVU2667
+	.loc 1 424 39 discriminator 2 view .LVU2666
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 50 is_stmt 0 discriminator 2 view .LVU2667
 	mov	eax, DWORD PTR 496[rsp]	# x_floats_676, %sfp
 	sub	eax, r15d	# x_floats_676, xf
 	mov	DWORD PTR 192[rsp], eax	# %sfp, x_floats
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 39 discriminator 2 view .LVU2668
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 39 discriminator 2 view .LVU2668
 	test	eax, eax	# x_floats
 	jle	.L40	#,
 .LBB6130:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 47 view .LVU2669
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 47 view .LVU2669
 	mov	ebx, r15d	# _3458, xf
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 46 view .LVU2670
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 46 view .LVU2670
 	lea	r13, [rdi+rbx]	# rb0,
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 46 view .LVU2671
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 46 view .LVU2671
 	add	r9, rbx	# rb1, _3458
 .LVL393:
 .L74:
-	.loc 1 423 46 view .LVU2672
+	.loc 1 426 46 view .LVU2672
 	mov	r12d, DWORD PTR 228[rsp]	# _3589, %sfp
 	mov	eax, DWORD PTR 192[rsp]	# _3593, %sfp
 	lea	rsi, [r8+r9]	# _3411,
 	mov	rdi, QWORD PTR 216[rsp]	# _1502, %sfp
 .LVL394:
-	.loc 1 423 46 view .LVU2673
+	.loc 1 426 46 view .LVU2673
 	sub	r12, QWORD PTR 176[rsp]	# _595, %sfp
 	lea	r10, 3[rax+r9]	# _3435,
 	lea	rcx, [r12+r12*2]	# _3460,
@@ -9578,7 +9578,7 @@
 	lea	rcx, [rdi+rcx*4]	# _3442,
 	mov	QWORD PTR 496[rsp], r11	# %sfp, _3455
 .LVL395:
-	.loc 1 423 46 view .LVU2674
+	.loc 1 426 46 view .LVU2674
 	lea	rdi, [r8+r13]	# _3441,
 	setnb	r11b	#, _3424
 	cmp	rsi, rcx	# _3411, _3442
@@ -9604,8 +9604,8 @@
 	mov	DWORD PTR 488[rsp], ebx	# %sfp, bnd.373
 .LBE6130:
 .LBE6129:
-# src/opt17.cpp:382:                     int xf = 0;
-	.loc 1 382 25 view .LVU2675
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:385:                     int xf = 0;
+	.loc 1 385 25 view .LVU2675
 	xor	ecx, ecx	# ivtmp.768
 	sal	rbx, 5	# _2692,
 	.p2align 4,,10
@@ -9613,49 +9613,49 @@
 .L79:
 .LBB6149:
 .LBB6131:
-	.loc 1 422 25 is_stmt 1 view .LVU2676
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 51 is_stmt 0 discriminator 106496 view .LVU2677
+	.loc 1 425 25 is_stmt 1 view .LVU2676
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 51 is_stmt 0 discriminator 106496 view .LVU2677
 	vmovdqu	ymm8, YMMWORD PTR [rsi+rcx]	# MEM <const vector(32) unsigned char> [(const unsigned char *)_3411 + ivtmp.768_2506 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)_3411 + ivtmp.768_2506 * 1]
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 76 discriminator 106496 view .LVU2678
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 76 discriminator 106496 view .LVU2678
 	vmovdqu	ymm12, YMMWORD PTR [r10+rcx]	# MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.383_3249 + ivtmp.768_2506 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.383_3249 + ivtmp.768_2506 * 1]
 	sub	rax, -128	# ivtmp.766,
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 51 discriminator 106496 view .LVU2679
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 51 discriminator 106496 view .LVU2679
 	vmovdqu	ymm13, YMMWORD PTR [rdi+rcx]	# MEM <const vector(32) unsigned char> [(const unsigned char *)_3441 + ivtmp.768_2506 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)_3441 + ivtmp.768_2506 * 1]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 106496 view .LVU2680
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 106496 view .LVU2680
 	vpmovzxbw	ymm14, xmm8	#, MEM <const vector(32) unsigned char> [(const unsigned char *)_3411 + ivtmp.768_2506 * 1]
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 106496 view .LVU2681
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 106496 view .LVU2681
 	vpmovzxbw	ymm15, xmm12	#, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.383_3249 + ivtmp.768_2506 * 1]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 106496 view .LVU2682
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 106496 view .LVU2682
 	vextracti32x4	xmm8, ymm8, 0x1	# tmp3876, MEM <const vector(32) unsigned char> [(const unsigned char *)_3411 + ivtmp.768_2506 * 1]
 	vpmovsxwd	ymm18, xmm14	#, vect_s1l_687.392
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 106496 view .LVU2683
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 106496 view .LVU2683
 	vpmovsxwd	ymm16, xmm15	#, vect_s0r_686.386
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 106496 view .LVU2684
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 106496 view .LVU2684
 	vpmovzxbw	ymm8, xmm8	# vect_s1l_687.392, tmp3876
 	vcvtdq2ps	ymm18, ymm18	# vect_s1l_687.391_3224, tmp3881
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 106496 view .LVU2685
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 106496 view .LVU2685
 	vmulps	ymm18, ymm18, ymm2	# vect__513.393_3220, vect_s1l_687.391_3224, _704
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 106496 view .LVU2686
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 106496 view .LVU2686
 	vcvtdq2ps	ymm16, ymm16	# vect_s0r_686.385_3242, tmp3878
 	vextracti32x4	xmm12, ymm12, 0x1	# tmp3873, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.383_3249 + ivtmp.768_2506 * 1]
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 106496 view .LVU2687
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 106496 view .LVU2687
 	vpmovzxbw	ymm19, xmm13	#, MEM <const vector(32) unsigned char> [(const unsigned char *)_3441 + ivtmp.768_2506 * 1]
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 106496 view .LVU2688
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 106496 view .LVU2688
 	vpmovzxbw	ymm12, xmm12	# vect_s0r_686.386, tmp3873
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 106496 view .LVU2689
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 106496 view .LVU2689
 	vpmovsxwd	ymm21, xmm19	#, vect_s0l_685.404
 	vextracti32x4	xmm13, ymm13, 0x1	# tmp3870, MEM <const vector(32) unsigned char> [(const unsigned char *)_3441 + ivtmp.768_2506 * 1]
 	vcvtdq2ps	ymm21, ymm21	# vect_s0l_685.403_3188, tmp3913
@@ -9663,87 +9663,87 @@
 	vextracti32x4	xmm19, ymm19, 0x1	# tmp3922, vect_s0l_685.404
 	vpmovzxbw	ymm13, xmm13	# vect_s0l_685.404, tmp3870
 .LVL396:
-	.loc 1 423 25 is_stmt 1 view .LVU2690
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 is_stmt 0 discriminator 106496 view .LVU2691
+	.loc 1 426 25 is_stmt 1 view .LVU2690
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 is_stmt 0 discriminator 106496 view .LVU2691
 	vpmovsxwd	ymm19, xmm19	# tmp3921, tmp3922
 	vcvtdq2ps	ymm19, ymm19	# vect_s0l_685.403_3187, tmp3921
 	vfmadd213ps	ymm19, ymm0, YMMWORD PTR -96[rax]	# tmp3919, _702, MEM <vector(8) float> [(float *)_2526 + 32B]
 	vfmadd132ps	ymm16, ymm18, ymm1	# _157, vect__513.393_3220, _703
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 106496 view .LVU2692
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 106496 view .LVU2692
 	vextracti32x4	xmm18, ymm15, 0x1	# tmp3886, vect_s0r_686.386
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 106496 view .LVU2693
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 106496 view .LVU2693
 	vextracti32x4	xmm15, ymm14, 0x1	# tmp3889, vect_s1l_687.392
 	vpmovsxwd	ymm15, xmm15	# tmp3888, tmp3889
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 106496 view .LVU2694
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 106496 view .LVU2694
 	vpmovsxwd	ymm18, xmm18	# tmp3885, tmp3886
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 106496 view .LVU2695
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 106496 view .LVU2695
 	vcvtdq2ps	ymm15, ymm15	# vect_s1l_687.391_3223, tmp3888
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 106496 view .LVU2696
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 106496 view .LVU2696
 	vmulps	ymm15, ymm15, ymm2	# vect__513.393_3219, vect_s1l_687.391_3223, _704
 	vcvtdq2ps	ymm14, ymm18	# vect_s0r_686.385_3241, tmp3885
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 106496 view .LVU2697
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 106496 view .LVU2697
 	vpmovsxwd	ymm18, xmm12	#, vect_s0r_686.386
 	vextracti32x4	xmm12, ymm12, 0x1	# tmp3900, vect_s0r_686.386
 	vpmovsxwd	ymm12, xmm12	# tmp3899, tmp3900
 	vcvtdq2ps	ymm18, ymm18	# vect_s0r_686.385_3240, tmp3892
 	vcvtdq2ps	ymm12, ymm12	# vect_s0r_686.385_3239, tmp3899
 	vfmadd132ps	ymm14, ymm15, ymm1	# vect_s0r_686.385_3241, vect__513.393_3219, _703
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 106496 view .LVU2698
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 106496 view .LVU2698
 	vpmovsxwd	ymm15, xmm8	#, vect_s1l_687.392
 	vextracti32x4	xmm8, ymm8, 0x1	# tmp3903, vect_s1l_687.392
 	vpmovsxwd	ymm8, xmm8	# tmp3902, tmp3903
 	vcvtdq2ps	ymm15, ymm15	# vect_s1l_687.391_3222, tmp3895
 	vcvtdq2ps	ymm8, ymm8	# vect_s1l_687.391_3221, tmp3902
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 106496 view .LVU2699
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 106496 view .LVU2699
 	vmulps	ymm8, ymm8, ymm2	# vect__513.393_3217, vect_s1l_687.391_3221, _704
 	vmulps	ymm15, ymm15, ymm2	# vect__513.393_3218, vect_s1l_687.391_3222, _704
 	vfmadd132ps	ymm12, ymm8, ymm1	# _146, vect__513.393_3217, _703
 .LVL397:
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 76 discriminator 106496 view .LVU2700
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 76 discriminator 106496 view .LVU2700
 	vmovdqu	ymm8, YMMWORD PTR [r11+rcx]	# MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.377_3268 + ivtmp.768_2506 * 1], MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.377_3268 + ivtmp.768_2506 * 1]
 	add	rcx, 32	# ivtmp.768,
 	vfmadd132ps	ymm18, ymm15, ymm1	# _149, vect__513.393_3218, _703
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 106496 view .LVU2701
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 106496 view .LVU2701
 	vpmovzxbw	ymm15, xmm8	#, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.377_3268 + ivtmp.768_2506 * 1]
 	vextracti32x4	xmm8, ymm8, 0x1	# tmp3907, MEM <const vector(32) unsigned char> [(const unsigned char *)vectp.377_3268 + ivtmp.768_2506 * 1]
 	vpmovsxwd	ymm20, xmm15	#, vect_s1r_688.380
 	vextracti32x4	xmm15, ymm15, 0x1	# tmp3918, vect_s1r_688.380
 	vpmovzxbw	ymm8, xmm8	# vect_s1r_688.380, tmp3907
 .LVL398:
-	.loc 1 424 25 is_stmt 1 view .LVU2702
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 is_stmt 0 discriminator 106496 view .LVU2703
+	.loc 1 427 25 is_stmt 1 view .LVU2702
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 is_stmt 0 discriminator 106496 view .LVU2703
 	vcvtdq2ps	ymm20, ymm20	# vect_s1r_688.379_3261, tmp3909
 	vfmadd132ps	ymm20, ymm21, ymm3	# _158, tmp3911, _705
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 106496 view .LVU2704
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 106496 view .LVU2704
 	vpmovsxwd	ymm21, xmm13	#, vect_s0l_685.404
 	vextracti32x4	xmm13, ymm13, 0x1	# tmp3939, vect_s0l_685.404
 	vpmovsxwd	ymm13, xmm13	# tmp3938, tmp3939
 	vcvtdq2ps	ymm21, ymm21	# vect_s0l_685.403_3186, tmp3929
 	vfmadd213ps	ymm21, ymm0, YMMWORD PTR -64[rax]	# tmp3927, _702, MEM <vector(8) float> [(float *)_2526 + 64B]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 106496 view .LVU2705
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 106496 view .LVU2705
 	vpmovsxwd	ymm15, xmm15	# tmp3917, tmp3918
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 106496 view .LVU2706
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 106496 view .LVU2706
 	vcvtdq2ps	ymm13, ymm13	# vect_s0l_685.403_3185, tmp3938
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 106496 view .LVU2707
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 106496 view .LVU2707
 	vfmadd213ps	ymm13, ymm0, YMMWORD PTR -32[rax]	# tmp3936, _702, MEM <vector(8) float> [(float *)_2526 + 96B]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 106496 view .LVU2708
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 106496 view .LVU2708
 	vcvtdq2ps	ymm15, ymm15	# vect_s1r_688.379_3260, tmp3917
 	vfmadd132ps	ymm15, ymm19, ymm3	# _155, tmp3919, _705
 	vpmovsxwd	ymm19, xmm8	#, vect_s1r_688.380
@@ -9751,22 +9751,22 @@
 	vcvtdq2ps	ymm19, ymm19	# vect_s1r_688.379_3259, tmp3925
 	vpmovsxwd	ymm8, xmm8	# tmp3934, tmp3935
 	vcvtdq2ps	ymm8, ymm8	# vect_s1r_688.379_3258, tmp3934
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 106496 view .LVU2709
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 106496 view .LVU2709
 	vaddps	ymm16, ymm16, ymm20	# vect__518.409_3168, _157, _158
 	vfmadd132ps	ymm19, ymm21, ymm3	# _150, tmp3927, _705
 	vfmadd132ps	ymm8, ymm13, ymm3	# tmp3932, tmp3936, _705
 	vaddps	ymm14, ymm14, ymm15	# vect__518.409_3167, _152, _155
 	vmovups	YMMWORD PTR -128[rax], ymm16	# MEM <vector(8) float> [(float *)_2526], vect__518.409_3168
-	.loc 1 424 34 discriminator 106496 view .LVU2710
+	.loc 1 427 34 discriminator 106496 view .LVU2710
 	vmovups	YMMWORD PTR -96[rax], ymm14	# MEM <vector(8) float> [(float *)_2526 + 32B], vect__518.409_3167
 	vaddps	ymm18, ymm18, ymm19	# vect__518.409_3166, _149, _150
 	vaddps	ymm8, ymm8, ymm12	# vect__518.409, tmp3932, _146
 	vmovups	YMMWORD PTR -64[rax], ymm18	# MEM <vector(8) float> [(float *)_2526 + 64B], vect__518.409_3166
 	vmovups	YMMWORD PTR -32[rax], ymm8	# MEM <vector(8) float> [(float *)_2526 + 96B], vect__518.409
 .LBE6131:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2711
-	.loc 1 421 39 discriminator 2 view .LVU2712
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2711
+	.loc 1 424 39 discriminator 2 view .LVU2712
 	cmp	rcx, rbx	# ivtmp.768, _2693
 	jne	.L79	#,
 	mov	edi, DWORD PTR 488[rsp]	# bnd.373, %sfp
@@ -9776,7 +9776,7 @@
 	mov	esi, edi	# tmp.375, niters_vector_mult_vf.374
 .LVL399:
 .L78:
-	.loc 1 421 39 is_stmt 0 discriminator 2 view .LVU2713
+	.loc 1 424 39 is_stmt 0 discriminator 2 view .LVU2713
 	mov	r11d, DWORD PTR 192[rsp]	# niters.412, %sfp
 	sub	r11d, edi	# niters.412, niters_vector_mult_vf.374
 	lea	eax, -1[r11]	# _3103,
@@ -9788,166 +9788,166 @@
 	lea	rcx, [rax+r13]	# _3067,
 	add	rax, r12	# _3021, _3457
 .LBB6132:
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 51 discriminator 135168 view .LVU2714
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 51 discriminator 135168 view .LVU2714
 	vmovdqu	xmm3, XMMWORD PTR [r8+r10]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.429_3048], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.429_3048]
 .LVL400:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 51 discriminator 135168 view .LVU2715
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 51 discriminator 135168 view .LVU2715
 	vmovdqu	xmm0, XMMWORD PTR [r8+rcx]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.441_3006], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.441_3006]
 .LVL401:
-	.loc 1 422 51 discriminator 135168 view .LVU2716
+	.loc 1 425 51 discriminator 135168 view .LVU2716
 	lea	rax, [rbx+rax*4]	# vectp.435,
-	.loc 1 422 25 is_stmt 1 view .LVU2717
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 is_stmt 0 discriminator 135168 view .LVU2718
+	.loc 1 425 25 is_stmt 1 view .LVU2717
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 is_stmt 0 discriminator 135168 view .LVU2718
 	vpmovzxbw	xmm1, xmm3	# vect_s1l_3330.432, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.429_3048]
 .LVL402:
-	.loc 1 423 31 discriminator 135168 view .LVU2719
+	.loc 1 426 31 discriminator 135168 view .LVU2719
 	vpsrldq	xmm3, xmm3, 8	# tmp3957, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.429_3048],
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 135168 view .LVU2720
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 135168 view .LVU2720
 	vpmovzxbw	xmm16, xmm0	# vect_s0l_3338.444, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.441_3006]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 135168 view .LVU2721
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 135168 view .LVU2721
 	vpmovsxwd	xmm12, xmm1	# tmp3961, vect_s1l_3330.432
 	vpsrldq	xmm1, xmm1, 8	# tmp3968, vect_s1l_3330.432,
 	vpmovzxbw	xmm3, xmm3	# vect_s1l_3330.432, tmp3957
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 135168 view .LVU2722
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 135168 view .LVU2722
 	vpsrldq	xmm0, xmm0, 8	# tmp3953, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.441_3006],
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 135168 view .LVU2723
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 135168 view .LVU2723
 	vpmovsxwd	xmm1, xmm1	# tmp3967, tmp3968
 	vcvtdq2ps	xmm12, xmm12	# vect_s1l_3330.431_3040, tmp3961
 	vcvtdq2ps	xmm1, xmm1	# vect_s1l_3330.431_3039, tmp3967
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 135168 view .LVU2724
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 135168 view .LVU2724
 	vmulps	xmm1, xmm1, xmm25	# vect__3317.433_3035, vect_s1l_3330.431_3039, tmp4560
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 135168 view .LVU2725
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 135168 view .LVU2725
 	vpmovzxbw	xmm2, xmm0	# vect_s0l_3338.444, tmp3953
 .LVL403:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 76 discriminator 135168 view .LVU2726
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 76 discriminator 135168 view .LVU2726
 	vmovdqu	xmm0, XMMWORD PTR 3[r8+rcx]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.423_3069], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.423_3069]
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 135168 view .LVU2727
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 135168 view .LVU2727
 	vmulps	xmm12, xmm12, xmm25	# vect__3317.433_3036, vect_s1l_3330.431_3040, tmp4560
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 135168 view .LVU2728
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 135168 view .LVU2728
 	vpmovzxbw	xmm8, xmm0	# vect_s0r_3334.426, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.423_3069]
 	vpsrldq	xmm0, xmm0, 8	# tmp3955, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.423_3069],
 	vpmovsxwd	xmm13, xmm8	# tmp3959, vect_s0r_3334.426
 	vpsrldq	xmm8, xmm8, 8	# tmp3965, vect_s0r_3334.426,
 	vpmovzxbw	xmm0, xmm0	# vect_s0r_3334.426, tmp3955
 .LVL404:
-	.loc 1 423 25 is_stmt 1 view .LVU2729
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 is_stmt 0 discriminator 135168 view .LVU2730
+	.loc 1 426 25 is_stmt 1 view .LVU2729
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 is_stmt 0 discriminator 135168 view .LVU2730
 	vpmovsxwd	xmm8, xmm8	# tmp3964, tmp3965
 	vcvtdq2ps	xmm13, xmm13	# vect_s0r_3334.425_3060, tmp3959
 	vcvtdq2ps	xmm8, xmm8	# vect_s0r_3334.425_3059, tmp3964
 	vfmadd132ps	xmm8, xmm1, xmm17	# _202, vect__3317.433_3035, tmp4559
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 135168 view .LVU2731
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 135168 view .LVU2731
 	vpmovsxwd	xmm1, xmm3	# tmp3973, vect_s1l_3330.432
 	vcvtdq2ps	xmm1, xmm1	# vect_s1l_3330.431_3038, tmp3973
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 135168 view .LVU2732
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 135168 view .LVU2732
 	vmulps	xmm1, xmm1, xmm25	# vect__3317.433_3034, vect_s1l_3330.431_3038, tmp4560
 	vfmadd132ps	xmm13, xmm12, xmm17	# _206, vect__3317.433_3036, tmp4559
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 135168 view .LVU2733
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 135168 view .LVU2733
 	vpmovsxwd	xmm12, xmm0	# tmp3971, vect_s0r_3334.426
 	vcvtdq2ps	xmm12, xmm12	# vect_s0r_3334.425_3058, tmp3971
 	vfmadd132ps	xmm12, xmm1, xmm17	# _163, vect__3317.433_3034, tmp4559
 	vpsrldq	xmm1, xmm0, 8	# tmp3977, vect_s0r_3334.426,
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 135168 view .LVU2734
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 135168 view .LVU2734
 	vpsrldq	xmm0, xmm3, 8	# tmp3980, vect_s1l_3330.432,
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 135168 view .LVU2735
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 135168 view .LVU2735
 	vpmovsxwd	xmm3, xmm16	# tmp3988, vect_s0l_3338.444
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 135168 view .LVU2736
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 135168 view .LVU2736
 	vpmovsxwd	xmm1, xmm1	# tmp3976, tmp3977
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 135168 view .LVU2737
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 135168 view .LVU2737
 	vpmovsxwd	xmm0, xmm0	# tmp3979, tmp3980
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 135168 view .LVU2738
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 135168 view .LVU2738
 	vcvtdq2ps	xmm3, xmm3	# vect_s0l_3338.443_2998, tmp3988
 	vfmadd213ps	xmm3, xmm9, XMMWORD PTR [rax]	# tmp3986, tmp4558, MEM <vector(4) float> [(float *)vectp.435_3032]
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 135168 view .LVU2739
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 135168 view .LVU2739
 	vcvtdq2ps	xmm1, xmm1	# vect_s0r_3334.425_3057, tmp3976
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 135168 view .LVU2740
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 135168 view .LVU2740
 	vcvtdq2ps	xmm0, xmm0	# vect_s1l_3330.431_3037, tmp3979
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 135168 view .LVU2741
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 135168 view .LVU2741
 	vmulps	xmm0, xmm0, xmm25	# vect__3317.433_3033, vect_s1l_3330.431_3037, tmp4560
 	vfmadd132ps	xmm1, xmm0, xmm17	# _160, vect__3317.433_3033, tmp4559
 .LVL405:
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 76 discriminator 135168 view .LVU2742
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 76 discriminator 135168 view .LVU2742
 	vmovdqu	xmm0, XMMWORD PTR 3[r8+r10]	# MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.417_3090], MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.417_3090]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 135168 view .LVU2743
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 135168 view .LVU2743
 	vpmovzxbw	xmm14, xmm0	# vect_s1r_3326.420, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.417_3090]
 	vpsrldq	xmm0, xmm0, 8	# tmp3983, MEM <const vector(16) unsigned char> [(const unsigned char *)vectp.417_3090],
 	vpmovsxwd	xmm15, xmm14	# tmp3985, vect_s1r_3326.420
 	vpsrldq	xmm14, xmm14, 8	# tmp3992, vect_s1r_3326.420,
 	vpmovzxbw	xmm0, xmm0	# vect_s1r_3326.420, tmp3983
 .LVL406:
-	.loc 1 424 25 is_stmt 1 view .LVU2744
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 is_stmt 0 discriminator 135168 view .LVU2745
+	.loc 1 427 25 is_stmt 1 view .LVU2744
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 is_stmt 0 discriminator 135168 view .LVU2745
 	vcvtdq2ps	xmm15, xmm15	# vect_s1r_3326.419_3081, tmp3985
 	vfmadd132ps	xmm15, xmm3, xmm11	# _207, tmp3986, tmp4561
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 135168 view .LVU2746
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 135168 view .LVU2746
 	vpsrldq	xmm3, xmm16, 8	# tmp3996, vect_s0l_3338.444,
 	vpmovsxwd	xmm16, xmm2	# tmp4002, vect_s0l_3338.444
 	vpmovsxwd	xmm3, xmm3	# tmp3995, tmp3996
 	vpsrldq	xmm2, xmm2, 8	# tmp4011, vect_s0l_3338.444,
 	vcvtdq2ps	xmm16, xmm16	# vect_s0l_3338.443_2996, tmp4002
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 135168 view .LVU2747
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 135168 view .LVU2747
 	vpmovsxwd	xmm14, xmm14	# tmp3991, tmp3992
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 135168 view .LVU2748
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 135168 view .LVU2748
 	vcvtdq2ps	xmm3, xmm3	# vect_s0l_3338.443_2997, tmp3995
 	vfmadd213ps	xmm3, xmm9, XMMWORD PTR 16[rax]	# tmp3993, tmp4558, MEM <vector(4) float> [(float *)vectp.435_3032 + 16B]
 	vfmadd213ps	xmm16, xmm9, XMMWORD PTR 32[rax]	# tmp4000, tmp4558, MEM <vector(4) float> [(float *)vectp.435_3032 + 32B]
 	vpmovsxwd	xmm2, xmm2	# tmp4010, tmp4011
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 135168 view .LVU2749
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 135168 view .LVU2749
 	vcvtdq2ps	xmm14, xmm14	# vect_s1r_3326.419_3080, tmp3991
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 135168 view .LVU2750
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 135168 view .LVU2750
 	vcvtdq2ps	xmm2, xmm2	# vect_s0l_3338.443_2995, tmp4010
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 135168 view .LVU2751
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 135168 view .LVU2751
 	vfmadd213ps	xmm2, xmm9, XMMWORD PTR 48[rax]	# tmp4008, tmp4558, MEM <vector(4) float> [(float *)vectp.435_3032 + 48B]
 	vaddps	xmm13, xmm13, xmm15	# vect__3313.449_2978, _206, _207
 	vfmadd132ps	xmm14, xmm3, xmm11	# _203, tmp3993, tmp4561
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 135168 view .LVU2752
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 135168 view .LVU2752
 	vpmovsxwd	xmm3, xmm0	# tmp3999, vect_s1r_3326.420
 	vpsrldq	xmm0, xmm0, 8	# tmp4007, vect_s1r_3326.420,
 	vcvtdq2ps	xmm3, xmm3	# vect_s1r_3326.419_3079, tmp3999
 	vfmadd132ps	xmm3, xmm16, xmm11	# _165, tmp4000, tmp4561
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 135168 view .LVU2753
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 135168 view .LVU2753
 	vmovups	XMMWORD PTR [rax], xmm13	# MEM <vector(4) float> [(float *)vectp.435_3032], vect__3313.449_2978
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 135168 view .LVU2754
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 135168 view .LVU2754
 	vpmovsxwd	xmm0, xmm0	# tmp4006, tmp4007
 	vcvtdq2ps	xmm0, xmm0	# vect_s1r_3326.419_3078, tmp4006
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 135168 view .LVU2755
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 135168 view .LVU2755
 	vfmadd132ps	xmm0, xmm2, xmm11	# tmp4004, tmp4008, tmp4561
 	vaddps	xmm8, xmm8, xmm14	# vect__3313.449_2977, _202, _203
 	vaddps	xmm12, xmm12, xmm3	# vect__3313.449_2976, _163, _165
@@ -9956,8 +9956,8 @@
 	vmovups	XMMWORD PTR 32[rax], xmm12	# MEM <vector(4) float> [(float *)vectp.435_3032 + 32B], vect__3313.449_2976
 	vmovups	XMMWORD PTR 48[rax], xmm0	# MEM <vector(4) float> [(float *)vectp.435_3032 + 48B], vect__3313.449
 .LBE6132:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2756
-	.loc 1 421 39 discriminator 2 view .LVU2757
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2756
+	.loc 1 424 39 discriminator 2 view .LVU2757
 	mov	eax, r11d	# niters_vector_mult_vf.414, niters.412
 	and	eax, -16	# niters_vector_mult_vf.414,
 	test	r11b, 15	# niters.412,
@@ -9965,7 +9965,7 @@
 	add	esi, eax	# tmp.375, niters_vector_mult_vf.414
 .LVL407:
 .L80:
-	.loc 1 421 39 is_stmt 0 discriminator 2 view .LVU2758
+	.loc 1 424 39 is_stmt 0 discriminator 2 view .LVU2758
 	sub	r11d, eax	# niters.412, niters_vector_mult_vf.414
 	lea	ecx, -1[r11]	# _2906,
 	cmp	ecx, 6	# _2906,
@@ -9978,226 +9978,226 @@
 	lea	rcx, [rax+r13]	# _2866,
 	add	rax, r12	# _2812, _3457
 .LBB6133:
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 51 discriminator 198656 view .LVU2759
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 51 discriminator 198656 view .LVU2759
 	vmovq	xmm1, QWORD PTR [r8+rdi]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.471_2843], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.471_2843]
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 51 discriminator 198656 view .LVU2760
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 51 discriminator 198656 view .LVU2760
 	vmovq	xmm0, QWORD PTR [r8+rcx]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.484_2797], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.484_2797]
 	lea	rax, [rbx+rax*4]	# vectp.478,
-	.loc 1 422 25 is_stmt 1 view .LVU2761
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 is_stmt 0 discriminator 198656 view .LVU2762
+	.loc 1 425 25 is_stmt 1 view .LVU2761
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 is_stmt 0 discriminator 198656 view .LVU2762
 	vpmovzxbw	xmm12, xmm1	# vect_s1l_3127.474, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.471_2843]
 	vpsrlq	xmm1, xmm1, 32	# tmp4031, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.471_2843],
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2763
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2763
 	vpmovzxbw	xmm8, xmm0	# vect_s0l_3135.487, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.484_2797]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2764
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2764
 	vpmovzxwd	xmm14, xmm12	# vect_s1l_3127.473_2834, vect_s1l_3127.474
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2765
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2765
 	vpsrlq	xmm0, xmm0, 32	# tmp4027, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.484_2797],
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2766
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2766
 	vpmovzxbw	xmm1, xmm1	# vect_s1l_3127.474, tmp4031
 	vmovq	xmm14, xmm14	# tmp4038, vect_s1l_3127.473_2834
 	vpsrlq	xmm12, xmm12, 32	# tmp4054, vect_s1l_3127.474,
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2767
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2767
 	vpmovzxbw	xmm2, xmm0	# vect_s0l_3135.487, tmp4027
 .LVL408:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 76 discriminator 198656 view .LVU2768
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 76 discriminator 198656 view .LVU2768
 	vmovq	xmm0, QWORD PTR 3[r8+rcx]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.464_2869], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.464_2869]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2769
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2769
 	vcvtdq2ps	xmm14, xmm14	# tmp4039, tmp4038
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 198656 view .LVU2770
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 198656 view .LVU2770
 	vmulps	xmm14, xmm14, xmm25	# tmp4043, tmp4039, tmp4560
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2771
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2771
 	vpmovzxwd	xmm12, xmm12	# vect_s1l_3127.473_2833, tmp4054
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 198656 view .LVU2772
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 198656 view .LVU2772
 	vpmovzxbw	xmm3, xmm0	# vect_s0r_3131.467, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.464_2869]
 	vpsrlq	xmm0, xmm0, 32	# tmp4029, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.464_2869],
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2773
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2773
 	vmovq	xmm12, xmm12	# tmp4056, vect_s1l_3127.473_2833
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 198656 view .LVU2774
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 198656 view .LVU2774
 	vpmovzxwd	xmm13, xmm3	# vect_s0r_3131.466_2859, vect_s0r_3131.467
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2775
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2775
 	vcvtdq2ps	xmm12, xmm12	# tmp4057, tmp4056
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 198656 view .LVU2776
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 198656 view .LVU2776
 	vpsrlq	xmm3, xmm3, 32	# tmp4049, vect_s0r_3131.467,
 	vpmovzxbw	xmm0, xmm0	# vect_s0r_3131.467, tmp4029
 .LVL409:
-	.loc 1 423 25 is_stmt 1 view .LVU2777
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 is_stmt 0 discriminator 198656 view .LVU2778
+	.loc 1 426 25 is_stmt 1 view .LVU2777
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 is_stmt 0 discriminator 198656 view .LVU2778
 	vmulps	xmm12, xmm12, xmm25	# tmp4061, tmp4057, tmp4560
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 198656 view .LVU2779
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 198656 view .LVU2779
 	vmovq	xmm13, xmm13	# tmp4034, vect_s0r_3131.466_2859
 	vpmovzxwd	xmm3, xmm3	# vect_s0r_3131.466_2858, tmp4049
 	vcvtdq2ps	xmm13, xmm13	# tmp4035, tmp4034
 	vmovq	xmm3, xmm3	# tmp4051, vect_s0r_3131.466_2858
 	vfmadd132ps	xmm13, xmm14, xmm17	# tmp4047, tmp4043, tmp4559
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2780
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2780
 	vpmovzxwd	xmm14, xmm1	# vect_s1l_3127.473_2832, vect_s1l_3127.474
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 198656 view .LVU2781
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 198656 view .LVU2781
 	vcvtdq2ps	xmm3, xmm3	# tmp4052, tmp4051
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2782
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2782
 	vmovq	xmm14, xmm14	# tmp4072, vect_s1l_3127.473_2832
 	vcvtdq2ps	xmm14, xmm14	# tmp4073, tmp4072
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 198656 view .LVU2783
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 198656 view .LVU2783
 	vmulps	xmm14, xmm14, xmm25	# tmp4077, tmp4073, tmp4560
 	vfmadd132ps	xmm3, xmm12, xmm17	# tmp4065, tmp4061, tmp4559
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 198656 view .LVU2784
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 198656 view .LVU2784
 	vpmovzxwd	xmm12, xmm0	# vect_s0r_3131.466_2857, vect_s0r_3131.467
 	vmovq	xmm12, xmm12	# tmp4068, vect_s0r_3131.466_2857
 	vcvtdq2ps	xmm12, xmm12	# tmp4069, tmp4068
 	vfmadd132ps	xmm12, xmm14, xmm17	# tmp4081, tmp4077, tmp4559
 	vpsrlq	xmm14, xmm0, 32	# tmp4083, vect_s0r_3131.467,
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2785
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2785
 	vpsrlq	xmm0, xmm1, 32	# tmp4088, vect_s1l_3127.474,
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 198656 view .LVU2786
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 198656 view .LVU2786
 	vpmovzxwd	xmm14, xmm14	# vect_s0r_3131.466_2856, tmp4083
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2787
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2787
 	vpmovzxwd	xmm0, xmm0	# vect_s1l_3127.473_2831, tmp4088
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 198656 view .LVU2788
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 198656 view .LVU2788
 	vmovq	xmm14, xmm14	# tmp4085, vect_s0r_3131.466_2856
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2789
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2789
 	vmovq	xmm0, xmm0	# tmp4090, vect_s1l_3127.473_2831
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 198656 view .LVU2790
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 198656 view .LVU2790
 	vcvtdq2ps	xmm14, xmm14	# tmp4086, tmp4085
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 198656 view .LVU2791
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 198656 view .LVU2791
 	vcvtdq2ps	xmm0, xmm0	# tmp4091, tmp4090
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 198656 view .LVU2792
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 198656 view .LVU2792
 	vmulps	xmm0, xmm0, xmm25	# tmp4095, tmp4091, tmp4560
 	vfmadd132ps	xmm14, xmm0, xmm17	# tmp4099, tmp4095, tmp4559
 .LVL410:
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 76 discriminator 198656 view .LVU2793
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 76 discriminator 198656 view .LVU2793
 	vmovq	xmm0, QWORD PTR 3[r8+rdi]	# MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.457_2895], MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.457_2895]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 198656 view .LVU2794
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 198656 view .LVU2794
 	vpmovzxbw	xmm1, xmm0	# vect_s1r_3123.460, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.457_2895]
 	vpsrlq	xmm0, xmm0, 32	# tmp4101, MEM <const vector(8) unsigned char> [(const unsigned char *)vectp.457_2895],
 	vpmovzxwd	xmm15, xmm1	# vect_s1r_3123.459_2885, vect_s1r_3123.460
 	vpmovzxbw	xmm0, xmm0	# vect_s1r_3123.460, tmp4101
 .LVL411:
-	.loc 1 424 25 is_stmt 1 view .LVU2795
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 is_stmt 0 discriminator 198656 view .LVU2796
+	.loc 1 427 25 is_stmt 1 view .LVU2795
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 is_stmt 0 discriminator 198656 view .LVU2796
 	vmovq	xmm18, xmm15	# tmp4104, vect_s1r_3123.459_2885
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2797
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2797
 	vpmovzxwd	xmm15, xmm8	# vect_s0l_3135.486_2788, vect_s0l_3135.487
 	vmovq	xmm15, xmm15	# tmp4109, vect_s0l_3135.486_2788
 	vcvtdq2ps	xmm17, xmm15	# tmp4110, tmp4109
 .LVL412:
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 198656 view .LVU2798
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 198656 view .LVU2798
 	vmovq	xmm15, QWORD PTR [rax]	# vect__3118.479_2808, MEM <vector(2) float> [(float *)vectp.478_2822]
 	vfmadd231ps	xmm15, xmm17, xmm9	# tmp4115, tmp4110, _2801
 	vcvtdq2ps	xmm9, xmm18	# tmp4105, tmp4104
 .LVL413:
-	.loc 1 424 32 discriminator 198656 view .LVU2799
+	.loc 1 427 32 discriminator 198656 view .LVU2799
 	vfmadd132ps	xmm9, xmm15, xmm11	# tmp4105, tmp4115, _2899
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 198656 view .LVU2800
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 198656 view .LVU2800
 	vpsrlq	xmm15, xmm1, 32	# tmp4121, vect_s1r_3123.460,
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2801
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2801
 	vpsrlq	xmm1, xmm8, 32	# tmp4127, vect_s0l_3135.487,
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 198656 view .LVU2802
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 198656 view .LVU2802
 	vmovq	xmm8, QWORD PTR 8[rax]	# vect__3118.480_2806, MEM <vector(2) float> [(float *)vectp.478_2822 + 8B]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 198656 view .LVU2803
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 198656 view .LVU2803
 	vpmovzxwd	xmm15, xmm15	# vect_s1r_3123.459_2884, tmp4121
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2804
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2804
 	vpmovzxwd	xmm1, xmm1	# vect_s0l_3135.486_2787, tmp4127
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 198656 view .LVU2805
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 198656 view .LVU2805
 	vmovq	xmm15, xmm15	# tmp4123, vect_s1r_3123.459_2884
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2806
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2806
 	vmovq	xmm1, xmm1	# tmp4129, vect_s0l_3135.486_2787
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 198656 view .LVU2807
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 198656 view .LVU2807
 	vcvtdq2ps	xmm15, xmm15	# tmp4124, tmp4123
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2808
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2808
 	vcvtdq2ps	xmm1, xmm1	# tmp4130, tmp4129
 	vfmadd132ps	xmm1, xmm8, xmm16	# tmp4135, vect__3118.480_2806, _2801
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 198656 view .LVU2809
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 198656 view .LVU2809
 	vpmovzxwd	xmm8, xmm0	# vect_s1r_3123.459_2883, vect_s1r_3123.460
 	vmovq	xmm8, xmm8	# tmp4142, vect_s1r_3123.459_2883
 	vpsrlq	xmm0, xmm0, 32	# tmp4160, vect_s1r_3123.460,
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 198656 view .LVU2810
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 198656 view .LVU2810
 	vaddps	xmm13, xmm13, xmm9	# tmp4185, tmp4047, tmp4119
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 198656 view .LVU2811
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 198656 view .LVU2811
 	vcvtdq2ps	xmm8, xmm8	# tmp4143, tmp4142
 	vpmovzxwd	xmm0, xmm0	# vect_s1r_3123.459_2882, tmp4160
 	vmovq	xmm0, xmm0	# tmp4162, vect_s1r_3123.459_2882
 	vcvtdq2ps	xmm0, xmm0	# tmp4163, tmp4162
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 198656 view .LVU2812
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 198656 view .LVU2812
 	vmovlps	QWORD PTR [rax], xmm13	# MEM <vector(2) float> [(float *)vectp.478_2822], tmp4185
-	.loc 1 424 34 discriminator 198656 view .LVU2813
+	.loc 1 427 34 discriminator 198656 view .LVU2813
 	vfmadd132ps	xmm15, xmm1, xmm11	# tmp4139, tmp4135, _2899
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2814
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2814
 	vpmovzxwd	xmm1, xmm2	# vect_s0l_3135.486_2786, vect_s0l_3135.487
 	vmovq	xmm1, xmm1	# tmp4147, vect_s0l_3135.486_2786
 	vcvtdq2ps	xmm17, xmm1	# tmp4148, tmp4147
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 198656 view .LVU2815
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 198656 view .LVU2815
 	vmovq	xmm1, QWORD PTR 16[rax]	# vect__3118.481_2804, MEM <vector(2) float> [(float *)vectp.478_2822 + 16B]
 	vfmadd231ps	xmm1, xmm17, xmm16	# tmp4153, tmp4148, _2801
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 198656 view .LVU2816
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 198656 view .LVU2816
 	vaddps	xmm3, xmm3, xmm15	# tmp4189, tmp4065, tmp4139
 	vmovlps	QWORD PTR 8[rax], xmm3	# MEM <vector(2) float> [(float *)vectp.478_2822 + 8B], tmp4189
 	vfmadd132ps	xmm8, xmm1, xmm11	# tmp4157, tmp4153, _2899
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2817
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2817
 	vpsrlq	xmm1, xmm2, 32	# tmp4166, vect_s0l_3135.487,
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 198656 view .LVU2818
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 198656 view .LVU2818
 	vmovq	xmm2, QWORD PTR 24[rax]	# vect__3118.482_2802, MEM <vector(2) float> [(float *)vectp.478_2822 + 24B]
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 198656 view .LVU2819
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 198656 view .LVU2819
 	vpmovzxwd	xmm1, xmm1	# vect_s0l_3135.486_2785, tmp4166
 	vmovq	xmm1, xmm1	# tmp4168, vect_s0l_3135.486_2785
 	vcvtdq2ps	xmm1, xmm1	# tmp4169, tmp4168
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 198656 view .LVU2820
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 198656 view .LVU2820
 	vfmadd132ps	xmm1, xmm2, xmm16	# tmp4174, vect__3118.482_2802, _2801
 	vaddps	xmm12, xmm12, xmm8	# tmp4193, tmp4081, tmp4157
 	vfmadd132ps	xmm0, xmm1, xmm11	# tmp4178, tmp4174, _2899
@@ -10205,8 +10205,8 @@
 	vaddps	xmm0, xmm0, xmm14	# tmp4181, tmp4178, tmp4099
 	vmovlps	QWORD PTR 24[rax], xmm0	# MEM <vector(2) float> [(float *)vectp.478_2822 + 24B], tmp4181
 .LBE6133:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2821
-	.loc 1 421 39 discriminator 2 view .LVU2822
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2821
+	.loc 1 424 39 discriminator 2 view .LVU2822
 	mov	eax, r11d	# niters_vector_mult_vf.454, niters.412
 	and	eax, -8	# niters_vector_mult_vf.454,
 	and	r11d, 7	# niters.412,
@@ -10215,501 +10215,501 @@
 .LVL414:
 .L81:
 .LBB6134:
-	.loc 1 422 25 view .LVU2823
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 50 is_stmt 0 discriminator 229376 view .LVU2824
+	.loc 1 425 25 view .LVU2823
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 50 is_stmt 0 discriminator 229376 view .LVU2824
 	movsxd	rcx, esi	# _1897, tmp.375
 .LBE6134:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 39 discriminator 229378 view .LVU2825
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 39 discriminator 229378 view .LVU2825
 	mov	ebx, DWORD PTR 192[rsp]	# x_floats, %sfp
 .LBB6135:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 49 discriminator 229376 view .LVU2826
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 49 discriminator 229376 view .LVU2826
 	lea	rax, [rcx+r13]	# _1921,
 .LVL415:
-	.loc 1 423 25 is_stmt 1 view .LVU2827
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 49 is_stmt 0 discriminator 229376 view .LVU2828
+	.loc 1 426 25 is_stmt 1 view .LVU2827
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 49 is_stmt 0 discriminator 229376 view .LVU2828
 	lea	r10, [rcx+r9]	# _537,
 .LVL416:
-	.loc 1 424 25 is_stmt 1 view .LVU2829
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 229376 view .LVU2830
+	.loc 1 427 25 is_stmt 1 view .LVU2829
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 229376 view .LVU2830
 	lea	ecx, [r15+rsi]	# _658,
 	lea	rdi, [r14+rcx*4]	# _3316,
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 229376 view .LVU2831
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 229376 view .LVU2831
 	movzx	ecx, BYTE PTR [r8+rax]	# *_1922, *_1922
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 229376 view .LVU2832
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 229376 view .LVU2832
 	movzx	eax, BYTE PTR 3[r8+rax]	# *_655, *_655
 .LVL417:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 229376 view .LVU2833
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 229376 view .LVU2833
 	vcvtusi2ss	xmm0, xmm10, ecx	# tmp4524, tmp4441, *_1922
 	vmovaps	xmm2, xmm0	# s0l_3601, s0l_3601
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 229376 view .LVU2834
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 229376 view .LVU2834
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4525, tmp4441, *_655
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 229376 view .LVU2835
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 229376 view .LVU2835
 	movzx	eax, BYTE PTR [r8+r10]	# *_3602, *_3602
 	vfmadd213ss	xmm2, xmm4, DWORD PTR [rdi]	# s0l_3601, _79, *_3316
 	vcvtusi2ss	xmm1, xmm10, eax	# tmp4526, tmp4441, *_3602
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 229376 view .LVU2836
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 229376 view .LVU2836
 	movzx	eax, BYTE PTR 3[r8+r10]	# *_534, *_534
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 229376 view .LVU2837
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 229376 view .LVU2837
 	vmulss	xmm1, xmm1, xmm6	# _3321, s1l_3603, _81
 	vfmadd231ss	xmm1, xmm5, xmm0	# _232, _80, s0r_527
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 229376 view .LVU2838
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 229376 view .LVU2838
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4527, tmp4441, *_534
 .LBE6135:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 21 discriminator 229377 view .LVU2839
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 21 discriminator 229377 view .LVU2839
 	lea	eax, 1[rsi]	# k,
 .LBB6136:
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 229376 view .LVU2840
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 229376 view .LVU2840
 	vfmadd132ss	xmm0, xmm2, xmm7	# tmp4206, _231, _82
 	vaddss	xmm0, xmm0, xmm1	# _3325, tmp4206, _232
 	vmovss	DWORD PTR [rdi], xmm0	# *_3316, _3325
 .LBE6136:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2841
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2841
 .LVL418:
-	.loc 1 421 39 discriminator 2 view .LVU2842
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 39 is_stmt 0 discriminator 229378 view .LVU2843
+	.loc 1 424 39 discriminator 2 view .LVU2842
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 39 is_stmt 0 discriminator 229378 view .LVU2843
 	cmp	eax, ebx	# k, x_floats
 	jge	.L40	#,
 .LBB6137:
-	.loc 1 422 25 is_stmt 1 view .LVU2844
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 50 is_stmt 0 discriminator 262144 view .LVU2845
+	.loc 1 425 25 is_stmt 1 view .LVU2844
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 50 is_stmt 0 discriminator 262144 view .LVU2845
 	mov	ecx, eax	# _2617, k
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 262144 view .LVU2846
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 262144 view .LVU2846
 	add	eax, r15d	# _1645, xf
 .LVL419:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 49 discriminator 262144 view .LVU2847
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 49 discriminator 262144 view .LVU2847
 	lea	rdi, [rcx+r13]	# _2618,
 .LVL420:
-	.loc 1 423 25 is_stmt 1 view .LVU2848
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 262144 view .LVU2849
+	.loc 1 426 25 is_stmt 1 view .LVU2848
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 262144 view .LVU2849
 	mov	eax, eax	# _1645, _1645
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 49 discriminator 262144 view .LVU2850
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 49 discriminator 262144 view .LVU2850
 	lea	r10, [rcx+r9]	# _1654,
 .LVL421:
-	.loc 1 424 25 is_stmt 1 view .LVU2851
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 262144 view .LVU2852
+	.loc 1 427 25 is_stmt 1 view .LVU2851
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 262144 view .LVU2852
 	lea	rcx, [r14+rax*4]	# _1643,
 .LVL422:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 262144 view .LVU2853
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 262144 view .LVU2853
 	movzx	eax, BYTE PTR [r8+rdi]	# *_2619, *_2619
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4528, tmp4441, *_2619
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 262144 view .LVU2854
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 262144 view .LVU2854
 	movzx	eax, BYTE PTR 3[r8+rdi]	# *_2623, *_2623
 	vmovaps	xmm2, xmm0	# s0l_2621, s0l_2621
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4529, tmp4441, *_2623
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 262144 view .LVU2855
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 262144 view .LVU2855
 	movzx	eax, BYTE PTR [r8+r10]	# *_1653, *_1653
 	vfmadd213ss	xmm2, xmm4, DWORD PTR [rcx]	# s0l_2621, _79, *_1643
 	vcvtusi2ss	xmm1, xmm10, eax	# tmp4530, tmp4441, *_1653
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 262144 view .LVU2856
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 262144 view .LVU2856
 	movzx	eax, BYTE PTR 3[r8+r10]	# *_1649, *_1649
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 262144 view .LVU2857
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 262144 view .LVU2857
 	vmulss	xmm1, xmm1, xmm6	# _2252, s1l_1651, _81
 	vfmadd231ss	xmm1, xmm5, xmm0	# _237, _80, s0r_1655
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 262144 view .LVU2858
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 262144 view .LVU2858
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4531, tmp4441, *_1649
 .LBE6137:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 21 discriminator 262145 view .LVU2859
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 21 discriminator 262145 view .LVU2859
 	lea	eax, 2[rsi]	# k,
 .LBB6138:
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 262144 view .LVU2860
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 262144 view .LVU2860
 	vfmadd132ss	xmm0, xmm2, xmm7	# tmp4221, _235, _82
 	vaddss	xmm0, xmm0, xmm1	# _2230, tmp4221, _237
 	vmovss	DWORD PTR [rcx], xmm0	# *_1643, _2230
 .LBE6138:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2861
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2861
 .LVL423:
-	.loc 1 421 39 discriminator 2 view .LVU2862
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 39 is_stmt 0 discriminator 262146 view .LVU2863
+	.loc 1 424 39 discriminator 2 view .LVU2862
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 39 is_stmt 0 discriminator 262146 view .LVU2863
 	cmp	eax, ebx	# k, x_floats
 	jge	.L40	#,
 .LBB6139:
-	.loc 1 422 25 is_stmt 1 view .LVU2864
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 50 is_stmt 0 discriminator 294912 view .LVU2865
+	.loc 1 425 25 is_stmt 1 view .LVU2864
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 50 is_stmt 0 discriminator 294912 view .LVU2865
 	mov	ecx, eax	# _2207, k
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 294912 view .LVU2866
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 294912 view .LVU2866
 	add	eax, r15d	# _2136, xf
 .LVL424:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 49 discriminator 294912 view .LVU2867
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 49 discriminator 294912 view .LVU2867
 	lea	rdi, [rcx+r13]	# _2206,
 .LVL425:
-	.loc 1 423 25 is_stmt 1 view .LVU2868
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 294912 view .LVU2869
+	.loc 1 426 25 is_stmt 1 view .LVU2868
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 294912 view .LVU2869
 	mov	eax, eax	# _2136, _2136
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 49 discriminator 294912 view .LVU2870
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 49 discriminator 294912 view .LVU2870
 	lea	r10, [rcx+r9]	# _2134,
 .LVL426:
-	.loc 1 424 25 is_stmt 1 view .LVU2871
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 294912 view .LVU2872
+	.loc 1 427 25 is_stmt 1 view .LVU2871
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 294912 view .LVU2872
 	lea	rcx, [r14+rax*4]	# _2115,
 .LVL427:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 294912 view .LVU2873
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 294912 view .LVU2873
 	movzx	eax, BYTE PTR [r8+rdi]	# *_2184, *_2184
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4532, tmp4441, *_2184
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 294912 view .LVU2874
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 294912 view .LVU2874
 	movzx	eax, BYTE PTR 3[r8+rdi]	# *_2167, *_2167
 	vmovaps	xmm2, xmm0	# s0l_2170, s0l_2170
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4533, tmp4441, *_2167
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 294912 view .LVU2875
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 294912 view .LVU2875
 	movzx	eax, BYTE PTR [r8+r10]	# *_2133, *_2133
 	vfmadd213ss	xmm2, xmm4, DWORD PTR [rcx]	# s0l_2170, _79, *_2115
 	vcvtusi2ss	xmm1, xmm10, eax	# tmp4534, tmp4441, *_2133
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 294912 view .LVU2876
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 294912 view .LVU2876
 	movzx	eax, BYTE PTR 3[r8+r10]	# *_2129, *_2129
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 294912 view .LVU2877
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 294912 view .LVU2877
 	vmulss	xmm1, xmm1, xmm6	# _2094, s1l_2131, _81
 	vfmadd231ss	xmm1, xmm5, xmm0	# _240, _80, s0r_2135
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 294912 view .LVU2878
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 294912 view .LVU2878
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4535, tmp4441, *_2129
 .LBE6139:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 21 discriminator 294913 view .LVU2879
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 21 discriminator 294913 view .LVU2879
 	lea	eax, 3[rsi]	# k,
 .LBB6140:
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 294912 view .LVU2880
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 294912 view .LVU2880
 	vfmadd132ss	xmm0, xmm2, xmm7	# tmp4236, _239, _82
 	vaddss	xmm0, xmm0, xmm1	# _2086, tmp4236, _240
 	vmovss	DWORD PTR [rcx], xmm0	# *_2115, _2086
 .LBE6140:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2881
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2881
 .LVL428:
-	.loc 1 421 39 discriminator 2 view .LVU2882
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 39 is_stmt 0 discriminator 294914 view .LVU2883
+	.loc 1 424 39 discriminator 2 view .LVU2882
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 39 is_stmt 0 discriminator 294914 view .LVU2883
 	cmp	eax, ebx	# k, x_floats
 	jge	.L40	#,
 .LBB6141:
-	.loc 1 422 25 is_stmt 1 view .LVU2884
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 50 is_stmt 0 discriminator 327680 view .LVU2885
+	.loc 1 425 25 is_stmt 1 view .LVU2884
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 50 is_stmt 0 discriminator 327680 view .LVU2885
 	mov	ecx, eax	# _2066, k
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 327680 view .LVU2886
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 327680 view .LVU2886
 	add	eax, r15d	# _2010, xf
 .LVL429:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 49 discriminator 327680 view .LVU2887
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 49 discriminator 327680 view .LVU2887
 	lea	rdi, [rcx+r13]	# _2065,
 .LVL430:
-	.loc 1 423 25 is_stmt 1 view .LVU2888
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 327680 view .LVU2889
+	.loc 1 426 25 is_stmt 1 view .LVU2888
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 327680 view .LVU2889
 	mov	eax, eax	# _2010, _2010
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 49 discriminator 327680 view .LVU2890
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 49 discriminator 327680 view .LVU2890
 	lea	r10, [rcx+r9]	# _2040,
 .LVL431:
-	.loc 1 424 25 is_stmt 1 view .LVU2891
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 327680 view .LVU2892
+	.loc 1 427 25 is_stmt 1 view .LVU2891
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 327680 view .LVU2892
 	lea	rcx, [r14+rax*4]	# _2008,
 .LVL432:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 327680 view .LVU2893
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 327680 view .LVU2893
 	movzx	eax, BYTE PTR [r8+rdi]	# *_2064, *_2064
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4536, tmp4441, *_2064
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 327680 view .LVU2894
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 327680 view .LVU2894
 	movzx	eax, BYTE PTR 3[r8+rdi]	# *_2043, *_2043
 	vmovaps	xmm2, xmm0	# s0l_2057, s0l_2057
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4537, tmp4441, *_2043
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 327680 view .LVU2895
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 327680 view .LVU2895
 	movzx	eax, BYTE PTR [r8+r10]	# *_2018, *_2018
 	vfmadd213ss	xmm2, xmm4, DWORD PTR [rcx]	# s0l_2057, _79, *_2008
 	vcvtusi2ss	xmm1, xmm10, eax	# tmp4538, tmp4441, *_2018
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 327680 view .LVU2896
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 327680 view .LVU2896
 	movzx	eax, BYTE PTR 3[r8+r10]	# *_2014, *_2014
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 327680 view .LVU2897
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 327680 view .LVU2897
 	vmulss	xmm1, xmm1, xmm6	# _2734, s1l_2016, _81
 	vfmadd231ss	xmm1, xmm5, xmm0	# _261, _80, s0r_2041
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 327680 view .LVU2898
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 327680 view .LVU2898
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4539, tmp4441, *_2014
 .LBE6141:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 21 discriminator 327681 view .LVU2899
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 21 discriminator 327681 view .LVU2899
 	lea	eax, 4[rsi]	# k,
 .LBB6142:
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 327680 view .LVU2900
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 327680 view .LVU2900
 	vfmadd132ss	xmm0, xmm2, xmm7	# tmp4251, _254, _82
 	vaddss	xmm0, xmm0, xmm1	# _2896, tmp4251, _261
 	vmovss	DWORD PTR [rcx], xmm0	# *_2008, _2896
 .LBE6142:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2901
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2901
 .LVL433:
-	.loc 1 421 39 discriminator 2 view .LVU2902
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 39 is_stmt 0 discriminator 327682 view .LVU2903
+	.loc 1 424 39 discriminator 2 view .LVU2902
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 39 is_stmt 0 discriminator 327682 view .LVU2903
 	cmp	eax, ebx	# k, x_floats
 	jge	.L40	#,
 .LBB6143:
-	.loc 1 422 25 is_stmt 1 view .LVU2904
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 50 is_stmt 0 discriminator 360448 view .LVU2905
+	.loc 1 425 25 is_stmt 1 view .LVU2904
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 50 is_stmt 0 discriminator 360448 view .LVU2905
 	mov	ecx, eax	# _2867, k
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 360448 view .LVU2906
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 360448 view .LVU2906
 	add	eax, r15d	# _2756, xf
 .LVL434:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 49 discriminator 360448 view .LVU2907
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 49 discriminator 360448 view .LVU2907
 	lea	rdi, [rcx+r13]	# _2846,
 .LVL435:
-	.loc 1 423 25 is_stmt 1 view .LVU2908
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 360448 view .LVU2909
+	.loc 1 426 25 is_stmt 1 view .LVU2908
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 360448 view .LVU2909
 	mov	eax, eax	# _2756, _2756
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 49 discriminator 360448 view .LVU2910
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 49 discriminator 360448 view .LVU2910
 	lea	r10, [rcx+r9]	# _2800,
 .LVL436:
-	.loc 1 424 25 is_stmt 1 view .LVU2911
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 360448 view .LVU2912
+	.loc 1 427 25 is_stmt 1 view .LVU2911
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 360448 view .LVU2912
 	lea	rcx, [r14+rax*4]	# _2754,
 .LVL437:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 360448 view .LVU2913
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 360448 view .LVU2913
 	movzx	eax, BYTE PTR [r8+rdi]	# *_2845, *_2845
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4540, tmp4441, *_2845
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 360448 view .LVU2914
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 360448 view .LVU2914
 	movzx	eax, BYTE PTR 3[r8+rdi]	# *_2840, *_2840
 	vmovaps	xmm2, xmm0	# s0l_2842, s0l_2842
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4541, tmp4441, *_2840
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 360448 view .LVU2915
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 360448 view .LVU2915
 	movzx	eax, BYTE PTR [r8+r10]	# *_2799, *_2799
 	vfmadd213ss	xmm2, xmm4, DWORD PTR [rcx]	# s0l_2842, _79, *_2754
 	vcvtusi2ss	xmm1, xmm10, eax	# tmp4542, tmp4441, *_2799
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 360448 view .LVU2916
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 360448 view .LVU2916
 	movzx	eax, BYTE PTR 3[r8+r10]	# *_2794, *_2794
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 360448 view .LVU2917
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 360448 view .LVU2917
 	vmulss	xmm1, xmm1, xmm6	# _2749, s1l_2796, _81
 	vfmadd231ss	xmm1, xmm5, xmm0	# _297, _80, s0r_2813
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 360448 view .LVU2918
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 360448 view .LVU2918
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4543, tmp4441, *_2794
 .LBE6143:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 21 discriminator 360449 view .LVU2919
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 21 discriminator 360449 view .LVU2919
 	lea	eax, 5[rsi]	# k,
 .LBB6144:
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 360448 view .LVU2920
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 360448 view .LVU2920
 	vfmadd132ss	xmm0, xmm2, xmm7	# tmp4266, _282, _82
 	vaddss	xmm0, xmm0, xmm1	# _3091, tmp4266, _297
 	vmovss	DWORD PTR [rcx], xmm0	# *_2754, _3091
 .LBE6144:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2921
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2921
 .LVL438:
-	.loc 1 421 39 discriminator 2 view .LVU2922
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 39 is_stmt 0 discriminator 360450 view .LVU2923
+	.loc 1 424 39 discriminator 2 view .LVU2922
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 39 is_stmt 0 discriminator 360450 view .LVU2923
 	cmp	eax, ebx	# k, x_floats
 	jge	.L40	#,
 .LBB6145:
-	.loc 1 422 25 is_stmt 1 view .LVU2924
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 50 is_stmt 0 discriminator 393216 view .LVU2925
+	.loc 1 425 25 is_stmt 1 view .LVU2924
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 50 is_stmt 0 discriminator 393216 view .LVU2925
 	mov	ecx, eax	# _3051, k
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 393216 view .LVU2926
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 393216 view .LVU2926
 	add	eax, r15d	# _2966, xf
 .LVL439:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 49 discriminator 393216 view .LVU2927
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 49 discriminator 393216 view .LVU2927
 	lea	rdi, [rcx+r13]	# _3050,
 .LVL440:
-	.loc 1 423 25 is_stmt 1 view .LVU2928
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 393216 view .LVU2929
+	.loc 1 426 25 is_stmt 1 view .LVU2928
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 393216 view .LVU2929
 	mov	eax, eax	# _2966, _2966
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 49 discriminator 393216 view .LVU2930
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 49 discriminator 393216 view .LVU2930
 	lea	r10, [rcx+r9]	# _3005,
 .LVL441:
-	.loc 1 424 25 is_stmt 1 view .LVU2931
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 393216 view .LVU2932
+	.loc 1 427 25 is_stmt 1 view .LVU2931
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 393216 view .LVU2932
 	lea	rcx, [r14+rax*4]	# _2964,
 .LVL442:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 393216 view .LVU2933
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 393216 view .LVU2933
 	movzx	eax, BYTE PTR [r8+rdi]	# *_3049, *_3049
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4544, tmp4441, *_3049
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 393216 view .LVU2934
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 393216 view .LVU2934
 	movzx	eax, BYTE PTR 3[r8+rdi]	# *_3009, *_3009
 	vmovaps	xmm2, xmm0	# s0l_3046, s0l_3046
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4545, tmp4441, *_3009
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 393216 view .LVU2935
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 393216 view .LVU2935
 	movzx	eax, BYTE PTR [r8+r10]	# *_3004, *_3004
 	vfmadd213ss	xmm2, xmm4, DWORD PTR [rcx]	# s0l_3046, _79, *_2964
 	vcvtusi2ss	xmm1, xmm10, eax	# tmp4546, tmp4441, *_3004
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 393216 view .LVU2936
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 393216 view .LVU2936
 	movzx	eax, BYTE PTR 3[r8+r10]	# *_2970, *_2970
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 393216 view .LVU2937
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 393216 view .LVU2937
 	vmulss	xmm1, xmm1, xmm6	# _2562, s1l_2972, _81
 	vfmadd231ss	xmm1, xmm5, xmm0	# _322, _80, s0r_3007
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 393216 view .LVU2938
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 393216 view .LVU2938
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4547, tmp4441, *_2970
 .LBE6145:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 21 discriminator 393217 view .LVU2939
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 21 discriminator 393217 view .LVU2939
 	lea	eax, 6[rsi]	# k,
 .LBB6146:
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 393216 view .LVU2940
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 393216 view .LVU2940
 	vfmadd132ss	xmm0, xmm2, xmm7	# tmp4281, _321, _82
 	vaddss	xmm0, xmm0, xmm1	# _2542, tmp4281, _322
 	vmovss	DWORD PTR [rcx], xmm0	# *_2964, _2542
 .LBE6146:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2941
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2941
 .LVL443:
-	.loc 1 421 39 discriminator 2 view .LVU2942
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 39 is_stmt 0 discriminator 393218 view .LVU2943
+	.loc 1 424 39 discriminator 2 view .LVU2942
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 39 is_stmt 0 discriminator 393218 view .LVU2943
 	cmp	eax, ebx	# k, x_floats
 	jge	.L40	#,
 .LBB6147:
-	.loc 1 422 25 is_stmt 1 view .LVU2944
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 50 is_stmt 0 discriminator 163840 view .LVU2945
+	.loc 1 425 25 is_stmt 1 view .LVU2944
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 50 is_stmt 0 discriminator 163840 view .LVU2945
 	mov	ecx, eax	# _2946, k
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 discriminator 163840 view .LVU2946
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 discriminator 163840 view .LVU2946
 	add	eax, r15d	# _2927, xf
 .LVL444:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 49 discriminator 163840 view .LVU2947
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 49 discriminator 163840 view .LVU2947
 	lea	rsi, [rcx+r13]	# _2945,
 .LVL445:
-	.loc 1 423 25 is_stmt 1 view .LVU2948
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 163840 view .LVU2949
+	.loc 1 426 25 is_stmt 1 view .LVU2948
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 163840 view .LVU2949
 	mov	eax, eax	# _2927, _2927
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 49 discriminator 163840 view .LVU2950
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 49 discriminator 163840 view .LVU2950
 	lea	rdi, [rcx+r9]	# _2936,
 .LVL446:
-	.loc 1 424 25 is_stmt 1 view .LVU2951
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 32 is_stmt 0 discriminator 163840 view .LVU2952
+	.loc 1 427 25 is_stmt 1 view .LVU2951
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 32 is_stmt 0 discriminator 163840 view .LVU2952
 	lea	rcx, [r14+rax*4]	# _2925,
 .LVL447:
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 discriminator 163840 view .LVU2953
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 discriminator 163840 view .LVU2953
 	movzx	eax, BYTE PTR [r8+rsi]	# *_2944, *_2944
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4548, tmp4441, *_2944
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 163840 view .LVU2954
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 163840 view .LVU2954
 	movzx	eax, BYTE PTR 3[r8+rsi]	# *_2939, *_2939
 	vfmadd213ss	xmm4, xmm0, DWORD PTR [rcx]	# _324, s0l_2942, *_2925
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4549, tmp4441, *_2939
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 163840 view .LVU2955
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 163840 view .LVU2955
 	movzx	eax, BYTE PTR [r8+rdi]	# *_2935, *_2935
 	vcvtusi2ss	xmm1, xmm10, eax	# tmp4550, tmp4441, *_2935
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 163840 view .LVU2956
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 163840 view .LVU2956
 	movzx	eax, BYTE PTR 3[r8+rdi]	# *_2931, *_2931
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 163840 view .LVU2957
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 163840 view .LVU2957
 	vmulss	xmm1, xmm1, xmm6	# _2918, s1l_2933, _81
 	vfmadd231ss	xmm1, xmm5, xmm0	# _325, _80, s0r_2937
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 163840 view .LVU2958
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 163840 view .LVU2958
 	vcvtusi2ss	xmm0, xmm10, eax	# tmp4551, tmp4441, *_2931
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 163840 view .LVU2959
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 163840 view .LVU2959
 	vfmadd132ss	xmm0, xmm4, xmm7	# tmp4296, _324, _82
 	vaddss	xmm0, xmm0, xmm1	# _2914, tmp4296, _325
 	vmovss	DWORD PTR [rcx], xmm0	# *_2925, _2914
 .LBE6147:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU2960
-	.loc 1 421 39 discriminator 2 view .LVU2961
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU2960
+	.loc 1 424 39 discriminator 2 view .LVU2961
 .LVL448:
 	.p2align 4,,10
 	.p2align 3
 .L40:
-	.loc 1 421 39 is_stmt 0 discriminator 2 view .LVU2962
+	.loc 1 424 39 is_stmt 0 discriminator 2 view .LVU2962
 .LBE6149:
 .LBE6155:
 .LBE6160:
 .LBE6172:
-	.loc 1 110 13 is_stmt 1 discriminator 4 view .LVU2963
-	.loc 1 110 39 discriminator 5 view .LVU2964
-# src/opt17.cpp:110:             for (const SubParams& p : params) {
-	.loc 1 110 39 is_stmt 0 discriminator 6 view .LVU2965
+	.loc 1 113 13 is_stmt 1 discriminator 4 view .LVU2963
+	.loc 1 113 39 discriminator 5 view .LVU2964
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:113:             for (const SubParams& p : params) {
+	.loc 1 113 39 is_stmt 0 discriminator 6 view .LVU2965
 	add	rdx, 48	# ivtmp.914,
 .LVL449:
-	.loc 1 110 39 discriminator 6 view .LVU2966
+	.loc 1 113 39 discriminator 6 view .LVU2966
 	cmp	QWORD PTR 208[rsp], rdx	# %sfp, ivtmp.914
 	jne	.L83	#,
 .L226:
-	.loc 1 110 39 discriminator 6 view .LVU2967
+	.loc 1 113 39 discriminator 6 view .LVU2967
 	mov	rbx, QWORD PTR 48[rsp]	# _73, %sfp
 	mov	r14d, DWORD PTR 88[rsp]	# tile_w_actual, %sfp
 .LVL450:
 .L39:
-	.loc 1 110 39 discriminator 6 view .LVU2968
+	.loc 1 113 39 discriminator 6 view .LVU2968
 .LBE6265:
 .LBB6266:
-	.loc 1 429 32 is_stmt 1 discriminator 2 view .LVU2969
+	.loc 1 432 32 is_stmt 1 discriminator 2 view .LVU2969
 	mov	r13d, DWORD PTR 196[rsp]	# _665, %sfp
 	cmp	DWORD PTR 36[rsp], r13d	# %sfp, _665
 	jge	.L84	#,
@@ -10722,14 +10722,14 @@
 	lea	rbx, 0[0+rax*4]	# tmp4315,
 	mov	rax, QWORD PTR 80[rsp]	# _1380, %sfp
 	mov	r9, QWORD PTR 40[rsp]	# ivtmp.750, %sfp
-# src/opt17.cpp:429:             for (int y = ty; y < tile_y_end; ++y) {
-	.loc 1 429 22 is_stmt 0 view .LVU2970
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:432:             for (int y = ty; y < tile_y_end; ++y) {
+	.loc 1 432 22 is_stmt 0 view .LVU2970
 	mov	r10d, DWORD PTR 224[rsp]	# y, %sfp
 .LBB6234:
 .LBB6227:
 .LBB6222:
-# src/opt17.cpp:437:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 437 83 view .LVU2971
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:440:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 440 83 view .LVU2971
 	vmovss	xmm3, DWORD PTR .LC5[rip]	# tmp4398,
 .LBB6197:
 .LBB6188:
@@ -10750,24 +10750,24 @@
 .LBE6197:
 .LBE6222:
 .LBE6227:
-	.loc 1 430 17 is_stmt 1 view .LVU2974
-	.loc 1 431 17 view .LVU2975
+	.loc 1 433 17 is_stmt 1 view .LVU2974
+	.loc 1 434 17 view .LVU2975
 .LBB6228:
 .LBI6228:
 	.loc 2 1385 7 view .LVU2976
 	.loc 2 1385 7 is_stmt 0 view .LVU2977
 .LBE6228:
-	.loc 1 433 17 is_stmt 1 view .LVU2978
+	.loc 1 436 17 is_stmt 1 view .LVU2978
 .LBB6229:
-	.loc 1 433 35 discriminator 2 view .LVU2979
+	.loc 1 436 35 discriminator 2 view .LVU2979
 .LBE6229:
-# src/opt17.cpp:431:                 unsigned char* outp = output.data.data() + (size_t)(y * width + tx) * 3;
-	.loc 1 431 85 is_stmt 0 discriminator 1 view .LVU2980
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:434:                 unsigned char* outp = output.data.data() + (size_t)(y * width + tx) * 3;
+	.loc 1 434 85 is_stmt 0 discriminator 1 view .LVU2980
 	lea	rax, [r12+r9]	# _3214,
 .LBB6230:
 .LBB6223:
-# src/opt17.cpp:439:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 439 83 view .LVU2981
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:442:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 442 83 view .LVU2981
 	mov	QWORD PTR 496[rsp], r9	# %sfp, ivtmp.750
 .LBB6198:
 .LBB6199:
@@ -10781,18 +10781,18 @@
 .LBE6198:
 .LBE6223:
 .LBE6230:
-# src/opt17.cpp:431:                 unsigned char* outp = output.data.data() + (size_t)(y * width + tx) * 3;
-	.loc 1 431 85 discriminator 1 view .LVU2983
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:434:                 unsigned char* outp = output.data.data() + (size_t)(y * width + tx) * 3;
+	.loc 1 434 85 discriminator 1 view .LVU2983
 	lea	rsi, [rax+rax*2]	# _670,
 .LBB6231:
 .LBB6224:
-# src/opt17.cpp:439:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 439 83 view .LVU2984
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:442:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 442 83 view .LVU2984
 	vmovss	xmm4, DWORD PTR .LC5[rip]	# tmp4402,
 .LBE6224:
 .LBE6231:
-# src/opt17.cpp:431:                 unsigned char* outp = output.data.data() + (size_t)(y * width + tx) * 3;
-	.loc 1 431 87 discriminator 1 view .LVU2985
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:434:                 unsigned char* outp = output.data.data() + (size_t)(y * width + tx) * 3;
+	.loc 1 434 87 discriminator 1 view .LVU2985
 	xor	edx, edx	# ivtmp.742
 	add	rsi, QWORD PTR 16[r15]	# outp, MEM[(struct vector *)output_611(D) + 16B].D.87585._M_impl.D.86896._M_start
 .LVL452:
@@ -10801,20 +10801,20 @@
 .L95:
 .LBB6232:
 .LBB6225:
-	.loc 1 434 21 is_stmt 1 view .LVU2986
-# src/opt17.cpp:434:                     int c = counts[y * width + (tx + x)];
-	.loc 1 434 56 is_stmt 0 discriminator 1 view .LVU2987
+	.loc 1 437 21 is_stmt 1 view .LVU2986
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:437:                     int c = counts[y * width + (tx + x)];
+	.loc 1 437 56 is_stmt 0 discriminator 1 view .LVU2987
 	mov	eax, DWORD PTR [rcx]	# c, MEM[(value_type &)_2181]
 .LVL453:
-	.loc 1 435 21 is_stmt 1 view .LVU2988
+	.loc 1 438 21 is_stmt 1 view .LVU2988
 	test	eax, eax	# c
 	je	.L85	#,
-	.loc 1 436 21 view .LVU2989
-# src/opt17.cpp:436:                     float inv_c = 1.0f / (float)c;
-	.loc 1 436 42 is_stmt 0 view .LVU2990
+	.loc 1 439 21 view .LVU2989
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:439:                     float inv_c = 1.0f / (float)c;
+	.loc 1 439 42 is_stmt 0 view .LVU2990
 	vcvtsi2ss	xmm0, xmm10, eax	# tmp4556, tmp4441, c
-# src/opt17.cpp:437:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 437 67 view .LVU2991
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:440:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 440 67 view .LVU2991
 	mov	eax, edx	# _3555, ivtmp.742
 .LVL454:
 .LBB6206:
@@ -10826,13 +10826,13 @@
 .LBE6184:
 .LBE6191:
 .LBE6206:
-# src/opt17.cpp:436:                     float inv_c = 1.0f / (float)c;
-	.loc 1 436 27 view .LVU2993
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:439:                     float inv_c = 1.0f / (float)c;
+	.loc 1 439 27 view .LVU2993
 	vdivss	xmm0, xmm30, xmm0	# inv_c, tmp4420, _3558
 .LVL455:
-	.loc 1 437 21 is_stmt 1 view .LVU2994
-# src/opt17.cpp:437:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 437 75 is_stmt 0 view .LVU2995
+	.loc 1 440 21 is_stmt 1 view .LVU2994
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:440:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 440 75 is_stmt 0 view .LVU2995
 	vmulss	xmm1, xmm0, DWORD PTR [rdi+rax*4]	# _3551, inv_c, *_3553
 .LBB6207:
 .LBI6179:
@@ -10850,8 +10850,8 @@
 .LBE6185:
 .LBE6192:
 .LBE6207:
-# src/opt17.cpp:437:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 437 83 view .LVU3000
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:440:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 440 83 view .LVU3000
 	vaddss	xmm1, xmm1, xmm3	# _3550, _3551, tmp4398
 .LBB6208:
 .LBB6193:
@@ -10862,8 +10862,8 @@
 .LBE6190:
 .LBE6193:
 .LBE6208:
-# src/opt17.cpp:437:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 437 37 discriminator 1 view .LVU3002
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:440:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 440 37 discriminator 1 view .LVU3002
 	vcvttss2si	r9d, xmm1	# prephitmp_3547, _3550
 .L94:
 .LBB6209:
@@ -10872,13 +10872,13 @@
 	.loc 10 232 5 is_stmt 1 view .LVU3003
 .LBE6194:
 .LBE6209:
-# src/opt17.cpp:438:                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 438 75 is_stmt 0 view .LVU3004
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:441:                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 441 75 is_stmt 0 view .LVU3004
 	vmulss	xmm1, xmm0, DWORD PTR 4[rdi+rax*4]	# _3540, inv_c, *_3542
-# src/opt17.cpp:437:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 437 35 discriminator 1 view .LVU3005
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:440:                     outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 440 35 discriminator 1 view .LVU3005
 	mov	BYTE PTR [rsi+rax], r9b	# *_3546, prephitmp_3547
-	.loc 1 438 21 is_stmt 1 view .LVU3006
+	.loc 1 441 21 is_stmt 1 view .LVU3006
 .LBB6210:
 .LBI6198:
 	.loc 17 3614 5 view .LVU3007
@@ -10895,8 +10895,8 @@
 .LBE6203:
 .LBE6202:
 .LBE6210:
-# src/opt17.cpp:438:                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 438 83 view .LVU3011
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:441:                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 441 83 view .LVU3011
 	vaddss	xmm1, xmm1, xmm3	# _3539, _3540, tmp4398
 .LBB6211:
 .LBB6204:
@@ -10907,8 +10907,8 @@
 .LBE6201:
 .LBE6204:
 .LBE6211:
-# src/opt17.cpp:438:                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 438 37 discriminator 1 view .LVU3013
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:441:                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 441 37 discriminator 1 view .LVU3013
 	vcvttss2si	r9d, xmm1	# prephitmp_3536, _3539
 .L93:
 .LBB6212:
@@ -10917,14 +10917,14 @@
 	.loc 10 232 5 is_stmt 1 view .LVU3014
 .LBE6205:
 .LBE6212:
-# src/opt17.cpp:439:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 439 75 is_stmt 0 view .LVU3015
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:442:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 442 75 is_stmt 0 view .LVU3015
 	vmulss	xmm0, xmm0, DWORD PTR 8[rdi+rax*4]	# _3514, inv_c, *_3516
 .LVL456:
-# src/opt17.cpp:438:                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 438 35 discriminator 1 view .LVU3016
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:441:                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 441 35 discriminator 1 view .LVU3016
 	mov	BYTE PTR 1[rsi+rax], r9b	# *_3535, prephitmp_3536
-	.loc 1 439 21 is_stmt 1 view .LVU3017
+	.loc 1 442 21 is_stmt 1 view .LVU3017
 .LBB6213:
 .LBI6213:
 	.loc 17 3614 5 view .LVU3018
@@ -10941,8 +10941,8 @@
 .LBE6215:
 .LBE6214:
 .LBE6213:
-# src/opt17.cpp:439:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 439 83 view .LVU3022
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:442:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 442 83 view .LVU3022
 	vaddss	xmm0, xmm0, xmm4	# _3513, _3514, tmp4402
 .LBB6219:
 .LBB6216:
@@ -10953,8 +10953,8 @@
 .LBE6217:
 .LBE6216:
 .LBE6219:
-# src/opt17.cpp:439:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 439 37 discriminator 1 view .LVU3024
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:442:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 442 37 discriminator 1 view .LVU3024
 	vcvttss2si	r9d, xmm0	# prephitmp_3510, _3513
 .L92:
 .LBB6220:
@@ -10963,77 +10963,77 @@
 	.loc 10 232 5 is_stmt 1 view .LVU3025
 .LBE6218:
 .LBE6220:
-# src/opt17.cpp:439:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
-	.loc 1 439 35 is_stmt 0 discriminator 1 view .LVU3026
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:442:                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
+	.loc 1 442 35 is_stmt 0 discriminator 1 view .LVU3026
 	mov	BYTE PTR 2[rsi+rax], r9b	# *_3509, prephitmp_3510
 .LVL457:
 .L85:
-	.loc 1 439 35 discriminator 1 view .LVU3027
+	.loc 1 442 35 discriminator 1 view .LVU3027
 .LBE6225:
-	.loc 1 433 17 is_stmt 1 discriminator 1 view .LVU3028
-	.loc 1 433 35 discriminator 2 view .LVU3029
+	.loc 1 436 17 is_stmt 1 discriminator 1 view .LVU3028
+	.loc 1 436 35 discriminator 2 view .LVU3029
 	add	edx, 3	# ivtmp.742,
 	add	rcx, 4	# ivtmp.740,
 .LVL458:
-	.loc 1 433 35 is_stmt 0 discriminator 2 view .LVU3030
+	.loc 1 436 35 is_stmt 0 discriminator 2 view .LVU3030
 	cmp	edx, r8d	# ivtmp.742, _2225
 	jne	.L95	#,
 .LBE6232:
 .LBE6234:
-# src/opt17.cpp:429:             for (int y = ty; y < tile_y_end; ++y) {
-	.loc 1 429 13 discriminator 1 view .LVU3031
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:432:             for (int y = ty; y < tile_y_end; ++y) {
+	.loc 1 432 13 discriminator 1 view .LVU3031
 	mov	r9, QWORD PTR 496[rsp]	# ivtmp.750, %sfp
-	.loc 1 429 13 is_stmt 1 discriminator 1 view .LVU3032
+	.loc 1 432 13 is_stmt 1 discriminator 1 view .LVU3032
 	inc	r10d	# y
 .LVL459:
-	.loc 1 429 32 discriminator 2 view .LVU3033
+	.loc 1 432 32 discriminator 2 view .LVU3033
 	add	rdi, rbx	# ivtmp.751, tmp4315
 	add	r9, r14	# ivtmp.750, _1357
 	cmp	r13d, r10d	# _665, y
 	jne	.L96	#,
 .LVL460:
 .L84:
-	.loc 1 429 32 is_stmt 0 discriminator 2 view .LVU3034
+	.loc 1 432 32 is_stmt 0 discriminator 2 view .LVU3034
 .LBE6266:
 .LBE6268:
-	.loc 1 101 29 is_stmt 1 discriminator 2 view .LVU3035
+	.loc 1 104 29 is_stmt 1 discriminator 2 view .LVU3035
 	add	QWORD PTR 176[rsp], 2032	# %sfp,
 	mov	rax, QWORD PTR 176[rsp]	# ivtmp.919, %sfp
 	cmp	DWORD PTR 144[rsp], eax	# %sfp, tmp5513
 	jg	.L97	#,
 .LBE6273:
 .LBE4695:
-# src/opt17.cpp:97:     for (int ty = 0; ty < h; ty += TILE_H) {
-	.loc 1 97 25 is_stmt 0 discriminator 2 view .LVU3036
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:100:     for (int ty = 0; ty < h; ty += TILE_H) {
+	.loc 1 100 25 is_stmt 0 discriminator 2 view .LVU3036
 	add	QWORD PTR 120[rsp], 8	# %sfp,
 	mov	rax, QWORD PTR 16[rsp]	# _286, %sfp
 	mov	r14, QWORD PTR 40[rsp]	# ivtmp.926, %sfp
 .LVL461:
-	.loc 1 97 25 is_stmt 1 discriminator 2 view .LVU3037
+	.loc 1 100 25 is_stmt 1 discriminator 2 view .LVU3037
 	mov	rbx, QWORD PTR 120[rsp]	# ivtmp.927, %sfp
 	cmp	DWORD PTR 92[rsp], ebx	# %sfp, ivtmp.927
 	jle	.L217	#,
 	mov	DWORD PTR 224[rsp], ebx	# %sfp, ivtmp.927
 .LVL462:
 .LBB6279:
-	.loc 1 98 9 view .LVU3038
+	.loc 1 101 9 view .LVU3038
 .LBE6279:
-# src/opt17.cpp:97:     for (int ty = 0; ty < h; ty += TILE_H) {
-	.loc 1 97 25 is_stmt 0 discriminator 2 view .LVU3039
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:100:     for (int ty = 0; ty < h; ty += TILE_H) {
+	.loc 1 100 25 is_stmt 0 discriminator 2 view .LVU3039
 	add	r14, rax	# ivtmp.926, _286
 .LBB6280:
-# src/opt17.cpp:98:         const int tile_y_end    = std::min(ty + TILE_H, h);
-	.loc 1 98 47 view .LVU3040
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:101:         const int tile_y_end    = std::min(ty + TILE_H, h);
+	.loc 1 101 47 view .LVU3040
 	lea	edx, 8[rbx]	# _896,
 .LVL463:
 .LBB6274:
 	.loc 10 232 5 is_stmt 1 view .LVU3041
 	.loc 10 232 5 is_stmt 0 view .LVU3042
 .LBE6274:
-	.loc 1 99 9 is_stmt 1 view .LVU3043
-	.loc 1 101 9 view .LVU3044
+	.loc 1 102 9 is_stmt 1 view .LVU3043
+	.loc 1 104 9 view .LVU3044
 .LBB6275:
-	.loc 1 101 29 discriminator 2 view .LVU3045
+	.loc 1 104 29 discriminator 2 view .LVU3045
 	jmp	.L99	#
 .LVL464:
 	.p2align 4,,10
@@ -11044,7 +11044,7 @@
 .LBB6173:
 .LBB6161:
 .LBB5390:
-	.loc 1 228 21 view .LVU3046
+	.loc 1 231 21 view .LVU3046
 .LBB5382:
 	mov	esi, DWORD PTR 496[rsp]	# x_floats_676, %sfp
 	cmp	esi, 7	# x_floats_676,
@@ -11070,7 +11070,7 @@
 	jmp	.L45	#
 .LVL465:
 .L57:
-	.loc 1 228 21 is_stmt 0 view .LVU3047
+	.loc 1 231 21 is_stmt 0 view .LVU3047
 .LBE5382:
 .LBE5390:
 .LBE6161:
@@ -11078,54 +11078,54 @@
 .LBB5878:
 .LBB5869:
 .LBB5738:
-# src/opt17.cpp:342:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
-	.loc 1 342 64 view .LVU3048
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:345:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
+	.loc 1 345 64 view .LVU3048
 	lea	edi, 16[rsi]	# _3482,
-# src/opt17.cpp:364:                         xf += 8;
-	.loc 1 364 28 view .LVU3049
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:367:                         xf += 8;
+	.loc 1 367 28 view .LVU3049
 	add	esi, 24	# xf,
 .LBB5739:
-# src/opt17.cpp:347:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
-	.loc 1 347 60 view .LVU3050
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:350:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
+	.loc 1 350 60 view .LVU3050
 	mov	r14, QWORD PTR 416[rsp]	# vp0, %sfp
 .LBE5739:
-# src/opt17.cpp:364:                         xf += 8;
-	.loc 1 364 28 view .LVU3051
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:367:                         xf += 8;
+	.loc 1 367 28 view .LVU3051
 	mov	DWORD PTR 424[rsp], esi	# %sfp, xf
 .LBB5756:
-# src/opt17.cpp:347:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
-	.loc 1 347 60 view .LVU3052
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:350:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
+	.loc 1 350 60 view .LVU3052
 	lea	r11, 0[0+rdi*4]	# _3488,
 .LBE5756:
-# src/opt17.cpp:342:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
-	.loc 1 342 62 view .LVU3053
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:345:                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
+	.loc 1 345 62 view .LVU3053
 	lea	r10, [rcx+rdi]	# _3484,
-# src/opt17.cpp:344:                         __m256 rl1 = load_cvt8(p.SUB + rb[1] + xf);
-	.loc 1 344 62 view .LVU3054
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:347:                         __m256 rl1 = load_cvt8(p.SUB + rb[1] + xf);
+	.loc 1 347 62 view .LVU3054
 	lea	r9, 0[r13+rdi]	# _3486,
 .LBB5757:
-# src/opt17.cpp:347:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
-	.loc 1 347 60 view .LVU3055
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:350:                             __m256 v = _mm256_loadu_ps(vp0 + xf);
+	.loc 1 350 60 view .LVU3055
 	lea	r8, [r14+r11]	# _3490,
 .LVL466:
-	.loc 1 347 60 view .LVU3056
+	.loc 1 350 60 view .LVU3056
 .LBE5757:
-# src/opt17.cpp:354:                         __m256 rl2 = load_cvt8(p.SUB + rb[2] + xf);
-	.loc 1 354 62 view .LVU3057
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:357:                         __m256 rl2 = load_cvt8(p.SUB + rb[2] + xf);
+	.loc 1 357 62 view .LVU3057
 	add	rdi, rax	# _3492, _3524
 .LBB5758:
-# src/opt17.cpp:357:                             __m256 v = _mm256_loadu_ps(vp1 + xf);
-	.loc 1 357 60 view .LVU3058
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:360:                             __m256 v = _mm256_loadu_ps(vp1 + xf);
+	.loc 1 360 60 view .LVU3058
 	add	r11, QWORD PTR 408[rsp]	# _3494, %sfp
 .LVL467:
 .L55:
-	.loc 1 357 60 view .LVU3059
+	.loc 1 360 60 view .LVU3059
 .LBE5758:
-	.loc 1 342 25 is_stmt 1 view .LVU3060
+	.loc 1 345 25 is_stmt 1 view .LVU3060
 .LBB5773:
 .LBI5773:
-	.loc 1 35 22 view .LVU3061
-	.loc 1 36 5 view .LVU3062
+	.loc 1 38 22 view .LVU3061
+	.loc 1 39 5 view .LVU3062
 .LBB5774:
 .LBI5774:
 	.loc 14 711 1 view .LVU3063
@@ -11203,11 +11203,11 @@
 .LBE5784:
 .LBE5785:
 .LBE5827:
-	.loc 1 343 25 is_stmt 1 view .LVU3079
+	.loc 1 346 25 is_stmt 1 view .LVU3079
 .LBB5828:
 .LBI5786:
-	.loc 1 35 22 view .LVU3080
-	.loc 1 36 5 view .LVU3081
+	.loc 1 38 22 view .LVU3080
+	.loc 1 39 5 view .LVU3081
 .LBB5790:
 .LBI5790:
 	.loc 14 711 1 view .LVU3082
@@ -11268,11 +11268,11 @@
 .LBE5799:
 .LBE5800:
 .LBE5830:
-	.loc 1 344 25 is_stmt 1 view .LVU3098
+	.loc 1 347 25 is_stmt 1 view .LVU3098
 .LBB5831:
 .LBI5801:
-	.loc 1 35 22 view .LVU3099
-	.loc 1 36 5 view .LVU3100
+	.loc 1 38 22 view .LVU3099
+	.loc 1 39 5 view .LVU3100
 .LBB5805:
 .LBI5805:
 	.loc 14 711 1 view .LVU3101
@@ -11316,11 +11316,11 @@
 .LBE5813:
 .LBE5812:
 .LBE5831:
-	.loc 1 345 25 is_stmt 1 view .LVU3115
+	.loc 1 348 25 is_stmt 1 view .LVU3115
 .LBB5832:
 .LBI5814:
-	.loc 1 35 22 view .LVU3116
-	.loc 1 36 5 view .LVU3117
+	.loc 1 38 22 view .LVU3116
+	.loc 1 39 5 view .LVU3117
 .LBB5818:
 .LBI5818:
 	.loc 14 711 1 view .LVU3118
@@ -11364,9 +11364,9 @@
 .LBE5826:
 .LBE5825:
 .LBE5832:
-	.loc 1 346 25 is_stmt 1 view .LVU3132
+	.loc 1 349 25 is_stmt 1 view .LVU3132
 .LBB5833:
-	.loc 1 347 29 view .LVU3133
+	.loc 1 350 29 view .LVU3133
 .LBB5743:
 .LBI5743:
 	.loc 13 847 1 view .LVU3134
@@ -11375,7 +11375,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU3136
 .LBE5744:
 .LBE5743:
-	.loc 1 348 29 is_stmt 1 view .LVU3137
+	.loc 1 351 29 is_stmt 1 view .LVU3137
 .LBB5745:
 .LBI5740:
 	.loc 16 63 1 view .LVU3138
@@ -11384,7 +11384,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU3140
 .LBE5742:
 .LBE5745:
-	.loc 1 349 29 is_stmt 1 view .LVU3141
+	.loc 1 352 29 is_stmt 1 view .LVU3141
 .LBB5746:
 .LBI5746:
 	.loc 16 63 1 view .LVU3142
@@ -11397,7 +11397,7 @@
 	.loc 16 65 10 view .LVU3145
 .LBE5747:
 .LBE5746:
-	.loc 1 350 29 is_stmt 1 view .LVU3146
+	.loc 1 353 29 is_stmt 1 view .LVU3146
 .LBB5748:
 .LBI5748:
 	.loc 16 63 1 view .LVU3147
@@ -11432,7 +11432,7 @@
 	.loc 16 65 10 view .LVU3152
 .LBE5750:
 .LBE5751:
-	.loc 1 351 29 is_stmt 1 view .LVU3153
+	.loc 1 354 29 is_stmt 1 view .LVU3153
 .LBB5752:
 .LBI5752:
 	.loc 16 63 1 view .LVU3154
@@ -11445,7 +11445,7 @@
 	.loc 16 65 10 view .LVU3157
 .LBE5753:
 .LBE5752:
-	.loc 1 352 29 is_stmt 1 view .LVU3158
+	.loc 1 355 29 is_stmt 1 view .LVU3158
 .LBB5754:
 .LBI5754:
 	.loc 13 853 1 view .LVU3159
@@ -11459,11 +11459,11 @@
 .LBE5755:
 .LBE5754:
 .LBE5849:
-	.loc 1 354 25 is_stmt 1 view .LVU3163
+	.loc 1 357 25 is_stmt 1 view .LVU3163
 .LBB5850:
 .LBI5834:
-	.loc 1 35 22 view .LVU3164
-	.loc 1 36 5 view .LVU3165
+	.loc 1 38 22 view .LVU3164
+	.loc 1 39 5 view .LVU3165
 .LBB5841:
 .LBI5841:
 	.loc 14 711 1 view .LVU3166
@@ -11503,11 +11503,11 @@
 .LBE5840:
 .LBE5848:
 .LBE5850:
-	.loc 1 355 25 is_stmt 1 view .LVU3179
+	.loc 1 358 25 is_stmt 1 view .LVU3179
 .LBB5851:
 .LBI5851:
-	.loc 1 35 22 view .LVU3180
-	.loc 1 36 5 view .LVU3181
+	.loc 1 38 22 view .LVU3180
+	.loc 1 39 5 view .LVU3181
 .LBB5852:
 .LBI5852:
 	.loc 14 711 1 view .LVU3182
@@ -11572,9 +11572,9 @@
 .LBE5862:
 .LBE5863:
 .LBE5865:
-	.loc 1 356 25 is_stmt 1 view .LVU3199
+	.loc 1 359 25 is_stmt 1 view .LVU3199
 .LBB5866:
-	.loc 1 357 29 view .LVU3200
+	.loc 1 360 29 view .LVU3200
 .LBB5762:
 .LBI5762:
 	.loc 13 847 1 view .LVU3201
@@ -11583,7 +11583,7 @@
 	.loc 13 849 3 is_stmt 0 view .LVU3203
 .LBE5763:
 .LBE5762:
-	.loc 1 358 29 is_stmt 1 view .LVU3204
+	.loc 1 361 29 is_stmt 1 view .LVU3204
 .LBB5764:
 .LBI5759:
 	.loc 16 63 1 view .LVU3205
@@ -11592,7 +11592,7 @@
 	.loc 16 65 3 is_stmt 0 view .LVU3207
 .LBE5761:
 .LBE5764:
-	.loc 1 359 29 is_stmt 1 view .LVU3208
+	.loc 1 362 29 is_stmt 1 view .LVU3208
 .LBB5765:
 .LBI5765:
 	.loc 16 63 1 view .LVU3209
@@ -11605,7 +11605,7 @@
 	.loc 16 65 10 view .LVU3212
 .LBE5766:
 .LBE5765:
-	.loc 1 360 29 is_stmt 1 view .LVU3213
+	.loc 1 363 29 is_stmt 1 view .LVU3213
 .LBB5767:
 .LBI5767:
 	.loc 16 63 1 view .LVU3214
@@ -11618,7 +11618,7 @@
 	.loc 16 65 10 view .LVU3217
 .LBE5768:
 .LBE5767:
-	.loc 1 361 29 is_stmt 1 view .LVU3218
+	.loc 1 364 29 is_stmt 1 view .LVU3218
 .LBB5769:
 .LBI5769:
 	.loc 16 63 1 view .LVU3219
@@ -11631,7 +11631,7 @@
 	.loc 16 65 10 view .LVU3222
 .LBE5770:
 .LBE5769:
-	.loc 1 362 29 is_stmt 1 view .LVU3223
+	.loc 1 365 29 is_stmt 1 view .LVU3223
 .LBB5771:
 .LBI5771:
 	.loc 13 853 1 view .LVU3224
@@ -11645,11 +11645,11 @@
 .LBE5772:
 .LBE5771:
 .LBE5866:
-	.loc 1 364 25 is_stmt 1 view .LVU3228
+	.loc 1 367 25 is_stmt 1 view .LVU3228
 	jmp	.L58	#
 .LVL485:
 .L60:
-	.loc 1 364 25 is_stmt 0 view .LVU3229
+	.loc 1 367 25 is_stmt 0 view .LVU3229
 	mov	edi, DWORD PTR 480[rsp]	# _1547, %sfp
 	cmp	edi, 3	# _1547,
 	jle	.L123	#,
@@ -11664,8 +11664,8 @@
 .LBE5869:
 .LBB5870:
 .LBB5456:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 39 view .LVU3230
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 39 view .LVU3230
 	mov	ecx, 3	# ivtmp.790,
 	lea	r11, [rbx+r13]	# _3481,
 	lea	r8, [rbx+rax]	# _1356,
@@ -11692,244 +11692,244 @@
 	movzx	r9d, BYTE PTR 2[rbx+rax]	# D__lsm2.708, *_3500
 	mov	edx, DWORD PTR 368[rsp]	# D__lsm1.710, %sfp
 .LVL486:
-	.loc 1 368 39 view .LVU3231
+	.loc 1 371 39 view .LVU3231
 	mov	ebx, DWORD PTR 352[rsp]	# D__lsm2.714, %sfp
 .L69:
 .LVL487:
-	.loc 1 368 25 is_stmt 1 view .LVU3232
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 65536 view .LVU3233
+	.loc 1 371 25 is_stmt 1 view .LVU3232
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 65536 view .LVU3233
 	vcvtusi2ss	xmm8, xmm10, r15d	# tmp4488, tmp4441, D__lsm0.712
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 65536 view .LVU3234
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 65536 view .LVU3234
 	movzx	eax, BYTE PTR [r11+rcx]	# D__lsm0.709, MEM[(const unsigned char *)_3481 + ivtmp.790_2627 * 1]
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 65536 view .LVU3235
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 65536 view .LVU3235
 	movzx	r15d, BYTE PTR [r10+rcx]	# D__lsm0.712, MEM[(const unsigned char *)_379 + ivtmp.790_2627 * 1]
 	vmovaps	xmm16, xmm6	# _124, _81
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 65536 view .LVU3236
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 65536 view .LVU3236
 	vcvtusi2ss	xmm12, xmm10, r13d	# tmp4491, tmp4441, D__lsm0.706
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 65536 view .LVU3237
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 65536 view .LVU3237
 	movzx	r13d, BYTE PTR [r8+rcx]	# D__lsm0.706, MEM[(const unsigned char *)_1356 + ivtmp.790_2627 * 1]
 	mov	QWORD PTR 384[rsp], rcx	# %sfp, ivtmp.790
 	add	rdi, 12	# ivtmp.799,
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 65536 view .LVU3238
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 65536 view .LVU3238
 	vcvtusi2ss	xmm13, xmm10, DWORD PTR 448[rsp]	# tmp4489, tmp4441, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 65536 view .LVU3239
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 65536 view .LVU3239
 	mov	DWORD PTR 448[rsp], eax	# %sfp, D__lsm0.709
 	add	rsi, 12	# ivtmp.800,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 65536 view .LVU3240
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 65536 view .LVU3240
 	vmovaps	xmm15, xmm8	# s0l, tmp4488
 .LVL488:
-	.loc 1 369 25 is_stmt 1 view .LVU3241
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 is_stmt 0 discriminator 65536 view .LVU3242
+	.loc 1 372 25 is_stmt 1 view .LVU3241
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 is_stmt 0 discriminator 65536 view .LVU3242
 	vcvtusi2ss	xmm8, xmm10, eax	# tmp4490, tmp4441, D__lsm0.709
 .LVL489:
-	.loc 1 370 25 is_stmt 1 view .LVU3243
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 is_stmt 0 discriminator 65536 view .LVU3244
+	.loc 1 373 25 is_stmt 1 view .LVU3243
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 is_stmt 0 discriminator 65536 view .LVU3244
 	movzx	eax, BYTE PTR 1[r8+rcx]	# D__lsm1.707, MEM[(const unsigned char *)_1356 + 1B + ivtmp.790_2627 * 1]
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 65536 view .LVU3245
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 65536 view .LVU3245
 	vmovaps	xmm14, xmm12	# s2l, tmp4491
 .LVL490:
-	.loc 1 371 25 is_stmt 1 view .LVU3246
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 is_stmt 0 discriminator 65536 view .LVU3247
+	.loc 1 374 25 is_stmt 1 view .LVU3246
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 is_stmt 0 discriminator 65536 view .LVU3247
 	vcvtusi2ss	xmm12, xmm10, r15d	# tmp4492, tmp4441, D__lsm0.712
 .LVL491:
-	.loc 1 368 56 discriminator 65536 view .LVU3248
+	.loc 1 371 56 discriminator 65536 view .LVU3248
 	vfmadd213ss	xmm16, xmm13, DWORD PTR -12[rdi]	# _124, s1l, MEM[(float *)_2809]
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 71 discriminator 65536 view .LVU3249
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 71 discriminator 65536 view .LVU3249
 	vmulss	xmm18, xmm7, xmm8	# _2646, _82, s1r
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 65536 view .LVU3250
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 65536 view .LVU3250
 	vfmadd132ss	xmm12, xmm18, xmm5	# tmp3644, _2646, _80
 	vaddss	xmm12, xmm12, xmm16	# _126, tmp3644, _124
 	vmovaps	xmm16, xmm6	# _118, _81
 	vfmadd231ss	xmm12, xmm4, xmm15	# tmp3643, _79, s0l
 	vmovss	DWORD PTR -12[rdi], xmm12	# MEM[(float *)_2809], tmp3643
-	.loc 1 372 25 is_stmt 1 view .LVU3251
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 is_stmt 0 discriminator 65536 view .LVU3252
+	.loc 1 375 25 is_stmt 1 view .LVU3251
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 is_stmt 0 discriminator 65536 view .LVU3252
 	vcvtusi2ss	xmm12, xmm10, r13d	# tmp4493, tmp4441, D__lsm0.706
 	vfmadd213ss	xmm13, xmm4, DWORD PTR -12[rsi]	# _121, _79, MEM[(float *)_3018]
 .LVL492:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 71 discriminator 65536 view .LVU3253
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 71 discriminator 65536 view .LVU3253
 	vmulss	xmm12, xmm12, xmm7	# _2635, s2r_2657, _82
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 65536 view .LVU3254
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 65536 view .LVU3254
 	vfmadd132ss	xmm8, xmm12, xmm5	# tmp3650, _2635, _80
 .LVL493:
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 65536 view .LVU3255
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 65536 view .LVU3255
 	vcvtusi2ss	xmm12, xmm10, DWORD PTR 472[rsp]	# tmp4497, tmp4441, %sfp
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 65536 view .LVU3256
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 65536 view .LVU3256
 	mov	DWORD PTR 472[rsp], eax	# %sfp, D__lsm1.707
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 65536 view .LVU3257
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 65536 view .LVU3257
 	vaddss	xmm8, xmm8, xmm13	# _123, tmp3650, _121
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 65536 view .LVU3258
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 65536 view .LVU3258
 	vcvtusi2ss	xmm13, xmm10, edx	# tmp4495, tmp4441, D__lsm1.710
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 65536 view .LVU3259
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 65536 view .LVU3259
 	movzx	edx, BYTE PTR 1[r11+rcx]	# D__lsm1.710, MEM[(const unsigned char *)_3481 + 1B + ivtmp.790_2627 * 1]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 65536 view .LVU3260
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 65536 view .LVU3260
 	vfmadd231ss	xmm8, xmm6, xmm14	# tmp3649, _81, s2l
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 65536 view .LVU3261
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 65536 view .LVU3261
 	vmovaps	xmm14, xmm12	# s2l, tmp4497
 .LVL494:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 65536 view .LVU3262
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 65536 view .LVU3262
 	vmovss	DWORD PTR -12[rsi], xmm8	# MEM[(float *)_3018], tmp3649
 .LBE5456:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU3263
-	.loc 1 367 39 discriminator 2 view .LVU3264
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU3263
+	.loc 1 370 39 discriminator 2 view .LVU3264
 .LVL495:
 .LBB5457:
-	.loc 1 368 25 view .LVU3265
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 65536 view .LVU3266
+	.loc 1 371 25 view .LVU3265
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 65536 view .LVU3266
 	vcvtusi2ss	xmm8, xmm10, r12d	# tmp4494, tmp4441, D__lsm1.713
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 65536 view .LVU3267
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 65536 view .LVU3267
 	movzx	r12d, BYTE PTR 1[r10+rcx]	# D__lsm1.713, MEM[(const unsigned char *)_379 + 1B + ivtmp.790_2627 * 1]
 	vfmadd213ss	xmm16, xmm13, DWORD PTR -8[rdi]	# _118, s1l, MEM[(float *)_2809 + 4B]
 	vcvtusi2ss	xmm12, xmm10, r12d	# tmp4498, tmp4441, D__lsm1.713
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 65536 view .LVU3268
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 65536 view .LVU3268
 	vmovaps	xmm15, xmm8	# s0l, tmp4494
 .LVL496:
-	.loc 1 369 25 is_stmt 1 view .LVU3269
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 is_stmt 0 discriminator 65536 view .LVU3270
+	.loc 1 372 25 is_stmt 1 view .LVU3269
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 is_stmt 0 discriminator 65536 view .LVU3270
 	vcvtusi2ss	xmm8, xmm10, edx	# tmp4496, tmp4441, D__lsm1.710
 .LVL497:
-	.loc 1 370 25 is_stmt 1 view .LVU3271
-	.loc 1 371 25 view .LVU3272
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 71 is_stmt 0 discriminator 65536 view .LVU3273
+	.loc 1 373 25 is_stmt 1 view .LVU3271
+	.loc 1 374 25 view .LVU3272
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 71 is_stmt 0 discriminator 65536 view .LVU3273
 	vmulss	xmm18, xmm7, xmm8	# _3367, _82, s1r
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 65536 view .LVU3274
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 65536 view .LVU3274
 	vfmadd132ss	xmm12, xmm18, xmm5	# tmp3660, _3367, _80
 	vaddss	xmm12, xmm12, xmm16	# _120, tmp3660, _118
 	vmovaps	xmm16, xmm6	# _112, _81
 	vfmadd231ss	xmm12, xmm4, xmm15	# tmp3659, _79, s0l
 	vmovss	DWORD PTR -8[rdi], xmm12	# MEM[(float *)_2809 + 4B], tmp3659
-	.loc 1 372 25 is_stmt 1 view .LVU3275
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 is_stmt 0 discriminator 65536 view .LVU3276
+	.loc 1 375 25 is_stmt 1 view .LVU3275
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 is_stmt 0 discriminator 65536 view .LVU3276
 	vcvtusi2ss	xmm12, xmm10, eax	# tmp4499, tmp4441, D__lsm1.707
 	vfmadd213ss	xmm13, xmm4, DWORD PTR -8[rsi]	# _115, _79, MEM[(float *)_3018 + 4B]
 .LVL498:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 71 discriminator 65536 view .LVU3277
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 71 discriminator 65536 view .LVU3277
 	vmulss	xmm12, xmm12, xmm7	# _3331, s2r_2585, _82
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 65536 view .LVU3278
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 65536 view .LVU3278
 	vfmadd132ss	xmm8, xmm12, xmm5	# tmp3666, _3331, _80
 .LVL499:
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 65536 view .LVU3279
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 65536 view .LVU3279
 	vcvtusi2ss	xmm12, xmm10, r9d	# tmp4503, tmp4441, D__lsm2.708
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 65536 view .LVU3280
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 65536 view .LVU3280
 	movzx	r9d, BYTE PTR 2[r8+rcx]	# D__lsm2.708, MEM[(const unsigned char *)_1356 + 2B + ivtmp.790_2627 * 1]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 65536 view .LVU3281
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 65536 view .LVU3281
 	vaddss	xmm8, xmm8, xmm13	# _117, tmp3666, _115
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 65536 view .LVU3282
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 65536 view .LVU3282
 	vcvtusi2ss	xmm13, xmm10, r14d	# tmp4501, tmp4441, D__lsm2.711
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 65536 view .LVU3283
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 65536 view .LVU3283
 	movzx	r14d, BYTE PTR 2[r11+rcx]	# D__lsm2.711, MEM[(const unsigned char *)_3481 + 2B + ivtmp.790_2627 * 1]
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 65536 view .LVU3284
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 65536 view .LVU3284
 	vfmadd231ss	xmm8, xmm6, xmm14	# tmp3665, _81, s2l
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 65536 view .LVU3285
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 65536 view .LVU3285
 	vmovaps	xmm14, xmm12	# s2l, tmp4503
 .LVL500:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 65536 view .LVU3286
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 65536 view .LVU3286
 	vmovss	DWORD PTR -8[rsi], xmm8	# MEM[(float *)_3018 + 4B], tmp3665
 .LBE5457:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU3287
-	.loc 1 367 39 discriminator 2 view .LVU3288
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU3287
+	.loc 1 370 39 discriminator 2 view .LVU3288
 .LVL501:
 .LBB5458:
-	.loc 1 368 25 view .LVU3289
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 65536 view .LVU3290
+	.loc 1 371 25 view .LVU3289
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 65536 view .LVU3290
 	vcvtusi2ss	xmm8, xmm10, ebx	# tmp4500, tmp4441, D__lsm2.714
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 65536 view .LVU3291
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 65536 view .LVU3291
 	movzx	ebx, BYTE PTR 2[r10+rcx]	# D__lsm2.714, MEM[(const unsigned char *)_379 + 2B + ivtmp.790_2627 * 1]
 	add	rcx, 3	# ivtmp.790,
 .LVL502:
-	.loc 1 368 56 discriminator 65536 view .LVU3292
+	.loc 1 371 56 discriminator 65536 view .LVU3292
 	vfmadd213ss	xmm16, xmm13, DWORD PTR -4[rdi]	# _112, s1l, MEM[(float *)_2809 + 8B]
 	lea	eax, -2[rcx]	# _3313,
 	vcvtusi2ss	xmm12, xmm10, ebx	# tmp4504, tmp4441, D__lsm2.714
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 65536 view .LVU3293
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 65536 view .LVU3293
 	vmovaps	xmm15, xmm8	# s0l, tmp4500
 .LVL503:
-	.loc 1 369 25 is_stmt 1 view .LVU3294
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 is_stmt 0 discriminator 65536 view .LVU3295
+	.loc 1 372 25 is_stmt 1 view .LVU3294
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 is_stmt 0 discriminator 65536 view .LVU3295
 	vcvtusi2ss	xmm8, xmm10, r14d	# tmp4502, tmp4441, D__lsm2.711
 .LVL504:
-	.loc 1 370 25 is_stmt 1 view .LVU3296
-	.loc 1 371 25 view .LVU3297
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 71 is_stmt 0 discriminator 65536 view .LVU3298
+	.loc 1 373 25 is_stmt 1 view .LVU3296
+	.loc 1 374 25 view .LVU3297
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 71 is_stmt 0 discriminator 65536 view .LVU3298
 	vmulss	xmm18, xmm7, xmm8	# _2286, _82, s1r
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 65536 view .LVU3299
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 65536 view .LVU3299
 	vfmadd132ss	xmm12, xmm18, xmm5	# tmp3676, _2286, _80
 	vaddss	xmm12, xmm12, xmm16	# _114, tmp3676, _112
 	vfmadd231ss	xmm12, xmm4, xmm15	# tmp3675, _79, s0l
 	vmovss	DWORD PTR -4[rdi], xmm12	# MEM[(float *)_2809 + 8B], tmp3675
-	.loc 1 372 25 is_stmt 1 view .LVU3300
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 is_stmt 0 discriminator 65536 view .LVU3301
+	.loc 1 375 25 is_stmt 1 view .LVU3300
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 is_stmt 0 discriminator 65536 view .LVU3301
 	vcvtusi2ss	xmm12, xmm10, r9d	# tmp4505, tmp4441, D__lsm2.708
 	vfmadd213ss	xmm13, xmm4, DWORD PTR -4[rsi]	# _109, _79, MEM[(float *)_3018 + 8B]
 .LVL505:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 71 discriminator 65536 view .LVU3302
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 71 discriminator 65536 view .LVU3302
 	vmulss	xmm12, xmm12, xmm7	# _2274, s2r_2297, _82
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 discriminator 65536 view .LVU3303
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 discriminator 65536 view .LVU3303
 	vfmadd132ss	xmm8, xmm12, xmm5	# tmp3682, _2274, _80
 .LVL506:
-	.loc 1 372 35 discriminator 65536 view .LVU3304
+	.loc 1 375 35 discriminator 65536 view .LVU3304
 	vaddss	xmm8, xmm8, xmm13	# _111, tmp3682, _109
 	vfmadd231ss	xmm8, xmm6, xmm14	# tmp3681, _81, s2l
 	vmovss	DWORD PTR -4[rsi], xmm8	# MEM[(float *)_3018 + 8B], tmp3681
 .LBE5458:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU3305
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU3305
 .LVL507:
-	.loc 1 367 39 discriminator 2 view .LVU3306
+	.loc 1 370 39 discriminator 2 view .LVU3306
 	cmp	DWORD PTR 432[rsp], eax	# %sfp, _3313
 	jg	.L69	#,
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 21 is_stmt 0 discriminator 65537 view .LVU3307
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 21 is_stmt 0 discriminator 65537 view .LVU3307
 	mov	rdx, QWORD PTR 336[rsp]	# ivtmp.914, %sfp
 	mov	r13, QWORD PTR 320[rsp]	# _3522, %sfp
 	mov	rax, QWORD PTR 312[rsp]	# _3524, %sfp
@@ -11937,297 +11937,297 @@
 .LVL508:
 .L68:
 .LBB5459:
-	.loc 1 368 25 is_stmt 1 view .LVU3308
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 is_stmt 0 discriminator 294912 view .LVU3309
+	.loc 1 371 25 is_stmt 1 view .LVU3308
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 is_stmt 0 discriminator 294912 view .LVU3309
 	mov	rbx, QWORD PTR 464[rsp]	# _374, %sfp
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 52 discriminator 294912 view .LVU3310
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 52 discriminator 294912 view .LVU3310
 	mov	r8d, edi	# _2488, k
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 51 discriminator 294912 view .LVU3311
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 51 discriminator 294912 view .LVU3311
 	mov	r11, QWORD PTR 488[rsp]	# _3520, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 51 discriminator 294912 view .LVU3312
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 51 discriminator 294912 view .LVU3312
 	lea	rcx, [r8+r13]	# _2448,
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 294912 view .LVU3313
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 294912 view .LVU3313
 	mov	r12d, DWORD PTR 424[rsp]	# xf, %sfp
 	mov	r14, QWORD PTR 416[rsp]	# vp0, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 294912 view .LVU3314
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 294912 view .LVU3314
 	movzx	esi, BYTE PTR [rbx+rcx]	# *_2456, *_2456
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 294912 view .LVU3315
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 294912 view .LVU3315
 	movzx	ecx, BYTE PTR 3[rbx+rcx]	# *_2435, *_2435
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 51 discriminator 294912 view .LVU3316
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 51 discriminator 294912 view .LVU3316
 	lea	r9, [r8+r11]	# _2487,
 .LVL509:
-	.loc 1 369 25 is_stmt 1 view .LVU3317
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 33 is_stmt 0 discriminator 294912 view .LVU3318
+	.loc 1 372 25 is_stmt 1 view .LVU3317
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 33 is_stmt 0 discriminator 294912 view .LVU3318
 	mov	r15, QWORD PTR 408[rsp]	# vp1, %sfp
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 294912 view .LVU3319
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 294912 view .LVU3319
 	vcvtusi2ss	xmm13, xmm10, ecx	# tmp4507, tmp4441, *_2435
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 51 discriminator 294912 view .LVU3320
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 51 discriminator 294912 view .LVU3320
 	lea	rcx, [r8+rax]	# _2417,
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 294912 view .LVU3321
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 294912 view .LVU3321
 	vcvtusi2ss	xmm14, xmm10, esi	# tmp4506, tmp4441, *_2456
 .LVL510:
-	.loc 1 370 25 is_stmt 1 view .LVU3322
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 is_stmt 0 discriminator 294912 view .LVU3323
+	.loc 1 373 25 is_stmt 1 view .LVU3322
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 is_stmt 0 discriminator 294912 view .LVU3323
 	movzx	esi, BYTE PTR [rbx+rcx]	# *_2416, *_2416
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 294912 view .LVU3324
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 294912 view .LVU3324
 	movzx	ecx, BYTE PTR 3[rbx+rcx]	# *_2408, *_2408
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 294912 view .LVU3325
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 294912 view .LVU3325
 	vcvtusi2ss	xmm8, xmm10, esi	# tmp4508, tmp4441, *_2416
 .LVL511:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 294912 view .LVU3326
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 294912 view .LVU3326
 	vmulss	xmm18, xmm6, xmm14	# _2345, _81, s1l
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 294912 view .LVU3327
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 294912 view .LVU3327
 	vmulss	xmm15, xmm6, xmm8	# _2347, _81, tmp4508
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 294912 view .LVU3328
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 294912 view .LVU3328
 	vcvtusi2ss	xmm8, xmm10, ecx	# tmp4509, tmp4441, *_2408
 .LVL512:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 294912 view .LVU3329
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 294912 view .LVU3329
 	lea	ecx, [rdi+r12]	# _2388,
 	lea	r8, 0[0+rcx*4]	# _2383,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 294912 view .LVU3330
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 294912 view .LVU3330
 	movzx	ecx, BYTE PTR [rbx+r9]	# *_2455, *_2455
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 294912 view .LVU3331
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 294912 view .LVU3331
 	vmovaps	xmm12, xmm8	# s2r, tmp4509
 .LVL513:
-	.loc 1 371 25 is_stmt 1 view .LVU3332
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 294912 view .LVU3333
+	.loc 1 374 25 is_stmt 1 view .LVU3332
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 294912 view .LVU3333
 	vcvtusi2ss	xmm8, xmm10, ecx	# tmp4510, tmp4441, *_2455
 .LVL514:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 294912 view .LVU3334
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 294912 view .LVU3334
 	movzx	ecx, BYTE PTR 3[rbx+r9]	# *_2451, *_2451
 .LBE5459:
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 21 discriminator 294913 view .LVU3335
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 21 discriminator 294913 view .LVU3335
 	lea	r9d, 1[rdi]	# k,
 .LVL515:
 .LBB5460:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 294912 view .LVU3336
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 294912 view .LVU3336
 	vcvtusi2ss	xmm16, xmm10, ecx	# tmp4511, tmp4441, *_2451
 	vfmadd213ss	xmm8, xmm4, DWORD PTR [r14+r8]	# _104, _79, *_2371
 	vfmadd132ss	xmm16, xmm18, xmm5	# _105, _2345, _80
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 294912 view .LVU3337
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 294912 view .LVU3337
 	vfmadd231ss	xmm8, xmm7, xmm13	# tmp3700, _82, s1r
 	vfmadd132ss	xmm13, xmm15, xmm5	# _99, _2347, _80
 .LVL516:
-	.loc 1 371 35 discriminator 294912 view .LVU3338
+	.loc 1 374 35 discriminator 294912 view .LVU3338
 	vaddss	xmm8, xmm8, xmm16	# _2341, tmp3700, _105
 	vmovss	DWORD PTR [r14+r8], xmm8	# *_2371, _2341
-	.loc 1 372 25 is_stmt 1 view .LVU3339
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 is_stmt 0 discriminator 294912 view .LVU3340
+	.loc 1 375 25 is_stmt 1 view .LVU3339
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 is_stmt 0 discriminator 294912 view .LVU3340
 	vmovaps	xmm8, xmm12	# s2r, s2r
 	vfmadd213ss	xmm14, xmm4, DWORD PTR [r15+r8]	# _98, _79, *_2339
 .LVL517:
-	.loc 1 372 35 discriminator 294912 view .LVU3341
+	.loc 1 375 35 discriminator 294912 view .LVU3341
 	vfmadd132ss	xmm8, xmm14, xmm7	# s2r, _98, _82
 	vaddss	xmm8, xmm8, xmm13	# _3270, tmp3703, _99
 	vmovss	DWORD PTR [r15+r8], xmm8	# *_2339, _3270
 .LBE5460:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU3342
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU3342
 .LVL518:
-	.loc 1 367 39 discriminator 2 view .LVU3343
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 39 is_stmt 0 discriminator 294914 view .LVU3344
+	.loc 1 370 39 discriminator 2 view .LVU3343
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 39 is_stmt 0 discriminator 294914 view .LVU3344
 	cmp	r9d, DWORD PTR 480[rsp]	# k, %sfp
 	jge	.L59	#,
 .LBB5461:
-	.loc 1 368 25 is_stmt 1 view .LVU3345
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 52 is_stmt 0 discriminator 327680 view .LVU3346
+	.loc 1 371 25 is_stmt 1 view .LVU3345
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 52 is_stmt 0 discriminator 327680 view .LVU3346
 	mov	r8d, r9d	# _3233, k
 .LBE5461:
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 21 discriminator 327681 view .LVU3347
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 21 discriminator 327681 view .LVU3347
 	add	edi, 2	# k,
 .LVL519:
 .LBB5462:
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 51 discriminator 327680 view .LVU3348
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 51 discriminator 327680 view .LVU3348
 	lea	rcx, [r8+r13]	# _3160,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 51 discriminator 327680 view .LVU3349
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 51 discriminator 327680 view .LVU3349
 	lea	r10, [r8+r11]	# _3232,
 .LVL520:
-	.loc 1 369 25 is_stmt 1 view .LVU3350
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 is_stmt 0 discriminator 327680 view .LVU3351
+	.loc 1 372 25 is_stmt 1 view .LVU3350
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 is_stmt 0 discriminator 327680 view .LVU3351
 	movzx	esi, BYTE PTR [rbx+rcx]	# *_3159, *_3159
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 327680 view .LVU3352
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 327680 view .LVU3352
 	movzx	ecx, BYTE PTR 3[rbx+rcx]	# *_3164, *_3164
 	vcvtusi2ss	xmm13, xmm10, ecx	# tmp4513, tmp4441, *_3164
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 51 discriminator 327680 view .LVU3353
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 51 discriminator 327680 view .LVU3353
 	lea	rcx, [r8+rax]	# _1589,
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 discriminator 327680 view .LVU3354
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 discriminator 327680 view .LVU3354
 	vcvtusi2ss	xmm14, xmm10, esi	# tmp4512, tmp4441, *_3159
 .LVL521:
-	.loc 1 370 25 is_stmt 1 view .LVU3355
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 is_stmt 0 discriminator 327680 view .LVU3356
+	.loc 1 373 25 is_stmt 1 view .LVU3355
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 is_stmt 0 discriminator 327680 view .LVU3356
 	movzx	esi, BYTE PTR [rbx+rcx]	# *_1590, *_1590
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 327680 view .LVU3357
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 327680 view .LVU3357
 	movzx	ecx, BYTE PTR 3[rbx+rcx]	# *_1613, *_1613
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 327680 view .LVU3358
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 327680 view .LVU3358
 	vcvtusi2ss	xmm8, xmm10, esi	# tmp4514, tmp4441, *_1590
 .LVL522:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 61 discriminator 327680 view .LVU3359
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 61 discriminator 327680 view .LVU3359
 	vmulss	xmm18, xmm6, xmm14	# _3109, _81, s1l
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 327680 view .LVU3360
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 327680 view .LVU3360
 	vmulss	xmm15, xmm6, xmm8	# _3650, _81, tmp4514
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 327680 view .LVU3361
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 327680 view .LVU3361
 	vcvtusi2ss	xmm8, xmm10, ecx	# tmp4515, tmp4441, *_1613
 .LVL523:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 327680 view .LVU3362
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 327680 view .LVU3362
 	lea	ecx, [r12+r9]	# _1624,
 	lea	r8, 0[0+rcx*4]	# _2269,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 327680 view .LVU3363
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 327680 view .LVU3363
 	movzx	ecx, BYTE PTR [rbx+r10]	# *_3231, *_3231
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 327680 view .LVU3364
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 327680 view .LVU3364
 	vmovaps	xmm12, xmm8	# s2r, tmp4515
 .LVL524:
-	.loc 1 371 25 is_stmt 1 view .LVU3365
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 327680 view .LVU3366
+	.loc 1 374 25 is_stmt 1 view .LVU3365
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 327680 view .LVU3366
 	vcvtusi2ss	xmm8, xmm10, ecx	# tmp4516, tmp4441, *_3231
 .LVL525:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 327680 view .LVU3367
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 327680 view .LVU3367
 	movzx	ecx, BYTE PTR 3[rbx+r10]	# *_3163, *_3163
 	vcvtusi2ss	xmm16, xmm10, ecx	# tmp4517, tmp4441, *_3163
 	vfmadd213ss	xmm8, xmm4, DWORD PTR [r14+r8]	# _131, _79, *_2280
 	vfmadd132ss	xmm16, xmm18, xmm5	# _132, _3109, _80
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 35 discriminator 327680 view .LVU3368
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 35 discriminator 327680 view .LVU3368
 	vfmadd231ss	xmm8, xmm7, xmm13	# tmp3717, _82, s1r
 	vfmadd132ss	xmm13, xmm15, xmm5	# _128, _3650, _80
 .LVL526:
-	.loc 1 371 35 discriminator 327680 view .LVU3369
+	.loc 1 374 35 discriminator 327680 view .LVU3369
 	vaddss	xmm8, xmm8, xmm16	# _3582, tmp3717, _132
 	vmovss	DWORD PTR [r14+r8], xmm8	# *_2280, _3582
-	.loc 1 372 25 is_stmt 1 view .LVU3370
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 35 is_stmt 0 discriminator 327680 view .LVU3371
+	.loc 1 375 25 is_stmt 1 view .LVU3370
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 35 is_stmt 0 discriminator 327680 view .LVU3371
 	vmovaps	xmm8, xmm12	# s2r, s2r
 	vfmadd213ss	xmm14, xmm4, DWORD PTR [r15+r8]	# _127, _79, *_59
 .LVL527:
-	.loc 1 372 35 discriminator 327680 view .LVU3372
+	.loc 1 375 35 discriminator 327680 view .LVU3372
 	vfmadd132ss	xmm8, xmm14, xmm7	# s2r, _127, _82
 	vaddss	xmm8, xmm8, xmm13	# _3571, tmp3720, _128
 	vmovss	DWORD PTR [r15+r8], xmm8	# *_59, _3571
 .LBE5462:
-	.loc 1 367 21 is_stmt 1 discriminator 1 view .LVU3373
+	.loc 1 370 21 is_stmt 1 discriminator 1 view .LVU3373
 .LVL528:
-	.loc 1 367 39 discriminator 2 view .LVU3374
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 39 is_stmt 0 discriminator 327682 view .LVU3375
+	.loc 1 370 39 discriminator 2 view .LVU3374
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 39 is_stmt 0 discriminator 327682 view .LVU3375
 	cmp	edi, DWORD PTR 480[rsp]	# k, %sfp
 	jge	.L59	#,
 .LBB5463:
-	.loc 1 368 25 is_stmt 1 view .LVU3376
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 52 is_stmt 0 discriminator 65536 view .LVU3377
+	.loc 1 371 25 is_stmt 1 view .LVU3376
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 52 is_stmt 0 discriminator 65536 view .LVU3377
 	mov	esi, edi	# _386, k
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 51 discriminator 65536 view .LVU3378
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 51 discriminator 65536 view .LVU3378
 	add	r13, rsi	# _394, _386
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 51 discriminator 65536 view .LVU3379
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 51 discriminator 65536 view .LVU3379
 	add	rax, rsi	# _400, _386
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 51 discriminator 65536 view .LVU3380
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 51 discriminator 65536 view .LVU3380
 	lea	r8, [r11+rsi]	# _387,
 .LVL529:
-	.loc 1 369 25 is_stmt 1 view .LVU3381
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 31 is_stmt 0 discriminator 65536 view .LVU3382
+	.loc 1 372 25 is_stmt 1 view .LVU3381
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 31 is_stmt 0 discriminator 65536 view .LVU3382
 	movzx	ecx, BYTE PTR [rbx+r13]	# *_734, *_734
 	vcvtusi2ss	xmm14, xmm10, ecx	# tmp4518, tmp4441, *_734
 .LVL530:
-# src/opt17.cpp:369:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
-	.loc 1 369 56 discriminator 65536 view .LVU3383
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:372:                         float s1l = p.SUB[rb[1]+xf+k], s1r = p.SUB[rb[1]+xf+k+3];
+	.loc 1 372 56 discriminator 65536 view .LVU3383
 	movzx	ecx, BYTE PTR 3[rbx+r13]	# *_735, *_735
 	vcvtusi2ss	xmm13, xmm10, ecx	# tmp4519, tmp4441, *_735
 .LVL531:
-	.loc 1 370 25 is_stmt 1 view .LVU3384
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 is_stmt 0 discriminator 65536 view .LVU3385
+	.loc 1 373 25 is_stmt 1 view .LVU3384
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 is_stmt 0 discriminator 65536 view .LVU3385
 	movzx	ecx, BYTE PTR [rbx+rax]	# *_401, *_401
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 65536 view .LVU3386
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 65536 view .LVU3386
 	movzx	eax, BYTE PTR 3[rbx+rax]	# *_1465, *_1465
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 31 discriminator 65536 view .LVU3387
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 31 discriminator 65536 view .LVU3387
 	vcvtusi2ss	xmm8, xmm10, ecx	# tmp4520, tmp4441, *_401
 .LVL532:
-# src/opt17.cpp:372:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
-	.loc 1 372 61 discriminator 65536 view .LVU3388
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:375:                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+	.loc 1 375 61 discriminator 65536 view .LVU3388
 	vmulss	xmm15, xmm6, xmm8	# _685, _81, tmp4520
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 65536 view .LVU3389
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 65536 view .LVU3389
 	vcvtusi2ss	xmm8, xmm10, eax	# tmp4521, tmp4441, *_1465
 .LVL533:
-# src/opt17.cpp:371:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 371 33 discriminator 65536 view .LVU3390
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:374:                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 374 33 discriminator 65536 view .LVU3390
 	lea	eax, [r12+rdi]	# _1430,
 	lea	rsi, 0[0+rax*4]	# _414,
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 discriminator 65536 view .LVU3391
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 discriminator 65536 view .LVU3391
 	movzx	eax, BYTE PTR [rbx+r8]	# *_732, *_732
-# src/opt17.cpp:370:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
-	.loc 1 370 56 discriminator 65536 view .LVU3392
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:373:                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
+	.loc 1 373 56 discriminator 65536 view .LVU3392
 	vmovaps	xmm12, xmm8	# s2r, tmp4521
 .LVL534:
-	.loc 1 371 25 is_stmt 1 view .LVU3393
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 31 is_stmt 0 discriminator 65536 view .LVU3394
+	.loc 1 374 25 is_stmt 1 view .LVU3393
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 31 is_stmt 0 discriminator 65536 view .LVU3394
 	vcvtusi2ss	xmm8, xmm10, eax	# tmp4522, tmp4441, *_732
 .LVL535:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 56 discriminator 65536 view .LVU3395
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 56 discriminator 65536 view .LVU3395
 	movzx	eax, BYTE PTR 3[rbx+r8]	# *_733, *_733
 	vfmadd213ss	xmm8, xmm4, DWORD PTR [r14+rsi]	# _137, _79, *_415
 	jmp	.L221	#
 .LVL536:
 .L52:
-	.loc 1 368 56 discriminator 65536 view .LVU3396
+	.loc 1 371 56 discriminator 65536 view .LVU3396
 .LBE5463:
 .LBE5870:
-	.loc 1 341 21 is_stmt 1 view .LVU3397
+	.loc 1 344 21 is_stmt 1 view .LVU3397
 .LBB5871:
 	cmp	r14d, 7	# x_floats_676,
 	jg	.L120	#,
@@ -12235,83 +12235,83 @@
 	mov	rdi, QWORD PTR 40[rdx]	# _374, MEM[(const unsigned char * *)_424 + 40B]
 	mov	DWORD PTR 480[rsp], r14d	# %sfp, x_floats_676
 .LBE5871:
-# src/opt17.cpp:296:                     int xf = 0;
-	.loc 1 296 25 is_stmt 0 view .LVU3398
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:299:                     int xf = 0;
+	.loc 1 299 25 is_stmt 0 view .LVU3398
 	mov	DWORD PTR 424[rsp], 0	# %sfp,
 	mov	QWORD PTR 464[rsp], rdi	# %sfp, _374
 	mov	r11, QWORD PTR 472[rsp]	# _2727, %sfp
 	jmp	.L56	#
 .LVL537:
 .L77:
-	.loc 1 296 25 view .LVU3399
+	.loc 1 299 25 view .LVU3399
 .LBE5878:
 .LBE6162:
 .LBB6163:
 .LBB6156:
 .LBB6150:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 30 view .LVU3400
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 30 view .LVU3400
 	mov	ecx, DWORD PTR 192[rsp]	# x_floats, %sfp
 	lea	r8, [r14+rbx*4]	# _2386,
 	xor	eax, eax	# ivtmp.753
 .LVL538:
 .L82:
 .LBB6148:
-	.loc 1 422 25 is_stmt 1 view .LVU3401
-	.loc 1 423 25 view .LVU3402
-	.loc 1 424 25 view .LVU3403
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 31 is_stmt 0 discriminator 65536 view .LVU3404
+	.loc 1 425 25 is_stmt 1 view .LVU3401
+	.loc 1 426 25 view .LVU3402
+	.loc 1 427 25 view .LVU3403
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 31 is_stmt 0 discriminator 65536 view .LVU3404
 	movzx	r9d, BYTE PTR [rdi+rax]	# MEM[(const unsigned char *)_3441 + ivtmp.753_2321 * 1], MEM[(const unsigned char *)_3441 + ivtmp.753_2321 * 1]
 	vcvtusi2ss	xmm0, xmm10, r9d	# tmp4552, tmp4441, MEM[(const unsigned char *)_3441 + ivtmp.753_2321 * 1]
-# src/opt17.cpp:422:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
-	.loc 1 422 54 discriminator 65536 view .LVU3405
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:425:                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
+	.loc 1 425 54 discriminator 65536 view .LVU3405
 	movzx	r9d, BYTE PTR 3[rdi+rax]	# MEM[(const unsigned char *)_3441 + 3B + ivtmp.753_2321 * 1], MEM[(const unsigned char *)_3441 + 3B + ivtmp.753_2321 * 1]
 	vmovaps	xmm2, xmm0	# s0l_3400, s0l_3400
 	vcvtusi2ss	xmm0, xmm10, r9d	# tmp4553, tmp4441, MEM[(const unsigned char *)_3441 + 3B + ivtmp.753_2321 * 1]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 31 discriminator 65536 view .LVU3406
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 31 discriminator 65536 view .LVU3406
 	movzx	r9d, BYTE PTR [rsi+rax]	# MEM[(const unsigned char *)_3411 + ivtmp.753_2321 * 1], MEM[(const unsigned char *)_3411 + ivtmp.753_2321 * 1]
 	vfmadd213ss	xmm2, xmm4, DWORD PTR [r8+rax*4]	# s0l_3400, _79, MEM[(float *)_2386 + ivtmp.753_2321 * 4]
 	vcvtusi2ss	xmm1, xmm10, r9d	# tmp4554, tmp4441, MEM[(const unsigned char *)_3411 + ivtmp.753_2321 * 1]
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 65536 view .LVU3407
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 65536 view .LVU3407
 	movzx	r9d, BYTE PTR 3[rsi+rax]	# MEM[(const unsigned char *)_3411 + 3B + ivtmp.753_2321 * 1], MEM[(const unsigned char *)_3411 + 3B + ivtmp.753_2321 * 1]
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 60 discriminator 65536 view .LVU3408
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 60 discriminator 65536 view .LVU3408
 	vmulss	xmm1, xmm1, xmm6	# _3378, s1l_3392, _81
 	vfmadd231ss	xmm1, xmm5, xmm0	# _328, _80, s0r_3396
-# src/opt17.cpp:423:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
-	.loc 1 423 54 discriminator 65536 view .LVU3409
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:426:                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
+	.loc 1 426 54 discriminator 65536 view .LVU3409
 	vcvtusi2ss	xmm0, xmm10, r9d	# tmp4555, tmp4441, MEM[(const unsigned char *)_3411 + 3B + ivtmp.753_2321 * 1]
-# src/opt17.cpp:424:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
-	.loc 1 424 34 discriminator 65536 view .LVU3410
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:427:                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+	.loc 1 427 34 discriminator 65536 view .LVU3410
 	vfmadd132ss	xmm0, xmm2, xmm7	# tmp4308, _327, _82
 	vaddss	xmm0, xmm0, xmm1	# _3374, tmp4308, _328
 	vmovss	DWORD PTR [r8+rax*4], xmm0	# MEM[(float *)_2386 + ivtmp.753_2321 * 4], _3374
 .LBE6148:
-	.loc 1 421 21 is_stmt 1 discriminator 1 view .LVU3411
+	.loc 1 424 21 is_stmt 1 discriminator 1 view .LVU3411
 .LVL539:
-	.loc 1 421 39 discriminator 2 view .LVU3412
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 39 is_stmt 0 discriminator 65538 view .LVU3413
+	.loc 1 424 39 discriminator 2 view .LVU3412
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 39 is_stmt 0 discriminator 65538 view .LVU3413
 	inc	rax	# ivtmp.753
 .LVL540:
-	.loc 1 421 39 discriminator 65538 view .LVU3414
+	.loc 1 424 39 discriminator 65538 view .LVU3414
 	cmp	ecx, eax	# x_floats, ivtmp.753
 	jg	.L82	#,
 .LBE6150:
 .LBE6156:
 .LBE6163:
 .LBE6173:
-	.loc 1 110 13 is_stmt 1 discriminator 4 view .LVU3415
+	.loc 1 113 13 is_stmt 1 discriminator 4 view .LVU3415
 .LVL541:
-	.loc 1 110 39 discriminator 5 view .LVU3416
-# src/opt17.cpp:110:             for (const SubParams& p : params) {
-	.loc 1 110 39 is_stmt 0 discriminator 6 view .LVU3417
+	.loc 1 113 39 discriminator 5 view .LVU3416
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:113:             for (const SubParams& p : params) {
+	.loc 1 113 39 is_stmt 0 discriminator 6 view .LVU3417
 	add	rdx, 48	# ivtmp.914,
 .LVL542:
-	.loc 1 110 39 discriminator 6 view .LVU3418
+	.loc 1 113 39 discriminator 6 view .LVU3418
 	cmp	QWORD PTR 208[rsp], rdx	# %sfp, ivtmp.914
 	jne	.L83	#,
 	jmp	.L226	#
@@ -12321,92 +12321,92 @@
 .LBB6164:
 .LBB5879:
 .LBB5872:
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 30 view .LVU3419
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 30 view .LVU3419
 	xor	ecx, ecx	# niters_vector_mult_vf.564
 	jmp	.L64	#
 .L121:
 .LBB5464:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 39 view .LVU3420
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 39 view .LVU3420
 	xor	r9d, r9d	# niters_vector_mult_vf.498
 .LBE5464:
-# src/opt17.cpp:367:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 367 30 view .LVU3421
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:370:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 370 30 view .LVU3421
 	xor	r8d, r8d	# tmp.499
 	jmp	.L62	#
 .LVL544:
 .L70:
-	.loc 1 367 30 view .LVU3422
+	.loc 1 370 30 view .LVU3422
 .LBE5872:
 .LBE5879:
 .LBE6164:
 .LBB6165:
 .LBB6157:
-	.loc 1 407 21 is_stmt 1 view .LVU3423
+	.loc 1 410 21 is_stmt 1 view .LVU3423
 .LBB6151:
 	cmp	DWORD PTR 496[rsp], 7	# %sfp,
 	jg	.L124	#,
 .LBE6151:
-# src/opt17.cpp:382:                     int xf = 0;
-	.loc 1 382 25 is_stmt 0 view .LVU3424
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:385:                     int xf = 0;
+	.loc 1 385 25 is_stmt 0 view .LVU3424
 	xor	r15d, r15d	# xf
 	xor	ebx, ebx	# _3458
 	jmp	.L74	#
 .LVL545:
 .L120:
-	.loc 1 382 25 view .LVU3425
+	.loc 1 385 25 view .LVU3425
 	mov	r8, rsi	# _3490, vp0
 	mov	rsi, QWORD PTR 40[rdx]	# _374, MEM[(const unsigned char * *)_424 + 40B]
 .LVL546:
-	.loc 1 382 25 view .LVU3426
+	.loc 1 385 25 view .LVU3426
 	mov	r11, r9	# _3494, vp1
 .LBE6157:
 .LBE6165:
 .LBB6166:
 .LBB5880:
 .LBB5873:
-# src/opt17.cpp:341:                     if (xf + 8 <= x_floats) {
-	.loc 1 341 21 view .LVU3427
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:344:                     if (xf + 8 <= x_floats) {
+	.loc 1 344 21 view .LVU3427
 	mov	DWORD PTR 424[rsp], 8	# %sfp,
 	mov	rdi, rax	# _3492, _3524
 	mov	r9, r13	# _3486, _3522
 .LVL547:
-	.loc 1 341 21 view .LVU3428
+	.loc 1 344 21 view .LVU3428
 	mov	r10, rcx	# _3484, _306
 	mov	QWORD PTR 464[rsp], rsi	# %sfp, _374
 	jmp	.L55	#
 .LVL548:
 .L126:
-	.loc 1 341 21 view .LVU3429
+	.loc 1 344 21 view .LVU3429
 .LBE5873:
 .LBE5880:
 .LBE6166:
 .LBB6167:
 .LBB6158:
 .LBB6152:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 30 view .LVU3430
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 30 view .LVU3430
 	xor	eax, eax	# niters_vector_mult_vf.414
 	jmp	.L80	#
 .L125:
-	.loc 1 421 30 view .LVU3431
+	.loc 1 424 30 view .LVU3431
 .LBE6152:
-# src/opt17.cpp:382:                     int xf = 0;
-	.loc 1 382 25 view .LVU3432
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:385:                     int xf = 0;
+	.loc 1 385 25 view .LVU3432
 	xor	edi, edi	# niters_vector_mult_vf.374
 .LBB6153:
-# src/opt17.cpp:421:                     for (int k = 0; k < x_floats - xf; ++k) {
-	.loc 1 421 30 view .LVU3433
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:424:                     for (int k = 0; k < x_floats - xf; ++k) {
+	.loc 1 424 30 view .LVU3433
 	xor	esi, esi	# tmp.375
 	jmp	.L78	#
 .LVL549:
 .L124:
-	.loc 1 421 30 view .LVU3434
+	.loc 1 424 30 view .LVU3434
 .LBE6153:
 .LBB6154:
-# src/opt17.cpp:407:                     if (xf + 8 <= x_floats) {
-	.loc 1 407 21 view .LVU3435
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:410:                     if (xf + 8 <= x_floats) {
+	.loc 1 410 21 view .LVU3435
 	mov	rsi, r14	# _3664, vp
 	mov	r10, r9	# _3660, rb1
 	mov	rcx, rdi	# _3658, rb0_677
@@ -12414,7 +12414,7 @@
 	jmp	.L73	#
 .LVL550:
 .L123:
-	.loc 1 407 21 view .LVU3436
+	.loc 1 410 21 view .LVU3436
 .LBE6154:
 .LBE6158:
 .LBE6167:
@@ -12422,18 +12422,18 @@
 .LBB5881:
 .LBB5874:
 .LBB5465:
-# src/opt17.cpp:368:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
-	.loc 1 368 39 view .LVU3437
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:371:                         float s0l = p.SUB[rb[0]+xf+k], s0r = p.SUB[rb[0]+xf+k+3];
+	.loc 1 371 39 view .LVU3437
 	xor	edi, edi	# k
 	jmp	.L68	#
 .LVL551:
 .L217:
-	.loc 1 368 39 view .LVU3438
+	.loc 1 371 39 view .LVU3438
 	mov	r15, QWORD PTR 24[rsp]	# params$_M_end_of_storage, %sfp
 	vzeroupper
 .LVL552:
 .L36:
-	.loc 1 368 39 view .LVU3439
+	.loc 1 371 39 view .LVU3439
 .LBE5465:
 .LBE5874:
 .LBE5881:
@@ -12444,7 +12444,7 @@
 .LBE6275:
 .LBE6280:
 .LBE4694:
-	.loc 1 445 5 is_stmt 1 view .LVU3440
+	.loc 1 448 5 is_stmt 1 view .LVU3440
 .LBB6283:
 .LBI6283:
 	.loc 2 790 7 view .LVU3441
@@ -12648,12 +12648,12 @@
 .LBE6327:
 .LBE6312:
 .LBE6309:
-# src/opt17.cpp:446: }
-	.loc 1 446 1 view .LVU3490
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:449: }
+	.loc 1 449 1 view .LVU3490
 	mov	rax, QWORD PTR 64[rsp]	#, %sfp
 	lea	rsp, -40[rbp]	#,
 .LVL559:
-	.loc 1 446 1 view .LVU3491
+	.loc 1 449 1 view .LVU3491
 	pop	rbx	#
 	pop	r12	#
 	pop	r13	#
@@ -12663,7 +12663,7 @@
 	.cfi_remember_state
 	.cfi_def_cfa 7, 8
 .LVL560:
-	.loc 1 446 1 view .LVU3492
+	.loc 1 449 1 view .LVU3492
 	ret	
 .LVL561:
 .L224:
@@ -12694,7 +12694,7 @@
 	.loc 6 104 7 is_stmt 0 view .LVU3497
 .LBE4597:
 .LBE4626:
-	.loc 1 77 9 is_stmt 1 view .LVU3498
+	.loc 1 80 9 is_stmt 1 view .LVU3498
 .LBB4627:
 .LBB4592:
 	.loc 2 988 7 view .LVU3499
@@ -12710,9 +12710,9 @@
 	.loc 3 1058 7 is_stmt 0 view .LVU3504
 .LBE4580:
 .LBE4593:
-	.loc 1 77 30 is_stmt 1 discriminator 5 view .LVU3505
-# src/opt17.cpp:77:         for (const auto& p : params) {
-	.loc 1 77 30 is_stmt 0 discriminator 6 view .LVU3506
+	.loc 1 80 30 is_stmt 1 discriminator 5 view .LVU3505
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:80:         for (const auto& p : params) {
+	.loc 1 80 30 is_stmt 0 discriminator 6 view .LVU3506
 	mov	rbx, QWORD PTR 208[rsp]	# __new_finish, %sfp
 .LBE4627:
 .LBB4628:
@@ -12731,15 +12731,15 @@
 .LBE4572:
 .LBE4628:
 .LBB4629:
-# src/opt17.cpp:77:         for (const auto& p : params) {
-	.loc 1 77 30 discriminator 6 view .LVU3508
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:80:         for (const auto& p : params) {
+	.loc 1 80 30 discriminator 6 view .LVU3508
 	cmp	QWORD PTR 128[rsp], rbx	# %sfp, __new_finish
 	jne	.L25	#,
 .LVL562:
-	.loc 1 77 30 discriminator 6 view .LVU3509
+	.loc 1 80 30 discriminator 6 view .LVU3509
 .LBE4629:
 .LBB4630:
-	.loc 1 83 27 is_stmt 1 discriminator 2 view .LVU3510
+	.loc 1 86 27 is_stmt 1 discriminator 2 view .LVU3510
 	mov	r11d, DWORD PTR 92[rsp]	#, %sfp
 	test	r11d, r11d	#
 	jle	.L26	#,
@@ -12751,11 +12751,11 @@
 	.p2align 4,,10
 	.p2align 3
 .L223:
-	.loc 1 83 27 is_stmt 0 discriminator 2 view .LVU3511
+	.loc 1 86 27 is_stmt 0 discriminator 2 view .LVU3511
 .LBE4630:
 .LBE6330:
-# src/opt17.cpp:43:     const int w = static_cast<int>(width);
-	.loc 1 43 15 view .LVU3512
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:46:     const int w = static_cast<int>(width);
+	.loc 1 46 15 view .LVU3512
 	mov	eax, DWORD PTR 184[rsp]	# tmp4899, %sfp
 .LVL564:
 .LBB6331:
@@ -12774,15 +12774,15 @@
 .LBE4336:
 .LBE4341:
 .LBE6331:
-# src/opt17.cpp:43:     const int w = static_cast<int>(width);
-	.loc 1 43 15 view .LVU3515
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:46:     const int w = static_cast<int>(width);
+	.loc 1 46 15 view .LVU3515
 	mov	DWORD PTR 144[rsp], eax	# %sfp, tmp4899
-# src/opt17.cpp:44:     const int h = static_cast<int>(height);
-	.loc 1 44 15 view .LVU3516
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:47:     const int h = static_cast<int>(height);
+	.loc 1 47 15 view .LVU3516
 	mov	eax, DWORD PTR 488[rsp]	# tmp4900, %sfp
 	mov	DWORD PTR 92[rsp], eax	# %sfp, tmp4900
 .LVL565:
-	.loc 1 53 5 is_stmt 1 view .LVU3517
+	.loc 1 56 5 is_stmt 1 view .LVU3517
 .LBB6332:
 .LBB4458:
 	.loc 2 988 7 view .LVU3518
@@ -12798,9 +12798,9 @@
 	.loc 3 1058 7 is_stmt 0 view .LVU3523
 .LBE4367:
 .LBE4459:
-	.loc 1 53 22 is_stmt 1 discriminator 5 view .LVU3524
-# src/opt17.cpp:53:     for (auto& sub : subapertures) {
-	.loc 1 53 22 is_stmt 0 discriminator 6 view .LVU3525
+	.loc 1 56 22 is_stmt 1 discriminator 5 view .LVU3524
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:56:     for (auto& sub : subapertures) {
+	.loc 1 56 22 is_stmt 0 discriminator 6 view .LVU3525
 	cmp	QWORD PTR 496[rsp], r14	# %sfp, _848
 	jne	.L5	#,
 .LBE6332:
@@ -13135,8 +13135,8 @@
 .LBE4456:
 .LBE4460:
 .LBE6335:
-# src/opt17.cpp:49:     output.data.assign(width * height * 3, 0);
-	.loc 1 49 23 view .LVU3582
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:52:     output.data.assign(width * height * 3, 0);
+	.loc 1 52 23 view .LVU3582
 	lea	r13, [rax+rax*2]	# _5,
 .LVL583:
 .LBB6336:
@@ -13389,7 +13389,7 @@
 .LBE4314:
 .LBE4316:
 .LBE6336:
-	.loc 1 51 5 is_stmt 1 view .LVU3639
+	.loc 1 54 5 is_stmt 1 view .LVU3639
 .LBB6337:
 	.loc 2 551 7 view .LVU3640
 .LBB4343:
@@ -13410,7 +13410,7 @@
 .LBE4338:
 .LBE4343:
 .LBE6337:
-	.loc 1 52 5 is_stmt 1 view .LVU3648
+	.loc 1 55 5 is_stmt 1 view .LVU3648
 .LBB6338:
 	.loc 2 1107 7 view .LVU3649
 .LBB4348:
@@ -13467,7 +13467,7 @@
 .LBE6342:
 .LBB6343:
 .LBB4631:
-	.loc 1 83 27 is_stmt 1 discriminator 2 view .LVU3661
+	.loc 1 86 27 is_stmt 1 discriminator 2 view .LVU3661
 	mov	edx, DWORD PTR 92[rsp]	#, %sfp
 	test	edx, edx	#
 	jle	.L32	#,
@@ -13477,75 +13477,75 @@
 	jmp	.L32	#
 .LVL596:
 .L110:
-	.loc 1 83 27 is_stmt 0 discriminator 2 view .LVU3662
+	.loc 1 86 27 is_stmt 0 discriminator 2 view .LVU3662
 .LBE4631:
 .LBE6343:
 .LBB6344:
-# src/opt17.cpp:53:     for (auto& sub : subapertures) {
-	.loc 1 53 22 discriminator 6 view .LVU3663
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:56:     for (auto& sub : subapertures) {
+	.loc 1 56 22 discriminator 6 view .LVU3663
 	mov	rax, QWORD PTR 128[rsp]	# params$_M_start, %sfp
 	mov	QWORD PTR 208[rsp], rax	# %sfp, params$_M_start
 	jmp	.L9	#
 .LVL597:
 .L116:
-	.loc 1 53 22 discriminator 6 view .LVU3664
+	.loc 1 56 22 discriminator 6 view .LVU3664
 .LBE6344:
 .LBB6345:
 .LBB6281:
 .LBB6276:
-# src/opt17.cpp:101:         for (int tx = 0; tx < w; tx += TILE_W) {
-	.loc 1 101 29 discriminator 2 view .LVU3665
+# src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp:104:         for (int tx = 0; tx < w; tx += TILE_W) {
+	.loc 1 104 29 discriminator 2 view .LVU3665
 	xor	eax, eax	# ivtmp.927
 .LVL598:
 .L37:
-	.loc 1 101 29 discriminator 2 view .LVU3666
+	.loc 1 104 29 discriminator 2 view .LVU3666
 .LBE6276:
 .LBE6281:
-	.loc 1 97 25 is_stmt 1 discriminator 2 view .LVU3667
+	.loc 1 100 25 is_stmt 1 discriminator 2 view .LVU3667
 	mov	ebx, DWORD PTR 92[rsp]	# _2, %sfp
 	lea	rdx, 8[rax]	# ivtmp.927_35,
 	cmp	ebx, edx	# _2, ivtmp.927_35
 	jle	.L36	#,
 .LVL599:
 .LBB6282:
-	.loc 1 98 9 view .LVU3668
+	.loc 1 101 9 view .LVU3668
 .LBB6277:
 	.loc 10 232 5 view .LVU3669
 	.loc 10 232 5 is_stmt 0 view .LVU3670
 .LBE6277:
-	.loc 1 99 9 is_stmt 1 view .LVU3671
-	.loc 1 101 9 view .LVU3672
+	.loc 1 102 9 is_stmt 1 view .LVU3671
+	.loc 1 104 9 view .LVU3672
 .LBB6278:
-	.loc 1 101 29 discriminator 2 view .LVU3673
-	.loc 1 101 29 is_stmt 0 discriminator 2 view .LVU3674
+	.loc 1 104 29 discriminator 2 view .LVU3673
+	.loc 1 104 29 is_stmt 0 discriminator 2 view .LVU3674
 .LBE6278:
 .LBE6282:
-	.loc 1 97 25 is_stmt 1 discriminator 2 view .LVU3675
+	.loc 1 100 25 is_stmt 1 discriminator 2 view .LVU3675
 	add	rax, 16	# ivtmp.927,
 	cmp	ebx, eax	# _2, ivtmp.927
 	jg	.L37	#,
 	jmp	.L36	#
 .LVL600:
 .L201:
-	.loc 1 97 25 is_stmt 0 discriminator 2 view .LVU3676
+	.loc 1 100 25 is_stmt 0 discriminator 2 view .LVU3676
 	jmp	.L202	#
 .LVL601:
 .L199:
-	.loc 1 97 25 discriminator 2 view .LVU3677
+	.loc 1 100 25 discriminator 2 view .LVU3677
 	jmp	.L200	#
 .LVL602:
 .L203:
-	.loc 1 97 25 discriminator 2 view .LVU3678
+	.loc 1 100 25 discriminator 2 view .LVU3678
 	jmp	.L204	#
 .LVL603:
 .L131:
-	.loc 1 97 25 discriminator 2 view .LVU3679
+	.loc 1 100 25 discriminator 2 view .LVU3679
 	mov	rbx, rax	# tmp4349, tmp4435
 	vzeroupper
 .LVL604:
 	jmp	.L16	#
 .LVL605:
-	.loc 1 97 25 discriminator 2 view .LVU3680
+	.loc 1 100 25 discriminator 2 view .LVU3680
 .LBE6345:
 	.section	.gcc_except_table,"a",@progbits
 .LLSDA11708:
@@ -14106,7 +14106,7 @@
 	.file 78 "/usr/include/c++/16/ext/concurrence.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x17d20
+	.long	0x17d23
 	.value	0x5
 	.byte	0x1
 	.byte	0x8
@@ -14522,7 +14522,7 @@
 	.long	0x7686
 	.uleb128 0x8
 	.long	0x2bc
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF11
 	.byte	0x1
 	.byte	0x14
@@ -14569,7 +14569,7 @@
 	.byte	0
 	.uleb128 0x8
 	.long	0x2ce
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF12
 	.byte	0x1
 	.byte	0x14
@@ -14938,7 +14938,7 @@
 	.byte	0x17
 	.byte	0x5f
 	.byte	0xa
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF49
 	.byte	0x1
 	.byte	0x17
@@ -14948,7 +14948,7 @@
 	.uleb128 0x3c
 	.long	0x66c
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF50
 	.byte	0x1
 	.byte	0x17
@@ -14958,7 +14958,7 @@
 	.uleb128 0x3c
 	.long	0x676
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF51
 	.byte	0x1
 	.byte	0x17
@@ -15607,7 +15607,7 @@
 	.value	0x3a6
 	.byte	0xc
 	.long	0xb06
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF59
 	.byte	0xc
 	.value	0x3ab
@@ -15884,7 +15884,7 @@
 	.value	0x251
 	.byte	0xd
 	.long	0xa075
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF79
 	.byte	0x8
 	.value	0x27d
@@ -15911,7 +15911,7 @@
 	.value	0x260
 	.byte	0xd
 	.long	0x2bc
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF79
 	.byte	0x8
 	.value	0x28c
@@ -15946,7 +15946,7 @@
 	.uleb128 0x1
 	.long	0xd7f
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF84
 	.byte	0x8
 	.value	0x2ed
@@ -15957,7 +15957,7 @@
 	.uleb128 0x1
 	.long	0xa0b1
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF102
 	.byte	0x8
 	.value	0x2fd
@@ -15981,14 +15981,14 @@
 	.byte	0x8
 	.long	0xca9
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF105
 	.byte	0x18
 	.byte	0x2
 	.byte	0x5b
 	.byte	0xc
 	.long	0x11d1
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF106
 	.byte	0x18
 	.byte	0x2
@@ -16072,7 +16072,7 @@
 	.byte	0x60
 	.byte	0x9
 	.long	0x82c3
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF116
 	.byte	0x18
 	.byte	0x2
@@ -16361,7 +16361,7 @@
 	.byte	0
 	.uleb128 0x8
 	.long	0xe30
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF147
 	.byte	0x1
 	.byte	0x14
@@ -16417,7 +16417,7 @@
 	.uleb128 0x4e
 	.long	0xe30
 	.byte	0x2
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF151
 	.byte	0x2
 	.value	0x1f6
@@ -16428,7 +16428,7 @@
 	.uleb128 0x1
 	.long	0x63c
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF151
 	.byte	0x2
 	.value	0x1ff
@@ -16449,7 +16449,7 @@
 	.value	0x1e6
 	.byte	0x29
 	.long	0xee8
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF154
 	.byte	0x2
 	.value	0x20c
@@ -17984,7 +17984,7 @@
 	.value	0x251
 	.byte	0xd
 	.long	0xa570
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF79
 	.byte	0x8
 	.value	0x27d
@@ -18011,7 +18011,7 @@
 	.value	0x260
 	.byte	0xd
 	.long	0x2bc
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF79
 	.byte	0x8
 	.value	0x28c
@@ -18046,7 +18046,7 @@
 	.uleb128 0x1
 	.long	0x214f
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF84
 	.byte	0x8
 	.value	0x2ed
@@ -18057,7 +18057,7 @@
 	.uleb128 0x1
 	.long	0xa5a7
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF102
 	.byte	0x8
 	.value	0x2fd
@@ -18081,14 +18081,14 @@
 	.byte	0x8
 	.long	0x2079
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF315
 	.byte	0x18
 	.byte	0x2
 	.byte	0x5b
 	.byte	0xc
 	.long	0x2588
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF106
 	.byte	0x18
 	.byte	0x2
@@ -18172,7 +18172,7 @@
 	.byte	0x60
 	.byte	0x9
 	.long	0x860a
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF116
 	.byte	0x18
 	.byte	0x2
@@ -18451,7 +18451,7 @@
 	.byte	0
 	.uleb128 0x8
 	.long	0x2200
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF341
 	.byte	0x1
 	.byte	0x14
@@ -18507,7 +18507,7 @@
 	.uleb128 0x4e
 	.long	0x2200
 	.byte	0x2
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF151
 	.byte	0x2
 	.value	0x1f6
@@ -18518,7 +18518,7 @@
 	.uleb128 0x1
 	.long	0x63c
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF151
 	.byte	0x2
 	.value	0x1ff
@@ -18539,7 +18539,7 @@
 	.value	0x1e6
 	.byte	0x29
 	.long	0x22b8
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF154
 	.byte	0x2
 	.value	0x20c
@@ -20083,14 +20083,14 @@
 	.long	0xa66a
 	.byte	0
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF433
 	.byte	0x18
 	.byte	0x2
 	.byte	0x5b
 	.byte	0xc
 	.long	0x3802
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF106
 	.byte	0x18
 	.byte	0x2
@@ -20166,7 +20166,7 @@
 	.byte	0x60
 	.byte	0x9
 	.long	0x8b65
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF116
 	.byte	0x18
 	.byte	0x2
@@ -20432,7 +20432,7 @@
 	.byte	0
 	.uleb128 0x8
 	.long	0x34c7
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF434
 	.byte	0x1
 	.byte	0x14
@@ -21718,7 +21718,7 @@
 	.long	.LASF444
 	.uleb128 0x3b
 	.long	.LASF445
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF446
 	.byte	0x1
 	.byte	0x17
@@ -22001,7 +22001,7 @@
 	.value	0x251
 	.byte	0xd
 	.long	0xa75f
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF79
 	.byte	0x8
 	.value	0x27d
@@ -22028,7 +22028,7 @@
 	.value	0x260
 	.byte	0xd
 	.long	0x2bc
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF79
 	.byte	0x8
 	.value	0x28c
@@ -22063,7 +22063,7 @@
 	.uleb128 0x1
 	.long	0x465f
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF84
 	.byte	0x8
 	.value	0x2ed
@@ -22074,7 +22074,7 @@
 	.uleb128 0x1
 	.long	0xa796
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF102
 	.byte	0x8
 	.value	0x2fd
@@ -22098,14 +22098,14 @@
 	.byte	0x8
 	.long	0x4589
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF471
 	.byte	0x18
 	.byte	0x2
 	.byte	0x5b
 	.byte	0xc
 	.long	0x4ab1
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF106
 	.byte	0x18
 	.byte	0x2
@@ -22189,7 +22189,7 @@
 	.byte	0x60
 	.byte	0x9
 	.long	0x8e74
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF116
 	.byte	0x18
 	.byte	0x2
@@ -22478,7 +22478,7 @@
 	.byte	0
 	.uleb128 0x8
 	.long	0x4710
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF499
 	.byte	0x1
 	.byte	0x14
@@ -22534,7 +22534,7 @@
 	.uleb128 0x4e
 	.long	0x4710
 	.byte	0x2
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF151
 	.byte	0x2
 	.value	0x1f6
@@ -22545,7 +22545,7 @@
 	.uleb128 0x1
 	.long	0x63c
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF151
 	.byte	0x2
 	.value	0x1ff
@@ -22566,7 +22566,7 @@
 	.value	0x1e6
 	.byte	0x29
 	.long	0x47c8
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF154
 	.byte	0x2
 	.value	0x20c
@@ -23842,7 +23842,7 @@
 	.long	.LASF588
 	.uleb128 0x3b
 	.long	.LASF589
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF590
 	.byte	0x1
 	.byte	0x17
@@ -24125,7 +24125,7 @@
 	.value	0x251
 	.byte	0xd
 	.long	0xa86d
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF79
 	.byte	0x8
 	.value	0x27d
@@ -24152,7 +24152,7 @@
 	.value	0x260
 	.byte	0xd
 	.long	0x2bc
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF79
 	.byte	0x8
 	.value	0x28c
@@ -24187,7 +24187,7 @@
 	.uleb128 0x1
 	.long	0x5a47
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF84
 	.byte	0x8
 	.value	0x2ed
@@ -24198,7 +24198,7 @@
 	.uleb128 0x1
 	.long	0xa8a9
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF102
 	.byte	0x8
 	.value	0x2fd
@@ -24222,14 +24222,14 @@
 	.byte	0x8
 	.long	0x5971
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF613
 	.byte	0x18
 	.byte	0x2
 	.byte	0x5b
 	.byte	0xc
 	.long	0x5e99
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF106
 	.byte	0x18
 	.byte	0x2
@@ -24313,7 +24313,7 @@
 	.byte	0x60
 	.byte	0x9
 	.long	0x8f8d
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF116
 	.byte	0x18
 	.byte	0x2
@@ -24602,7 +24602,7 @@
 	.byte	0
 	.uleb128 0x8
 	.long	0x5af8
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF639
 	.byte	0x1
 	.byte	0x14
@@ -24658,7 +24658,7 @@
 	.uleb128 0x4e
 	.long	0x5af8
 	.byte	0x2
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF151
 	.byte	0x2
 	.value	0x1f6
@@ -24669,7 +24669,7 @@
 	.uleb128 0x1
 	.long	0x63c
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF151
 	.byte	0x2
 	.value	0x1ff
@@ -24690,7 +24690,7 @@
 	.value	0x1e6
 	.byte	0x29
 	.long	0x5bb0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF154
 	.byte	0x2
 	.value	0x20c
@@ -25982,7 +25982,7 @@
 	.long	.LASF730
 	.uleb128 0x3b
 	.long	.LASF731
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF732
 	.byte	0x1
 	.byte	0x17
@@ -26022,7 +26022,7 @@
 	.byte	0x14
 	.byte	0xaf
 	.byte	0xd
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF733
 	.byte	0x1
 	.byte	0x14
@@ -26039,7 +26039,7 @@
 	.string	"_Tp"
 	.long	0xa64c
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF734
 	.byte	0x1
 	.byte	0x17
@@ -26068,7 +26068,7 @@
 	.long	.LASF448
 	.long	0xa584
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF735
 	.byte	0x1
 	.byte	0x17
@@ -26097,7 +26097,7 @@
 	.long	.LASF448
 	.long	0xa075
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF736
 	.byte	0x10
 	.byte	0xc
@@ -26237,7 +26237,7 @@
 	.uleb128 0x1
 	.long	0xa88b
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF758
 	.byte	0xa
 	.value	0x475
@@ -26263,7 +26263,7 @@
 	.uleb128 0x1
 	.long	0x69c
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF761
 	.byte	0xa
 	.value	0x49b
@@ -26343,7 +26343,7 @@
 	.uleb128 0x1
 	.long	0xa093
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF769
 	.byte	0xc
 	.value	0x1dd
@@ -26387,7 +26387,7 @@
 	.uleb128 0x1
 	.long	0xa093
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF773
 	.byte	0x3
 	.value	0xbce
@@ -26444,7 +26444,7 @@
 	.uleb128 0x1
 	.long	0xa88b
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF781
 	.byte	0xc
 	.value	0x3d6
@@ -26463,7 +26463,7 @@
 	.uleb128 0x1
 	.long	0x7686
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF783
 	.byte	0xc
 	.value	0x226
@@ -26487,7 +26487,7 @@
 	.uleb128 0x1
 	.long	0xa778
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF785
 	.byte	0xa
 	.value	0x100
@@ -26503,7 +26503,7 @@
 	.uleb128 0x1
 	.long	0xb381
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF787
 	.byte	0xa
 	.value	0x475
@@ -26529,7 +26529,7 @@
 	.uleb128 0x1
 	.long	0x69c
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF789
 	.byte	0xc
 	.value	0x226
@@ -26611,7 +26611,7 @@
 	.uleb128 0x1
 	.long	0xa86d
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF797
 	.byte	0xc
 	.value	0x41b
@@ -26650,7 +26650,7 @@
 	.uleb128 0x1
 	.long	0xa75f
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF801
 	.byte	0xc
 	.value	0x303
@@ -26747,7 +26747,7 @@
 	.uleb128 0x1
 	.long	0xa64c
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF809
 	.byte	0xa
 	.value	0x49b
@@ -26771,7 +26771,7 @@
 	.uleb128 0x1
 	.long	0xa093
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF811
 	.byte	0xc
 	.value	0x303
@@ -26867,7 +26867,7 @@
 	.uleb128 0x1
 	.long	0xa88b
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF821
 	.byte	0xa
 	.value	0x100
@@ -27006,7 +27006,7 @@
 	.uleb128 0x1
 	.long	0xa0a7
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF835
 	.byte	0x11
 	.value	0xe1e
@@ -27060,7 +27060,7 @@
 	.uleb128 0x1
 	.long	0xa778
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF841
 	.byte	0xa
 	.value	0x100
@@ -27076,7 +27076,7 @@
 	.uleb128 0x1
 	.long	0xa778
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF843
 	.byte	0x9
 	.value	0x108
@@ -27213,7 +27213,7 @@
 	.byte	0x5
 	.byte	0x19
 	.long	0x7762
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF861
 	.byte	0xd8
 	.byte	0x2f
@@ -27446,7 +27446,7 @@
 	.long	0x57
 	.uleb128 0xe
 	.long	0x4a
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF893
 	.byte	0x31
 	.value	0x157
@@ -27456,7 +27456,7 @@
 	.uleb128 0x1
 	.long	0x4f
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF894
 	.byte	0x31
 	.value	0x3a7
@@ -27468,7 +27468,7 @@
 	.byte	0
 	.uleb128 0xe
 	.long	0x7756
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF895
 	.byte	0x31
 	.value	0x3c4
@@ -27490,7 +27490,7 @@
 	.long	.LASF896
 	.uleb128 0x8
 	.long	0x796f
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF897
 	.byte	0x31
 	.value	0x3b5
@@ -27502,7 +27502,7 @@
 	.uleb128 0x1
 	.long	0x7944
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF898
 	.byte	0x31
 	.value	0x3cb
@@ -27516,7 +27516,7 @@
 	.byte	0
 	.uleb128 0xe
 	.long	0x7976
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF899
 	.byte	0x31
 	.value	0x2d5
@@ -27528,7 +27528,7 @@
 	.uleb128 0x1
 	.long	0x4f
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF900
 	.byte	0x31
 	.value	0x2dc
@@ -27541,7 +27541,7 @@
 	.long	0x79b3
 	.uleb128 0x66
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF901
 	.byte	0x31
 	.value	0x31b
@@ -27555,7 +27555,7 @@
 	.long	0x79b3
 	.uleb128 0x66
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF903
 	.byte	0x31
 	.value	0x3a8
@@ -27571,7 +27571,7 @@
 	.value	0x3ae
 	.byte	0xf
 	.long	0x76d2
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF904
 	.byte	0x31
 	.value	0x162
@@ -27587,7 +27587,7 @@
 	.byte	0
 	.uleb128 0xe
 	.long	0x7745
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF905
 	.byte	0x31
 	.value	0x141
@@ -27603,7 +27603,7 @@
 	.uleb128 0x1
 	.long	0x7a58
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF906
 	.byte	0x31
 	.value	0x13d
@@ -27615,7 +27615,7 @@
 	.byte	0
 	.uleb128 0xe
 	.long	0x7751
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF907
 	.byte	0x31
 	.value	0x16a
@@ -27633,7 +27633,7 @@
 	.byte	0
 	.uleb128 0xe
 	.long	0x7911
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF908
 	.byte	0x31
 	.value	0x3b6
@@ -27645,7 +27645,7 @@
 	.uleb128 0x1
 	.long	0x7944
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF909
 	.byte	0x31
 	.value	0x3bc
@@ -27655,7 +27655,7 @@
 	.uleb128 0x1
 	.long	0x796f
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF910
 	.byte	0x31
 	.value	0x2e6
@@ -27670,7 +27670,7 @@
 	.long	0x79b3
 	.uleb128 0x66
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF911
 	.byte	0x31
 	.value	0x322
@@ -27684,7 +27684,7 @@
 	.long	0x79b3
 	.uleb128 0x66
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF913
 	.byte	0x31
 	.value	0x3d3
@@ -27696,7 +27696,7 @@
 	.uleb128 0x1
 	.long	0x7944
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF914
 	.byte	0x31
 	.value	0x2ee
@@ -27712,7 +27712,7 @@
 	.byte	0
 	.uleb128 0xe
 	.long	0x7692
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF915
 	.byte	0x31
 	.value	0x36b
@@ -27727,7 +27727,7 @@
 	.uleb128 0x1
 	.long	0x7b7d
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF917
 	.byte	0x31
 	.value	0x2fb
@@ -27743,7 +27743,7 @@
 	.uleb128 0x1
 	.long	0x7b7d
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF918
 	.byte	0x31
 	.value	0x372
@@ -27758,7 +27758,7 @@
 	.uleb128 0x1
 	.long	0x7b7d
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF920
 	.byte	0x31
 	.value	0x2f6
@@ -27770,7 +27770,7 @@
 	.uleb128 0x1
 	.long	0x7b7d
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF921
 	.byte	0x31
 	.value	0x36f
@@ -27783,7 +27783,7 @@
 	.uleb128 0x1
 	.long	0x7b7d
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF923
 	.byte	0x31
 	.value	0x146
@@ -27857,7 +27857,7 @@
 	.uleb128 0x1
 	.long	0x79b3
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF929
 	.byte	0x31
 	.value	0x413
@@ -28014,7 +28014,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF945
 	.byte	0x31
 	.value	0x170
@@ -28044,7 +28044,7 @@
 	.uleb128 0x1
 	.long	0x79b3
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF947
 	.byte	0x31
 	.value	0x192
@@ -28062,7 +28062,7 @@
 	.long	.LASF948
 	.uleb128 0xe
 	.long	0x796a
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF949
 	.byte	0x31
 	.value	0x197
@@ -28090,7 +28090,7 @@
 	.uleb128 0x1
 	.long	0x7e82
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF951
 	.byte	0x31
 	.value	0x1f4
@@ -28109,7 +28109,7 @@
 	.byte	0x8
 	.byte	0x5
 	.long	.LASF953
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF954
 	.byte	0x31
 	.value	0x1f7
@@ -28138,7 +28138,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF957
 	.byte	0x31
 	.value	0x15d
@@ -28148,7 +28148,7 @@
 	.uleb128 0x1
 	.long	0x76d2
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF958
 	.byte	0x31
 	.value	0x11b
@@ -28162,7 +28162,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF959
 	.byte	0x31
 	.value	0x11f
@@ -28176,7 +28176,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF960
 	.byte	0x31
 	.value	0x124
@@ -28190,7 +28190,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF961
 	.byte	0x31
 	.value	0x128
@@ -28204,7 +28204,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF962
 	.byte	0x31
 	.value	0x2e3
@@ -28215,7 +28215,7 @@
 	.long	0x79b3
 	.uleb128 0x66
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF963
 	.byte	0x31
 	.value	0x31f
@@ -28331,7 +28331,7 @@
 	.uleb128 0x1
 	.long	0x79b3
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF969
 	.byte	0x31
 	.value	0x112
@@ -28346,7 +28346,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF969
 	.byte	0x31
 	.value	0x110
@@ -28458,7 +28458,7 @@
 	.long	0x81ed
 	.byte	0x2
 	.byte	0x3
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF975
 	.byte	0x1
 	.byte	0x33
@@ -28561,7 +28561,7 @@
 	.byte	0x3e
 	.byte	0x35
 	.long	0xa0bb
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF990
 	.byte	0x1
 	.byte	0x33
@@ -28814,7 +28814,7 @@
 	.long	0x8314
 	.uleb128 0x3b
 	.long	.LASF1020
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1021
 	.byte	0x1
 	.byte	0x33
@@ -28917,7 +28917,7 @@
 	.byte	0x3e
 	.byte	0x35
 	.long	0xa5b1
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1029
 	.byte	0x1
 	.byte	0x33
@@ -29398,7 +29398,7 @@
 	.byte	0
 	.uleb128 0x8
 	.long	0x888e
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1060
 	.byte	0x1
 	.byte	0x33
@@ -29494,7 +29494,7 @@
 	.byte	0x3e
 	.byte	0x35
 	.long	0xa692
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1061
 	.byte	0x1
 	.byte	0x33
@@ -29733,7 +29733,7 @@
 	.long	0x8bb6
 	.uleb128 0x3b
 	.long	.LASF1063
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1064
 	.byte	0x1
 	.byte	0x33
@@ -29836,7 +29836,7 @@
 	.byte	0x3e
 	.byte	0x35
 	.long	0xa7a0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1072
 	.byte	0x1
 	.byte	0x33
@@ -29861,7 +29861,7 @@
 	.long	.LASF1073
 	.uleb128 0x3b
 	.long	.LASF1074
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1075
 	.byte	0x1
 	.byte	0x33
@@ -29964,7 +29964,7 @@
 	.byte	0x3e
 	.byte	0x35
 	.long	0xa8b3
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1083
 	.byte	0x1
 	.byte	0x33
@@ -30217,7 +30217,7 @@
 	.long	0x8fde
 	.uleb128 0x3b
 	.long	.LASF1099
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1100
 	.byte	0x1
 	.byte	0x34
@@ -30248,9 +30248,9 @@
 	.long	0x9345
 	.long	0x9268
 	.uleb128 0x1
-	.long	0x17903
+	.long	0x17906
 	.uleb128 0x1
-	.long	0x17903
+	.long	0x17906
 	.byte	0
 	.uleb128 0x95
 	.long	.LASF1105
@@ -30260,12 +30260,12 @@
 	.long	.LASF1106
 	.long	0x9345
 	.uleb128 0x1
-	.long	0x1795d
+	.long	0x17960
 	.uleb128 0x1
-	.long	0x1795d
+	.long	0x17960
 	.byte	0
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1107
 	.byte	0x31
 	.value	0x199
@@ -30281,7 +30281,7 @@
 	.byte	0x10
 	.byte	0x4
 	.long	.LASF1108
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF1109
 	.byte	0x31
 	.value	0x1fc
@@ -30300,7 +30300,7 @@
 	.byte	0x8
 	.byte	0x5
 	.long	.LASF1111
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF1112
 	.byte	0x31
 	.value	0x201
@@ -30404,7 +30404,7 @@
 	.long	0x3e0
 	.uleb128 0xe
 	.long	0x614
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1125
 	.byte	0x60
 	.byte	0x35
@@ -30873,7 +30873,7 @@
 	.byte	0x1b
 	.byte	0x13
 	.long	0x9573
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1191
 	.byte	0x10
 	.byte	0x3b
@@ -30911,7 +30911,7 @@
 	.uleb128 0x1
 	.long	0x9394
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1195
 	.byte	0x37
 	.value	0x2de
@@ -30924,7 +30924,7 @@
 	.uleb128 0xe
 	.long	0x97aa
 	.uleb128 0xc4
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.long	.LASF1196
 	.byte	0x37
 	.value	0x2e3
@@ -30945,7 +30945,7 @@
 	.uleb128 0x1
 	.long	0x7911
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1198
 	.byte	0x37
 	.value	0x1e1
@@ -30955,7 +30955,7 @@
 	.uleb128 0x1
 	.long	0x7911
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1199
 	.byte	0x37
 	.value	0x1e6
@@ -30995,7 +30995,7 @@
 	.uleb128 0x1
 	.long	0x4f
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1201
 	.byte	0x37
 	.value	0x305
@@ -31005,7 +31005,7 @@
 	.uleb128 0x1
 	.long	0x7911
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1202
 	.byte	0x37
 	.value	0x3e2
@@ -31017,7 +31017,7 @@
 	.uleb128 0x1
 	.long	0x7eed
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1203
 	.byte	0x37
 	.value	0x426
@@ -31029,7 +31029,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1204
 	.byte	0x37
 	.value	0x431
@@ -31043,7 +31043,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1205
 	.byte	0x37
 	.value	0x429
@@ -31138,7 +31138,7 @@
 	.uleb128 0x1
 	.long	0x4f
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1215
 	.byte	0x37
 	.value	0x39b
@@ -31148,7 +31148,7 @@
 	.uleb128 0x1
 	.long	0x7911
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1216
 	.byte	0x37
 	.value	0x435
@@ -31162,7 +31162,7 @@
 	.uleb128 0x1
 	.long	0x7675
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1217
 	.byte	0x37
 	.value	0x42d
@@ -31174,7 +31174,7 @@
 	.uleb128 0x1
 	.long	0x796f
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1218
 	.byte	0x37
 	.value	0x3e6
@@ -31186,7 +31186,7 @@
 	.uleb128 0x1
 	.long	0x92ce
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1219
 	.byte	0x37
 	.value	0x1ed
@@ -31250,7 +31250,7 @@
 	.uleb128 0x1
 	.long	0x9953
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1226
 	.byte	0x10
 	.byte	0x3e
@@ -31343,7 +31343,7 @@
 	.uleb128 0x1
 	.long	0x9b40
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1236
 	.byte	0x3f
 	.value	0x354
@@ -31353,7 +31353,7 @@
 	.uleb128 0x1
 	.long	0x9b40
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1237
 	.byte	0x3f
 	.value	0x356
@@ -31373,7 +31373,7 @@
 	.uleb128 0x1
 	.long	0x9b40
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1239
 	.byte	0x3f
 	.value	0x23f
@@ -31383,7 +31383,7 @@
 	.uleb128 0x1
 	.long	0x9b40
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1240
 	.byte	0x3f
 	.value	0x333
@@ -31397,7 +31397,7 @@
 	.byte	0
 	.uleb128 0xe
 	.long	0x9b2f
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1241
 	.byte	0x3f
 	.value	0x28e
@@ -31411,7 +31411,7 @@
 	.uleb128 0x1
 	.long	0x9b40
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1242
 	.byte	0x3f
 	.value	0x108
@@ -31423,7 +31423,7 @@
 	.uleb128 0x1
 	.long	0x7911
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1243
 	.byte	0x3f
 	.value	0x2d8
@@ -31439,7 +31439,7 @@
 	.uleb128 0x1
 	.long	0x9b40
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1244
 	.byte	0x3f
 	.value	0x10f
@@ -31453,7 +31453,7 @@
 	.uleb128 0x1
 	.long	0x9b40
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1245
 	.byte	0x3f
 	.value	0x301
@@ -31467,7 +31467,7 @@
 	.uleb128 0x1
 	.long	0x4f
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1246
 	.byte	0x3f
 	.value	0x339
@@ -31481,7 +31481,7 @@
 	.byte	0
 	.uleb128 0xe
 	.long	0x9b3b
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1247
 	.byte	0x3f
 	.value	0x307
@@ -31491,7 +31491,7 @@
 	.uleb128 0x1
 	.long	0x9b40
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1248
 	.byte	0x3f
 	.value	0x240
@@ -31555,7 +31555,7 @@
 	.uleb128 0x1
 	.long	0x3e
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1255
 	.byte	0x3f
 	.value	0x153
@@ -31587,7 +31587,7 @@
 	.uleb128 0x1
 	.long	0x3e
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1258
 	.byte	0x3f
 	.value	0x2d1
@@ -31843,7 +31843,7 @@
 	.uleb128 0x1
 	.long	0x9f7e
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.long	.LASF1295
 	.byte	0x44
 	.value	0x17f
@@ -32019,7 +32019,7 @@
 	.long	0x1379
 	.uleb128 0xd
 	.long	0x12c9
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1302
 	.byte	0x28
 	.byte	0x4
@@ -32123,7 +32123,7 @@
 	.long	0xa151
 	.uleb128 0x8
 	.long	0xa240
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1311
 	.byte	0x30
 	.byte	0x4
@@ -32481,87 +32481,87 @@
 	.long	.LASF1328
 	.uleb128 0xcb
 	.long	0xa561
-	.uleb128 0x20
+	.uleb128 0x21
 	.long	.LASF1329
 	.byte	0x30
 	.byte	0x1
-	.byte	0x1b
+	.byte	0x1e
 	.byte	0x8
 	.long	0xa55b
 	.uleb128 0x46
 	.string	"sx"
 	.byte	0x1
-	.byte	0x1c
+	.byte	0x1f
 	.byte	0x9
 	.long	0x4f
 	.byte	0
 	.uleb128 0x46
 	.string	"sy"
 	.byte	0x1
-	.byte	0x1c
+	.byte	0x1f
 	.byte	0xd
 	.long	0x4f
 	.byte	0x4
 	.uleb128 0x46
 	.string	"A"
 	.byte	0x1
-	.byte	0x1d
+	.byte	0x20
 	.byte	0xb
 	.long	0x30
 	.byte	0x8
 	.uleb128 0x46
 	.string	"B"
 	.byte	0x1
-	.byte	0x1d
+	.byte	0x20
 	.byte	0xe
 	.long	0x30
 	.byte	0xc
 	.uleb128 0x46
 	.string	"C"
 	.byte	0x1
-	.byte	0x1d
+	.byte	0x20
 	.byte	0x11
 	.long	0x30
 	.byte	0x10
 	.uleb128 0x46
 	.string	"D"
 	.byte	0x1
-	.byte	0x1d
+	.byte	0x20
 	.byte	0x14
 	.long	0x30
 	.byte	0x14
 	.uleb128 0x12
 	.long	.LASF1330
 	.byte	0x1
-	.byte	0x1e
+	.byte	0x21
 	.byte	0x9
 	.long	0x4f
 	.byte	0x18
 	.uleb128 0x12
 	.long	.LASF1331
 	.byte	0x1
-	.byte	0x1e
+	.byte	0x21
 	.byte	0x12
 	.long	0x4f
 	.byte	0x1c
 	.uleb128 0x12
 	.long	.LASF1332
 	.byte	0x1
-	.byte	0x1e
+	.byte	0x21
 	.byte	0x19
 	.long	0x4f
 	.byte	0x20
 	.uleb128 0x12
 	.long	.LASF1333
 	.byte	0x1
-	.byte	0x1e
+	.byte	0x21
 	.byte	0x22
 	.long	0x4f
 	.byte	0x24
 	.uleb128 0x46
 	.string	"SUB"
 	.byte	0x1
-	.byte	0x1f
+	.byte	0x22
 	.byte	0x1a
 	.long	0xa08e
 	.byte	0x28
@@ -36963,14 +36963,14 @@
 	.uleb128 0xd2
 	.long	.LASF1410
 	.byte	0x1
-	.byte	0x28
+	.byte	0x2b
 	.byte	0xb
 	.long	.LASF1411
 	.long	0xa151
 	.long	.LLRL0
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x17829
+	.long	0x1782c
 	.uleb128 0x9d
 	.long	.LASF1412
 	.byte	0x40
@@ -36986,54 +36986,54 @@
 	.uleb128 0x40
 	.long	.LASF1303
 	.byte	0x1
-	.byte	0x29
+	.byte	0x2c
 	.byte	0x12
 	.long	0x7681
 	.uleb128 0x40
 	.long	.LASF1304
 	.byte	0x1
-	.byte	0x2a
+	.byte	0x2d
 	.byte	0x12
 	.long	0x7681
 	.uleb128 0x9e
 	.string	"w"
-	.byte	0x2b
+	.byte	0x2e
 	.long	0x57
 	.uleb128 0x9e
 	.string	"h"
-	.byte	0x2c
+	.byte	0x2f
 	.long	0x57
 	.uleb128 0x2a
 	.long	.LASF1414
-	.byte	0x2e
+	.byte	0x31
 	.byte	0xf
 	.long	0xa151
 	.long	.LLST3
 	.long	.LVUS3
 	.uleb128 0x2a
 	.long	.LASF1415
-	.byte	0x33
+	.byte	0x36
 	.byte	0x1c
 	.long	0x382a
 	.long	.LLST4
 	.long	.LVUS4
 	.uleb128 0x2a
 	.long	.LASF1416
-	.byte	0x4a
+	.byte	0x4d
 	.byte	0x16
 	.long	0x4ad9
 	.long	.LLST5
 	.long	.LVUS5
 	.uleb128 0x2a
 	.long	.LASF1417
-	.byte	0x5c
+	.byte	0x5f
 	.byte	0xf
 	.long	0x57
 	.long	.LLST6
 	.long	.LVUS6
 	.uleb128 0x2a
 	.long	.LASF1418
-	.byte	0x5d
+	.byte	0x60
 	.byte	0xf
 	.long	0x57
 	.long	.LLST7
@@ -37041,7 +37041,7 @@
 	.uleb128 0x40
 	.long	.LASF1419
 	.byte	0x1
-	.byte	0x5f
+	.byte	0x62
 	.byte	0x18
 	.long	0x5ec1
 	.uleb128 0x32
@@ -37049,7 +37049,7 @@
 	.long	0xd805
 	.uleb128 0x2e
 	.string	"sub"
-	.byte	0x35
+	.byte	0x38
 	.byte	0x10
 	.long	0xa57f
 	.long	.LLST116
@@ -37070,130 +37070,130 @@
 	.long	0xd763
 	.uleb128 0x2e
 	.string	"p"
-	.byte	0x36
+	.byte	0x39
 	.byte	0x13
 	.long	0xa4c8
 	.long	.LLST125
 	.long	.LVUS125
 	.uleb128 0x2a
 	.long	.LASF1423
-	.byte	0x37
+	.byte	0x3a
 	.byte	0xf
 	.long	0x30
 	.long	.LLST126
 	.long	.LVUS126
 	.uleb128 0x2a
 	.long	.LASF1424
-	.byte	0x38
+	.byte	0x3b
 	.byte	0xf
 	.long	0x30
 	.long	.LLST127
 	.long	.LVUS127
 	.uleb128 0x2e
 	.string	"dx"
-	.byte	0x3b
+	.byte	0x3e
 	.byte	0xf
 	.long	0x30
 	.long	.LLST128
 	.long	.LVUS128
 	.uleb128 0x2e
 	.string	"dy"
-	.byte	0x3c
+	.byte	0x3f
 	.byte	0xf
 	.long	0x30
 	.long	.LLST129
 	.long	.LVUS129
 	.uleb128 0x13
-	.long	0x17c90
+	.long	0x17c93
 	.quad	.LBI4369
 	.value	.LVU92
 	.quad	.LBB4369
 	.quad	.LBE4369-.LBB4369
 	.byte	0x1
-	.byte	0x39
+	.byte	0x3c
 	.byte	0x2b
 	.long	0xd0e8
 	.uleb128 0x2
-	.long	0x17c9a
+	.long	0x17c9d
 	.long	.LLST130
 	.long	.LVUS130
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c90
+	.long	0x17c93
 	.quad	.LBI4371
 	.value	.LVU98
 	.quad	.LBB4371
 	.quad	.LBE4371-.LBB4371
 	.byte	0x1
-	.byte	0x3a
+	.byte	0x3d
 	.byte	0x2b
 	.long	0xd11c
 	.uleb128 0x2
-	.long	0x17c9a
+	.long	0x17c9d
 	.long	.LLST131
 	.long	.LVUS131
 	.byte	0
 	.uleb128 0x13
-	.long	0x178a5
+	.long	0x178a8
 	.quad	.LBI4373
 	.value	.LVU110
 	.quad	.LBB4373
 	.quad	.LBE4373-.LBB4373
 	.byte	0x1
-	.byte	0x41
+	.byte	0x44
 	.byte	0x1d
 	.long	0xd14d
 	.uleb128 0x4
-	.long	0x178b8
+	.long	0x178bb
 	.uleb128 0x4
-	.long	0x178c5
+	.long	0x178c8
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17879
+	.long	0x1787c
 	.quad	.LBI4374
 	.value	.LVU113
 	.long	.LLRL132
 	.byte	0x1
-	.byte	0x42
+	.byte	0x45
 	.byte	0x1d
 	.long	0xd17a
 	.uleb128 0x2
-	.long	0x1788c
+	.long	0x1788f
 	.long	.LLST133
 	.long	.LVUS133
 	.uleb128 0x4
-	.long	0x17898
+	.long	0x1789b
 	.byte	0
 	.uleb128 0x13
-	.long	0x178a5
+	.long	0x178a8
 	.quad	.LBI4379
 	.value	.LVU122
 	.quad	.LBB4379
 	.quad	.LBE4379-.LBB4379
 	.byte	0x1
-	.byte	0x43
+	.byte	0x46
 	.byte	0x1d
 	.long	0xd1ab
 	.uleb128 0x4
-	.long	0x178b8
+	.long	0x178bb
 	.uleb128 0x4
-	.long	0x178c5
+	.long	0x178c8
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17879
+	.long	0x1787c
 	.quad	.LBI4380
 	.value	.LVU126
 	.long	.LLRL134
 	.byte	0x1
-	.byte	0x44
+	.byte	0x47
 	.byte	0x1d
 	.long	0xd1d8
 	.uleb128 0x2
-	.long	0x1788c
+	.long	0x1788f
 	.long	.LLST135
 	.long	.LVUS135
 	.uleb128 0x4
-	.long	0x17898
+	.long	0x1789b
 	.byte	0
 	.uleb128 0x1a
 	.long	0xcca9
@@ -37201,7 +37201,7 @@
 	.value	.LVU132
 	.long	.LLRL136
 	.byte	0x1
-	.byte	0x45
+	.byte	0x48
 	.byte	0x23
 	.long	0xd200
 	.uleb128 0x2
@@ -37215,7 +37215,7 @@
 	.value	.LVU150
 	.long	.LLRL138
 	.byte	0x1
-	.byte	0x47
+	.byte	0x4a
 	.byte	0x19
 	.uleb128 0x2
 	.long	0xcc92
@@ -37225,7 +37225,7 @@
 	.long	0xcc9b
 	.long	.LLST140
 	.long	.LVUS140
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xc54b
 	.quad	.LBI4387
 	.value	.LVU152
@@ -37302,7 +37302,7 @@
 	.long	0xc52e
 	.long	.LLST153
 	.long	.LVUS153
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xbac6
 	.quad	.LBI4395
 	.value	.LVU3531
@@ -37373,7 +37373,7 @@
 	.quad	.LC2
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xc661
 	.quad	.LBI4403
 	.value	.LVU3544
@@ -37509,7 +37509,7 @@
 	.long	.LLST179
 	.long	.LVUS179
 	.byte	0
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xc607
 	.quad	.LBI4421
 	.value	.LVU3558
@@ -37563,7 +37563,7 @@
 	.byte	0
 	.uleb128 0x38
 	.quad	.LVL573
-	.long	0x17d05
+	.long	0x17d08
 	.uleb128 0x26
 	.uleb128 0x1
 	.byte	0x55
@@ -37651,7 +37651,7 @@
 	.long	0xbc8e
 	.long	.LLST198
 	.long	.LVUS198
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xb3f5
 	.quad	.LBI4434
 	.value	.LVU3573
@@ -37706,7 +37706,7 @@
 	.value	.LVU72
 	.long	.LLRL118
 	.byte	0x1
-	.byte	0x35
+	.byte	0x38
 	.byte	0x16
 	.long	0xd7b5
 	.uleb128 0x2
@@ -37735,7 +37735,7 @@
 	.value	.LVU75
 	.long	.LLRL121
 	.byte	0x1
-	.byte	0x35
+	.byte	0x38
 	.byte	0x16
 	.byte	0x1
 	.uleb128 0x2
@@ -37765,7 +37765,7 @@
 	.uleb128 0x40
 	.long	.LASF1425
 	.byte	0x1
-	.byte	0x4c
+	.byte	0x4f
 	.byte	0x1a
 	.long	0x4ad9
 	.uleb128 0x32
@@ -37773,7 +37773,7 @@
 	.long	0xda07
 	.uleb128 0x2e
 	.string	"p"
-	.byte	0x4d
+	.byte	0x50
 	.byte	0x1a
 	.long	0xa66a
 	.long	.LLST302
@@ -37795,7 +37795,7 @@
 	.value	.LVU263
 	.long	.LLRL304
 	.byte	0x1
-	.byte	0x4d
+	.byte	0x50
 	.byte	0x1e
 	.long	0xd8aa
 	.uleb128 0x2
@@ -37824,7 +37824,7 @@
 	.value	.LVU266
 	.long	.LLRL307
 	.byte	0x1
-	.byte	0x4d
+	.byte	0x50
 	.byte	0x1e
 	.byte	0x1
 	.long	0xd8fd
@@ -37849,17 +37849,17 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x15
-	.long	0x17849
+	.long	0x1784c
 	.quad	.LBI4581
 	.value	.LVU305
 	.long	.LLRL310
 	.byte	0x1
-	.byte	0x4d
+	.byte	0x50
 	.byte	0x1e
 	.byte	0x4
 	.long	0xd926
 	.uleb128 0x2
-	.long	0x17857
+	.long	0x1785a
 	.long	.LLST311
 	.long	.LVUS311
 	.byte	0
@@ -37870,7 +37870,7 @@
 	.quad	.LBB4583
 	.quad	.LBE4583-.LBB4583
 	.byte	0x1
-	.byte	0x4e
+	.byte	0x51
 	.byte	0x35
 	.long	0xd95f
 	.uleb128 0x4
@@ -37887,7 +37887,7 @@
 	.quad	.LBB4585
 	.quad	.LBE4585-.LBB4585
 	.byte	0x1
-	.byte	0x4f
+	.byte	0x52
 	.byte	0x35
 	.long	0xd998
 	.uleb128 0x4
@@ -37904,7 +37904,7 @@
 	.quad	.LBB4587
 	.quad	.LBE4587-.LBB4587
 	.byte	0x1
-	.byte	0x50
+	.byte	0x53
 	.byte	0x35
 	.long	0xd9d1
 	.uleb128 0x4
@@ -37921,7 +37921,7 @@
 	.quad	.LBB4589
 	.quad	.LBE4589-.LBB4589
 	.byte	0x1
-	.byte	0x51
+	.byte	0x54
 	.byte	0x35
 	.uleb128 0x4
 	.long	0xcb4b
@@ -37936,7 +37936,7 @@
 	.long	0xda52
 	.uleb128 0x2e
 	.string	"y"
-	.byte	0x53
+	.byte	0x56
 	.byte	0x12
 	.long	0x4f
 	.long	.LLST320
@@ -37945,7 +37945,7 @@
 	.long	.LLRL321
 	.uleb128 0x2e
 	.string	"row"
-	.byte	0x54
+	.byte	0x57
 	.byte	0x11
 	.long	0x4f
 	.long	.LLST322
@@ -37954,7 +37954,7 @@
 	.long	.LLRL323
 	.uleb128 0x2e
 	.string	"x"
-	.byte	0x55
+	.byte	0x58
 	.byte	0x16
 	.long	0x4f
 	.long	.LLST324
@@ -37969,7 +37969,7 @@
 	.quad	.LBB4521
 	.quad	.LBE4521-.LBB4521
 	.byte	0x1
-	.byte	0x4c
+	.byte	0x4f
 	.byte	0x3c
 	.long	0xdaa6
 	.uleb128 0x4
@@ -37993,7 +37993,7 @@
 	.value	.LVU220
 	.long	.LLRL261
 	.byte	0x1
-	.byte	0x4c
+	.byte	0x4f
 	.byte	0x3c
 	.byte	0x1
 	.long	0xdf21
@@ -38007,7 +38007,7 @@
 	.long	0xcbe5
 	.uleb128 0x4
 	.long	0xcbf2
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xc430
 	.quad	.LBI4524
 	.value	.LVU221
@@ -38343,7 +38343,7 @@
 	.long	0xac71
 	.uleb128 0x38
 	.quad	.LVL51
-	.long	0x17d0f
+	.long	0x17d12
 	.uleb128 0x26
 	.uleb128 0x1
 	.byte	0x54
@@ -38381,7 +38381,7 @@
 	.value	.LVU259
 	.long	.LLRL316
 	.byte	0x1
-	.byte	0x4c
+	.byte	0x4f
 	.byte	0x3c
 	.byte	0x2
 	.long	0xdf5e
@@ -38406,7 +38406,7 @@
 	.quad	.LBB4612
 	.quad	.LBE4612-.LBB4612
 	.byte	0x1
-	.byte	0x5a
+	.byte	0x5d
 	.byte	0x5
 	.uleb128 0x4
 	.long	0xcba0
@@ -38568,10 +38568,10 @@
 	.byte	0
 	.uleb128 0x32
 	.long	.LLRL388
-	.long	0x1519c
+	.long	0x1519f
 	.uleb128 0x2e
 	.string	"ty"
-	.byte	0x61
+	.byte	0x64
 	.byte	0xe
 	.long	0x4f
 	.long	.LLST389
@@ -38581,21 +38581,21 @@
 	.uleb128 0x40
 	.long	.LASF1426
 	.byte	0x1
-	.byte	0x62
+	.byte	0x65
 	.byte	0x13
 	.long	0x57
 	.uleb128 0x40
 	.long	.LASF1427
 	.byte	0x1
-	.byte	0x63
+	.byte	0x66
 	.byte	0x13
 	.long	0x57
 	.uleb128 0x32
 	.long	.LLRL393
-	.long	0x15171
+	.long	0x15174
 	.uleb128 0x2e
 	.string	"tx"
-	.byte	0x65
+	.byte	0x68
 	.byte	0x12
 	.long	0x4f
 	.long	.LLST394
@@ -38605,29 +38605,29 @@
 	.uleb128 0x40
 	.long	.LASF1428
 	.byte	0x1
-	.byte	0x66
+	.byte	0x69
 	.byte	0x17
 	.long	0x57
 	.uleb128 0x2a
 	.long	.LASF1429
-	.byte	0x67
+	.byte	0x6a
 	.byte	0x17
 	.long	0x57
 	.long	.LLST396
 	.long	.LVUS396
 	.uleb128 0x2a
 	.long	.LASF1430
-	.byte	0x68
+	.byte	0x6b
 	.byte	0x1a
 	.long	0x7681
 	.long	.LLST397
 	.long	.LVUS397
 	.uleb128 0x32
 	.long	.LLRL398
-	.long	0x14d1c
+	.long	0x14d1f
 	.uleb128 0x2e
 	.string	"p"
-	.byte	0x6e
+	.byte	0x71
 	.byte	0x23
 	.long	0xa66a
 	.long	.LLST399
@@ -38646,110 +38646,110 @@
 	.uleb128 0x40
 	.long	.LASF1332
 	.byte	0x1
-	.byte	0x6f
+	.byte	0x72
 	.byte	0x1b
 	.long	0x57
 	.uleb128 0x40
 	.long	.LASF1333
 	.byte	0x1
-	.byte	0x70
+	.byte	0x73
 	.byte	0x1b
 	.long	0x57
 	.uleb128 0x40
 	.long	.LASF1330
 	.byte	0x1
-	.byte	0x71
+	.byte	0x74
 	.byte	0x1b
 	.long	0x57
 	.uleb128 0x40
 	.long	.LASF1331
 	.byte	0x1
-	.byte	0x72
+	.byte	0x75
 	.byte	0x1b
 	.long	0x57
 	.uleb128 0x2e
 	.string	"Avx"
-	.byte	0x75
+	.byte	0x78
 	.byte	0x1e
 	.long	0xa47e
 	.long	.LLST401
 	.long	.LVUS401
 	.uleb128 0x2e
 	.string	"Bvx"
-	.byte	0x76
+	.byte	0x79
 	.byte	0x1e
 	.long	0xa47e
 	.long	.LLST402
 	.long	.LVUS402
 	.uleb128 0x2e
 	.string	"Cvx"
-	.byte	0x77
+	.byte	0x7a
 	.byte	0x1e
 	.long	0xa47e
 	.long	.LLST403
 	.long	.LVUS403
 	.uleb128 0x2e
 	.string	"Dvx"
-	.byte	0x78
+	.byte	0x7b
 	.byte	0x1e
 	.long	0xa47e
 	.long	.LLST404
 	.long	.LVUS404
 	.uleb128 0x2a
 	.long	.LASF1431
-	.byte	0x7a
+	.byte	0x7d
 	.byte	0x1b
 	.long	0x57
 	.long	.LLST405
 	.long	.LVUS405
 	.uleb128 0x2e
 	.string	"y"
-	.byte	0x7c
+	.byte	0x7f
 	.byte	0x15
 	.long	0x4f
 	.long	.LLST406
 	.long	.LVUS406
 	.uleb128 0x32
 	.long	.LLRL407
-	.long	0x119c0
+	.long	0x119c3
 	.uleb128 0x2e
 	.string	"rb"
-	.byte	0x7f
+	.byte	0x82
 	.byte	0x1c
-	.long	0x17829
+	.long	0x1782c
 	.long	.LLST408
 	.long	.LVUS408
 	.uleb128 0x2e
 	.string	"vp0"
-	.byte	0x86
+	.byte	0x89
 	.byte	0x1c
 	.long	0xa86d
 	.long	.LLST409
 	.long	.LVUS409
 	.uleb128 0x2e
 	.string	"vp1"
-	.byte	0x87
+	.byte	0x8a
 	.byte	0x1c
 	.long	0xa86d
 	.long	.LLST410
 	.long	.LVUS410
 	.uleb128 0x2e
 	.string	"vp2"
-	.byte	0x88
+	.byte	0x8b
 	.byte	0x1c
 	.long	0xa86d
 	.long	.LLST411
 	.long	.LVUS411
 	.uleb128 0x2e
 	.string	"vp3"
-	.byte	0x89
+	.byte	0x8c
 	.byte	0x1c
 	.long	0xa86d
 	.long	.LLST412
 	.long	.LVUS412
 	.uleb128 0x2e
 	.string	"xf"
-	.byte	0x8b
+	.byte	0x8e
 	.byte	0x19
 	.long	0x4f
 	.long	.LLST413
@@ -38760,112 +38760,112 @@
 	.long	0x106b5
 	.uleb128 0x2a
 	.long	.LASF1432
-	.byte	0x8e
+	.byte	0x91
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST554
 	.long	.LVUS554
 	.uleb128 0x2a
 	.long	.LASF1433
-	.byte	0x8f
+	.byte	0x92
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST555
 	.long	.LVUS555
 	.uleb128 0x2a
 	.long	.LASF1434
-	.byte	0x90
+	.byte	0x93
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST556
 	.long	.LVUS556
 	.uleb128 0x2a
 	.long	.LASF1435
-	.byte	0x91
+	.byte	0x94
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST557
 	.long	.LVUS557
 	.uleb128 0x2a
 	.long	.LASF1436
-	.byte	0x93
+	.byte	0x96
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST558
 	.long	.LVUS558
 	.uleb128 0x2a
 	.long	.LASF1437
-	.byte	0x94
+	.byte	0x97
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST559
 	.long	.LVUS559
 	.uleb128 0x2a
 	.long	.LASF1438
-	.byte	0x95
+	.byte	0x98
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST560
 	.long	.LVUS560
 	.uleb128 0x2a
 	.long	.LASF1439
-	.byte	0x96
+	.byte	0x99
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST561
 	.long	.LVUS561
 	.uleb128 0x2a
 	.long	.LASF1440
-	.byte	0xa7
+	.byte	0xaa
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST562
 	.long	.LVUS562
 	.uleb128 0x2a
 	.long	.LASF1441
-	.byte	0xa8
+	.byte	0xab
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST563
 	.long	.LVUS563
 	.uleb128 0x2a
 	.long	.LASF1442
-	.byte	0xa9
+	.byte	0xac
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST564
 	.long	.LVUS564
 	.uleb128 0x2a
 	.long	.LASF1443
-	.byte	0xaa
+	.byte	0xad
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST565
 	.long	.LVUS565
 	.uleb128 0x2a
 	.long	.LASF1444
-	.byte	0xbb
+	.byte	0xbe
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST566
 	.long	.LVUS566
 	.uleb128 0x2a
 	.long	.LASF1445
-	.byte	0xbc
+	.byte	0xbf
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST567
 	.long	.LVUS567
 	.uleb128 0x2a
 	.long	.LASF1446
-	.byte	0xbd
+	.byte	0xc0
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST568
 	.long	.LVUS568
 	.uleb128 0x2a
 	.long	.LASF1447
-	.byte	0xbe
+	.byte	0xc1
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST569
@@ -38873,25 +38873,25 @@
 	.uleb128 0x40
 	.long	.LASF1448
 	.byte	0x1
-	.byte	0xcf
+	.byte	0xd2
 	.byte	0x20
 	.long	0xa472
 	.uleb128 0x40
 	.long	.LASF1449
 	.byte	0x1
-	.byte	0xd0
+	.byte	0xd3
 	.byte	0x20
 	.long	0xa472
 	.uleb128 0x2a
 	.long	.LASF1450
-	.byte	0xd1
+	.byte	0xd4
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST570
 	.long	.LVUS570
 	.uleb128 0x2a
 	.long	.LASF1451
-	.byte	0xd2
+	.byte	0xd5
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST571
@@ -38901,258 +38901,258 @@
 	.long	0xe828
 	.uleb128 0x2a
 	.long	.LASF1452
-	.byte	0x99
+	.byte	0x9c
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST598
 	.long	.LVUS598
 	.uleb128 0x2a
 	.long	.LASF1453
-	.byte	0x9a
+	.byte	0x9d
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST599
 	.long	.LVUS599
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4989
 	.value	.LVU725
 	.long	.LLRL600
 	.byte	0x1
-	.byte	0x9b
+	.byte	0x9e
 	.byte	0x33
 	.long	0xe54b
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST601
 	.long	.LVUS601
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST602
 	.long	.LVUS602
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4992
 	.value	.LVU729
 	.long	.LLRL603
 	.byte	0x1
-	.byte	0x9c
+	.byte	0x9f
 	.byte	0x33
 	.long	0xe585
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST604
 	.long	.LVUS604
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST605
 	.long	.LVUS605
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI4995
 	.value	.LVU717
 	.quad	.LBB4995
 	.quad	.LBE4995-.LBB4995
 	.byte	0x1
-	.byte	0x99
+	.byte	0x9c
 	.byte	0x3a
 	.long	0xe5b9
 	.uleb128 0x2
-	.long	0x17bdb
+	.long	0x17bde
 	.long	.LLST606
 	.long	.LVUS606
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI4997
 	.value	.LVU721
 	.quad	.LBB4997
 	.quad	.LBE4997-.LBB4997
 	.byte	0x1
-	.byte	0x9a
+	.byte	0x9d
 	.byte	0x3a
 	.long	0xe5ed
 	.uleb128 0x2
-	.long	0x17bdb
+	.long	0x17bde
 	.long	.LLST607
 	.long	.LVUS607
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5001
 	.value	.LVU733
 	.quad	.LBB5001
 	.quad	.LBE5001-.LBB5001
 	.byte	0x1
-	.byte	0x9d
+	.byte	0xa0
 	.byte	0x33
 	.long	0xe63b
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST608
 	.long	.LVUS608
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST609
 	.long	.LVUS609
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST610
 	.long	.LVUS610
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5003
 	.value	.LVU738
 	.quad	.LBB5003
 	.quad	.LBE5003-.LBB5003
 	.byte	0x1
-	.byte	0x9e
+	.byte	0xa1
 	.byte	0x33
 	.long	0xe689
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST611
 	.long	.LVUS611
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST612
 	.long	.LVUS612
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST613
 	.long	.LVUS613
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5005
 	.value	.LVU743
 	.long	.LLRL614
 	.byte	0x1
-	.byte	0x9f
+	.byte	0xa2
 	.byte	0x33
 	.long	0xe6cb
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST615
 	.long	.LVUS615
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST616
 	.long	.LVUS616
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST617
 	.long	.LVUS617
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5009
 	.value	.LVU750
 	.quad	.LBB5009
 	.quad	.LBE5009-.LBB5009
 	.byte	0x1
-	.byte	0xa0
+	.byte	0xa3
 	.byte	0x33
 	.long	0xe719
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST618
 	.long	.LVUS618
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST619
 	.long	.LVUS619
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST620
 	.long	.LVUS620
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5011
 	.value	.LVU755
 	.quad	.LBB5011
 	.quad	.LBE5011-.LBB5011
 	.byte	0x1
-	.byte	0xa1
+	.byte	0xa4
 	.byte	0x33
 	.long	0xe767
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST621
 	.long	.LVUS621
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST622
 	.long	.LVUS622
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST623
 	.long	.LVUS623
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5013
 	.value	.LVU760
 	.quad	.LBB5013
 	.quad	.LBE5013-.LBB5013
 	.byte	0x1
-	.byte	0xa2
+	.byte	0xa5
 	.byte	0x33
 	.long	0xe7b5
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST624
 	.long	.LVUS624
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST625
 	.long	.LVUS625
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST626
 	.long	.LVUS626
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5015
 	.value	.LVU765
 	.quad	.LBB5015
 	.quad	.LBE5015-.LBB5015
 	.byte	0x1
-	.byte	0xa3
+	.byte	0xa6
 	.byte	0x2d
 	.long	0xe7f6
 	.uleb128 0x2
-	.long	0x17bac
+	.long	0x17baf
 	.long	.LLST627
 	.long	.LVUS627
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST628
 	.long	.LVUS628
 	.byte	0
 	.uleb128 0x51
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5017
 	.value	.LVU770
 	.long	.LLRL629
 	.byte	0x1
-	.byte	0xa4
+	.byte	0xa7
 	.byte	0x2d
 	.uleb128 0x2
-	.long	0x17bac
+	.long	0x17baf
 	.long	.LLST630
 	.long	.LVUS630
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST631
 	.long	.LVUS631
 	.byte	0
@@ -39162,258 +39162,258 @@
 	.long	0xeb6e
 	.uleb128 0x2a
 	.long	.LASF1452
-	.byte	0xad
+	.byte	0xb0
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST682
 	.long	.LVUS682
 	.uleb128 0x2a
 	.long	.LASF1453
-	.byte	0xae
+	.byte	0xb1
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST683
 	.long	.LVUS683
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5146
 	.value	.LVU857
 	.long	.LLRL684
 	.byte	0x1
-	.byte	0xaf
+	.byte	0xb2
 	.byte	0x33
 	.long	0xe891
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST685
 	.long	.LVUS685
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST686
 	.long	.LVUS686
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5149
 	.value	.LVU861
 	.long	.LLRL687
 	.byte	0x1
-	.byte	0xb0
+	.byte	0xb3
 	.byte	0x33
 	.long	0xe8cb
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST688
 	.long	.LVUS688
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST689
 	.long	.LVUS689
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5152
 	.value	.LVU849
 	.quad	.LBB5152
 	.quad	.LBE5152-.LBB5152
 	.byte	0x1
-	.byte	0xad
+	.byte	0xb0
 	.byte	0x3a
 	.long	0xe8ff
 	.uleb128 0x2
-	.long	0x17bdb
+	.long	0x17bde
 	.long	.LLST690
 	.long	.LVUS690
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5154
 	.value	.LVU853
 	.quad	.LBB5154
 	.quad	.LBE5154-.LBB5154
 	.byte	0x1
-	.byte	0xae
+	.byte	0xb1
 	.byte	0x3a
 	.long	0xe933
 	.uleb128 0x2
-	.long	0x17bdb
+	.long	0x17bde
 	.long	.LLST691
 	.long	.LVUS691
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5158
 	.value	.LVU865
 	.quad	.LBB5158
 	.quad	.LBE5158-.LBB5158
 	.byte	0x1
-	.byte	0xb1
+	.byte	0xb4
 	.byte	0x33
 	.long	0xe981
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST692
 	.long	.LVUS692
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST693
 	.long	.LVUS693
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST694
 	.long	.LVUS694
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5160
 	.value	.LVU870
 	.quad	.LBB5160
 	.quad	.LBE5160-.LBB5160
 	.byte	0x1
-	.byte	0xb2
+	.byte	0xb5
 	.byte	0x33
 	.long	0xe9cf
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST695
 	.long	.LVUS695
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST696
 	.long	.LVUS696
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST697
 	.long	.LVUS697
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5162
 	.value	.LVU875
 	.long	.LLRL698
 	.byte	0x1
-	.byte	0xb3
+	.byte	0xb6
 	.byte	0x33
 	.long	0xea11
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST699
 	.long	.LVUS699
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST700
 	.long	.LVUS700
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST701
 	.long	.LVUS701
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5166
 	.value	.LVU882
 	.quad	.LBB5166
 	.quad	.LBE5166-.LBB5166
 	.byte	0x1
-	.byte	0xb4
+	.byte	0xb7
 	.byte	0x33
 	.long	0xea5f
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST702
 	.long	.LVUS702
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST703
 	.long	.LVUS703
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST704
 	.long	.LVUS704
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5168
 	.value	.LVU887
 	.quad	.LBB5168
 	.quad	.LBE5168-.LBB5168
 	.byte	0x1
-	.byte	0xb5
+	.byte	0xb8
 	.byte	0x33
 	.long	0xeaad
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST705
 	.long	.LVUS705
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST706
 	.long	.LVUS706
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST707
 	.long	.LVUS707
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5170
 	.value	.LVU892
 	.quad	.LBB5170
 	.quad	.LBE5170-.LBB5170
 	.byte	0x1
-	.byte	0xb6
+	.byte	0xb9
 	.byte	0x33
 	.long	0xeafb
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST708
 	.long	.LVUS708
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST709
 	.long	.LVUS709
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST710
 	.long	.LVUS710
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5172
 	.value	.LVU897
 	.quad	.LBB5172
 	.quad	.LBE5172-.LBB5172
 	.byte	0x1
-	.byte	0xb7
+	.byte	0xba
 	.byte	0x2d
 	.long	0xeb3c
 	.uleb128 0x2
-	.long	0x17bac
+	.long	0x17baf
 	.long	.LLST711
 	.long	.LVUS711
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST712
 	.long	.LVUS712
 	.byte	0
 	.uleb128 0x51
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5174
 	.value	.LVU902
 	.long	.LLRL713
 	.byte	0x1
-	.byte	0xb8
+	.byte	0xbb
 	.byte	0x2d
 	.uleb128 0x2
-	.long	0x17bac
+	.long	0x17baf
 	.long	.LLST714
 	.long	.LVUS714
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST715
 	.long	.LVUS715
 	.byte	0
@@ -39423,258 +39423,258 @@
 	.long	0xeeb4
 	.uleb128 0x2a
 	.long	.LASF1452
-	.byte	0xc1
+	.byte	0xc4
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST742
 	.long	.LVUS742
 	.uleb128 0x2a
 	.long	.LASF1453
-	.byte	0xc2
+	.byte	0xc5
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST743
 	.long	.LVUS743
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5247
 	.value	.LVU989
 	.long	.LLRL744
 	.byte	0x1
-	.byte	0xc3
+	.byte	0xc6
 	.byte	0x33
 	.long	0xebd7
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST745
 	.long	.LVUS745
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST746
 	.long	.LVUS746
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5250
 	.value	.LVU993
 	.long	.LLRL747
 	.byte	0x1
-	.byte	0xc4
+	.byte	0xc7
 	.byte	0x33
 	.long	0xec11
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST748
 	.long	.LVUS748
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST749
 	.long	.LVUS749
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5253
 	.value	.LVU981
 	.quad	.LBB5253
 	.quad	.LBE5253-.LBB5253
 	.byte	0x1
-	.byte	0xc1
+	.byte	0xc4
 	.byte	0x3a
 	.long	0xec45
 	.uleb128 0x2
-	.long	0x17bdb
+	.long	0x17bde
 	.long	.LLST750
 	.long	.LVUS750
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5255
 	.value	.LVU985
 	.quad	.LBB5255
 	.quad	.LBE5255-.LBB5255
 	.byte	0x1
-	.byte	0xc2
+	.byte	0xc5
 	.byte	0x3a
 	.long	0xec79
 	.uleb128 0x2
-	.long	0x17bdb
+	.long	0x17bde
 	.long	.LLST751
 	.long	.LVUS751
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5259
 	.value	.LVU997
 	.quad	.LBB5259
 	.quad	.LBE5259-.LBB5259
 	.byte	0x1
-	.byte	0xc5
+	.byte	0xc8
 	.byte	0x33
 	.long	0xecc7
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST752
 	.long	.LVUS752
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST753
 	.long	.LVUS753
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST754
 	.long	.LVUS754
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5261
 	.value	.LVU1002
 	.quad	.LBB5261
 	.quad	.LBE5261-.LBB5261
 	.byte	0x1
-	.byte	0xc6
+	.byte	0xc9
 	.byte	0x33
 	.long	0xed15
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST755
 	.long	.LVUS755
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST756
 	.long	.LVUS756
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST757
 	.long	.LVUS757
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5263
 	.value	.LVU1007
 	.long	.LLRL758
 	.byte	0x1
-	.byte	0xc7
+	.byte	0xca
 	.byte	0x33
 	.long	0xed57
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST759
 	.long	.LVUS759
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST760
 	.long	.LVUS760
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST761
 	.long	.LVUS761
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5267
 	.value	.LVU1013
 	.quad	.LBB5267
 	.quad	.LBE5267-.LBB5267
 	.byte	0x1
-	.byte	0xc8
+	.byte	0xcb
 	.byte	0x33
 	.long	0xeda5
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST762
 	.long	.LVUS762
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST763
 	.long	.LVUS763
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST764
 	.long	.LVUS764
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5269
 	.value	.LVU1018
 	.quad	.LBB5269
 	.quad	.LBE5269-.LBB5269
 	.byte	0x1
-	.byte	0xc9
+	.byte	0xcc
 	.byte	0x33
 	.long	0xedf3
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST765
 	.long	.LVUS765
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST766
 	.long	.LVUS766
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST767
 	.long	.LVUS767
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5271
 	.value	.LVU1023
 	.quad	.LBB5271
 	.quad	.LBE5271-.LBB5271
 	.byte	0x1
-	.byte	0xca
+	.byte	0xcd
 	.byte	0x33
 	.long	0xee41
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST768
 	.long	.LVUS768
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST769
 	.long	.LVUS769
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST770
 	.long	.LVUS770
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5273
 	.value	.LVU1028
 	.quad	.LBB5273
 	.quad	.LBE5273-.LBB5273
 	.byte	0x1
-	.byte	0xcb
+	.byte	0xce
 	.byte	0x2d
 	.long	0xee82
 	.uleb128 0x2
-	.long	0x17bac
+	.long	0x17baf
 	.long	.LLST771
 	.long	.LVUS771
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST772
 	.long	.LVUS772
 	.byte	0
 	.uleb128 0x51
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5275
 	.value	.LVU1033
 	.long	.LLRL773
 	.byte	0x1
-	.byte	0xcc
+	.byte	0xcf
 	.byte	0x2d
 	.uleb128 0x2
-	.long	0x17bac
+	.long	0x17baf
 	.long	.LLST774
 	.long	.LVUS774
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST775
 	.long	.LVUS775
 	.byte	0
@@ -39684,281 +39684,281 @@
 	.long	0xf1e2
 	.uleb128 0x2a
 	.long	.LASF1452
-	.byte	0xd5
+	.byte	0xd8
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST800
 	.long	.LVUS800
 	.uleb128 0x2a
 	.long	.LASF1453
-	.byte	0xd6
+	.byte	0xd9
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST801
 	.long	.LVUS801
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5342
 	.value	.LVU1120
 	.long	.LLRL802
 	.byte	0x1
-	.byte	0xd7
+	.byte	0xda
 	.byte	0x33
 	.long	0xef15
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST803
 	.long	.LVUS803
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x4
-	.long	0x17b48
+	.long	0x17b4b
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5345
 	.value	.LVU1124
 	.long	.LLRL804
 	.byte	0x1
-	.byte	0xd8
+	.byte	0xdb
 	.byte	0x33
 	.long	0xef4f
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST805
 	.long	.LVUS805
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST806
 	.long	.LVUS806
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5348
 	.value	.LVU1112
 	.quad	.LBB5348
 	.quad	.LBE5348-.LBB5348
 	.byte	0x1
-	.byte	0xd5
+	.byte	0xd8
 	.byte	0x3a
 	.long	0xef83
 	.uleb128 0x2
-	.long	0x17bdb
+	.long	0x17bde
 	.long	.LLST807
 	.long	.LVUS807
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5350
 	.value	.LVU1116
 	.quad	.LBB5350
 	.quad	.LBE5350-.LBB5350
 	.byte	0x1
-	.byte	0xd6
+	.byte	0xd9
 	.byte	0x3a
 	.long	0xefb7
 	.uleb128 0x2
-	.long	0x17bdb
+	.long	0x17bde
 	.long	.LLST808
 	.long	.LVUS808
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5354
 	.value	.LVU1128
 	.quad	.LBB5354
 	.quad	.LBE5354-.LBB5354
 	.byte	0x1
-	.byte	0xd9
+	.byte	0xdc
 	.byte	0x33
 	.long	0xf005
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST809
 	.long	.LVUS809
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST810
 	.long	.LVUS810
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST811
 	.long	.LVUS811
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5356
 	.value	.LVU1133
 	.quad	.LBB5356
 	.quad	.LBE5356-.LBB5356
 	.byte	0x1
-	.byte	0xda
+	.byte	0xdd
 	.byte	0x33
 	.long	0xf053
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST812
 	.long	.LVUS812
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST813
 	.long	.LVUS813
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST814
 	.long	.LVUS814
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5358
 	.value	.LVU1138
 	.long	.LLRL815
 	.byte	0x1
-	.byte	0xdb
+	.byte	0xde
 	.byte	0x33
 	.long	0xf08d
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST816
 	.long	.LVUS816
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST817
 	.long	.LVUS817
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5361
 	.value	.LVU1143
 	.long	.LLRL818
 	.byte	0x1
-	.byte	0xdc
+	.byte	0xdf
 	.byte	0x33
 	.long	0xf0c7
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST819
 	.long	.LVUS819
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST820
 	.long	.LVUS820
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5366
 	.value	.LVU1148
 	.quad	.LBB5366
 	.quad	.LBE5366-.LBB5366
 	.byte	0x1
-	.byte	0xdd
+	.byte	0xe0
 	.byte	0x33
 	.long	0xf115
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST821
 	.long	.LVUS821
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST822
 	.long	.LVUS822
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST823
 	.long	.LVUS823
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5368
 	.value	.LVU1153
 	.quad	.LBB5368
 	.quad	.LBE5368-.LBB5368
 	.byte	0x1
-	.byte	0xde
+	.byte	0xe1
 	.byte	0x33
 	.long	0xf163
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST824
 	.long	.LVUS824
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST825
 	.long	.LVUS825
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST826
 	.long	.LVUS826
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5370
 	.value	.LVU1158
 	.quad	.LBB5370
 	.quad	.LBE5370-.LBB5370
 	.byte	0x1
-	.byte	0xdf
+	.byte	0xe2
 	.byte	0x2d
 	.long	0xf1a4
 	.uleb128 0x2
-	.long	0x17bac
+	.long	0x17baf
 	.long	.LLST827
 	.long	.LVUS827
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST828
 	.long	.LVUS828
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5372
 	.value	.LVU1163
 	.quad	.LBB5372
 	.quad	.LBE5372-.LBB5372
 	.byte	0x1
-	.byte	0xe0
+	.byte	0xe3
 	.byte	0x2d
 	.uleb128 0x2
-	.long	0x17bac
+	.long	0x17baf
 	.long	.LLST829
 	.long	.LVUS829
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST830
 	.long	.LVUS830
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4931
 	.value	.LVU573
 	.long	.LLRL572
 	.byte	0x1
-	.byte	0x8e
+	.byte	0x91
 	.byte	0x32
 	.long	0xf2f3
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4932
 	.value	.LVU575
 	.quad	.LBB4932
 	.quad	.LBE4932-.LBB4932
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xf2a1
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4934
 	.value	.LVU577
 	.quad	.LBB4934
@@ -39967,13 +39967,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST573
 	.long	.LVUS573
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4936
 	.value	.LVU579
 	.quad	.LBB4936
@@ -39982,82 +39982,82 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST574
 	.long	.LVUS574
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST575
 	.long	.LVUS575
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x4d
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4938
 	.value	.LVU582
 	.quad	.LBB4938
 	.quad	.LBE4938-.LBB4938
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xf2cd
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4940
 	.value	.LVU586
 	.long	.LLRL576
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST577
 	.long	.LVUS577
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4944
 	.value	.LVU592
 	.long	.LLRL578
 	.byte	0x1
-	.byte	0x8f
+	.byte	0x92
 	.byte	0x32
 	.long	0xf405
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4945
 	.value	.LVU601
 	.long	.LLRL579
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xf333
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4948
 	.value	.LVU594
 	.quad	.LBB4948
 	.quad	.LBE4948-.LBB4948
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xf3d3
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4950
 	.value	.LVU596
 	.quad	.LBB4950
@@ -40066,13 +40066,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST580
 	.long	.LVUS580
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4952
 	.value	.LVU598
 	.quad	.LBB4952
@@ -40081,70 +40081,70 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST581
 	.long	.LVUS581
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST582
 	.long	.LVUS582
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4955
 	.value	.LVU604
 	.quad	.LBB4955
 	.quad	.LBE4955-.LBB4955
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST583
 	.long	.LVUS583
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4957
 	.value	.LVU609
 	.long	.LLRL584
 	.byte	0x1
-	.byte	0x90
+	.byte	0x93
 	.byte	0x32
 	.long	0xf50b
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4958
 	.value	.LVU618
 	.long	.LLRL585
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xf445
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4961
 	.value	.LVU611
 	.quad	.LBB4961
 	.quad	.LBE4961-.LBB4961
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xf4e5
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4963
 	.value	.LVU613
 	.quad	.LBB4963
@@ -40153,13 +40153,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST586
 	.long	.LVUS586
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4965
 	.value	.LVU615
 	.quad	.LBB4965
@@ -40168,69 +40168,69 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST587
 	.long	.LVUS587
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST588
 	.long	.LVUS588
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4968
 	.value	.LVU621
 	.long	.LLRL589
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST590
 	.long	.LVUS590
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4972
 	.value	.LVU629
 	.long	.LLRL591
 	.byte	0x1
-	.byte	0x91
+	.byte	0x94
 	.byte	0x32
 	.long	0xf61d
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4973
 	.value	.LVU638
 	.long	.LLRL592
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xf54b
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4976
 	.value	.LVU631
 	.quad	.LBB4976
 	.quad	.LBE4976-.LBB4976
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xf5eb
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4978
 	.value	.LVU633
 	.quad	.LBB4978
@@ -40239,13 +40239,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST593
 	.long	.LVUS593
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4980
 	.value	.LVU635
 	.quad	.LBB4980
@@ -40254,57 +40254,57 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST594
 	.long	.LVUS594
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST595
 	.long	.LVUS595
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4983
 	.value	.LVU641
 	.quad	.LBB4983
 	.quad	.LBE4983-.LBB4983
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST596
 	.long	.LVUS596
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5023
 	.value	.LVU646
 	.long	.LLRL632
 	.byte	0x1
-	.byte	0x93
+	.byte	0x96
 	.byte	0x32
 	.long	0xf72e
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5024
 	.value	.LVU648
 	.quad	.LBB5024
 	.quad	.LBE5024-.LBB5024
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xf6dc
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5026
 	.value	.LVU650
 	.quad	.LBB5026
@@ -40313,13 +40313,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST633
 	.long	.LVUS633
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5028
 	.value	.LVU652
 	.quad	.LBB5028
@@ -40328,82 +40328,82 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST634
 	.long	.LVUS634
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST635
 	.long	.LVUS635
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x4d
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5030
 	.value	.LVU655
 	.quad	.LBB5030
 	.quad	.LBE5030-.LBB5030
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xf708
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5032
 	.value	.LVU659
 	.long	.LLRL636
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST637
 	.long	.LVUS637
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5036
 	.value	.LVU665
 	.long	.LLRL638
 	.byte	0x1
-	.byte	0x94
+	.byte	0x97
 	.byte	0x32
 	.long	0xf840
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5037
 	.value	.LVU674
 	.long	.LLRL639
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xf76e
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5040
 	.value	.LVU667
 	.quad	.LBB5040
 	.quad	.LBE5040-.LBB5040
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xf80e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5042
 	.value	.LVU669
 	.quad	.LBB5042
@@ -40412,13 +40412,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST640
 	.long	.LVUS640
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5044
 	.value	.LVU671
 	.quad	.LBB5044
@@ -40427,70 +40427,70 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST641
 	.long	.LVUS641
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST642
 	.long	.LVUS642
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5047
 	.value	.LVU677
 	.quad	.LBB5047
 	.quad	.LBE5047-.LBB5047
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST643
 	.long	.LVUS643
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5049
 	.value	.LVU682
 	.long	.LLRL644
 	.byte	0x1
-	.byte	0x95
+	.byte	0x98
 	.byte	0x32
 	.long	0xf952
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5050
 	.value	.LVU691
 	.long	.LLRL645
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xf880
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5053
 	.value	.LVU684
 	.quad	.LBB5053
 	.quad	.LBE5053-.LBB5053
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xf920
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5055
 	.value	.LVU686
 	.quad	.LBB5055
@@ -40499,13 +40499,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST646
 	.long	.LVUS646
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5057
 	.value	.LVU688
 	.quad	.LBB5057
@@ -40514,70 +40514,70 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST647
 	.long	.LVUS647
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST648
 	.long	.LVUS648
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5060
 	.value	.LVU694
 	.quad	.LBB5060
 	.quad	.LBE5060-.LBB5060
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST649
 	.long	.LVUS649
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5062
 	.value	.LVU699
 	.long	.LLRL650
 	.byte	0x1
-	.byte	0x96
+	.byte	0x99
 	.byte	0x32
 	.long	0xfa64
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5063
 	.value	.LVU708
 	.long	.LLRL651
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xf992
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5066
 	.value	.LVU701
 	.quad	.LBB5066
 	.quad	.LBE5066-.LBB5066
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xfa32
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5068
 	.value	.LVU703
 	.quad	.LBB5068
@@ -40586,13 +40586,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST652
 	.long	.LVUS652
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5070
 	.value	.LVU705
 	.quad	.LBB5070
@@ -40601,82 +40601,82 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST653
 	.long	.LVUS653
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST654
 	.long	.LVUS654
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5073
 	.value	.LVU711
 	.quad	.LBB5073
 	.quad	.LBE5073-.LBB5073
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST655
 	.long	.LVUS655
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5080
 	.value	.LVU777
 	.long	.LLRL656
 	.byte	0x1
-	.byte	0xa7
+	.byte	0xaa
 	.byte	0x32
 	.long	0xfb62
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5081
 	.value	.LVU786
 	.long	.LLRL657
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xfaa4
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5084
 	.value	.LVU789
 	.long	.LLRL658
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.long	0xfac5
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5087
 	.value	.LVU779
 	.quad	.LBB5087
 	.quad	.LBE5087-.LBB5087
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5089
 	.value	.LVU781
 	.quad	.LBB5089
@@ -40685,13 +40685,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST659
 	.long	.LVUS659
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5091
 	.value	.LVU783
 	.quad	.LBB5091
@@ -40700,11 +40700,11 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST660
 	.long	.LVUS660
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST661
 	.long	.LVUS661
 	.byte	0
@@ -40712,55 +40712,55 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5095
 	.value	.LVU793
 	.long	.LLRL662
 	.byte	0x1
-	.byte	0xa8
+	.byte	0xab
 	.byte	0x32
 	.long	0xfc60
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5096
 	.value	.LVU802
 	.long	.LLRL663
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xfba2
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5099
 	.value	.LVU805
 	.long	.LLRL664
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.long	0xfbc3
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5102
 	.value	.LVU795
 	.quad	.LBB5102
 	.quad	.LBE5102-.LBB5102
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5104
 	.value	.LVU797
 	.quad	.LBB5104
@@ -40769,13 +40769,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST665
 	.long	.LVUS665
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5106
 	.value	.LVU799
 	.quad	.LBB5106
@@ -40784,11 +40784,11 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST666
 	.long	.LVUS666
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST667
 	.long	.LVUS667
 	.byte	0
@@ -40796,43 +40796,43 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5113
 	.value	.LVU809
 	.long	.LLRL668
 	.byte	0x1
-	.byte	0xa9
+	.byte	0xac
 	.byte	0x32
 	.long	0xfd66
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5114
 	.value	.LVU818
 	.long	.LLRL669
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xfca0
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5117
 	.value	.LVU811
 	.quad	.LBB5117
 	.quad	.LBE5117-.LBB5117
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xfd40
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5119
 	.value	.LVU813
 	.quad	.LBB5119
@@ -40841,13 +40841,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST670
 	.long	.LVUS670
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5121
 	.value	.LVU815
 	.quad	.LBB5121
@@ -40856,69 +40856,69 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST671
 	.long	.LVUS671
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST672
 	.long	.LVUS672
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5124
 	.value	.LVU821
 	.long	.LLRL673
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST674
 	.long	.LVUS674
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5132
 	.value	.LVU831
 	.long	.LLRL675
 	.byte	0x1
-	.byte	0xaa
+	.byte	0xad
 	.byte	0x32
 	.long	0xfe78
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5133
 	.value	.LVU840
 	.long	.LLRL676
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xfda6
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5136
 	.value	.LVU833
 	.quad	.LBB5136
 	.quad	.LBE5136-.LBB5136
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0xfe46
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5138
 	.value	.LVU835
 	.quad	.LBB5138
@@ -40927,13 +40927,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST677
 	.long	.LVUS677
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5140
 	.value	.LVU837
 	.quad	.LBB5140
@@ -40942,82 +40942,82 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST678
 	.long	.LVUS678
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST679
 	.long	.LVUS679
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5143
 	.value	.LVU843
 	.quad	.LBB5143
 	.quad	.LBE5143-.LBB5143
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST680
 	.long	.LVUS680
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5181
 	.value	.LVU909
 	.long	.LLRL716
 	.byte	0x1
-	.byte	0xbb
+	.byte	0xbe
 	.byte	0x32
 	.long	0xff76
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5182
 	.value	.LVU918
 	.long	.LLRL717
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xfeb8
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5185
 	.value	.LVU921
 	.long	.LLRL718
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.long	0xfed9
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5188
 	.value	.LVU911
 	.quad	.LBB5188
 	.quad	.LBE5188-.LBB5188
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5190
 	.value	.LVU913
 	.quad	.LBB5190
@@ -41026,13 +41026,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST719
 	.long	.LVUS719
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5192
 	.value	.LVU915
 	.quad	.LBB5192
@@ -41041,11 +41041,11 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST720
 	.long	.LVUS720
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST721
 	.long	.LVUS721
 	.byte	0
@@ -41053,55 +41053,55 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5196
 	.value	.LVU925
 	.long	.LLRL722
 	.byte	0x1
-	.byte	0xbc
+	.byte	0xbf
 	.byte	0x32
 	.long	0x10074
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5197
 	.value	.LVU934
 	.long	.LLRL723
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0xffb6
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5200
 	.value	.LVU937
 	.long	.LLRL724
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.long	0xffd7
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5203
 	.value	.LVU927
 	.quad	.LBB5203
 	.quad	.LBE5203-.LBB5203
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5205
 	.value	.LVU929
 	.quad	.LBB5205
@@ -41110,13 +41110,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST725
 	.long	.LVUS725
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5207
 	.value	.LVU931
 	.quad	.LBB5207
@@ -41125,11 +41125,11 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST726
 	.long	.LVUS726
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST727
 	.long	.LVUS727
 	.byte	0
@@ -41137,43 +41137,43 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5214
 	.value	.LVU941
 	.long	.LLRL728
 	.byte	0x1
-	.byte	0xbd
+	.byte	0xc0
 	.byte	0x32
 	.long	0x1017a
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5215
 	.value	.LVU950
 	.long	.LLRL729
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0x100b4
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5218
 	.value	.LVU943
 	.quad	.LBB5218
 	.quad	.LBE5218-.LBB5218
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0x10154
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5220
 	.value	.LVU945
 	.quad	.LBB5220
@@ -41182,13 +41182,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST730
 	.long	.LVUS730
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5222
 	.value	.LVU947
 	.quad	.LBB5222
@@ -41197,69 +41197,69 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST731
 	.long	.LVUS731
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST732
 	.long	.LVUS732
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5225
 	.value	.LVU953
 	.long	.LLRL733
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST734
 	.long	.LVUS734
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5233
 	.value	.LVU963
 	.long	.LLRL735
 	.byte	0x1
-	.byte	0xbe
+	.byte	0xc1
 	.byte	0x32
 	.long	0x1028c
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5234
 	.value	.LVU972
 	.long	.LLRL736
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0x101ba
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5237
 	.value	.LVU965
 	.quad	.LBB5237
 	.quad	.LBE5237-.LBB5237
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0x1025a
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5239
 	.value	.LVU967
 	.quad	.LBB5239
@@ -41268,13 +41268,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST737
 	.long	.LVUS737
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5241
 	.value	.LVU969
 	.quad	.LBB5241
@@ -41283,70 +41283,70 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST738
 	.long	.LVUS738
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST739
 	.long	.LVUS739
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5244
 	.value	.LVU975
 	.quad	.LBB5244
 	.quad	.LBE5244-.LBB5244
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST740
 	.long	.LVUS740
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5282
 	.value	.LVU1040
 	.long	.LLRL776
 	.byte	0x1
-	.byte	0xcf
+	.byte	0xd2
 	.byte	0x32
 	.long	0x1039e
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5283
 	.value	.LVU1049
 	.long	.LLRL777
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0x102cc
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5286
 	.value	.LVU1042
 	.quad	.LBB5286
 	.quad	.LBE5286-.LBB5286
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0x1036c
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5288
 	.value	.LVU1044
 	.quad	.LBB5288
@@ -41355,13 +41355,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST778
 	.long	.LVUS778
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5290
 	.value	.LVU1046
 	.quad	.LBB5290
@@ -41370,70 +41370,70 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST779
 	.long	.LVUS779
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST780
 	.long	.LVUS780
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5293
 	.value	.LVU1052
 	.quad	.LBB5293
 	.quad	.LBE5293-.LBB5293
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST781
 	.long	.LVUS781
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5295
 	.value	.LVU1056
 	.long	.LLRL782
 	.byte	0x1
-	.byte	0xd0
+	.byte	0xd3
 	.byte	0x32
 	.long	0x104b0
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5296
 	.value	.LVU1065
 	.long	.LLRL783
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0x103de
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5299
 	.value	.LVU1058
 	.quad	.LBB5299
 	.quad	.LBE5299-.LBB5299
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0x1047e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5301
 	.value	.LVU1060
 	.quad	.LBB5301
@@ -41442,13 +41442,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST784
 	.long	.LVUS784
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5303
 	.value	.LVU1062
 	.quad	.LBB5303
@@ -41457,70 +41457,70 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST785
 	.long	.LVUS785
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST786
 	.long	.LVUS786
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5306
 	.value	.LVU1068
 	.quad	.LBB5306
 	.quad	.LBE5306-.LBB5306
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST787
 	.long	.LVUS787
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5309
 	.value	.LVU1072
 	.long	.LLRL788
 	.byte	0x1
-	.byte	0xd1
+	.byte	0xd4
 	.byte	0x32
 	.long	0x105b6
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5310
 	.value	.LVU1081
 	.long	.LLRL789
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0x104f0
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5313
 	.value	.LVU1074
 	.quad	.LBB5313
 	.quad	.LBE5313-.LBB5313
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0x10590
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5315
 	.value	.LVU1076
 	.quad	.LBB5315
@@ -41529,13 +41529,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST790
 	.long	.LVUS790
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5317
 	.value	.LVU1078
 	.quad	.LBB5317
@@ -41544,68 +41544,68 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST791
 	.long	.LVUS791
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST792
 	.long	.LVUS792
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5320
 	.value	.LVU1084
 	.long	.LLRL793
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST794
 	.long	.LVUS794
 	.byte	0
 	.byte	0
 	.uleb128 0x51
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5328
 	.value	.LVU1094
 	.long	.LLRL795
 	.byte	0x1
-	.byte	0xd2
+	.byte	0xd5
 	.byte	0x32
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5329
 	.value	.LVU1103
 	.long	.LLRL796
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
 	.long	0x105f2
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5332
 	.value	.LVU1096
 	.quad	.LBB5332
 	.quad	.LBE5332-.LBB5332
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.long	0x10682
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5334
 	.value	.LVU1098
 	.quad	.LBB5334
@@ -41614,11 +41614,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5336
 	.value	.LVU1100
 	.quad	.LBB5336
@@ -41627,26 +41627,26 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST797
 	.long	.LVUS797
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5339
 	.value	.LVU1106
 	.quad	.LBB5339
 	.quad	.LBE5339-.LBB5339
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST798
 	.long	.LVUS798
 	.byte	0
@@ -41654,73 +41654,73 @@
 	.byte	0
 	.uleb128 0x32
 	.long	.LLRL414
-	.long	0x118d9
+	.long	0x118dc
 	.uleb128 0x2e
 	.string	"rl0"
-	.byte	0xe5
+	.byte	0xe8
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST415
 	.long	.LVUS415
 	.uleb128 0x2e
 	.string	"rr0"
-	.byte	0xe6
+	.byte	0xe9
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST416
 	.long	.LVUS416
 	.uleb128 0x2e
 	.string	"rl1"
-	.byte	0xe7
+	.byte	0xea
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST417
 	.long	.LVUS417
 	.uleb128 0x2e
 	.string	"rr1"
-	.byte	0xe8
+	.byte	0xeb
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST418
 	.long	.LVUS418
 	.uleb128 0x2e
 	.string	"rl2"
-	.byte	0xf1
+	.byte	0xf4
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST419
 	.long	.LVUS419
 	.uleb128 0x2e
 	.string	"rr2"
-	.byte	0xf2
+	.byte	0xf5
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST420
 	.long	.LVUS420
 	.uleb128 0x2e
 	.string	"rl3"
-	.byte	0xfb
+	.byte	0xfe
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST421
 	.long	.LVUS421
 	.uleb128 0x2e
 	.string	"rr3"
-	.byte	0xfc
+	.byte	0xff
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST422
 	.long	.LVUS422
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rl4"
-	.value	0x105
+	.value	0x108
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST423
 	.long	.LVUS423
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rr4"
-	.value	0x106
+	.value	0x109
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST424
@@ -41730,128 +41730,128 @@
 	.long	0x10926
 	.uleb128 0x2e
 	.string	"v"
-	.byte	0xea
+	.byte	0xed
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST426
 	.long	.LVUS426
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4709
 	.value	.LVU1265
 	.long	.LLRL427
 	.byte	0x1
-	.byte	0xeb
+	.byte	0xee
 	.byte	0x30
 	.long	0x107da
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST428
 	.long	.LVUS428
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST429
 	.long	.LVUS429
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST430
 	.long	.LVUS430
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI4712
 	.value	.LVU1261
 	.quad	.LBB4712
 	.quad	.LBE4712-.LBB4712
 	.byte	0x1
-	.byte	0xea
+	.byte	0xed
 	.byte	0x37
 	.long	0x10806
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4715
 	.value	.LVU1270
 	.quad	.LBB4715
 	.quad	.LBE4715-.LBB4715
 	.byte	0x1
-	.byte	0xec
+	.byte	0xef
 	.byte	0x30
 	.long	0x10854
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST431
 	.long	.LVUS431
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST432
 	.long	.LVUS432
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST433
 	.long	.LVUS433
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4717
 	.value	.LVU1275
 	.quad	.LBB4717
 	.quad	.LBE4717-.LBB4717
 	.byte	0x1
-	.byte	0xed
+	.byte	0xf0
 	.byte	0x30
 	.long	0x108a2
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST434
 	.long	.LVUS434
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST435
 	.long	.LVUS435
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST436
 	.long	.LVUS436
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4719
 	.value	.LVU1280
 	.quad	.LBB4719
 	.quad	.LBE4719-.LBB4719
 	.byte	0x1
-	.byte	0xee
+	.byte	0xf1
 	.byte	0x30
 	.long	0x108f0
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST437
 	.long	.LVUS437
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST438
 	.long	.LVUS438
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST439
 	.long	.LVUS439
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI4721
 	.value	.LVU1285
 	.quad	.LBB4721
 	.quad	.LBE4721-.LBB4721
 	.byte	0x1
-	.byte	0xef
+	.byte	0xf2
 	.byte	0x2d
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST440
 	.long	.LVUS440
 	.byte	0
@@ -41861,421 +41861,421 @@
 	.long	0x10ace
 	.uleb128 0x2e
 	.string	"v"
-	.byte	0xf4
+	.byte	0xf7
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST442
 	.long	.LVUS442
 	.uleb128 0x1a
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4726
 	.value	.LVU1333
 	.long	.LLRL443
 	.byte	0x1
-	.byte	0xf5
+	.byte	0xf8
 	.byte	0x30
 	.long	0x10982
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST444
 	.long	.LVUS444
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST445
 	.long	.LVUS445
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST446
 	.long	.LVUS446
 	.byte	0
 	.uleb128 0x13
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI4729
 	.value	.LVU1329
 	.quad	.LBB4729
 	.quad	.LBE4729-.LBB4729
 	.byte	0x1
-	.byte	0xf4
+	.byte	0xf7
 	.byte	0x37
 	.long	0x109ae
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4732
 	.value	.LVU1338
 	.quad	.LBB4732
 	.quad	.LBE4732-.LBB4732
 	.byte	0x1
-	.byte	0xf6
+	.byte	0xf9
 	.byte	0x30
 	.long	0x109fc
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST447
 	.long	.LVUS447
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST448
 	.long	.LVUS448
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST449
 	.long	.LVUS449
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4734
 	.value	.LVU1343
 	.quad	.LBB4734
 	.quad	.LBE4734-.LBB4734
 	.byte	0x1
-	.byte	0xf7
+	.byte	0xfa
 	.byte	0x30
 	.long	0x10a4a
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST450
 	.long	.LVUS450
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST451
 	.long	.LVUS451
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST452
 	.long	.LVUS452
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4736
 	.value	.LVU1348
 	.quad	.LBB4736
 	.quad	.LBE4736-.LBB4736
 	.byte	0x1
-	.byte	0xf8
+	.byte	0xfb
 	.byte	0x30
 	.long	0x10a98
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST453
 	.long	.LVUS453
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST454
 	.long	.LVUS454
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST455
 	.long	.LVUS455
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI4738
 	.value	.LVU1353
 	.quad	.LBB4738
 	.quad	.LBE4738-.LBB4738
 	.byte	0x1
-	.byte	0xf9
+	.byte	0xfc
 	.byte	0x2d
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST456
 	.long	.LVUS456
 	.byte	0
 	.byte	0
 	.uleb128 0x32
 	.long	.LLRL457
-	.long	0x10c7a
-	.uleb128 0x2e
+	.long	0x10c7d
+	.uleb128 0x20
 	.string	"v"
-	.byte	0xfe
+	.value	0x101
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST458
 	.long	.LVUS458
-	.uleb128 0x1a
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI4741
 	.value	.LVU1401
 	.long	.LLRL459
 	.byte	0x1
-	.byte	0xff
+	.value	0x102
 	.byte	0x30
-	.long	0x10b2a
+	.long	0x10b2c
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST460
 	.long	.LVUS460
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST461
 	.long	.LVUS461
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST462
 	.long	.LVUS462
 	.byte	0
-	.uleb128 0x13
-	.long	0x17bc7
+	.uleb128 0x16
+	.long	0x17bca
 	.quad	.LBI4744
 	.value	.LVU1397
 	.quad	.LBB4744
 	.quad	.LBE4744-.LBB4744
 	.byte	0x1
-	.byte	0xfe
+	.value	0x101
 	.byte	0x37
-	.long	0x10b56
+	.long	0x10b59
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4747
 	.value	.LVU1406
 	.quad	.LBB4747
 	.quad	.LBE4747-.LBB4747
 	.byte	0x1
-	.value	0x100
+	.value	0x103
 	.byte	0x30
-	.long	0x10ba5
+	.long	0x10ba8
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST463
 	.long	.LVUS463
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST464
 	.long	.LVUS464
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST465
 	.long	.LVUS465
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4749
 	.value	.LVU1411
 	.quad	.LBB4749
 	.quad	.LBE4749-.LBB4749
 	.byte	0x1
-	.value	0x101
+	.value	0x104
 	.byte	0x30
-	.long	0x10bf4
+	.long	0x10bf7
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST466
 	.long	.LVUS466
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST467
 	.long	.LVUS467
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST468
 	.long	.LVUS468
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4751
 	.value	.LVU1416
 	.quad	.LBB4751
 	.quad	.LBE4751-.LBB4751
 	.byte	0x1
-	.value	0x102
+	.value	0x105
 	.byte	0x30
-	.long	0x10c43
+	.long	0x10c46
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST469
 	.long	.LVUS469
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST470
 	.long	.LVUS470
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST471
 	.long	.LVUS471
 	.byte	0
 	.uleb128 0x7
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI4753
 	.value	.LVU1421
 	.quad	.LBB4753
 	.quad	.LBE4753-.LBB4753
 	.byte	0x1
-	.value	0x103
+	.value	0x106
 	.byte	0x2d
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST472
 	.long	.LVUS472
 	.byte	0
 	.byte	0
 	.uleb128 0x32
 	.long	.LLRL473
-	.long	0x10e21
-	.uleb128 0x21
+	.long	0x10e24
+	.uleb128 0x20
 	.string	"v"
-	.value	0x108
+	.value	0x10b
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST474
 	.long	.LVUS474
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI4756
 	.value	.LVU1471
 	.long	.LLRL475
 	.byte	0x1
-	.value	0x109
+	.value	0x10c
 	.byte	0x30
-	.long	0x10cd0
+	.long	0x10cd3
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST476
 	.long	.LVUS476
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST477
 	.long	.LVUS477
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI4759
 	.value	.LVU1467
 	.quad	.LBB4759
 	.quad	.LBE4759-.LBB4759
 	.byte	0x1
-	.value	0x108
+	.value	0x10b
 	.byte	0x37
-	.long	0x10cfd
+	.long	0x10d00
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4762
 	.value	.LVU1475
 	.quad	.LBB4762
 	.quad	.LBE4762-.LBB4762
 	.byte	0x1
-	.value	0x10a
+	.value	0x10d
 	.byte	0x30
-	.long	0x10d4c
+	.long	0x10d4f
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST478
 	.long	.LVUS478
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST479
 	.long	.LVUS479
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST480
 	.long	.LVUS480
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4764
 	.value	.LVU1480
 	.quad	.LBB4764
 	.quad	.LBE4764-.LBB4764
 	.byte	0x1
-	.value	0x10b
+	.value	0x10e
 	.byte	0x30
-	.long	0x10d9b
+	.long	0x10d9e
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST481
 	.long	.LVUS481
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST482
 	.long	.LVUS482
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST483
 	.long	.LVUS483
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI4766
 	.value	.LVU1485
 	.quad	.LBB4766
 	.quad	.LBE4766-.LBB4766
 	.byte	0x1
-	.value	0x10c
+	.value	0x10f
 	.byte	0x30
-	.long	0x10dea
+	.long	0x10ded
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST484
 	.long	.LVUS484
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST485
 	.long	.LVUS485
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST486
 	.long	.LVUS486
 	.byte	0
 	.uleb128 0x7
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI4768
 	.value	.LVU1490
 	.quad	.LBB4768
 	.quad	.LBE4768-.LBB4768
 	.byte	0x1
-	.value	0x10d
+	.value	0x110
 	.byte	0x2d
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST487
 	.long	.LVUS487
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4771
 	.value	.LVU1186
 	.long	.LLRL488
 	.byte	0x1
-	.byte	0xe5
+	.byte	0xe8
 	.byte	0x2f
-	.long	0x10f42
+	.long	0x10f45
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST489
 	.long	.LVUS489
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4772
 	.value	.LVU1188
 	.quad	.LBB4772
 	.quad	.LBE4772-.LBB4772
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x10ef0
+	.long	0x10ef3
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST490
 	.long	.LVUS490
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4774
 	.value	.LVU1190
 	.quad	.LBB4774
@@ -42284,13 +42284,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST491
 	.long	.LVUS491
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4776
 	.value	.LVU1192
 	.quad	.LBB4776
@@ -42299,82 +42299,82 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST492
 	.long	.LVUS492
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST493
 	.long	.LVUS493
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x4d
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4778
 	.value	.LVU1195
 	.quad	.LBB4778
 	.quad	.LBE4778-.LBB4778
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x10f1c
+	.long	0x10f1f
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4780
 	.value	.LVU1199
 	.long	.LLRL494
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST495
 	.long	.LVUS495
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4784
 	.value	.LVU1205
 	.long	.LLRL496
 	.byte	0x1
-	.byte	0xe6
+	.byte	0xe9
 	.byte	0x2f
-	.long	0x11044
+	.long	0x11047
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4785
 	.value	.LVU1214
 	.long	.LLRL497
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x10f82
+	.long	0x10f85
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4788
 	.value	.LVU1207
 	.quad	.LBB4788
 	.quad	.LBE4788-.LBB4788
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x11012
+	.long	0x11015
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4790
 	.value	.LVU1209
 	.quad	.LBB4790
@@ -42383,11 +42383,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4792
 	.value	.LVU1211
 	.quad	.LBB4792
@@ -42396,72 +42396,72 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST498
 	.long	.LVUS498
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4795
 	.value	.LVU1217
 	.quad	.LBB4795
 	.quad	.LBE4795-.LBB4795
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST499
 	.long	.LVUS499
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4797
 	.value	.LVU1222
 	.long	.LLRL500
 	.byte	0x1
-	.byte	0xe7
+	.byte	0xea
 	.byte	0x2f
-	.long	0x1115a
+	.long	0x1115d
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST501
 	.long	.LVUS501
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4798
 	.value	.LVU1231
 	.long	.LLRL502
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x1108c
+	.long	0x1108f
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4801
 	.value	.LVU1224
 	.quad	.LBB4801
 	.quad	.LBE4801-.LBB4801
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x11134
+	.long	0x11137
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST503
 	.long	.LVUS503
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4803
 	.value	.LVU1226
 	.quad	.LBB4803
@@ -42470,13 +42470,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST504
 	.long	.LVUS504
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4805
 	.value	.LVU1228
 	.quad	.LBB4805
@@ -42485,69 +42485,69 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST505
 	.long	.LVUS505
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST506
 	.long	.LVUS506
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4808
 	.value	.LVU1235
 	.long	.LLRL507
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST508
 	.long	.LVUS508
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4815
 	.value	.LVU1243
 	.long	.LLRL509
 	.byte	0x1
-	.byte	0xe8
+	.byte	0xeb
 	.byte	0x2f
-	.long	0x1125c
+	.long	0x1125f
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4816
 	.value	.LVU1252
 	.long	.LLRL510
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x1119a
+	.long	0x1119d
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4819
 	.value	.LVU1245
 	.quad	.LBB4819
 	.quad	.LBE4819-.LBB4819
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x1122a
+	.long	0x1122d
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4821
 	.value	.LVU1247
 	.quad	.LBB4821
@@ -42556,11 +42556,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4823
 	.value	.LVU1249
 	.quad	.LBB4823
@@ -42569,59 +42569,59 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST511
 	.long	.LVUS511
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4826
 	.value	.LVU1255
 	.quad	.LBB4826
 	.quad	.LBE4826-.LBB4826
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST512
 	.long	.LVUS512
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4832
 	.value	.LVU1290
 	.long	.LLRL513
 	.byte	0x1
-	.byte	0xf1
+	.byte	0xf4
 	.byte	0x2f
-	.long	0x1137d
+	.long	0x11380
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST514
 	.long	.LVUS514
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4833
 	.value	.LVU1292
 	.quad	.LBB4833
 	.quad	.LBE4833-.LBB4833
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x1132b
+	.long	0x1132e
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST515
 	.long	.LVUS515
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4835
 	.value	.LVU1294
 	.quad	.LBB4835
@@ -42630,13 +42630,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST516
 	.long	.LVUS516
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4837
 	.value	.LVU1296
 	.quad	.LBB4837
@@ -42645,82 +42645,82 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST517
 	.long	.LVUS517
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST518
 	.long	.LVUS518
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x4d
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4839
 	.value	.LVU1299
 	.quad	.LBB4839
 	.quad	.LBE4839-.LBB4839
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x11357
+	.long	0x1135a
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4841
 	.value	.LVU1303
 	.long	.LLRL519
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST520
 	.long	.LVUS520
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4845
 	.value	.LVU1311
 	.long	.LLRL521
 	.byte	0x1
-	.byte	0xf2
+	.byte	0xf5
 	.byte	0x2f
-	.long	0x1147f
+	.long	0x11482
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4846
 	.value	.LVU1320
 	.long	.LLRL522
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x113bd
+	.long	0x113c0
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4849
 	.value	.LVU1313
 	.quad	.LBB4849
 	.quad	.LBE4849-.LBB4849
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x1144d
+	.long	0x11450
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4851
 	.value	.LVU1315
 	.quad	.LBB4851
@@ -42729,11 +42729,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4853
 	.value	.LVU1317
 	.quad	.LBB4853
@@ -42742,59 +42742,59 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST523
 	.long	.LVUS523
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4856
 	.value	.LVU1323
 	.quad	.LBB4856
 	.quad	.LBE4856-.LBB4856
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST524
 	.long	.LVUS524
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4862
 	.value	.LVU1358
 	.long	.LLRL525
 	.byte	0x1
-	.byte	0xfb
+	.byte	0xfe
 	.byte	0x2f
-	.long	0x115a0
+	.long	0x115a3
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST526
 	.long	.LVUS526
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4863
 	.value	.LVU1360
 	.quad	.LBB4863
 	.quad	.LBE4863-.LBB4863
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x1154e
+	.long	0x11551
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST527
 	.long	.LVUS527
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4865
 	.value	.LVU1362
 	.quad	.LBB4865
@@ -42803,13 +42803,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST528
 	.long	.LVUS528
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4867
 	.value	.LVU1364
 	.quad	.LBB4867
@@ -42818,82 +42818,82 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST529
 	.long	.LVUS529
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST530
 	.long	.LVUS530
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x4d
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4869
 	.value	.LVU1367
 	.quad	.LBB4869
 	.quad	.LBE4869-.LBB4869
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x1157a
+	.long	0x1157d
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4871
 	.value	.LVU1371
 	.long	.LLRL531
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST532
 	.long	.LVUS532
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4875
 	.value	.LVU1379
 	.long	.LLRL533
 	.byte	0x1
-	.byte	0xfc
+	.byte	0xff
 	.byte	0x2f
-	.long	0x116a2
+	.long	0x116a5
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4876
 	.value	.LVU1388
 	.long	.LLRL534
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x115e0
+	.long	0x115e3
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4879
 	.value	.LVU1381
 	.quad	.LBB4879
 	.quad	.LBE4879-.LBB4879
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x11670
+	.long	0x11673
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4881
 	.value	.LVU1383
 	.quad	.LBB4881
@@ -42902,11 +42902,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4883
 	.value	.LVU1385
 	.quad	.LBB4883
@@ -42915,59 +42915,59 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST535
 	.long	.LVUS535
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4886
 	.value	.LVU1391
 	.quad	.LBB4886
 	.quad	.LBE4886-.LBB4886
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST536
 	.long	.LVUS536
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI4892
 	.value	.LVU1426
 	.long	.LLRL537
 	.byte	0x1
-	.value	0x105
+	.value	0x108
 	.byte	0x2f
-	.long	0x117b9
+	.long	0x117bc
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST538
 	.long	.LVUS538
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4893
 	.value	.LVU1428
 	.quad	.LBB4893
 	.quad	.LBE4893-.LBB4893
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x11772
+	.long	0x11775
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST539
 	.long	.LVUS539
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4895
 	.value	.LVU1430
 	.quad	.LBB4895
@@ -42976,13 +42976,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST540
 	.long	.LVUS540
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4897
 	.value	.LVU1432
 	.quad	.LBB4897
@@ -42991,85 +42991,85 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST541
 	.long	.LVUS541
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST542
 	.long	.LVUS542
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4899
 	.value	.LVU1435
 	.long	.LLRL543
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x11793
+	.long	0x11796
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4903
 	.value	.LVU1442
 	.long	.LLRL544
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST545
 	.long	.LVUS545
 	.byte	0
 	.byte	0
 	.uleb128 0x19
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI4909
 	.value	.LVU1449
 	.long	.LLRL546
 	.byte	0x1
-	.value	0x106
+	.value	0x109
 	.byte	0x2f
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST547
 	.long	.LVUS547
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI4910
 	.value	.LVU1458
 	.long	.LLRL548
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x117fe
+	.long	0x11801
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI4913
 	.value	.LVU1451
 	.quad	.LBB4913
 	.quad	.LBE4913-.LBB4913
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x118a6
+	.long	0x118a9
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST549
 	.long	.LVUS549
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI4915
 	.value	.LVU1453
 	.quad	.LBB4915
@@ -43078,13 +43078,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST550
 	.long	.LVUS550
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI4917
 	.value	.LVU1455
 	.quad	.LBB4917
@@ -43093,28 +43093,28 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST551
 	.long	.LVUS551
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST552
 	.long	.LVUS552
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI4920
 	.value	.LVU1461
 	.quad	.LBB4920
 	.quad	.LBE4920-.LBB4920
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST553
 	.long	.LVUS553
 	.byte	0
@@ -43122,81 +43122,81 @@
 	.byte	0
 	.uleb128 0x44
 	.long	.LLRL831
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"k"
-	.value	0x112
+	.value	0x115
 	.byte	0x1e
 	.long	0x4f
 	.long	.LLST832
 	.long	.LVUS832
 	.uleb128 0x44
 	.long	.LLRL833
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s0l"
-	.value	0x113
+	.value	0x116
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST834
 	.long	.LVUS834
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s0r"
-	.value	0x113
+	.value	0x116
 	.byte	0x38
 	.long	0x30
 	.long	.LLST835
 	.long	.LVUS835
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s1l"
-	.value	0x114
+	.value	0x117
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST836
 	.long	.LVUS836
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s1r"
-	.value	0x114
+	.value	0x117
 	.byte	0x38
 	.long	0x30
 	.long	.LLST837
 	.long	.LVUS837
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s2l"
-	.value	0x115
+	.value	0x118
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST838
 	.long	.LVUS838
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s2r"
-	.value	0x115
+	.value	0x118
 	.byte	0x38
 	.long	0x30
 	.long	.LLST839
 	.long	.LVUS839
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s3l"
-	.value	0x116
+	.value	0x119
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST840
 	.long	.LVUS840
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s3r"
-	.value	0x116
+	.value	0x119
 	.byte	0x38
 	.long	0x30
 	.long	.LLST841
 	.long	.LVUS841
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s4l"
-	.value	0x117
+	.value	0x11a
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST842
 	.long	.LVUS842
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s4r"
-	.value	0x117
+	.value	0x11a
 	.byte	0x38
 	.long	0x30
 	.long	.LLST843
@@ -43206,646 +43206,646 @@
 	.byte	0
 	.uleb128 0x32
 	.long	.LLRL861
-	.long	0x1387d
-	.uleb128 0x21
+	.long	0x13880
+	.uleb128 0x20
 	.string	"rb"
-	.value	0x120
+	.value	0x123
 	.byte	0x1c
-	.long	0x17839
+	.long	0x1783c
 	.long	.LLST862
 	.long	.LVUS862
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"vp0"
-	.value	0x125
+	.value	0x128
 	.byte	0x1c
 	.long	0xa86d
 	.long	.LLST863
 	.long	.LVUS863
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"vp1"
-	.value	0x126
+	.value	0x129
 	.byte	0x1c
 	.long	0xa86d
 	.long	.LLST864
 	.long	.LVUS864
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"xf"
-	.value	0x128
+	.value	0x12b
 	.byte	0x19
 	.long	0x4f
 	.long	.LLST865
 	.long	.LVUS865
 	.uleb128 0x32
 	.long	.LLRL875
-	.long	0x12d69
+	.long	0x12d6c
 	.uleb128 0x35
 	.long	.LASF1432
-	.value	0x12b
+	.value	0x12e
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST876
 	.long	.LVUS876
 	.uleb128 0x35
 	.long	.LASF1433
-	.value	0x12c
+	.value	0x12f
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST877
 	.long	.LVUS877
 	.uleb128 0x35
 	.long	.LASF1434
-	.value	0x12d
+	.value	0x130
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST878
 	.long	.LVUS878
 	.uleb128 0x35
 	.long	.LASF1435
-	.value	0x12e
+	.value	0x131
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST879
 	.long	.LVUS879
 	.uleb128 0x35
 	.long	.LASF1436
-	.value	0x12f
+	.value	0x132
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST880
 	.long	.LVUS880
 	.uleb128 0x35
 	.long	.LASF1437
-	.value	0x130
+	.value	0x133
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST881
 	.long	.LVUS881
 	.uleb128 0x35
 	.long	.LASF1438
-	.value	0x131
+	.value	0x134
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST882
 	.long	.LVUS882
 	.uleb128 0x35
 	.long	.LASF1439
-	.value	0x132
+	.value	0x135
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST883
 	.long	.LVUS883
 	.uleb128 0x35
 	.long	.LASF1440
-	.value	0x141
+	.value	0x144
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST884
 	.long	.LVUS884
 	.uleb128 0x35
 	.long	.LASF1441
-	.value	0x142
+	.value	0x145
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST885
 	.long	.LVUS885
 	.uleb128 0x35
 	.long	.LASF1442
-	.value	0x143
+	.value	0x146
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST886
 	.long	.LVUS886
 	.uleb128 0x35
 	.long	.LASF1443
-	.value	0x144
+	.value	0x147
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST887
 	.long	.LVUS887
 	.uleb128 0x32
 	.long	.LLRL931
-	.long	0x11e34
+	.long	0x11e37
 	.uleb128 0x35
 	.long	.LASF1452
-	.value	0x134
+	.value	0x137
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST932
 	.long	.LVUS932
 	.uleb128 0x35
 	.long	.LASF1453
-	.value	0x135
+	.value	0x138
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST933
 	.long	.LVUS933
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI5597
 	.value	.LVU1749
 	.long	.LLRL934
 	.byte	0x1
-	.value	0x136
+	.value	0x139
 	.byte	0x33
-	.long	0x11b74
+	.long	0x11b77
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST935
 	.long	.LVUS935
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x4
-	.long	0x17b48
+	.long	0x17b4b
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI5600
 	.value	.LVU1753
 	.long	.LLRL936
 	.byte	0x1
-	.value	0x137
+	.value	0x13a
 	.byte	0x33
-	.long	0x11ba7
+	.long	0x11baa
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST937
 	.long	.LVUS937
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x4
-	.long	0x17b48
+	.long	0x17b4b
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5603
 	.value	.LVU1741
 	.quad	.LBB5603
 	.quad	.LBE5603-.LBB5603
 	.byte	0x1
-	.value	0x134
+	.value	0x137
 	.byte	0x3a
-	.long	0x11bd4
+	.long	0x11bd7
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5605
 	.value	.LVU1745
 	.quad	.LBB5605
 	.quad	.LBE5605-.LBB5605
 	.byte	0x1
-	.value	0x135
+	.value	0x138
 	.byte	0x3a
-	.long	0x11c01
+	.long	0x11c04
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5609
 	.value	.LVU1757
 	.quad	.LBB5609
 	.quad	.LBE5609-.LBB5609
 	.byte	0x1
-	.value	0x138
+	.value	0x13b
 	.byte	0x33
-	.long	0x11c50
+	.long	0x11c53
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST938
 	.long	.LVUS938
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST939
 	.long	.LVUS939
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST940
 	.long	.LVUS940
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5611
 	.value	.LVU1762
 	.quad	.LBB5611
 	.quad	.LBE5611-.LBB5611
 	.byte	0x1
-	.value	0x139
+	.value	0x13c
 	.byte	0x33
-	.long	0x11c9f
+	.long	0x11ca2
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST941
 	.long	.LVUS941
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST942
 	.long	.LVUS942
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST943
 	.long	.LVUS943
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI5613
 	.value	.LVU1767
 	.long	.LLRL944
 	.byte	0x1
-	.value	0x13a
+	.value	0x13d
 	.byte	0x33
-	.long	0x11ce2
+	.long	0x11ce5
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST945
 	.long	.LVUS945
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST946
 	.long	.LVUS946
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST947
 	.long	.LVUS947
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5617
 	.value	.LVU1774
 	.quad	.LBB5617
 	.quad	.LBE5617-.LBB5617
 	.byte	0x1
-	.value	0x13b
+	.value	0x13e
 	.byte	0x33
-	.long	0x11d31
+	.long	0x11d34
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST948
 	.long	.LVUS948
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST949
 	.long	.LVUS949
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST950
 	.long	.LVUS950
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5619
 	.value	.LVU1779
 	.quad	.LBB5619
 	.quad	.LBE5619-.LBB5619
 	.byte	0x1
-	.value	0x13c
+	.value	0x13f
 	.byte	0x33
-	.long	0x11d80
+	.long	0x11d83
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST951
 	.long	.LVUS951
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST952
 	.long	.LVUS952
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST953
 	.long	.LVUS953
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5621
 	.value	.LVU1784
 	.quad	.LBB5621
 	.quad	.LBE5621-.LBB5621
 	.byte	0x1
-	.value	0x13d
+	.value	0x140
 	.byte	0x33
-	.long	0x11dcf
+	.long	0x11dd2
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST954
 	.long	.LVUS954
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST955
 	.long	.LVUS955
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST956
 	.long	.LVUS956
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5623
 	.value	.LVU1789
 	.quad	.LBB5623
 	.quad	.LBE5623-.LBB5623
 	.byte	0x1
-	.value	0x13e
+	.value	0x141
 	.byte	0x2d
-	.long	0x11e09
+	.long	0x11e0c
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST957
 	.long	.LVUS957
 	.byte	0
 	.uleb128 0x19
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5625
 	.value	.LVU1794
 	.long	.LLRL958
 	.byte	0x1
-	.value	0x13f
+	.value	0x142
 	.byte	0x2d
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST959
 	.long	.LVUS959
 	.byte	0
 	.byte	0
 	.uleb128 0x32
 	.long	.LLRL985
-	.long	0x12170
+	.long	0x12173
 	.uleb128 0x35
 	.long	.LASF1452
-	.value	0x146
+	.value	0x149
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST986
 	.long	.LVUS986
 	.uleb128 0x35
 	.long	.LASF1453
-	.value	0x147
+	.value	0x14a
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST987
 	.long	.LVUS987
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI5702
 	.value	.LVU1881
 	.long	.LLRL988
 	.byte	0x1
-	.value	0x148
+	.value	0x14b
 	.byte	0x33
-	.long	0x11e98
+	.long	0x11e9b
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST989
 	.long	.LVUS989
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x4
-	.long	0x17b48
+	.long	0x17b4b
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI5705
 	.value	.LVU1885
 	.long	.LLRL990
 	.byte	0x1
-	.value	0x149
+	.value	0x14c
 	.byte	0x33
-	.long	0x11ecb
+	.long	0x11ece
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST991
 	.long	.LVUS991
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x4
-	.long	0x17b48
+	.long	0x17b4b
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5708
 	.value	.LVU1873
 	.quad	.LBB5708
 	.quad	.LBE5708-.LBB5708
 	.byte	0x1
-	.value	0x146
+	.value	0x149
 	.byte	0x3a
-	.long	0x11ef8
+	.long	0x11efb
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5710
 	.value	.LVU1877
 	.quad	.LBB5710
 	.quad	.LBE5710-.LBB5710
 	.byte	0x1
-	.value	0x147
+	.value	0x14a
 	.byte	0x3a
-	.long	0x11f25
+	.long	0x11f28
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5714
 	.value	.LVU1889
 	.quad	.LBB5714
 	.quad	.LBE5714-.LBB5714
 	.byte	0x1
-	.value	0x14a
+	.value	0x14d
 	.byte	0x33
-	.long	0x11f74
+	.long	0x11f77
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST992
 	.long	.LVUS992
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST993
 	.long	.LVUS993
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST994
 	.long	.LVUS994
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5716
 	.value	.LVU1894
 	.quad	.LBB5716
 	.quad	.LBE5716-.LBB5716
 	.byte	0x1
-	.value	0x14b
+	.value	0x14e
 	.byte	0x33
-	.long	0x11fc3
+	.long	0x11fc6
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST995
 	.long	.LVUS995
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST996
 	.long	.LVUS996
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST997
 	.long	.LVUS997
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5718
 	.value	.LVU1899
 	.quad	.LBB5718
 	.quad	.LBE5718-.LBB5718
 	.byte	0x1
-	.value	0x14c
+	.value	0x14f
 	.byte	0x33
-	.long	0x12012
+	.long	0x12015
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST998
 	.long	.LVUS998
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST999
 	.long	.LVUS999
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1000
 	.long	.LVUS1000
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5720
 	.value	.LVU1904
 	.quad	.LBB5720
 	.quad	.LBE5720-.LBB5720
 	.byte	0x1
-	.value	0x14d
+	.value	0x150
 	.byte	0x33
-	.long	0x12061
+	.long	0x12064
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1001
 	.long	.LVUS1001
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1002
 	.long	.LVUS1002
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1003
 	.long	.LVUS1003
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5722
 	.value	.LVU1909
 	.quad	.LBB5722
 	.quad	.LBE5722-.LBB5722
 	.byte	0x1
-	.value	0x14e
+	.value	0x151
 	.byte	0x33
-	.long	0x120b0
+	.long	0x120b3
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1004
 	.long	.LVUS1004
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1005
 	.long	.LVUS1005
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1006
 	.long	.LVUS1006
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5724
 	.value	.LVU1914
 	.quad	.LBB5724
 	.quad	.LBE5724-.LBB5724
 	.byte	0x1
-	.value	0x14f
+	.value	0x152
 	.byte	0x33
-	.long	0x120ff
+	.long	0x12102
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1007
 	.long	.LVUS1007
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1008
 	.long	.LVUS1008
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1009
 	.long	.LVUS1009
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5726
 	.value	.LVU1919
 	.quad	.LBB5726
 	.quad	.LBE5726-.LBB5726
 	.byte	0x1
-	.value	0x150
+	.value	0x153
 	.byte	0x2d
-	.long	0x12139
+	.long	0x1213c
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST1010
 	.long	.LVUS1010
 	.byte	0
 	.uleb128 0x7
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5728
 	.value	.LVU1924
 	.quad	.LBB5728
 	.quad	.LBE5728-.LBB5728
 	.byte	0x1
-	.value	0x151
+	.value	0x154
 	.byte	0x2d
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST1011
 	.long	.LVUS1011
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5469
 	.value	.LVU1600
 	.long	.LLRL888
 	.byte	0x1
-	.value	0x12b
+	.value	0x12e
 	.byte	0x32
-	.long	0x1226b
+	.long	0x1226e
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x1a
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5470
 	.value	.LVU1602
 	.long	.LLRL889
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x12224
+	.long	0x12227
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5472
 	.value	.LVU1606
 	.quad	.LBB5472
@@ -43854,13 +43854,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST890
 	.long	.LVUS890
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5474
 	.value	.LVU1608
 	.quad	.LBB5474
@@ -43869,94 +43869,94 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST891
 	.long	.LVUS891
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST892
 	.long	.LVUS892
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5478
 	.value	.LVU1611
 	.long	.LLRL893
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x12245
+	.long	0x12248
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5482
 	.value	.LVU1617
 	.long	.LLRL894
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST895
 	.long	.LVUS895
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5486
 	.value	.LVU1680
 	.long	.LLRL896
 	.byte	0x1
-	.value	0x12f
+	.value	0x132
 	.byte	0x32
-	.long	0x1235a
+	.long	0x1235d
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5487
 	.value	.LVU1689
 	.long	.LLRL897
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x122ac
+	.long	0x122af
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5490
 	.value	.LVU1691
 	.long	.LLRL898
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x122cd
+	.long	0x122d0
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5493
 	.value	.LVU1682
 	.quad	.LBB5493
 	.quad	.LBE5493-.LBB5493
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5495
 	.value	.LVU1684
 	.quad	.LBB5495
@@ -43965,11 +43965,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5497
 	.value	.LVU1686
 	.quad	.LBB5497
@@ -43978,65 +43978,65 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST899
 	.long	.LVUS899
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5501
 	.value	.LVU1695
 	.long	.LLRL900
 	.byte	0x1
-	.value	0x130
+	.value	0x133
 	.byte	0x32
-	.long	0x12449
+	.long	0x1244c
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5502
 	.value	.LVU1704
 	.long	.LLRL901
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x1239b
+	.long	0x1239e
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5505
 	.value	.LVU1706
 	.long	.LLRL902
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x123bc
+	.long	0x123bf
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5508
 	.value	.LVU1697
 	.quad	.LBB5508
 	.quad	.LBE5508-.LBB5508
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5510
 	.value	.LVU1699
 	.quad	.LBB5510
@@ -44045,11 +44045,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5512
 	.value	.LVU1701
 	.quad	.LBB5512
@@ -44058,65 +44058,65 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST903
 	.long	.LVUS903
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5517
 	.value	.LVU1710
 	.long	.LLRL904
 	.byte	0x1
-	.value	0x131
+	.value	0x134
 	.byte	0x32
-	.long	0x12538
+	.long	0x1253b
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5518
 	.value	.LVU1719
 	.long	.LLRL905
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x1248a
+	.long	0x1248d
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5521
 	.value	.LVU1721
 	.long	.LLRL906
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x124ab
+	.long	0x124ae
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5524
 	.value	.LVU1712
 	.quad	.LBB5524
 	.quad	.LBE5524-.LBB5524
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5526
 	.value	.LVU1714
 	.quad	.LBB5526
@@ -44125,11 +44125,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5528
 	.value	.LVU1716
 	.quad	.LBB5528
@@ -44138,65 +44138,65 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST907
 	.long	.LVUS907
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5532
 	.value	.LVU1725
 	.long	.LLRL908
 	.byte	0x1
-	.value	0x132
+	.value	0x135
 	.byte	0x32
-	.long	0x12627
+	.long	0x1262a
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5533
 	.value	.LVU1734
 	.long	.LLRL909
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x12579
+	.long	0x1257c
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5536
 	.value	.LVU1736
 	.long	.LLRL910
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x1259a
+	.long	0x1259d
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5539
 	.value	.LVU1727
 	.quad	.LBB5539
 	.quad	.LBE5539-.LBB5539
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5541
 	.value	.LVU1729
 	.quad	.LBB5541
@@ -44205,11 +44205,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5543
 	.value	.LVU1731
 	.quad	.LBB5543
@@ -44218,53 +44218,53 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST911
 	.long	.LVUS911
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5548
 	.value	.LVU1626
 	.long	.LLRL912
 	.byte	0x1
-	.value	0x12c
+	.value	0x12f
 	.byte	0x32
-	.long	0x1273a
+	.long	0x1273d
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5549
 	.value	.LVU1635
 	.long	.LLRL913
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x12668
+	.long	0x1266b
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5552
 	.value	.LVU1628
 	.quad	.LBB5552
 	.quad	.LBE5552-.LBB5552
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x12708
+	.long	0x1270b
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5554
 	.value	.LVU1630
 	.quad	.LBB5554
@@ -44273,13 +44273,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST914
 	.long	.LVUS914
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5556
 	.value	.LVU1632
 	.quad	.LBB5556
@@ -44288,70 +44288,70 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST915
 	.long	.LVUS915
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST916
 	.long	.LVUS916
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5559
 	.value	.LVU1638
 	.quad	.LBB5559
 	.quad	.LBE5559-.LBB5559
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST917
 	.long	.LVUS917
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5563
 	.value	.LVU1643
 	.long	.LLRL918
 	.byte	0x1
-	.value	0x12d
+	.value	0x130
 	.byte	0x32
-	.long	0x12841
+	.long	0x12844
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5564
 	.value	.LVU1652
 	.long	.LLRL919
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x1277b
+	.long	0x1277e
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5567
 	.value	.LVU1645
 	.quad	.LBB5567
 	.quad	.LBE5567-.LBB5567
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x1281b
+	.long	0x1281e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5569
 	.value	.LVU1647
 	.quad	.LBB5569
@@ -44360,13 +44360,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST920
 	.long	.LVUS920
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5571
 	.value	.LVU1649
 	.quad	.LBB5571
@@ -44375,69 +44375,69 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST921
 	.long	.LVUS921
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST922
 	.long	.LVUS922
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5574
 	.value	.LVU1655
 	.long	.LLRL923
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST924
 	.long	.LVUS924
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5578
 	.value	.LVU1663
 	.long	.LLRL925
 	.byte	0x1
-	.value	0x12e
+	.value	0x131
 	.byte	0x32
-	.long	0x12954
+	.long	0x12957
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5579
 	.value	.LVU1672
 	.long	.LLRL926
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x12882
+	.long	0x12885
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5582
 	.value	.LVU1665
 	.quad	.LBB5582
 	.quad	.LBE5582-.LBB5582
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x12922
+	.long	0x12925
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5584
 	.value	.LVU1667
 	.quad	.LBB5584
@@ -44446,13 +44446,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST927
 	.long	.LVUS927
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5586
 	.value	.LVU1669
 	.quad	.LBB5586
@@ -44461,82 +44461,82 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST928
 	.long	.LVUS928
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST929
 	.long	.LVUS929
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5589
 	.value	.LVU1675
 	.quad	.LBB5589
 	.quad	.LBE5589-.LBB5589
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST930
 	.long	.LVUS930
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5636
 	.value	.LVU1801
 	.long	.LLRL960
 	.byte	0x1
-	.value	0x141
+	.value	0x144
 	.byte	0x32
-	.long	0x12a53
+	.long	0x12a56
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5637
 	.value	.LVU1810
 	.long	.LLRL961
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x12995
+	.long	0x12998
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5640
 	.value	.LVU1813
 	.long	.LLRL962
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x129b6
+	.long	0x129b9
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5643
 	.value	.LVU1803
 	.quad	.LBB5643
 	.quad	.LBE5643-.LBB5643
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5645
 	.value	.LVU1805
 	.quad	.LBB5645
@@ -44545,13 +44545,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST963
 	.long	.LVUS963
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5647
 	.value	.LVU1807
 	.quad	.LBB5647
@@ -44560,67 +44560,67 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST964
 	.long	.LVUS964
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST965
 	.long	.LVUS965
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5651
 	.value	.LVU1817
 	.long	.LLRL966
 	.byte	0x1
-	.value	0x142
+	.value	0x145
 	.byte	0x32
-	.long	0x12b52
+	.long	0x12b55
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5652
 	.value	.LVU1826
 	.long	.LLRL967
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x12a94
+	.long	0x12a97
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5655
 	.value	.LVU1829
 	.long	.LLRL968
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x12ab5
+	.long	0x12ab8
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5658
 	.value	.LVU1819
 	.quad	.LBB5658
 	.quad	.LBE5658-.LBB5658
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5660
 	.value	.LVU1821
 	.quad	.LBB5660
@@ -44629,13 +44629,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST969
 	.long	.LVUS969
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5662
 	.value	.LVU1823
 	.quad	.LBB5662
@@ -44644,55 +44644,55 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST970
 	.long	.LVUS970
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST971
 	.long	.LVUS971
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5669
 	.value	.LVU1833
 	.long	.LLRL972
 	.byte	0x1
-	.value	0x143
+	.value	0x146
 	.byte	0x32
-	.long	0x12c59
+	.long	0x12c5c
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5670
 	.value	.LVU1842
 	.long	.LLRL973
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x12b93
+	.long	0x12b96
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5673
 	.value	.LVU1835
 	.quad	.LBB5673
 	.quad	.LBE5673-.LBB5673
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x12c33
+	.long	0x12c36
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5675
 	.value	.LVU1837
 	.quad	.LBB5675
@@ -44701,13 +44701,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST974
 	.long	.LVUS974
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5677
 	.value	.LVU1839
 	.quad	.LBB5677
@@ -44716,68 +44716,68 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST975
 	.long	.LVUS975
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST976
 	.long	.LVUS976
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5680
 	.value	.LVU1845
 	.long	.LLRL977
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST978
 	.long	.LVUS978
 	.byte	0
 	.byte	0
 	.uleb128 0x19
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5688
 	.value	.LVU1855
 	.long	.LLRL979
 	.byte	0x1
-	.value	0x144
+	.value	0x147
 	.byte	0x32
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5689
 	.value	.LVU1864
 	.long	.LLRL980
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x12c96
+	.long	0x12c99
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5692
 	.value	.LVU1857
 	.quad	.LBB5692
 	.quad	.LBE5692-.LBB5692
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x12d36
+	.long	0x12d39
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5694
 	.value	.LVU1859
 	.quad	.LBB5694
@@ -44786,13 +44786,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST981
 	.long	.LVUS981
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5696
 	.value	.LVU1861
 	.quad	.LBB5696
@@ -44801,28 +44801,28 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST982
 	.long	.LVUS982
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST983
 	.long	.LVUS983
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5699
 	.value	.LVU1867
 	.quad	.LBB5699
 	.quad	.LBE5699-.LBB5699
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST984
 	.long	.LVUS984
 	.byte	0
@@ -44831,335 +44831,335 @@
 	.uleb128 0x81
 	.quad	.LBB5738
 	.quad	.LBE5738-.LBB5738
-	.long	0x137e6
-	.uleb128 0x21
+	.long	0x137e9
+	.uleb128 0x20
 	.string	"rl0"
-	.value	0x156
+	.value	0x159
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1012
 	.long	.LVUS1012
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rr0"
-	.value	0x157
+	.value	0x15a
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1013
 	.long	.LVUS1013
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rl1"
-	.value	0x158
+	.value	0x15b
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1014
 	.long	.LVUS1014
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rr1"
-	.value	0x159
+	.value	0x15c
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1015
 	.long	.LVUS1015
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rl2"
-	.value	0x162
+	.value	0x165
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1016
 	.long	.LVUS1016
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rr2"
-	.value	0x163
+	.value	0x166
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1017
 	.long	.LVUS1017
 	.uleb128 0x32
 	.long	.LLRL1018
-	.long	0x12f92
-	.uleb128 0x21
+	.long	0x12f95
+	.uleb128 0x20
 	.string	"v"
-	.value	0x15b
+	.value	0x15e
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST1019
 	.long	.LVUS1019
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI5740
 	.value	.LVU3138
 	.long	.LLRL1020
 	.byte	0x1
-	.value	0x15c
+	.value	0x15f
 	.byte	0x30
-	.long	0x12e4d
+	.long	0x12e50
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1021
 	.long	.LVUS1021
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1022
 	.long	.LVUS1022
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5743
 	.value	.LVU3134
 	.quad	.LBB5743
 	.quad	.LBE5743-.LBB5743
 	.byte	0x1
-	.value	0x15b
+	.value	0x15e
 	.byte	0x37
-	.long	0x12e7a
+	.long	0x12e7d
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5746
 	.value	.LVU3142
 	.quad	.LBB5746
 	.quad	.LBE5746-.LBB5746
 	.byte	0x1
-	.value	0x15d
+	.value	0x160
 	.byte	0x30
-	.long	0x12ec9
+	.long	0x12ecc
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1023
 	.long	.LVUS1023
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1024
 	.long	.LVUS1024
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1025
 	.long	.LVUS1025
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI5748
 	.value	.LVU3147
 	.long	.LLRL1026
 	.byte	0x1
-	.value	0x15e
+	.value	0x161
 	.byte	0x30
-	.long	0x12f0c
+	.long	0x12f0f
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1027
 	.long	.LVUS1027
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1028
 	.long	.LVUS1028
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1029
 	.long	.LVUS1029
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5752
 	.value	.LVU3154
 	.quad	.LBB5752
 	.quad	.LBE5752-.LBB5752
 	.byte	0x1
-	.value	0x15f
+	.value	0x162
 	.byte	0x30
-	.long	0x12f5b
+	.long	0x12f5e
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1030
 	.long	.LVUS1030
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1031
 	.long	.LVUS1031
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1032
 	.long	.LVUS1032
 	.byte	0
 	.uleb128 0x7
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5754
 	.value	.LVU3159
 	.quad	.LBB5754
 	.quad	.LBE5754-.LBB5754
 	.byte	0x1
-	.value	0x160
+	.value	0x163
 	.byte	0x2d
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST1033
 	.long	.LVUS1033
 	.byte	0
 	.byte	0
 	.uleb128 0x32
 	.long	.LLRL1034
-	.long	0x13139
-	.uleb128 0x21
+	.long	0x1313c
+	.uleb128 0x20
 	.string	"v"
-	.value	0x165
+	.value	0x168
 	.byte	0x24
 	.long	0xa472
 	.long	.LLST1035
 	.long	.LVUS1035
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI5759
 	.value	.LVU3205
 	.long	.LLRL1036
 	.byte	0x1
-	.value	0x166
+	.value	0x169
 	.byte	0x30
-	.long	0x12fe8
+	.long	0x12feb
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1037
 	.long	.LVUS1037
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1038
 	.long	.LVUS1038
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI5762
 	.value	.LVU3201
 	.quad	.LBB5762
 	.quad	.LBE5762-.LBB5762
 	.byte	0x1
-	.value	0x165
+	.value	0x168
 	.byte	0x37
-	.long	0x13015
+	.long	0x13018
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5765
 	.value	.LVU3209
 	.quad	.LBB5765
 	.quad	.LBE5765-.LBB5765
 	.byte	0x1
-	.value	0x167
+	.value	0x16a
 	.byte	0x30
-	.long	0x13064
+	.long	0x13067
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1039
 	.long	.LVUS1039
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1040
 	.long	.LVUS1040
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1041
 	.long	.LVUS1041
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5767
 	.value	.LVU3214
 	.quad	.LBB5767
 	.quad	.LBE5767-.LBB5767
 	.byte	0x1
-	.value	0x168
+	.value	0x16b
 	.byte	0x30
-	.long	0x130b3
+	.long	0x130b6
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1042
 	.long	.LVUS1042
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1043
 	.long	.LVUS1043
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1044
 	.long	.LVUS1044
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI5769
 	.value	.LVU3219
 	.quad	.LBB5769
 	.quad	.LBE5769-.LBB5769
 	.byte	0x1
-	.value	0x169
+	.value	0x16c
 	.byte	0x30
-	.long	0x13102
+	.long	0x13105
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1045
 	.long	.LVUS1045
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1046
 	.long	.LVUS1046
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1047
 	.long	.LVUS1047
 	.byte	0
 	.uleb128 0x7
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI5771
 	.value	.LVU3224
 	.quad	.LBB5771
 	.quad	.LBE5771-.LBB5771
 	.byte	0x1
-	.value	0x16a
+	.value	0x16d
 	.byte	0x2d
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST1048
 	.long	.LVUS1048
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5773
 	.value	.LVU3061
 	.long	.LLRL1049
 	.byte	0x1
-	.value	0x156
+	.value	0x159
 	.byte	0x2f
-	.long	0x1325b
+	.long	0x1325e
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1050
 	.long	.LVUS1050
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5774
 	.value	.LVU3063
 	.quad	.LBB5774
 	.quad	.LBE5774-.LBB5774
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x13209
+	.long	0x1320c
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1051
 	.long	.LVUS1051
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5776
 	.value	.LVU3065
 	.quad	.LBB5776
@@ -45168,13 +45168,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1052
 	.long	.LVUS1052
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5778
 	.value	.LVU3067
 	.quad	.LBB5778
@@ -45183,86 +45183,86 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1053
 	.long	.LVUS1053
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1054
 	.long	.LVUS1054
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x4d
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5780
 	.value	.LVU3070
 	.quad	.LBB5780
 	.quad	.LBE5780-.LBB5780
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x13235
+	.long	0x13238
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5782
 	.value	.LVU3074
 	.long	.LLRL1055
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1056
 	.long	.LVUS1056
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5786
 	.value	.LVU3080
 	.long	.LLRL1057
 	.byte	0x1
-	.value	0x157
+	.value	0x15a
 	.byte	0x2f
-	.long	0x13372
+	.long	0x13375
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1058
 	.long	.LVUS1058
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5787
 	.value	.LVU3089
 	.long	.LLRL1059
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x132a4
+	.long	0x132a7
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5790
 	.value	.LVU3082
 	.quad	.LBB5790
 	.quad	.LBE5790-.LBB5790
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x1334c
+	.long	0x1334f
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1060
 	.long	.LVUS1060
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5792
 	.value	.LVU3084
 	.quad	.LBB5792
@@ -45271,13 +45271,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1061
 	.long	.LVUS1061
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5794
 	.value	.LVU3086
 	.quad	.LBB5794
@@ -45286,73 +45286,73 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1062
 	.long	.LVUS1062
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1063
 	.long	.LVUS1063
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5797
 	.value	.LVU3092
 	.long	.LLRL1064
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1065
 	.long	.LVUS1065
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5801
 	.value	.LVU3099
 	.long	.LLRL1066
 	.byte	0x1
-	.value	0x158
+	.value	0x15b
 	.byte	0x2f
-	.long	0x13495
+	.long	0x13498
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1067
 	.long	.LVUS1067
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5802
 	.value	.LVU3108
 	.long	.LLRL1068
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x133bb
+	.long	0x133be
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5805
 	.value	.LVU3101
 	.quad	.LBB5805
 	.quad	.LBE5805-.LBB5805
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x13463
+	.long	0x13466
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1069
 	.long	.LVUS1069
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5807
 	.value	.LVU3103
 	.quad	.LBB5807
@@ -45361,13 +45361,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1070
 	.long	.LVUS1070
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5809
 	.value	.LVU3105
 	.quad	.LBB5809
@@ -45376,74 +45376,74 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1071
 	.long	.LVUS1071
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1072
 	.long	.LVUS1072
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5812
 	.value	.LVU3111
 	.quad	.LBB5812
 	.quad	.LBE5812-.LBB5812
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1073
 	.long	.LVUS1073
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5814
 	.value	.LVU3116
 	.long	.LLRL1074
 	.byte	0x1
-	.value	0x159
+	.value	0x15c
 	.byte	0x2f
-	.long	0x135b8
+	.long	0x135bb
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1075
 	.long	.LVUS1075
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5815
 	.value	.LVU3125
 	.long	.LLRL1076
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x134de
+	.long	0x134e1
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5818
 	.value	.LVU3118
 	.quad	.LBB5818
 	.quad	.LBE5818-.LBB5818
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x13586
+	.long	0x13589
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1077
 	.long	.LVUS1077
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5820
 	.value	.LVU3120
 	.quad	.LBB5820
@@ -45452,13 +45452,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1078
 	.long	.LVUS1078
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5822
 	.value	.LVU3122
 	.quad	.LBB5822
@@ -45467,86 +45467,86 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1079
 	.long	.LVUS1079
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1080
 	.long	.LVUS1080
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5825
 	.value	.LVU3128
 	.quad	.LBB5825
 	.quad	.LBE5825-.LBB5825
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1081
 	.long	.LVUS1081
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5834
 	.value	.LVU3164
 	.long	.LLRL1082
 	.byte	0x1
-	.value	0x162
+	.value	0x165
 	.byte	0x2f
-	.long	0x136c7
+	.long	0x136ca
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1083
 	.long	.LVUS1083
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5835
 	.value	.LVU3173
 	.long	.LLRL1084
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x13601
+	.long	0x13604
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5838
 	.value	.LVU3176
 	.long	.LLRL1085
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x13622
+	.long	0x13625
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5841
 	.value	.LVU3166
 	.quad	.LBB5841
 	.quad	.LBE5841-.LBB5841
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1086
 	.long	.LVUS1086
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5843
 	.value	.LVU3168
 	.quad	.LBB5843
@@ -45555,13 +45555,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1087
 	.long	.LVUS1087
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5845
 	.value	.LVU3170
 	.quad	.LBB5845
@@ -45570,11 +45570,11 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1088
 	.long	.LVUS1088
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1089
 	.long	.LVUS1089
 	.byte	0
@@ -45582,33 +45582,33 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x19
-	.long	0x17afb
+	.long	0x17afe
 	.quad	.LBI5851
 	.value	.LVU3180
 	.long	.LLRL1090
 	.byte	0x1
-	.value	0x163
+	.value	0x166
 	.byte	0x2f
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1091
 	.long	.LVUS1091
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5852
 	.value	.LVU3182
 	.quad	.LBB5852
 	.quad	.LBE5852-.LBB5852
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x13793
+	.long	0x13796
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1092
 	.long	.LVUS1092
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5854
 	.value	.LVU3184
 	.quad	.LBB5854
@@ -45617,13 +45617,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1093
 	.long	.LVUS1093
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5856
 	.value	.LVU3186
 	.quad	.LBB5856
@@ -45632,40 +45632,40 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1094
 	.long	.LVUS1094
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1095
 	.long	.LVUS1095
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x4d
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5858
 	.value	.LVU3189
 	.quad	.LBB5858
 	.quad	.LBE5858-.LBB5858
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x137bf
+	.long	0x137c2
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5860
 	.value	.LVU3193
 	.long	.LLRL1096
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1097
 	.long	.LVUS1097
 	.byte	0
@@ -45673,53 +45673,53 @@
 	.byte	0
 	.uleb128 0x44
 	.long	.LLRL866
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"k"
-	.value	0x16f
+	.value	0x172
 	.byte	0x1e
 	.long	0x4f
 	.long	.LLST867
 	.long	.LVUS867
 	.uleb128 0x44
 	.long	.LLRL868
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s0l"
-	.value	0x170
+	.value	0x173
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST869
 	.long	.LVUS869
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s0r"
-	.value	0x170
+	.value	0x173
 	.byte	0x38
 	.long	0x30
 	.long	.LLST870
 	.long	.LVUS870
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s1l"
-	.value	0x171
+	.value	0x174
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST871
 	.long	.LVUS871
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s1r"
-	.value	0x171
+	.value	0x174
 	.byte	0x38
 	.long	0x30
 	.long	.LLST872
 	.long	.LVUS872
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s2l"
-	.value	0x172
+	.value	0x175
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST873
 	.long	.LVUS873
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s2r"
-	.value	0x172
+	.value	0x175
 	.byte	0x38
 	.long	0x30
 	.long	.LLST874
@@ -45729,132 +45729,132 @@
 	.byte	0
 	.uleb128 0x32
 	.long	.LLRL1098
-	.long	0x14b86
-	.uleb128 0x21
+	.long	0x14b89
+	.uleb128 0x20
 	.string	"rb0"
-	.value	0x179
+	.value	0x17c
 	.byte	0x1c
 	.long	0x7675
 	.long	.LLST1099
 	.long	.LVUS1099
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rb1"
-	.value	0x17a
+	.value	0x17d
 	.byte	0x1c
 	.long	0x7675
 	.long	.LLST1100
 	.long	.LVUS1100
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"vp"
-	.value	0x17c
+	.value	0x17f
 	.byte	0x1c
 	.long	0xa86d
 	.long	.LLST1101
 	.long	.LVUS1101
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"xf"
-	.value	0x17e
+	.value	0x181
 	.byte	0x19
 	.long	0x4f
 	.long	.LLST1102
 	.long	.LVUS1102
 	.uleb128 0x32
 	.long	.LLRL1103
-	.long	0x14494
+	.long	0x14497
 	.uleb128 0x35
 	.long	.LASF1432
-	.value	0x181
+	.value	0x184
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1104
 	.long	.LVUS1104
 	.uleb128 0x35
 	.long	.LASF1433
-	.value	0x182
+	.value	0x185
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1105
 	.long	.LVUS1105
 	.uleb128 0x35
 	.long	.LASF1434
-	.value	0x183
+	.value	0x186
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1106
 	.long	.LVUS1106
 	.uleb128 0x35
 	.long	.LASF1435
-	.value	0x184
+	.value	0x187
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1107
 	.long	.LVUS1107
 	.uleb128 0x35
 	.long	.LASF1436
-	.value	0x185
+	.value	0x188
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1108
 	.long	.LVUS1108
 	.uleb128 0x35
 	.long	.LASF1437
-	.value	0x186
+	.value	0x189
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1109
 	.long	.LVUS1109
 	.uleb128 0x35
 	.long	.LASF1438
-	.value	0x187
+	.value	0x18a
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1110
 	.long	.LVUS1110
 	.uleb128 0x35
 	.long	.LASF1439
-	.value	0x188
+	.value	0x18b
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1111
 	.long	.LVUS1111
 	.uleb128 0x35
 	.long	.LASF1452
-	.value	0x189
+	.value	0x18c
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1112
 	.long	.LVUS1112
 	.uleb128 0x35
 	.long	.LASF1453
-	.value	0x18a
+	.value	0x18d
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1113
 	.long	.LVUS1113
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5890
 	.value	.LVU2358
 	.long	.LLRL1114
 	.byte	0x1
-	.value	0x181
+	.value	0x184
 	.byte	0x32
-	.long	0x13aa0
+	.long	0x13aa3
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x1a
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5891
 	.value	.LVU2360
 	.long	.LLRL1115
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x13a59
+	.long	0x13a5c
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5893
 	.value	.LVU2364
 	.quad	.LBB5893
@@ -45863,13 +45863,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1116
 	.long	.LVUS1116
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5895
 	.value	.LVU2366
 	.quad	.LBB5895
@@ -45878,94 +45878,94 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1117
 	.long	.LVUS1117
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1118
 	.long	.LVUS1118
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5899
 	.value	.LVU2369
 	.long	.LLRL1119
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x13a7a
+	.long	0x13a7d
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5903
 	.value	.LVU2375
 	.long	.LLRL1120
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1121
 	.long	.LVUS1121
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5907
 	.value	.LVU2437
 	.long	.LLRL1122
 	.byte	0x1
-	.value	0x185
+	.value	0x188
 	.byte	0x32
-	.long	0x13b8f
+	.long	0x13b92
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5908
 	.value	.LVU2446
 	.long	.LLRL1123
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x13ae1
+	.long	0x13ae4
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5911
 	.value	.LVU2448
 	.long	.LLRL1124
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x13b02
+	.long	0x13b05
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5914
 	.value	.LVU2439
 	.quad	.LBB5914
 	.quad	.LBE5914-.LBB5914
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5916
 	.value	.LVU2441
 	.quad	.LBB5916
@@ -45974,11 +45974,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5918
 	.value	.LVU2443
 	.quad	.LBB5918
@@ -45987,65 +45987,65 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1125
 	.long	.LVUS1125
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5922
 	.value	.LVU2452
 	.long	.LLRL1126
 	.byte	0x1
-	.value	0x186
+	.value	0x189
 	.byte	0x32
-	.long	0x13c7e
+	.long	0x13c81
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5923
 	.value	.LVU2461
 	.long	.LLRL1127
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x13bd0
+	.long	0x13bd3
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5926
 	.value	.LVU2463
 	.long	.LLRL1128
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x13bf1
+	.long	0x13bf4
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5929
 	.value	.LVU2454
 	.quad	.LBB5929
 	.quad	.LBE5929-.LBB5929
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5931
 	.value	.LVU2456
 	.quad	.LBB5931
@@ -46054,11 +46054,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5933
 	.value	.LVU2458
 	.quad	.LBB5933
@@ -46067,65 +46067,65 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1129
 	.long	.LVUS1129
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5938
 	.value	.LVU2467
 	.long	.LLRL1130
 	.byte	0x1
-	.value	0x187
+	.value	0x18a
 	.byte	0x32
-	.long	0x13d6d
+	.long	0x13d70
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5939
 	.value	.LVU2476
 	.long	.LLRL1131
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x13cbf
+	.long	0x13cc2
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5942
 	.value	.LVU2478
 	.long	.LLRL1132
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x13ce0
+	.long	0x13ce3
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5945
 	.value	.LVU2469
 	.quad	.LBB5945
 	.quad	.LBE5945-.LBB5945
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5947
 	.value	.LVU2471
 	.quad	.LBB5947
@@ -46134,11 +46134,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5949
 	.value	.LVU2473
 	.quad	.LBB5949
@@ -46147,65 +46147,65 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1133
 	.long	.LVUS1133
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5953
 	.value	.LVU2482
 	.long	.LLRL1134
 	.byte	0x1
-	.value	0x188
+	.value	0x18b
 	.byte	0x32
-	.long	0x13e5c
+	.long	0x13e5f
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5954
 	.value	.LVU2491
 	.long	.LLRL1135
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x13dae
+	.long	0x13db1
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x15
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5957
 	.value	.LVU2493
 	.long	.LLRL1136
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
-	.long	0x13dcf
+	.long	0x13dd2
 	.uleb128 0x4
-	.long	0x17bfd
+	.long	0x17c00
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5960
 	.value	.LVU2484
 	.quad	.LBB5960
 	.quad	.LBE5960-.LBB5960
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5962
 	.value	.LVU2486
 	.quad	.LBB5962
@@ -46214,11 +46214,11 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x4
-	.long	0x17c53
+	.long	0x17c56
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5964
 	.value	.LVU2488
 	.quad	.LBB5964
@@ -46227,53 +46227,53 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1137
 	.long	.LVUS1137
 	.uleb128 0x4
-	.long	0x17c82
+	.long	0x17c85
 	.byte	0
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5969
 	.value	.LVU2383
 	.long	.LLRL1138
 	.byte	0x1
-	.value	0x182
+	.value	0x185
 	.byte	0x32
-	.long	0x13f6f
+	.long	0x13f72
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5970
 	.value	.LVU2392
 	.long	.LLRL1139
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x13e9d
+	.long	0x13ea0
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5973
 	.value	.LVU2385
 	.quad	.LBB5973
 	.quad	.LBE5973-.LBB5973
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x13f3d
+	.long	0x13f40
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5975
 	.value	.LVU2387
 	.quad	.LBB5975
@@ -46282,13 +46282,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1140
 	.long	.LVUS1140
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5977
 	.value	.LVU2389
 	.quad	.LBB5977
@@ -46297,70 +46297,70 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1141
 	.long	.LVUS1141
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1142
 	.long	.LVUS1142
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5980
 	.value	.LVU2395
 	.quad	.LBB5980
 	.quad	.LBE5980-.LBB5980
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1143
 	.long	.LVUS1143
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5984
 	.value	.LVU2400
 	.long	.LLRL1144
 	.byte	0x1
-	.value	0x183
+	.value	0x186
 	.byte	0x32
-	.long	0x14076
+	.long	0x14079
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI5985
 	.value	.LVU2409
 	.long	.LLRL1145
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x13fb0
+	.long	0x13fb3
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI5988
 	.value	.LVU2402
 	.quad	.LBB5988
 	.quad	.LBE5988-.LBB5988
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x14050
+	.long	0x14053
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI5990
 	.value	.LVU2404
 	.quad	.LBB5990
@@ -46369,13 +46369,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1146
 	.long	.LVUS1146
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI5992
 	.value	.LVU2406
 	.quad	.LBB5992
@@ -46384,69 +46384,69 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1147
 	.long	.LVUS1147
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1148
 	.long	.LVUS1148
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI5995
 	.value	.LVU2412
 	.long	.LLRL1149
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1150
 	.long	.LVUS1150
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI5999
 	.value	.LVU2420
 	.long	.LLRL1151
 	.byte	0x1
-	.value	0x184
+	.value	0x187
 	.byte	0x32
-	.long	0x14189
+	.long	0x1418c
 	.uleb128 0x4
-	.long	0x17b0d
+	.long	0x17b10
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI6000
 	.value	.LVU2429
 	.long	.LLRL1152
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x140b7
+	.long	0x140ba
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI6003
 	.value	.LVU2422
 	.quad	.LBB6003
 	.quad	.LBE6003-.LBB6003
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x14157
+	.long	0x1415a
 	.uleb128 0x4
-	.long	0x17c1f
+	.long	0x17c22
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI6005
 	.value	.LVU2424
 	.quad	.LBB6005
@@ -46455,13 +46455,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1153
 	.long	.LVUS1153
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI6007
 	.value	.LVU2426
 	.quad	.LBB6007
@@ -46470,262 +46470,262 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1154
 	.long	.LVUS1154
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1155
 	.long	.LVUS1155
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI6010
 	.value	.LVU2432
 	.quad	.LBB6010
 	.quad	.LBE6010-.LBB6010
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1156
 	.long	.LVUS1156
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI6017
 	.value	.LVU2505
 	.long	.LLRL1157
 	.byte	0x1
-	.value	0x18b
+	.value	0x18e
 	.byte	0x2f
-	.long	0x141bc
+	.long	0x141bf
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1158
 	.long	.LVUS1158
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x4
-	.long	0x17b48
+	.long	0x17b4b
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI6020
 	.value	.LVU2509
 	.long	.LLRL1159
 	.byte	0x1
-	.value	0x18c
+	.value	0x18f
 	.byte	0x2f
-	.long	0x141ef
+	.long	0x141f2
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1160
 	.long	.LVUS1160
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x4
-	.long	0x17b48
+	.long	0x17b4b
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI6029
 	.value	.LVU2497
 	.quad	.LBB6029
 	.quad	.LBE6029-.LBB6029
 	.byte	0x1
-	.value	0x189
+	.value	0x18c
 	.byte	0x36
-	.long	0x1421c
+	.long	0x1421f
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI6031
 	.value	.LVU2501
 	.quad	.LBB6031
 	.quad	.LBE6031-.LBB6031
 	.byte	0x1
-	.value	0x18a
+	.value	0x18d
 	.byte	0x36
-	.long	0x14249
+	.long	0x1424c
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI6035
 	.value	.LVU2513
 	.quad	.LBB6035
 	.quad	.LBE6035-.LBB6035
 	.byte	0x1
-	.value	0x18d
+	.value	0x190
 	.byte	0x2f
-	.long	0x14298
+	.long	0x1429b
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1161
 	.long	.LVUS1161
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1162
 	.long	.LVUS1162
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1163
 	.long	.LVUS1163
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI6037
 	.value	.LVU2518
 	.quad	.LBB6037
 	.quad	.LBE6037-.LBB6037
 	.byte	0x1
-	.value	0x18e
+	.value	0x191
 	.byte	0x2f
-	.long	0x142e7
+	.long	0x142ea
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1164
 	.long	.LVUS1164
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1165
 	.long	.LVUS1165
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1166
 	.long	.LVUS1166
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI6039
 	.value	.LVU2523
 	.quad	.LBB6039
 	.quad	.LBE6039-.LBB6039
 	.byte	0x1
-	.value	0x18f
+	.value	0x192
 	.byte	0x2f
-	.long	0x14336
+	.long	0x14339
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1167
 	.long	.LVUS1167
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1168
 	.long	.LVUS1168
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1169
 	.long	.LVUS1169
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI6041
 	.value	.LVU2528
 	.quad	.LBB6041
 	.quad	.LBE6041-.LBB6041
 	.byte	0x1
-	.value	0x190
+	.value	0x193
 	.byte	0x2f
-	.long	0x14385
+	.long	0x14388
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1170
 	.long	.LVUS1170
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1171
 	.long	.LVUS1171
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1172
 	.long	.LVUS1172
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI6043
 	.value	.LVU2533
 	.quad	.LBB6043
 	.quad	.LBE6043-.LBB6043
 	.byte	0x1
-	.value	0x191
+	.value	0x194
 	.byte	0x2f
-	.long	0x143d4
+	.long	0x143d7
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1173
 	.long	.LVUS1173
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1174
 	.long	.LVUS1174
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1175
 	.long	.LVUS1175
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI6045
 	.value	.LVU2538
 	.quad	.LBB6045
 	.quad	.LBE6045-.LBB6045
 	.byte	0x1
-	.value	0x192
+	.value	0x195
 	.byte	0x2f
-	.long	0x14423
+	.long	0x14426
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1176
 	.long	.LVUS1176
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1177
 	.long	.LVUS1177
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1178
 	.long	.LVUS1178
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI6047
 	.value	.LVU2543
 	.quad	.LBB6047
 	.quad	.LBE6047-.LBB6047
 	.byte	0x1
-	.value	0x193
+	.value	0x196
 	.byte	0x29
-	.long	0x1445d
+	.long	0x14460
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST1179
 	.long	.LVUS1179
 	.byte	0
 	.uleb128 0x7
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI6049
 	.value	.LVU2548
 	.quad	.LBB6049
 	.quad	.LBE6049-.LBB6049
 	.byte	0x1
-	.value	0x194
+	.value	0x197
 	.byte	0x29
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST1180
 	.long	.LVUS1180
 	.byte	0
@@ -46733,71 +46733,71 @@
 	.uleb128 0x81
 	.quad	.LBB6055
 	.quad	.LBE6055-.LBB6055
-	.long	0x14b17
-	.uleb128 0x21
+	.long	0x14b1a
+	.uleb128 0x20
 	.string	"rl0"
-	.value	0x198
+	.value	0x19b
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1181
 	.long	.LVUS1181
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rr0"
-	.value	0x199
+	.value	0x19c
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1182
 	.long	.LVUS1182
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rl1"
-	.value	0x19a
+	.value	0x19d
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1183
 	.long	.LVUS1183
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"rr1"
-	.value	0x19b
+	.value	0x19e
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1184
 	.long	.LVUS1184
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"v"
-	.value	0x19c
+	.value	0x19f
 	.byte	0x20
 	.long	0xa472
 	.long	.LLST1185
 	.long	.LVUS1185
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI6056
 	.value	.LVU2564
 	.long	.LLRL1186
 	.byte	0x1
-	.value	0x198
+	.value	0x19b
 	.byte	0x2f
-	.long	0x1462e
+	.long	0x14631
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1187
 	.long	.LVUS1187
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI6057
 	.value	.LVU2566
 	.quad	.LBB6057
 	.quad	.LBE6057-.LBB6057
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x145dc
+	.long	0x145df
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1188
 	.long	.LVUS1188
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI6059
 	.value	.LVU2568
 	.quad	.LBB6059
@@ -46806,13 +46806,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1189
 	.long	.LVUS1189
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI6061
 	.value	.LVU2570
 	.quad	.LBB6061
@@ -46821,86 +46821,86 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1190
 	.long	.LVUS1190
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1191
 	.long	.LVUS1191
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x4d
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI6063
 	.value	.LVU2573
 	.quad	.LBB6063
 	.quad	.LBE6063-.LBB6063
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x14608
+	.long	0x1460b
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI6065
 	.value	.LVU2577
 	.long	.LLRL1192
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1193
 	.long	.LVUS1193
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI6069
 	.value	.LVU2583
 	.long	.LLRL1194
 	.byte	0x1
-	.value	0x199
+	.value	0x19c
 	.byte	0x2f
-	.long	0x14745
+	.long	0x14748
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1195
 	.long	.LVUS1195
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI6070
 	.value	.LVU2592
 	.long	.LLRL1196
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x14677
+	.long	0x1467a
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI6073
 	.value	.LVU2585
 	.quad	.LBB6073
 	.quad	.LBE6073-.LBB6073
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x1471f
+	.long	0x14722
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1197
 	.long	.LVUS1197
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI6075
 	.value	.LVU2587
 	.quad	.LBB6075
@@ -46909,13 +46909,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1198
 	.long	.LVUS1198
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI6077
 	.value	.LVU2589
 	.quad	.LBB6077
@@ -46924,73 +46924,73 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1199
 	.long	.LVUS1199
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1200
 	.long	.LVUS1200
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x37
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI6080
 	.value	.LVU2595
 	.long	.LLRL1201
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1202
 	.long	.LVUS1202
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI6084
 	.value	.LVU2602
 	.long	.LLRL1203
 	.byte	0x1
-	.value	0x19a
+	.value	0x19d
 	.byte	0x2f
-	.long	0x14868
+	.long	0x1486b
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1204
 	.long	.LVUS1204
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI6085
 	.value	.LVU2611
 	.long	.LLRL1205
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x1478e
+	.long	0x14791
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI6088
 	.value	.LVU2604
 	.quad	.LBB6088
 	.quad	.LBE6088-.LBB6088
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x14836
+	.long	0x14839
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1206
 	.long	.LVUS1206
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI6090
 	.value	.LVU2606
 	.quad	.LBB6090
@@ -46999,13 +46999,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1207
 	.long	.LVUS1207
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI6092
 	.value	.LVU2608
 	.quad	.LBB6092
@@ -47014,74 +47014,74 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1208
 	.long	.LVUS1208
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1209
 	.long	.LVUS1209
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI6095
 	.value	.LVU2614
 	.quad	.LBB6095
 	.quad	.LBE6095-.LBB6095
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1210
 	.long	.LVUS1210
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17afb
+	.uleb128 0x1b
+	.long	0x17afe
 	.quad	.LBI6097
 	.value	.LVU2619
 	.long	.LLRL1211
 	.byte	0x1
-	.value	0x19b
+	.value	0x19e
 	.byte	0x2f
-	.long	0x1498b
+	.long	0x1498e
 	.uleb128 0x2
-	.long	0x17b0d
+	.long	0x17b10
 	.long	.LLST1212
 	.long	.LVUS1212
 	.uleb128 0x15
-	.long	0x17b55
+	.long	0x17b58
 	.quad	.LBI6098
 	.value	.LVU2628
 	.long	.LLRL1213
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x1
-	.long	0x148b1
+	.long	0x148b4
 	.uleb128 0x4
-	.long	0x17b69
+	.long	0x17b6c
 	.byte	0
 	.uleb128 0x13
-	.long	0x17c0b
+	.long	0x17c0e
 	.quad	.LBI6101
 	.value	.LVU2621
 	.quad	.LBB6101
 	.quad	.LBE6101-.LBB6101
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
-	.long	0x14959
+	.long	0x1495c
 	.uleb128 0x2
-	.long	0x17c1f
+	.long	0x17c22
 	.long	.LLST1214
 	.long	.LVUS1214
 	.uleb128 0x7
-	.long	0x17c32
+	.long	0x17c35
 	.quad	.LBI6103
 	.value	.LVU2623
 	.quad	.LBB6103
@@ -47090,13 +47090,13 @@
 	.value	0x2c9
 	.byte	0x18
 	.uleb128 0x4
-	.long	0x17c46
+	.long	0x17c49
 	.uleb128 0x2
-	.long	0x17c53
+	.long	0x17c56
 	.long	.LLST1215
 	.long	.LVUS1215
 	.uleb128 0x7
-	.long	0x17c61
+	.long	0x17c64
 	.quad	.LBI6105
 	.value	.LVU2625
 	.quad	.LBB6105
@@ -47105,186 +47105,186 @@
 	.value	0x25a
 	.byte	0x19
 	.uleb128 0x2
-	.long	0x17c75
+	.long	0x17c78
 	.long	.LLST1216
 	.long	.LVUS1216
 	.uleb128 0x2
-	.long	0x17c82
+	.long	0x17c85
 	.long	.LLST1217
 	.long	.LVUS1217
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x33
-	.long	0x17be9
+	.long	0x17bec
 	.quad	.LBI6108
 	.value	.LVU2631
 	.quad	.LBB6108
 	.quad	.LBE6108-.LBB6108
 	.byte	0x1
-	.byte	0x24
+	.byte	0x27
 	.byte	0x1e
 	.byte	0x2
 	.uleb128 0x2
-	.long	0x17bfd
+	.long	0x17c00
 	.long	.LLST1218
 	.long	.LVUS1218
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
-	.long	0x17b1a
+	.uleb128 0x1b
+	.long	0x17b1d
 	.quad	.LBI6112
 	.value	.LVU2640
 	.long	.LLRL1219
 	.byte	0x1
-	.value	0x19d
+	.value	0x1a0
 	.byte	0x2c
-	.long	0x149c6
+	.long	0x149c9
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1220
 	.long	.LVUS1220
 	.uleb128 0x4
-	.long	0x17b3c
+	.long	0x17b3f
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1221
 	.long	.LVUS1221
 	.byte	0
 	.uleb128 0x16
-	.long	0x17bc7
+	.long	0x17bca
 	.quad	.LBI6118
 	.value	.LVU2636
 	.quad	.LBB6118
 	.quad	.LBE6118-.LBB6118
 	.byte	0x1
-	.value	0x19c
+	.value	0x19f
 	.byte	0x33
-	.long	0x149f3
+	.long	0x149f6
 	.uleb128 0x4
-	.long	0x17bdb
+	.long	0x17bde
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI6121
 	.value	.LVU2644
 	.quad	.LBB6121
 	.quad	.LBE6121-.LBB6121
 	.byte	0x1
-	.value	0x19e
+	.value	0x1a1
 	.byte	0x2c
-	.long	0x14a42
+	.long	0x14a45
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1222
 	.long	.LVUS1222
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1223
 	.long	.LVUS1223
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1224
 	.long	.LVUS1224
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI6123
 	.value	.LVU2649
 	.quad	.LBB6123
 	.quad	.LBE6123-.LBB6123
 	.byte	0x1
-	.value	0x19f
+	.value	0x1a2
 	.byte	0x2c
-	.long	0x14a91
+	.long	0x14a94
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1225
 	.long	.LVUS1225
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1226
 	.long	.LVUS1226
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1227
 	.long	.LVUS1227
 	.byte	0
 	.uleb128 0x16
-	.long	0x17b1a
+	.long	0x17b1d
 	.quad	.LBI6125
 	.value	.LVU2654
 	.quad	.LBB6125
 	.quad	.LBE6125-.LBB6125
 	.byte	0x1
-	.value	0x1a0
+	.value	0x1a3
 	.byte	0x2c
-	.long	0x14ae0
+	.long	0x14ae3
 	.uleb128 0x2
-	.long	0x17b30
+	.long	0x17b33
 	.long	.LLST1228
 	.long	.LVUS1228
 	.uleb128 0x2
-	.long	0x17b3c
+	.long	0x17b3f
 	.long	.LLST1229
 	.long	.LVUS1229
 	.uleb128 0x2
-	.long	0x17b48
+	.long	0x17b4b
 	.long	.LLST1230
 	.long	.LVUS1230
 	.byte	0
 	.uleb128 0x7
-	.long	0x17b99
+	.long	0x17b9c
 	.quad	.LBI6127
 	.value	.LVU2659
 	.quad	.LBB6127
 	.quad	.LBE6127-.LBB6127
 	.byte	0x1
-	.value	0x1a1
+	.value	0x1a4
 	.byte	0x29
 	.uleb128 0x4
-	.long	0x17bac
+	.long	0x17baf
 	.uleb128 0x2
-	.long	0x17bb9
+	.long	0x17bbc
 	.long	.LLST1231
 	.long	.LVUS1231
 	.byte	0
 	.byte	0
 	.uleb128 0x44
 	.long	.LLRL1232
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"k"
-	.value	0x1a5
+	.value	0x1a8
 	.byte	0x1e
 	.long	0x4f
 	.long	.LLST1233
 	.long	.LVUS1233
 	.uleb128 0x44
 	.long	.LLRL1234
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s0l"
-	.value	0x1a6
+	.value	0x1a9
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST1235
 	.long	.LVUS1235
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s0r"
-	.value	0x1a6
+	.value	0x1a9
 	.byte	0x36
 	.long	0x30
 	.long	.LLST1236
 	.long	.LVUS1236
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s1l"
-	.value	0x1a7
+	.value	0x1aa
 	.byte	0x1f
 	.long	0x30
 	.long	.LLST1237
 	.long	.LVUS1237
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"s1r"
-	.value	0x1a7
+	.value	0x1aa
 	.byte	0x36
 	.long	0x30
 	.long	.LLST1238
@@ -47293,132 +47293,132 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x178a5
+	.long	0x178a8
 	.quad	.LBI5395
 	.value	.LVU468
 	.long	.LLRL844
 	.byte	0x1
-	.byte	0x6f
+	.byte	0x72
 	.byte	0x2d
-	.long	0x14bbb
+	.long	0x14bbe
 	.uleb128 0x2
-	.long	0x178b8
+	.long	0x178bb
 	.long	.LLST845
 	.long	.LVUS845
 	.uleb128 0x2
-	.long	0x178c5
+	.long	0x178c8
 	.long	.LLST846
 	.long	.LVUS846
 	.byte	0
 	.uleb128 0x1a
-	.long	0x178a5
+	.long	0x178a8
 	.quad	.LBI5400
 	.value	.LVU486
 	.long	.LLRL847
 	.byte	0x1
-	.byte	0x71
+	.byte	0x74
 	.byte	0x2d
-	.long	0x14bf0
+	.long	0x14bf3
 	.uleb128 0x2
-	.long	0x178b8
+	.long	0x178bb
 	.long	.LLST848
 	.long	.LVUS848
 	.uleb128 0x2
-	.long	0x178c5
+	.long	0x178c8
 	.long	.LLST849
 	.long	.LVUS849
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17879
+	.long	0x1787c
 	.quad	.LBI5406
 	.value	.LVU491
 	.long	.LLRL850
 	.byte	0x1
-	.byte	0x72
+	.byte	0x75
 	.byte	0x2d
-	.long	0x14c25
+	.long	0x14c28
 	.uleb128 0x2
-	.long	0x1788c
+	.long	0x1788f
 	.long	.LLST851
 	.long	.LVUS851
 	.uleb128 0x2
-	.long	0x17898
+	.long	0x1789b
 	.long	.LLST852
 	.long	.LVUS852
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17879
+	.long	0x1787c
 	.quad	.LBI5411
 	.value	.LVU478
 	.long	.LLRL853
 	.byte	0x1
-	.byte	0x70
+	.byte	0x73
 	.byte	0x2d
-	.long	0x14c5a
+	.long	0x14c5d
 	.uleb128 0x2
-	.long	0x1788c
+	.long	0x1788f
 	.long	.LLST854
 	.long	.LVUS854
 	.uleb128 0x2
-	.long	0x17898
+	.long	0x1789b
 	.long	.LLST855
 	.long	.LVUS855
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17b77
+	.long	0x17b7a
 	.quad	.LBI5429
 	.value	.LVU503
 	.long	.LLRL856
 	.byte	0x1
-	.byte	0x75
+	.byte	0x78
 	.byte	0x32
-	.long	0x14c82
+	.long	0x14c85
 	.uleb128 0x2
-	.long	0x17b8b
+	.long	0x17b8e
 	.long	.LLST857
 	.long	.LVUS857
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b77
+	.long	0x17b7a
 	.quad	.LBI5434
 	.value	.LVU513
 	.quad	.LBB5434
 	.quad	.LBE5434-.LBB5434
 	.byte	0x1
-	.byte	0x76
+	.byte	0x79
 	.byte	0x32
-	.long	0x14cb6
+	.long	0x14cb9
 	.uleb128 0x2
-	.long	0x17b8b
+	.long	0x17b8e
 	.long	.LLST858
 	.long	.LVUS858
 	.byte	0
 	.uleb128 0x13
-	.long	0x17b77
+	.long	0x17b7a
 	.quad	.LBI5436
 	.value	.LVU518
 	.quad	.LBB5436
 	.quad	.LBE5436-.LBB5436
 	.byte	0x1
-	.byte	0x77
+	.byte	0x7a
 	.byte	0x32
-	.long	0x14cea
+	.long	0x14ced
 	.uleb128 0x2
-	.long	0x17b8b
+	.long	0x17b8e
 	.long	.LLST859
 	.long	.LVUS859
 	.byte	0
 	.uleb128 0x1e
-	.long	0x17b77
+	.long	0x17b7a
 	.quad	.LBI5438
 	.value	.LVU523
 	.quad	.LBB5438
 	.quad	.LBE5438-.LBB5438
 	.byte	0x1
-	.byte	0x78
+	.byte	0x7b
 	.byte	0x32
 	.uleb128 0x2
-	.long	0x17b8b
+	.long	0x17b8e
 	.long	.LLST860
 	.long	.LVUS860
 	.byte	0
@@ -47426,10 +47426,10 @@
 	.byte	0
 	.uleb128 0x32
 	.long	.LLRL1239
-	.long	0x14f40
-	.uleb128 0x21
+	.long	0x14f43
+	.uleb128 0x20
 	.string	"y"
-	.value	0x1ad
+	.value	0x1b0
 	.byte	0x16
 	.long	0x4f
 	.long	.LLST1240
@@ -47439,57 +47439,57 @@
 	.uleb128 0x5d
 	.string	"vp"
 	.byte	0x1
-	.value	0x1ae
+	.value	0x1b1
 	.byte	0x20
 	.long	0xa886
 	.uleb128 0x2c
 	.long	.LASF1454
 	.byte	0x1
-	.value	0x1af
+	.value	0x1b2
 	.byte	0x20
 	.long	0xa075
 	.uleb128 0x32
 	.long	.LLRL1242
-	.long	0x14f0d
-	.uleb128 0x21
+	.long	0x14f10
+	.uleb128 0x20
 	.string	"x"
-	.value	0x1b1
+	.value	0x1b4
 	.byte	0x1a
 	.long	0x4f
 	.long	.LLST1243
 	.long	.LVUS1243
 	.uleb128 0x44
 	.long	.LLRL1244
-	.uleb128 0x21
+	.uleb128 0x20
 	.string	"c"
-	.value	0x1b2
+	.value	0x1b5
 	.byte	0x19
 	.long	0x4f
 	.long	.LLST1245
 	.long	.LVUS1245
 	.uleb128 0x35
 	.long	.LASF1455
-	.value	0x1b4
+	.value	0x1b7
 	.byte	0x1b
 	.long	0x30
 	.long	.LLST1246
 	.long	.LVUS1246
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xc989
 	.quad	.LBI6179
 	.value	.LVU2996
 	.long	.LLRL1247
 	.byte	0x1
-	.value	0x1b5
+	.value	0x1b8
 	.byte	0x3e
-	.long	0x14e0f
+	.long	0x14e12
 	.uleb128 0x4
 	.long	0xc99c
 	.uleb128 0x4
 	.long	0xc9a9
 	.uleb128 0x4
 	.long	0xc9b6
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xbff6
 	.quad	.LBI6180
 	.value	.LVU2998
@@ -47497,7 +47497,7 @@
 	.byte	0x11
 	.value	0xe21
 	.byte	0x16
-	.long	0x14deb
+	.long	0x14dee
 	.uleb128 0x4
 	.long	0xc009
 	.uleb128 0x4
@@ -47518,15 +47518,15 @@
 	.long	0xbfe9
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xc989
 	.quad	.LBI6198
 	.value	.LVU3007
 	.long	.LLRL1250
 	.byte	0x1
-	.value	0x1b6
+	.value	0x1b9
 	.byte	0x3e
-	.long	0x14e8f
+	.long	0x14e92
 	.uleb128 0x4
 	.long	0xc99c
 	.uleb128 0x4
@@ -47542,7 +47542,7 @@
 	.value	0xe21
 	.byte	0x16
 	.byte	0x1
-	.long	0x14e60
+	.long	0x14e63
 	.uleb128 0x4
 	.long	0xbfdd
 	.uleb128 0x4
@@ -47569,7 +47569,7 @@
 	.value	.LVU3018
 	.long	.LLRL1252
 	.byte	0x1
-	.value	0x1b7
+	.value	0x1ba
 	.byte	0x3e
 	.uleb128 0x4
 	.long	0xc99c
@@ -47586,7 +47586,7 @@
 	.byte	0x11
 	.value	0xe21
 	.byte	0x16
-	.long	0x14ee7
+	.long	0x14eea
 	.uleb128 0x4
 	.long	0xc009
 	.uleb128 0x4
@@ -47616,7 +47616,7 @@
 	.quad	.LBB6228
 	.quad	.LBE6228-.LBB6228
 	.byte	0x1
-	.value	0x1af
+	.value	0x1b2
 	.byte	0x37
 	.uleb128 0x2
 	.long	0xccb7
@@ -47626,18 +47626,18 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17879
+	.long	0x1787c
 	.quad	.LBI6238
 	.value	.LVU429
 	.long	.LLRL1255
 	.byte	0x1
-	.byte	0x66
+	.byte	0x69
 	.byte	0x2f
-	.long	0x14f6d
+	.long	0x14f70
 	.uleb128 0x4
-	.long	0x1788c
+	.long	0x1788f
 	.uleb128 0x2
-	.long	0x17898
+	.long	0x1789b
 	.long	.LLST1256
 	.long	.LVUS1256
 	.byte	0
@@ -47648,9 +47648,9 @@
 	.quad	.LBB6244
 	.quad	.LBE6244-.LBB6244
 	.byte	0x1
-	.byte	0x6b
+	.byte	0x6e
 	.byte	0x26
-	.long	0x14fc7
+	.long	0x14fca
 	.uleb128 0x4
 	.long	0xca53
 	.uleb128 0x7
@@ -47674,10 +47674,10 @@
 	.value	.LVU444
 	.long	.LLRL1257
 	.byte	0x1
-	.byte	0x6a
+	.byte	0x6d
 	.byte	0x16
 	.byte	0x1
-	.long	0x15023
+	.long	0x15026
 	.uleb128 0x4
 	.long	0xca2e
 	.uleb128 0x2
@@ -47705,10 +47705,10 @@
 	.value	.LVU447
 	.quad	.LBB6250
 	.quad	.LBE6250-.LBB6250
-	.byte	0x6a
+	.byte	0x6d
 	.byte	0x16
 	.byte	0x2
-	.long	0x1507d
+	.long	0x15080
 	.uleb128 0x4
 	.long	0xca53
 	.uleb128 0x7
@@ -47732,7 +47732,7 @@
 	.value	.LVU450
 	.long	.LLRL1260
 	.byte	0x1
-	.byte	0x6a
+	.byte	0x6d
 	.byte	0x16
 	.byte	0x3
 	.uleb128 0x4
@@ -47798,7 +47798,7 @@
 	.byte	0x30
 	.uleb128 0x38
 	.quad	.LVL89
-	.long	0x17d0f
+	.long	0x17d12
 	.uleb128 0x26
 	.uleb128 0x1
 	.byte	0x55
@@ -47840,37 +47840,37 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x51
-	.long	0x17879
+	.long	0x1787c
 	.quad	.LBI4696
 	.value	.LVU406
 	.long	.LLRL391
 	.byte	0x1
-	.byte	0x62
+	.byte	0x65
 	.byte	0x2b
 	.uleb128 0x4
-	.long	0x1788c
+	.long	0x1788f
 	.uleb128 0x2
-	.long	0x17898
+	.long	0x1789b
 	.long	.LLST392
 	.long	.LVUS392
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17a3b
+	.long	0x17a3e
 	.quad	.LBI4215
 	.value	.LVU25
 	.long	.LLRL8
 	.byte	0x1
-	.byte	0x2e
+	.byte	0x31
 	.byte	0xf
-	.long	0x152bb
+	.long	0x152be
 	.uleb128 0x2
-	.long	0x17a4b
+	.long	0x17a4e
 	.long	.LLST9
 	.long	.LVUS9
 	.uleb128 0x51
-	.long	0x17a6c
+	.long	0x17a6f
 	.quad	.LBI4216
 	.value	.LVU26
 	.long	.LLRL8
@@ -47878,11 +47878,11 @@
 	.byte	0xb
 	.byte	0x8
 	.uleb128 0x2
-	.long	0x17a7a
+	.long	0x17a7d
 	.long	.LLST10
 	.long	.LVUS10
 	.uleb128 0x19
-	.long	0x17a9b
+	.long	0x17a9e
 	.quad	.LBI4217
 	.value	.LVU27
 	.long	.LLRL8
@@ -47890,7 +47890,7 @@
 	.value	0x227
 	.byte	0x7
 	.uleb128 0x2
-	.long	0x17aa9
+	.long	0x17aac
 	.long	.LLST11
 	.long	.LVUS11
 	.uleb128 0x19
@@ -47914,7 +47914,7 @@
 	.byte	0x94
 	.byte	0x13
 	.byte	0x1
-	.long	0x15257
+	.long	0x1525a
 	.uleb128 0x2
 	.long	0xc914
 	.long	.LLST14
@@ -47958,9 +47958,9 @@
 	.value	.LVU7
 	.long	.LLRL17
 	.byte	0x1
-	.byte	0x29
+	.byte	0x2c
 	.byte	0x2d
-	.long	0x15332
+	.long	0x15335
 	.uleb128 0x2
 	.long	0xcf30
 	.long	.LLST18
@@ -48001,9 +48001,9 @@
 	.quad	.LBB4240
 	.quad	.LBE4240-.LBB4240
 	.byte	0x1
-	.byte	0x2a
 	.byte	0x2d
-	.long	0x153cd
+	.byte	0x2d
+	.long	0x153d0
 	.uleb128 0x2
 	.long	0xcf30
 	.long	.LLST21
@@ -48045,9 +48045,9 @@
 	.value	.LVU40
 	.long	.LLRL24
 	.byte	0x1
-	.byte	0x31
+	.byte	0x34
 	.byte	0x17
-	.long	0x15b5a
+	.long	0x15b5d
 	.uleb128 0x2
 	.long	0xce28
 	.long	.LLST25
@@ -48093,7 +48093,7 @@
 	.value	0x11a
 	.byte	0xb
 	.byte	0x1
-	.long	0x158de
+	.long	0x158e1
 	.uleb128 0x2
 	.long	0xbe55
 	.long	.LLST33
@@ -48108,7 +48108,7 @@
 	.long	0xbe78
 	.long	.LLST36
 	.long	.LVUS36
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xb61d
 	.quad	.LBI4250
 	.value	.LVU3584
@@ -48116,7 +48116,7 @@
 	.byte	0x2
 	.value	0x24f
 	.byte	0x2f
-	.long	0x155af
+	.long	0x155b2
 	.uleb128 0x2
 	.long	0xb627
 	.long	.LLST38
@@ -48134,7 +48134,7 @@
 	.byte	0x2
 	.value	0x89d
 	.byte	0x18
-	.long	0x1553d
+	.long	0x15540
 	.uleb128 0x4
 	.long	0xbf98
 	.uleb128 0x2
@@ -48168,7 +48168,7 @@
 	.value	0x89d
 	.byte	0x18
 	.byte	0x2
-	.long	0x15593
+	.long	0x15596
 	.uleb128 0x4
 	.long	0xced2
 	.uleb128 0x1e
@@ -48204,7 +48204,7 @@
 	.value	0x24f
 	.byte	0x2f
 	.byte	0x1
-	.long	0x157f1
+	.long	0x157f4
 	.uleb128 0x2
 	.long	0xb5d8
 	.long	.LLST43
@@ -48226,7 +48226,7 @@
 	.byte	0x2
 	.value	0x154
 	.byte	0x9
-	.long	0x156e3
+	.long	0x156e6
 	.uleb128 0x2
 	.long	0xb071
 	.long	.LLST46
@@ -48244,7 +48244,7 @@
 	.byte	0x2
 	.byte	0x99
 	.byte	0x16
-	.long	0x156b1
+	.long	0x156b4
 	.uleb128 0x2
 	.long	0xbf98
 	.long	.LLST48
@@ -48444,7 +48444,7 @@
 	.long	.LVUS76
 	.uleb128 0x38
 	.quad	.LVL588
-	.long	0x17d0f
+	.long	0x17d12
 	.uleb128 0x26
 	.uleb128 0x1
 	.byte	0x54
@@ -48463,7 +48463,7 @@
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xbe17
 	.quad	.LBI4291
 	.value	.LVU3618
@@ -48471,7 +48471,7 @@
 	.byte	0x7
 	.value	0x11b
 	.byte	0x1e
-	.long	0x1597e
+	.long	0x15981
 	.uleb128 0x2
 	.long	0xbe25
 	.long	.LLST78
@@ -48490,7 +48490,7 @@
 	.byte	0x2
 	.byte	0x87
 	.byte	0x14
-	.long	0x1594d
+	.long	0x15950
 	.uleb128 0x2
 	.long	0xb582
 	.long	.LLST81
@@ -48537,7 +48537,7 @@
 	.byte	0x2
 	.value	0x319
 	.byte	0x1c
-	.long	0x159e3
+	.long	0x159e6
 	.uleb128 0x2
 	.long	0xc89b
 	.long	.LLST85
@@ -48552,7 +48552,7 @@
 	.byte	0x2
 	.value	0x318
 	.byte	0xf
-	.long	0x15a22
+	.long	0x15a25
 	.uleb128 0x4
 	.long	0xc86d
 	.uleb128 0x4
@@ -48579,7 +48579,7 @@
 	.long	0xce92
 	.quad	.LBB4305
 	.quad	.LBE4305-.LBB4305
-	.long	0x15ac4
+	.long	0x15ac7
 	.uleb128 0x36
 	.long	0xce93
 	.long	.LLST88
@@ -48608,7 +48608,7 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x7
-	.long	0x17aca
+	.long	0x17acd
 	.quad	.LBI4307
 	.value	.LVU3635
 	.quad	.LBB4307
@@ -48617,7 +48617,7 @@
 	.value	0x17b
 	.byte	0x7
 	.uleb128 0x2
-	.long	0x17ada
+	.long	0x17add
 	.long	.LLST92
 	.long	.LVUS92
 	.uleb128 0x1e
@@ -48655,20 +48655,20 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x1a
-	.long	0x17987
+	.long	0x1798a
 	.quad	.LBI4318
 	.value	.LVU45
 	.long	.LLRL95
 	.byte	0x1
-	.byte	0x33
+	.byte	0x36
 	.byte	0x1c
-	.long	0x15c3d
+	.long	0x15c40
 	.uleb128 0x2
-	.long	0x17995
+	.long	0x17998
 	.long	.LLST96
 	.long	.LVUS96
 	.uleb128 0x19
-	.long	0x179b2
+	.long	0x179b5
 	.quad	.LBI4319
 	.value	.LVU46
 	.long	.LLRL95
@@ -48676,7 +48676,7 @@
 	.value	0x227
 	.byte	0x7
 	.uleb128 0x2
-	.long	0x179c0
+	.long	0x179c3
 	.long	.LLST97
 	.long	.LVUS97
 	.uleb128 0x19
@@ -48699,7 +48699,7 @@
 	.byte	0x2
 	.byte	0x94
 	.byte	0x13
-	.long	0x15c15
+	.long	0x15c18
 	.uleb128 0x2
 	.long	0xc7d2
 	.long	.LLST100
@@ -48741,9 +48741,9 @@
 	.value	.LVU54
 	.long	.LLRL104
 	.byte	0x1
-	.byte	0x34
+	.byte	0x37
 	.byte	0x13
-	.long	0x15c6a
+	.long	0x15c6d
 	.uleb128 0x2
 	.long	0xcd3d
 	.long	.LLST105
@@ -48757,10 +48757,10 @@
 	.value	.LVU57
 	.long	.LLRL106
 	.byte	0x1
-	.byte	0x34
+	.byte	0x37
 	.byte	0x13
 	.byte	0x1
-	.long	0x15d93
+	.long	0x15d96
 	.uleb128 0x2
 	.long	0xccff
 	.long	.LLST107
@@ -48852,9 +48852,9 @@
 	.quad	.LBB4464
 	.quad	.LBE4464-.LBB4464
 	.byte	0x1
-	.byte	0x4a
+	.byte	0x4d
 	.byte	0x2e
-	.long	0x15de7
+	.long	0x15dea
 	.uleb128 0x4
 	.long	0xcc63
 	.uleb128 0x1e
@@ -48876,10 +48876,10 @@
 	.value	.LVU169
 	.long	.LLRL204
 	.byte	0x1
-	.byte	0x4a
+	.byte	0x4d
 	.byte	0x2e
 	.byte	0x1
-	.long	0x162bf
+	.long	0x162c2
 	.uleb128 0x2
 	.long	0xcbcf
 	.long	.LLST205
@@ -48892,7 +48892,7 @@
 	.long	0xcbe5
 	.uleb128 0x4
 	.long	0xcbf2
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xc430
 	.quad	.LBI4467
 	.value	.LVU170
@@ -48900,7 +48900,7 @@
 	.byte	0x2
 	.value	0x24f
 	.byte	0x2f
-	.long	0x15f24
+	.long	0x15f27
 	.uleb128 0x2
 	.long	0xc43a
 	.long	.LLST210
@@ -48916,7 +48916,7 @@
 	.byte	0x2
 	.value	0x89d
 	.byte	0x18
-	.long	0x15eb2
+	.long	0x15eb5
 	.uleb128 0x4
 	.long	0xb9b6
 	.uleb128 0x4
@@ -48946,7 +48946,7 @@
 	.value	0x89d
 	.byte	0x18
 	.byte	0x2
-	.long	0x15f08
+	.long	0x15f0b
 	.uleb128 0x4
 	.long	0xcc34
 	.uleb128 0x1e
@@ -48982,7 +48982,7 @@
 	.value	0x24f
 	.byte	0x2f
 	.byte	0x1
-	.long	0x16123
+	.long	0x16126
 	.uleb128 0x2
 	.long	0xc3ba
 	.long	.LLST215
@@ -49002,7 +49002,7 @@
 	.byte	0x2
 	.value	0x154
 	.byte	0x9
-	.long	0x16038
+	.long	0x1603b
 	.uleb128 0x2
 	.long	0xb976
 	.long	.LLST218
@@ -49018,7 +49018,7 @@
 	.byte	0x2
 	.byte	0x99
 	.byte	0x16
-	.long	0x16006
+	.long	0x16009
 	.uleb128 0x2
 	.long	0xb9b6
 	.long	.LLST220
@@ -49223,14 +49223,14 @@
 	.uleb128 0xa0
 	.long	0xac3a
 	.long	.LLRL252
-	.long	0x16247
+	.long	0x1624a
 	.uleb128 0x4
 	.long	0xac5c
 	.uleb128 0x4
 	.long	0xac71
 	.uleb128 0x38
 	.quad	.LVL44
-	.long	0x17d0f
+	.long	0x17d12
 	.uleb128 0x26
 	.uleb128 0x1
 	.byte	0x55
@@ -49260,7 +49260,7 @@
 	.byte	0xc
 	.value	0x1df
 	.byte	0x2d
-	.long	0x16289
+	.long	0x1628c
 	.uleb128 0x2
 	.long	0xacb5
 	.long	.LLST253
@@ -49295,10 +49295,10 @@
 	.value	.LVU207
 	.quad	.LBB4518
 	.quad	.LBE4518-.LBB4518
-	.byte	0x4a
+	.byte	0x4d
 	.byte	0x2e
 	.byte	0x2
-	.long	0x16313
+	.long	0x16316
 	.uleb128 0x4
 	.long	0xcc34
 	.uleb128 0x1e
@@ -49321,9 +49321,9 @@
 	.quad	.LBB4633
 	.quad	.LBE4633-.LBB4633
 	.byte	0x1
-	.byte	0x5f
+	.byte	0x62
 	.byte	0x35
-	.long	0x16367
+	.long	0x1636a
 	.uleb128 0x4
 	.long	0xcb1c
 	.uleb128 0x1e
@@ -49345,10 +49345,10 @@
 	.value	.LVU364
 	.quad	.LBB4635
 	.quad	.LBE4635-.LBB4635
-	.byte	0x5f
+	.byte	0x62
 	.byte	0x35
 	.byte	0x1
-	.long	0x168e9
+	.long	0x168ec
 	.uleb128 0x4
 	.long	0xca9a
 	.uleb128 0x2
@@ -49366,7 +49366,7 @@
 	.byte	0x2
 	.value	0x241
 	.byte	0x2f
-	.long	0x1648e
+	.long	0x16491
 	.uleb128 0x2
 	.long	0xc227
 	.long	.LLST334
@@ -49382,7 +49382,7 @@
 	.byte	0x2
 	.value	0x89d
 	.byte	0x18
-	.long	0x1643c
+	.long	0x1643f
 	.uleb128 0x4
 	.long	0xb826
 	.uleb128 0x4
@@ -49436,7 +49436,7 @@
 	.value	0x241
 	.byte	0x2f
 	.byte	0x1
-	.long	0x16648
+	.long	0x1664b
 	.uleb128 0x4
 	.long	0xc1a7
 	.uleb128 0x2
@@ -49454,7 +49454,7 @@
 	.byte	0x2
 	.value	0x154
 	.byte	0x9
-	.long	0x1657a
+	.long	0x1657d
 	.uleb128 0x4
 	.long	0xb7e6
 	.uleb128 0x4
@@ -49468,7 +49468,7 @@
 	.byte	0x2
 	.byte	0x99
 	.byte	0x16
-	.long	0x16550
+	.long	0x16553
 	.uleb128 0x4
 	.long	0xb826
 	.uleb128 0x4
@@ -49669,7 +49669,7 @@
 	.long	0xadfc
 	.long	.LLST366
 	.long	.LVUS366
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xabb2
 	.quad	.LBI4665
 	.value	.LVU395
@@ -49677,7 +49677,7 @@
 	.byte	0xc
 	.value	0x3b1
 	.byte	0x17
-	.long	0x16786
+	.long	0x16789
 	.uleb128 0x2
 	.long	0xabcb
 	.long	.LLST368
@@ -49784,7 +49784,7 @@
 	.long	.LVUS387
 	.uleb128 0x38
 	.quad	.LVL80
-	.long	0x17d0f
+	.long	0x17d12
 	.uleb128 0x26
 	.uleb128 0x1
 	.byte	0x55
@@ -49824,9 +49824,9 @@
 	.quad	.LBB6283
 	.quad	.LBE6283-.LBB6283
 	.byte	0x1
-	.value	0x1be
+	.value	0x1c1
 	.byte	0x1
-	.long	0x16b2b
+	.long	0x16b2e
 	.uleb128 0x4
 	.long	0xca6b
 	.uleb128 0x16
@@ -49838,7 +49838,7 @@
 	.byte	0x2
 	.value	0x319
 	.byte	0x1c
-	.long	0x16942
+	.long	0x16945
 	.uleb128 0x4
 	.long	0xc121
 	.byte	0
@@ -49851,7 +49851,7 @@
 	.byte	0x2
 	.value	0x318
 	.byte	0xf
-	.long	0x16979
+	.long	0x1697c
 	.uleb128 0x4
 	.long	0xc0f3
 	.uleb128 0x4
@@ -49874,7 +49874,7 @@
 	.long	0xc167
 	.quad	.LBB6287
 	.quad	.LBE6287-.LBB6287
-	.long	0x16ab0
+	.long	0x16ab3
 	.uleb128 0x36
 	.long	0xc168
 	.long	.LLST1267
@@ -50002,10 +50002,10 @@
 	.quad	.LBB6296
 	.quad	.LBE6296-.LBB6296
 	.byte	0x1
-	.value	0x1be
+	.value	0x1c1
 	.byte	0x1
 	.byte	0x1
-	.long	0x16dbc
+	.long	0x16dbf
 	.uleb128 0x2
 	.long	0xcba0
 	.long	.LLST1274
@@ -50019,7 +50019,7 @@
 	.byte	0x2
 	.value	0x319
 	.byte	0x1c
-	.long	0x16b95
+	.long	0x16b98
 	.uleb128 0x2
 	.long	0xc327
 	.long	.LLST1275
@@ -50034,7 +50034,7 @@
 	.byte	0x2
 	.value	0x318
 	.byte	0xf
-	.long	0x16bd4
+	.long	0x16bd7
 	.uleb128 0x4
 	.long	0xc2f9
 	.uleb128 0x4
@@ -50061,7 +50061,7 @@
 	.long	0xc37a
 	.quad	.LBB6300
 	.quad	.LBE6300-.LBB6300
-	.long	0x16d29
+	.long	0x16d2c
 	.uleb128 0x36
 	.long	0xc37b
 	.long	.LLST1278
@@ -50202,10 +50202,10 @@
 	.quad	.LBB6309
 	.quad	.LBE6309-.LBB6309
 	.byte	0x1
-	.value	0x1be
+	.value	0x1c1
 	.byte	0x1
 	.byte	0x2
-	.long	0x17060
+	.long	0x17063
 	.uleb128 0x2
 	.long	0xcd62
 	.long	.LLST1291
@@ -50219,7 +50219,7 @@
 	.byte	0x2
 	.value	0x319
 	.byte	0x1c
-	.long	0x16e26
+	.long	0x16e29
 	.uleb128 0x2
 	.long	0xc732
 	.long	.LLST1292
@@ -50234,7 +50234,7 @@
 	.byte	0x2
 	.value	0x318
 	.byte	0xf
-	.long	0x16e65
+	.long	0x16e68
 	.uleb128 0x4
 	.long	0xc704
 	.uleb128 0x4
@@ -50261,7 +50261,7 @@
 	.long	0xcd96
 	.quad	.LBB6313
 	.quad	.LBE6313-.LBB6313
-	.long	0x16fcd
+	.long	0x16fd0
 	.uleb128 0x36
 	.long	0xcd97
 	.long	.LLST1295
@@ -50324,7 +50324,7 @@
 	.long	0xbc8e
 	.long	.LLST1306
 	.long	.LVUS1306
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xb3f5
 	.quad	.LBI6319
 	.value	.LVU3482
@@ -50332,7 +50332,7 @@
 	.byte	0x8
 	.value	0x2b1
 	.byte	0x17
-	.long	0x16fa8
+	.long	0x16fab
 	.uleb128 0x4
 	.long	0xb403
 	.uleb128 0x2
@@ -50370,7 +50370,7 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x7
-	.long	0x179dd
+	.long	0x179e0
 	.quad	.LBI6327
 	.value	.LVU3486
 	.quad	.LBB6327
@@ -50379,7 +50379,7 @@
 	.value	0x17b
 	.byte	0x7
 	.uleb128 0x2
-	.long	0x179ed
+	.long	0x179f0
 	.long	.LLST1310
 	.long	.LVUS1310
 	.uleb128 0x1e
@@ -50419,15 +50419,15 @@
 	.value	.LVU3685
 	.long	.LLRL1313
 	.byte	0x1
-	.value	0x1be
+	.value	0x1c1
 	.byte	0x1
 	.byte	0x4
-	.long	0x172cd
+	.long	0x172d0
 	.uleb128 0x2
 	.long	0xcba0
 	.long	.LLST1314
 	.long	.LVUS1314
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xc363
 	.quad	.LBI6349
 	.value	.LVU3690
@@ -50435,7 +50435,7 @@
 	.byte	0x2
 	.value	0x31b
 	.byte	0x7
-	.long	0x1725c
+	.long	0x1725f
 	.uleb128 0x2
 	.long	0xc371
 	.long	.LLST1316
@@ -50443,7 +50443,7 @@
 	.uleb128 0x82
 	.long	0xc37a
 	.long	.LLRL1317
-	.long	0x171ca
+	.long	0x171cd
 	.uleb128 0x36
 	.long	0xc37b
 	.long	.LLST1318
@@ -50588,7 +50588,7 @@
 	.byte	0x2
 	.value	0x319
 	.byte	0x1c
-	.long	0x17291
+	.long	0x17294
 	.uleb128 0x2
 	.long	0xc327
 	.long	.LLST1331
@@ -50619,10 +50619,10 @@
 	.value	.LVU3699
 	.long	.LLRL1333
 	.byte	0x1
-	.value	0x1be
+	.value	0x1c1
 	.byte	0x1
 	.byte	0x5
-	.long	0x1754e
+	.long	0x17551
 	.uleb128 0x2
 	.long	0xcd62
 	.long	.LLST1334
@@ -50636,7 +50636,7 @@
 	.byte	0x2
 	.value	0x319
 	.byte	0x1c
-	.long	0x1732b
+	.long	0x1732e
 	.uleb128 0x2
 	.long	0xc732
 	.long	.LLST1335
@@ -50651,7 +50651,7 @@
 	.byte	0x2
 	.value	0x318
 	.byte	0xf
-	.long	0x1736a
+	.long	0x1736d
 	.uleb128 0x4
 	.long	0xc704
 	.uleb128 0x4
@@ -50676,7 +50676,7 @@
 	.uleb128 0x82
 	.long	0xcd96
 	.long	.LLRL1339
-	.long	0x174bb
+	.long	0x174be
 	.uleb128 0x36
 	.long	0xcd97
 	.long	.LLST1340
@@ -50739,7 +50739,7 @@
 	.long	0xbc8e
 	.long	.LLST1351
 	.long	.LVUS1351
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xb3f5
 	.quad	.LBI6379
 	.value	.LVU3709
@@ -50747,7 +50747,7 @@
 	.byte	0x8
 	.value	0x2b1
 	.byte	0x17
-	.long	0x17496
+	.long	0x17499
 	.uleb128 0x4
 	.long	0xb403
 	.uleb128 0x2
@@ -50785,7 +50785,7 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x7
-	.long	0x179dd
+	.long	0x179e0
 	.quad	.LBI6389
 	.value	.LVU3713
 	.quad	.LBB6389
@@ -50794,7 +50794,7 @@
 	.value	0x17b
 	.byte	0x7
 	.uleb128 0x2
-	.long	0x179ed
+	.long	0x179f0
 	.long	.LLST1355
 	.long	.LVUS1355
 	.uleb128 0x1e
@@ -50829,18 +50829,18 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x63
-	.long	0x17a0a
+	.long	0x17a0d
 	.quad	.LBI6395
 	.value	.LVU3723
 	.quad	.LBB6395
 	.quad	.LBE6395-.LBB6395
 	.byte	0x1
-	.value	0x1be
+	.value	0x1c1
 	.byte	0x1
 	.byte	0x6
-	.long	0x177cd
+	.long	0x177d0
 	.uleb128 0x2
-	.long	0x17a1a
+	.long	0x17a1d
 	.long	.LLST1358
 	.long	.LVUS1358
 	.uleb128 0x51
@@ -50855,7 +50855,7 @@
 	.long	0xce5a
 	.long	.LLST1360
 	.long	.LVUS1360
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xce7b
 	.quad	.LBI6397
 	.value	.LVU3729
@@ -50863,7 +50863,7 @@
 	.byte	0x2
 	.value	0x31b
 	.byte	0x7
-	.long	0x1774b
+	.long	0x1774e
 	.uleb128 0x2
 	.long	0xce89
 	.long	.LLST1362
@@ -50871,7 +50871,7 @@
 	.uleb128 0x82
 	.long	0xce92
 	.long	.LLRL1363
-	.long	0x176b9
+	.long	0x176bc
 	.uleb128 0x36
 	.long	0xce93
 	.long	.LLST1364
@@ -50916,7 +50916,7 @@
 	.long	0xbf21
 	.long	.LLST1372
 	.long	.LVUS1372
-	.uleb128 0x1d
+	.uleb128 0x1b
 	.long	0xb642
 	.quad	.LBI6402
 	.value	.LVU3734
@@ -50924,7 +50924,7 @@
 	.byte	0x8
 	.value	0x2b1
 	.byte	0x17
-	.long	0x176a8
+	.long	0x176ab
 	.uleb128 0x2
 	.long	0xb650
 	.long	.LLST1373
@@ -50945,7 +50945,7 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x7
-	.long	0x17aca
+	.long	0x17acd
 	.quad	.LBI6409
 	.value	.LVU3738
 	.quad	.LBB6409
@@ -50954,7 +50954,7 @@
 	.value	0x17b
 	.byte	0x7
 	.uleb128 0x2
-	.long	0x17ada
+	.long	0x17add
 	.long	.LLST1376
 	.long	.LVUS1376
 	.uleb128 0x1e
@@ -50996,7 +50996,7 @@
 	.byte	0x2
 	.value	0x319
 	.byte	0x1c
-	.long	0x17780
+	.long	0x17783
 	.uleb128 0x2
 	.long	0xc89b
 	.long	.LLST1379
@@ -51044,8 +51044,8 @@
 	.byte	0x30
 	.uleb128 0xd6
 	.quad	.LVL620
-	.long	0x17d19
-	.long	0x17812
+	.long	0x17d1c
+	.long	0x17815
 	.uleb128 0x26
 	.uleb128 0x1
 	.byte	0x55
@@ -51064,32 +51064,32 @@
 	.byte	0
 	.uleb128 0x6c
 	.long	0x7675
-	.long	0x17839
+	.long	0x1783c
 	.uleb128 0x6d
 	.long	0x7686
 	.byte	0x4
 	.byte	0
 	.uleb128 0x6c
 	.long	0x7675
-	.long	0x17849
+	.long	0x1784c
 	.uleb128 0x6d
 	.long	0x7686
 	.byte	0x2
 	.byte	0
 	.uleb128 0xc
 	.long	0x8c51
-	.long	0x17857
+	.long	0x1785a
 	.byte	0x3
-	.long	0x17861
+	.long	0x17864
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa840
 	.byte	0
 	.uleb128 0xc
 	.long	0x8706
-	.long	0x1786f
+	.long	0x17872
 	.byte	0x3
-	.long	0x17879
+	.long	0x1787c
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa732
@@ -51097,7 +51097,7 @@
 	.uleb128 0x17
 	.long	0x75f0
 	.byte	0x3
-	.long	0x178a5
+	.long	0x178a8
 	.uleb128 0x10
 	.string	"_Tp"
 	.long	0x4f
@@ -51117,7 +51117,7 @@
 	.uleb128 0x17
 	.long	0x7618
 	.byte	0x3
-	.long	0x178d3
+	.long	0x178d6
 	.uleb128 0x10
 	.string	"_Tp"
 	.long	0x4f
@@ -51136,18 +51136,18 @@
 	.byte	0
 	.uleb128 0xc
 	.long	0x8c0c
-	.long	0x178e1
+	.long	0x178e4
 	.byte	0x3
-	.long	0x178eb
+	.long	0x178ee
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa84f
 	.byte	0
 	.uleb128 0xc
 	.long	0x8d7d
-	.long	0x178f9
+	.long	0x178fc
 	.byte	0x3
-	.long	0x17903
+	.long	0x17906
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa84f
@@ -51157,34 +51157,34 @@
 	.uleb128 0x17
 	.long	0x924c
 	.byte	0x3
-	.long	0x1792d
+	.long	0x17930
 	.uleb128 0x14
 	.long	.LASF1456
 	.byte	0x3
 	.value	0x4dd
 	.byte	0x2b
-	.long	0x17903
+	.long	0x17906
 	.uleb128 0x14
 	.long	.LASF1457
 	.byte	0x3
 	.value	0x4dd
 	.byte	0x4b
-	.long	0x17903
+	.long	0x17906
 	.byte	0
 	.uleb128 0xc
 	.long	0x86b9
-	.long	0x1793b
+	.long	0x1793e
 	.byte	0x3
-	.long	0x17945
+	.long	0x17948
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa741
 	.byte	0
 	.uleb128 0xc
 	.long	0x8856
-	.long	0x17953
+	.long	0x17956
 	.byte	0x3
-	.long	0x1795d
+	.long	0x17960
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa741
@@ -51194,173 +51194,173 @@
 	.uleb128 0x17
 	.long	0x9268
 	.byte	0x3
-	.long	0x17987
+	.long	0x1798a
 	.uleb128 0x14
 	.long	.LASF1456
 	.byte	0x3
 	.value	0x4dd
 	.byte	0x2b
-	.long	0x1795d
+	.long	0x17960
 	.uleb128 0x14
 	.long	.LASF1457
 	.byte	0x3
 	.value	0x4dd
 	.byte	0x4b
-	.long	0x1795d
+	.long	0x17960
 	.byte	0
 	.uleb128 0xc
 	.long	0x38f4
-	.long	0x17995
+	.long	0x17998
 	.byte	0x2
-	.long	0x1799f
+	.long	0x179a2
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa6f6
 	.byte	0
 	.uleb128 0x42
-	.long	0x17987
-	.long	0x179ac
-	.long	0x179b2
+	.long	0x1798a
+	.long	0x179af
+	.long	0x179b5
 	.uleb128 0x4
-	.long	0x17995
+	.long	0x17998
 	.byte	0
 	.uleb128 0xc
 	.long	0x368e
-	.long	0x179c0
+	.long	0x179c3
 	.byte	0x2
-	.long	0x179ca
+	.long	0x179cd
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa6d3
 	.byte	0
 	.uleb128 0x42
-	.long	0x179b2
-	.long	0x179d7
-	.long	0x179dd
+	.long	0x179b5
+	.long	0x179da
+	.long	0x179e0
 	.uleb128 0x4
-	.long	0x179c0
+	.long	0x179c3
 	.byte	0
 	.uleb128 0x68
 	.long	0x360c
 	.byte	0x2
 	.byte	0x8b
 	.byte	0xe
-	.long	0x179ed
-	.long	0x179f7
+	.long	0x179f0
+	.long	0x179fa
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa6b5
 	.byte	0
 	.uleb128 0x42
-	.long	0x179dd
-	.long	0x17a04
-	.long	0x17a0a
+	.long	0x179e0
+	.long	0x17a07
+	.long	0x17a0d
 	.uleb128 0x4
-	.long	0x179ed
+	.long	0x179f0
 	.byte	0
 	.uleb128 0x68
 	.long	0xa20a
 	.byte	0x4
 	.byte	0xb
 	.byte	0x8
-	.long	0x17a1a
-	.long	0x17a24
+	.long	0x17a1d
+	.long	0x17a27
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa245
 	.byte	0
 	.uleb128 0x22
-	.long	0x17a0a
+	.long	0x17a0d
 	.long	.LASF1458
-	.long	0x17a35
-	.long	0x17a3b
+	.long	0x17a38
+	.long	0x17a3e
 	.uleb128 0x4
-	.long	0x17a1a
+	.long	0x17a1d
 	.byte	0
 	.uleb128 0x68
 	.long	0xa222
 	.byte	0x4
 	.byte	0xb
 	.byte	0x8
-	.long	0x17a4b
-	.long	0x17a55
+	.long	0x17a4e
+	.long	0x17a58
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa245
 	.byte	0
 	.uleb128 0x22
-	.long	0x17a3b
+	.long	0x17a3e
 	.long	.LASF1459
-	.long	0x17a66
-	.long	0x17a6c
+	.long	0x17a69
+	.long	0x17a6f
 	.uleb128 0x4
-	.long	0x17a4b
+	.long	0x17a4e
 	.byte	0
 	.uleb128 0xc
 	.long	0x12ce
-	.long	0x17a7a
+	.long	0x17a7d
 	.byte	0x2
-	.long	0x17a84
+	.long	0x17a87
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa11a
 	.byte	0
 	.uleb128 0x22
-	.long	0x17a6c
+	.long	0x17a6f
 	.long	.LASF1460
-	.long	0x17a95
-	.long	0x17a9b
+	.long	0x17a98
+	.long	0x17a9e
 	.uleb128 0x4
-	.long	0x17a7a
+	.long	0x17a7d
 	.byte	0
 	.uleb128 0xc
 	.long	0x1037
-	.long	0x17aa9
+	.long	0x17aac
 	.byte	0x2
-	.long	0x17ab3
+	.long	0x17ab6
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa0fc
 	.byte	0
 	.uleb128 0x22
-	.long	0x17a9b
+	.long	0x17a9e
 	.long	.LASF1461
-	.long	0x17ac4
-	.long	0x17aca
+	.long	0x17ac7
+	.long	0x17acd
 	.uleb128 0x4
-	.long	0x17aa9
+	.long	0x17aac
 	.byte	0
 	.uleb128 0x68
 	.long	0xfa6
 	.byte	0x2
 	.byte	0x8b
 	.byte	0xe
-	.long	0x17ada
-	.long	0x17ae4
+	.long	0x17add
+	.long	0x17ae7
 	.uleb128 0xa
 	.long	.LASF1340
 	.long	0xa0de
 	.byte	0
 	.uleb128 0x22
-	.long	0x17aca
+	.long	0x17acd
 	.long	.LASF1462
-	.long	0x17af5
-	.long	0x17afb
+	.long	0x17af8
+	.long	0x17afe
 	.uleb128 0x4
-	.long	0x17ada
+	.long	0x17add
 	.byte	0
 	.uleb128 0xd7
 	.long	.LASF1463
 	.byte	0x1
-	.byte	0x23
+	.byte	0x26
 	.byte	0x16
 	.long	0xa472
 	.byte	0x3
-	.long	0x17b1a
+	.long	0x17b1d
 	.uleb128 0x2b
 	.string	"ptr"
 	.byte	0x1
-	.byte	0x23
+	.byte	0x26
 	.byte	0x35
 	.long	0xa08e
 	.byte	0
@@ -51372,7 +51372,7 @@
 	.long	.LASF1465
 	.long	0xa472
 	.byte	0x3
-	.long	0x17b55
+	.long	0x17b58
 	.uleb128 0x2b
 	.string	"__A"
 	.byte	0x10
@@ -51398,7 +51398,7 @@
 	.value	0x1e9
 	.long	.LASF1467
 	.long	0xa48f
-	.long	0x17b77
+	.long	0x17b7a
 	.uleb128 0xf
 	.string	"__X"
 	.byte	0xf
@@ -51412,7 +51412,7 @@
 	.value	0x4f7
 	.long	.LASF1469
 	.long	0xa472
-	.long	0x17b99
+	.long	0x17b9c
 	.uleb128 0xf
 	.string	"__A"
 	.byte	0xd
@@ -51427,7 +51427,7 @@
 	.byte	0x1
 	.long	.LASF1471
 	.byte	0x3
-	.long	0x17bc7
+	.long	0x17bca
 	.uleb128 0xf
 	.string	"__P"
 	.byte	0xd
@@ -51447,7 +51447,7 @@
 	.value	0x34f
 	.long	.LASF1473
 	.long	0xa472
-	.long	0x17be9
+	.long	0x17bec
 	.uleb128 0xf
 	.string	"__P"
 	.byte	0xd
@@ -51461,7 +51461,7 @@
 	.value	0x195
 	.long	.LASF1475
 	.long	0xa472
-	.long	0x17c0b
+	.long	0x17c0e
 	.uleb128 0xf
 	.string	"__A"
 	.byte	0xd
@@ -51475,13 +51475,13 @@
 	.value	0x2c7
 	.long	.LASF1477
 	.long	0xa411
-	.long	0x17c2d
+	.long	0x17c30
 	.uleb128 0xf
 	.string	"__P"
 	.byte	0xe
 	.value	0x2c7
 	.byte	0x23
-	.long	0x17c2d
+	.long	0x17c30
 	.byte	0
 	.uleb128 0xe
 	.long	0xa436
@@ -51491,7 +51491,7 @@
 	.value	0x258
 	.long	.LASF1479
 	.long	0xa411
-	.long	0x17c61
+	.long	0x17c64
 	.uleb128 0x14
 	.long	.LASF1480
 	.byte	0xe
@@ -51511,7 +51511,7 @@
 	.value	0x252
 	.long	.LASF1483
 	.long	0xa411
-	.long	0x17c90
+	.long	0x17c93
 	.uleb128 0x14
 	.long	.LASF1480
 	.byte	0xe
@@ -51528,7 +51528,7 @@
 	.uleb128 0x17
 	.long	0x7641
 	.byte	0x3
-	.long	0x17ca8
+	.long	0x17cab
 	.uleb128 0xf
 	.string	"__x"
 	.byte	0x9
@@ -51539,7 +51539,7 @@
 	.uleb128 0x17
 	.long	0x765c
 	.byte	0x3
-	.long	0x17cc0
+	.long	0x17cc3
 	.uleb128 0xf
 	.string	"__n"
 	.byte	0xa
@@ -51554,7 +51554,7 @@
 	.byte	0x23
 	.long	.LASF1484
 	.byte	0x3
-	.long	0x17cdd
+	.long	0x17ce0
 	.uleb128 0x1
 	.long	0x76cf
 	.uleb128 0x1
@@ -51568,7 +51568,7 @@
 	.long	.LASF1485
 	.long	0x76cf
 	.byte	0x3
-	.long	0x17d05
+	.long	0x17d08
 	.uleb128 0x1
 	.long	0x2bc
 	.uleb128 0x2b
@@ -51980,6 +51980,27 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x1b
+	.uleb128 0x1d
+	.byte	0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.uleb128 0x52
+	.uleb128 0x1
+	.uleb128 0x2138
+	.uleb128 0x5
+	.uleb128 0x55
+	.uleb128 0x17
+	.uleb128 0x58
+	.uleb128 0xb
+	.uleb128 0x59
+	.uleb128 0x5
+	.uleb128 0x57
+	.uleb128 0xb
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x1c
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -52002,7 +52023,7 @@
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1d
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -52019,27 +52040,6 @@
 	.uleb128 0x13
 	.uleb128 0x3c
 	.uleb128 0x19
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x1d
-	.uleb128 0x1d
-	.byte	0x1
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x52
-	.uleb128 0x1
-	.uleb128 0x2138
-	.uleb128 0x5
-	.uleb128 0x55
-	.uleb128 0x17
-	.uleb128 0x58
-	.uleb128 0xb
-	.uleb128 0x59
-	.uleb128 0x5
-	.uleb128 0x57
-	.uleb128 0xb
 	.uleb128 0x1
 	.uleb128 0x13
 	.byte	0
@@ -52079,23 +52079,6 @@
 	.byte	0
 	.byte	0
 	.uleb128 0x20
-	.uleb128 0x13
-	.byte	0x1
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0xb
-	.uleb128 0xb
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x21
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -52113,6 +52096,23 @@
 	.uleb128 0x17
 	.uleb128 0x2137
 	.uleb128 0x17
+	.byte	0
+	.byte	0
+	.uleb128 0x21
+	.uleb128 0x13
+	.byte	0x1
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x22
@@ -54319,7 +54319,7 @@
 	.sleb128 1
 	.uleb128 0x3b
 	.uleb128 0x21
-	.sleb128 40
+	.sleb128 43
 	.uleb128 0x39
 	.uleb128 0xb
 	.uleb128 0x49
@@ -72574,14 +72574,14 @@
 	.uleb128 .LVL589-.LVL583
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0x8
 	.quad	.LVL613
 	.uleb128 .LVL615-.LVL613
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS34:
@@ -72769,7 +72769,7 @@
 	.uleb128 .LVL587-.LVL584
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS44:
@@ -72824,7 +72824,7 @@
 	.uleb128 .LVL584-.LVL584
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS47:
@@ -72851,7 +72851,7 @@
 	.uleb128 .LVL584-.LVL584
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS49:
@@ -72878,7 +72878,7 @@
 	.uleb128 .LVL584-.LVL584
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS51:
@@ -72905,7 +72905,7 @@
 	.uleb128 .LVL584-.LVL584
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS54:
@@ -72917,7 +72917,7 @@
 	.uleb128 .LVL587-.LVL584
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS55:
@@ -72957,7 +72957,7 @@
 	.uleb128 .LVL586-.LVL584
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS57:
@@ -72997,7 +72997,7 @@
 	.uleb128 .LVL586-.LVL584
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS59:
@@ -73037,7 +73037,7 @@
 	.uleb128 .LVL586-.LVL584
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS61:
@@ -73088,7 +73088,7 @@
 	.uleb128 .LVL589-.LVL587
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS65:
@@ -73140,7 +73140,7 @@
 	.uleb128 .LVL589-.LVL587
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS71:
@@ -73187,7 +73187,7 @@
 	.uleb128 .LVL591-.LVL589
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS79:
@@ -73229,7 +73229,7 @@
 	.uleb128 .LVL591-.LVL589
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+88339
+	.long	.Ldebug_info0+88342
 	.sleb128 0
 	.byte	0
 .LVUS83:
@@ -73241,7 +73241,7 @@
 	.uleb128 .LVL589-.LVL589
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+88339
+	.long	.Ldebug_info0+88342
 	.sleb128 0
 	.byte	0
 .LVUS84:
@@ -73253,7 +73253,7 @@
 	.uleb128 .LVL591-.LVL591
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS85:
@@ -73265,7 +73265,7 @@
 	.uleb128 .LVL591-.LVL591
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS86:
@@ -73277,7 +73277,7 @@
 	.uleb128 .LVL591-.LVL591
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS87:
@@ -73289,7 +73289,7 @@
 	.uleb128 .LVL591-.LVL591
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS88:
@@ -73312,7 +73312,7 @@
 	.uleb128 .LVL591-.LVL591
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS90:
@@ -73335,7 +73335,7 @@
 	.uleb128 .LVL591-.LVL591
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS93:
@@ -73347,7 +73347,7 @@
 	.uleb128 .LVL591-.LVL591
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS94:
@@ -73359,7 +73359,7 @@
 	.uleb128 .LVL591-.LVL591
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+87116
+	.long	.Ldebug_info0+87119
 	.sleb128 0
 	.byte	0
 .LVUS96:
@@ -74132,7 +74132,7 @@
 	.uleb128 .LVL43-.LVL43
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+90632
+	.long	.Ldebug_info0+90635
 	.sleb128 0
 	.byte	0
 .LVUS254:
@@ -74144,7 +74144,7 @@
 	.uleb128 .LVL43-.LVL43
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+90601
+	.long	.Ldebug_info0+90604
 	.sleb128 0
 	.byte	0
 .LVUS255:
@@ -74156,7 +74156,7 @@
 	.uleb128 .LVL44-.LVL44
 	.uleb128 0x6
 	.byte	0xa0
-	.long	.Ldebug_info0+90632
+	.long	.Ldebug_info0+90635
 	.sleb128 0
 	.byte	0
 .LVUS332:
@@ -83552,7 +83552,7 @@
 .LASF1:
 	.string	"/home/team15/tomasz-worktree-dir/cpp_refocus"
 .LASF0:
-	.string	"src/opt17.cpp"
+	.string	"src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp"
 	.hidden	"DW.ref.__gxx_personality_v0"
 	.weak	"DW.ref.__gxx_personality_v0"
 	.section	.data.rel.local.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

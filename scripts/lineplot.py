@@ -86,13 +86,12 @@ import math
 SERIES = [
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt7_5_abl_compiler_vec_20260615_060220.csv",         "label": "Compiler vectorized code (opt7_5_abl_compiler_vec)",                "color": "#290a0a"},
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt9_abl_hand_vec_no_tile_20260615_060554.csv",     "label": "Hand vec (opt9_abl_hand_vec_no_tile)",      "color": "#bd5b00"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt9_abl_hand_vec_no_tile_ilp_20260615_060810.csv",     "label": "Hand vec + ILP (opt9_abl_hand_vec_no_tile_ilp)",      "color": "#cb8d53"},
+    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt9_abl_hand_vec_no_tile_ilp_20260615_060810.csv",     "label": "Hand vec + ILP (opt9_abl_hand_vec_no_tile_ilp)",      "color": "#cb8d53"},
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt10_abl_tile_8x256_20260615_061032.csv",           "label": "Hand vec + 8x256 tile (opt10_abl_tile_8x256)",   "color": "#008fd1ff"},
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt10_abl_tile_8x256_ilp_20260615_061418.csv",           "label": "Hand vec + 8x256 tile + ILP (opt10_abl_tile_8x256_ilp)",   "color": "#68b4d7ff"},
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt11_abl_tile_8x2032_20260615_061946.csv",           "label": "8x2032 (opt11_abl_tile_8x2032)",   "color": "#df04e2ff"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt17_0_abl_tile_8x2032_ilp_20260615_062140.csv",           "label": "8x2032 + ILP (opt17_0_abl_tile_8x2032_ilp)",   "color": "#e572e7ff"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt17_abl_tile_8x2032_ilp_reuse_20260615_062339.csv",           "label": "8x2032 + ILP + reuse (opt17_abl_tile_8x2032_ilp_reuse)",   "color": "#60ff38ff"},
-
+    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt17_0_abl_tile_8x2032_ilp_20260615_062140.csv",           "label": "8x2032 + ILP (opt17_0_abl_tile_8x2032_ilp)",   "color": "#e572e7ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt17_abl_tile_8x2032_ilp_reuse_20260615_062339.csv",           "label": "8x2032 + ILP + reuse (opt17_abl_tile_8x2032_ilp_reuse)",   "color": "#60ff38ff"}, # The only with reduced FLOPs
 ]
 
 # Shared x and y columns (same across all CSVs).
