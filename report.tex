@@ -261,7 +261,7 @@ for(int y=0; y < h; ++y){
 }
 \end{lstlisting}
 
-\subsection{Vectorized Single-Focus Optimizations}
+\subsection{Vectorized Single-Focus Optimizations}\label{subsec:vectorized-single-focus}
 % BEGIN Tomasz cooking zone
 % item Make sure to report the fastest non-vectorized code you obtained, compiled with flags disabling compiler vectorization. Also report the best compiler-vectorized code
 Having implemented all the optimizations for the scalar code, we moved on to exploiting the SIMD capabilities of the processor using AVX2 vectorization. The section proceeds by describing the steps taken: a compiler-vectorized baseline, initial hand-written intrinsics, output-tile cache blocking, explicit two-chain accumulation for ILP, and finally input-row load and conversion reuse within each tile.
@@ -319,13 +319,13 @@ On top of the code with cache-oriented tiling, we explicitly introduced two inde
 
 
 \mypar{Load and conversion reuse} %todo add ref to scalar version
-The final optimization with the vectorized code followed the same idea as the \textit{Load and conversion reuse} for scalar code. As illustrated in Figure~\ref{fig:avxReuseIllustration}, in the case of the vectorized code however, the contributing subaperture pixels cannot be reused for row-adjacent output vectors, because the offset for output channel vectors is 8, while the offset for contributing channels is 3. Fortunately, the intermediate rows of the tile can be used first as the bottom and then for the next row as the top contributing neighbours. 
-By going row-by-row within a tile, we reuse the intermediate loaded and converted rows. This was applied in blocks of 4 rows, leading to reduction of the loads and conversions from 8 (2 per row) to 5 (reusing 3 intermediate rows). The aim was for the loaded and converted data to be used again right away from the registers, rather than to need to be fetched from the cache again. This optimization reduces the total FLOPs performed (conversions) and in the end improved the runtime by further 25\%, while the FLOPs/cycle stay at roughly the same level: \todo{}. 
+The final optimization with the vectorized code followed the same idea as the \textit{Load and conversion reuse} for scalar code. As illustrated in Figure~\ref{fig:avxReuseIllustration}, in the case of the vectorized code however, the contributing subaperture pixels cannot be reused for row-adjacent output vectors, because the offset for output channel vectors is 8, while the offset for contributing channels is 3. Fortunately, the inner rows of the tile can be used first as the bottom and then for the next row as the top contributing neighbours. 
+By going row-by-row within a tile, we reuse the inner loaded and converted rows. This was applied in blocks of 4 rows, leading to reduction of the loads and conversions from 8 (2 per row) to 5 (reusing 3 inner rows). The aim was for the loaded and converted data to be used again right away from the registers, rather than to need to be fetched from the cache again. This optimization reduces the total FLOPs performed (conversions) and in the end improved the runtime by further 25\%, while the FLOPs/cycle stay at roughly the same level: \todo{}. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{ASL Project-Page-17.drawio-4.pdf}
-    \caption{AVX implementation and reuse of loads and conversions}
+    \caption{AVX implementation and reuse of loads and conversions. The highlighted inner input-row of subaperture is used for both the output row above and below, our optimization loads and converts it only once.}
     \label{fig:avxReuseIllustration}
 \end{figure}
 
@@ -359,7 +359,7 @@ In this section, we will display and explain our experimental results through th
 
 % Then explain what input you used and what range of sizes. Go large enough so the computations takes a few minutes or ideally even longer.
 
-\mypar{Experimental Setup} We fine-tuned our optimizations for and ran all our experiments on an Intel® Core™ i5-1135G7 Processor. This is an Intel Tiger Lake processor with 2 ports for performing floating point operations, including conversions. It supports AVX-256 and also AVX-512 but without any performance benefit compared to the AVX-256 operations, as AVX-512 operations use the two AVX-256 ports in parallel. As a result, the peak single-precision floating-point performance of our processor is 32 Flops/Cycle when doing 8 FMAs each in 2 ports per cycle.
+\subsection{Experimental Setup} We fine-tuned our optimizations for and ran all our experiments on an Intel® Core™ i5-1135G7 Processor. This is an Intel Tiger Lake processor with 2 ports for performing floating point operations, including conversions. It supports AVX-256 and also AVX-512 but without any performance benefit compared to the AVX-256 operations, as AVX-512 operations use the two AVX-256 ports in parallel. As a result, the peak single-precision floating-point performance of our processor is 32 Flops/Cycle when doing 8 FMAs each in 2 ports per cycle.
 
 The aforementioned processor has 3 levels of cache, an L1 data cache of 48KB per core, an L2 cache of 1.25MB per core, and a shared LLC of 8MB. In all our measurements, we used cold-caches and disabled frequency-scaling, which makes the processor run at 2.4 GHz. Our experimental setup had 8GB of RAM with a peak memory bandwidth of 5.7 Bytes/Cycle, measured by the STREAM~\cite{McCalpin:95} benchmark. We always used the \textbf{-O3}, \textbf{-march=native} and \textbf{-ffast-math} flags when compiling our code. Our scalar optimizations also used the \textbf{-fno-tree-vectorize} flag to explicitly disable the compiler from vectorizing. We used square RGB images ranging in height/width from 256 up to 4096.
 
@@ -382,16 +382,16 @@ The aforementioned processor has 3 levels of cache, an L1 data cache of 48KB per
 
 % Most important for the grade: Be analytical! Explain as good as possible why your results are as they are. In the end argue why more performance is not possible. Read the FAQs (How the project is graded) on the website.
 
-\mypar{Results}
+\subsection{Results}
 
+\mypar{Single-focus scalar results}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{report/figures/performance.pdf}
     \caption{Performance Plot for Scalar Optimizations}
     \label{fig:scalar-perf}
 \end{figure}
-
-Figure \ref{fig:scalar-perf} plots our single-focus runtime against image size for the scalar optimizations. The loop reordering, inlining, ILP, conversion reuse, and prefix sum count calculation add up to an $7.56\times$ speedup over the baseline, from $87$ down to $11.5$~Gcycles for inputs of size 2048. The performance drops heavily for images of size 3072x3072 and above. This is because the 289 subaperture images take up more than 8GB of space for these image sizes, meaning that these images no longer fit into our machine's RAM. This forces the program to use the swap space for storing subaperture images, which incurs disk I/O latency and throughput penalties when accessing the data. Because of this, the rest of our discussion in Section 4 will be focused on images of size 2048x2048 and below. 
+ Figure \ref{fig:scalar-perf} plots our single-focus runtime against image size for the scalar optimizations. The loop reordering, inlining, ILP, conversion reuse, and prefix sum count calculation add up to an $7.56\times$ speedup over the baseline, from $87$ down to $11.5$~Gcycles for inputs of size 2048. The performance drops heavily for images of size 3072x3072 and above. This is because the 289 subaperture images take up more than 8GB of space for these image sizes, meaning that these images no longer fit into our machine's RAM. This forces the program to use the swap space for storing subaperture images, which incurs disk I/O latency and throughput penalties when accessing the data. Because of this, the rest of our discussion in Section 4 will be focused on images of size 2048x2048 and below. 
 
 The scalar peak performance of our processor is 4 FLOPs/cycle through 2 FMAs across 2 ports. However, as explained in Section 2, our algorithm also requires int-to-float conversions. The conversion operation has a peak performance of 2 FLOPs/cycle, and since we are performing half as many conversions as FMAs after the Conversion Reuse optimization, we have an Instruction Mix Peak Performance of 3.33 FLOPs/cycle.
 
@@ -410,36 +410,32 @@ The plot reveals a few important insights. First of all, we notice that all vers
 
 Next, we can see that for our optimized versions, increasing the image size consistently decreases operational intensity while achieving the same performance. This is because our scalar code accesses the entire output image accumulator for each subaperture. As the output image gets larger, the accumulator stops fitting into LLC and we end up getting more cache misses and causing more memory traffic. This is confirmed by the operational intensity of the \textbf{tiling} code version in Figure \ref{fig:scalar-roofline}, where we tiled the output image. This optimization does not provide any speedup and was therefore omitted for scalar code, but we can see that it has a higher operational intensity than other optimized code versions even for larger image sizes. 
 
-Figure \ref{fig:avxCyclesPerPixelResults} plots the performance for the AVX2 versions of the code. AVX2 brings the runtime from the previous best scalar \todo{check deez numbers} $11.5$~Gcycles down to $1.97$~Gcycles, a further $5.84\times$ speedup, which is a total $44.16\times$ speedup over the original baseline. Next we present the roofline model and the measured FLOPs/cycle over the execution.
+\mypar{Vectorized Single-Focus Optimizations Results} \\
+Our AVX2 optimizations bring the runtime from the previous best scalar $11.5$~Gcycles down to $1.97$~Gcycles, a further $5.84\times$ speedup, which makes it a total $44.16\times$ speedup over the original baseline. 
+
+As described in Section \ref{subsec:vectorized-single-focus}, the increased computation SIMD capabilities of the vectorized code implemented with vector intrinsics were accompanied by tackling the data transfer stalls. The cache blocking reduced the cache misses across different levels of cache, while the loads and conversion reuse approach further reduced the performed accesses to L1D cache, since the data stayed in the registers. Besides the anticipated runtime improvement, in the experiments the Linux \texttt{perf}'s hardware counter confirmed that, as we expected, the number of loads from L1D cache goes down by around 30\% \todo{check} as depicted in Figure~\ref{fig:avxReuseL1DLoads}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{l1d_loads_normalized.pdf}
+    \caption{L1D cache reduced loads, in the most optimized coed the fetched and converted data stays in the registers}
+    \label{fig:avxReuseL1DLoads}
+\end{figure}
+
+With all these optimizations the most optimized code reaches around 18.5\todo{Check these numbers, no access to the data for it, @Klejdi help if possible} FLOPs/cycle which is around 70\% of the corresponding theoretical peak performance (26.67 FLOPs/cycle) for this instruction mix. Similarly, as for the scalar code, our roofline model contains different performance roofs depending on the instruction mix and conversions reuse. Additionally, the plot contains the performance of the most optimized focal stack implementation, which is discussed in the paragraph further below.
 % (Tomasz - I commented out, I don't think it's relevant) The IPC drops from 1.18 to 0.78 because the byte to float conversions use the same ports for the vector instructions as the vector FMAs. This is also why we cannot reach the SIMD roof.
 
-\todo{Replace with flops/cycle graph}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{report/figures/vectorized_flops2.png}
-    \caption{avx Cycles Per Pixel Results}
+    \caption{Performance Plot for Vectorized Optimizations}
     \label{fig:avxCyclesPerPixelResults}
 \end{figure}
-\todo{Replace with FLOPs/cycle}
-
-Similarly, as for the scalar code, our roofline model contains different performance roofs depending on the instruction mix and conversions reuse. Our most optimized code reaches ... \todo flops/cycle, ...\% of the scalar peak for its corresponding instruction mix. 
-
-The increased computation capabilities of the vectorized code implemented with vector intrinsics are accompanied by tackling the data transfer stalls. The cache blocking with arbitrary and optimized tile size reduce the cache misses across different levels of cache, while the loads and conversion reuse further reduce the performed accesses to L1 cache, since the data stays in the registers. 
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{avxReuseL1DLoads.png}
-    \caption{L1D cache reduced loads, data stays in the registers}
-    \label{fig:placeholder}
-\end{figure}
-\todo{should this go here, later in experiments, not at all?}
-\todo{improve the colors in this plot, will do tonight, must go}
-
 
 The code does not reach the peak performance becasue ... \todo{important question that Jonas also asked.}
 
-Figure x3 plots the stack optimizations. The scalar optimizations bring the stack baseline from 1772.4 down to 264.7 Gcycles, which is a $6.7\times$ haha gain. For 21 focal values and images of size $2048\times2048$, the initial AVX2 speedup over the best scalar stack version was around $3.9\times$. Focus blocking bring this to 41.7 Gcycles, which in total results in a $42.5\times$ speedup over the stack baseline. The best stack code reaches .... flops/cycle, ..\% of the SIMD peak, which is almost the same as our best single-focus code (i hope so at least need to check the numbers) so a whole stack costs the same per pixel as one refocused image. For images of size $2048\times2048$, the single focus code called over all focal values actually outperforms our stack version by around 20\% in total cycles, due to the stack optimized code keeping the count maps and output images for all F focuses in memory at once, which exceeds the 8GB of RAM available on our processor. For the 200 focus values, we measured $2.4\times10^5$ major page faults, as opposed to the single-focus version which has none, which explains the slowdown. \todo{I moved this bit from the optimizations to the results but i think it makes more sense if we have a plot to show this, otherwise im not sure if we should keep it but it is good for analysis}
+\mypar{Focal Stack Optimization Results}
+The scalar optimizations bring the stack baseline from 1772.4 down to 264.7 Gcycles, which is a $6.7\times$ gain. For 21 focal values and images of size $2048\times2048$, the initial AVX2 speedup over the best scalar stack version was around $3.9\times$. Focus blocking bring this to 41.7 Gcycles, which in total results in a $42.5\times$ speedup over the stack baseline. As the Figure~\ref{fig:avxCyclesPerPixelResults} shows, the best stack code reaches \todo{} flops/cycle, ..\% of the SIMD peak, which is almost the same as our best single-focus code so with a whole stack the work required per pixel is similar to as with one refocused image. For images of size $2048\times2048$, the single focus code called over all focal values actually outperforms our stack version by around 20\% in total cycles, due to the stack optimized code keeping the count maps and output images for all F focuses in memory at once, which exceeds the 8GB of RAM available on our processor. For the 200 focus values, the Linux \texttt{perf} tool measured $2.4\times10^5$ major page faults, as opposed to the single-focus version which has none, which explains the slowdown. \todo{I moved this bit from the optimizations to the results but i think it makes more sense if we have a plot to show this, otherwise im not sure if we should keep it but it is good for analysis}
 
 
 
