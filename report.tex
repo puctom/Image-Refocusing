@@ -404,9 +404,10 @@ Our roofline plot in Figure \ref{fig:scalar-roofline} was generated using Intel 
 
 Next, we can see that for our optimized versions, 
 
-Figure \ref{fig:avxCyclesPerPixelResults} plots the performance for the AVX2 versions of the code. AVX2 brings the runtime from the previous best scalar \todo{check deez numbers} $11.5$~Gcycles down to $1.97$~Gcycles, a further $5.84\times$ speedup, which is a total $62.5\times$ speedup over the original baseline. The best vectorized single focus code reaches ... \todo flops/cycle, ...\% of the scalar peak. The speedup is close to but slightly below the expected $8\times$ speedup from the vector width. 
-% The IPC drops from 1.18 to 0.78 because the byte to float conversions use the same ports for the vector instructions as the vector FMAs. This is also why we cannot reach the SIMD roof.
+Figure \ref{fig:avxCyclesPerPixelResults} plots the performance for the AVX2 versions of the code. AVX2 brings the runtime from the previous best scalar \todo{check deez numbers} $11.5$~Gcycles down to $1.97$~Gcycles, a further $5.84\times$ speedup, which is a total $44.16\times$ speedup over the original baseline. Next we present the roofline model and the measured FLOPs/cycle over the execution.
+% (Tomasz - I commented out, I don't think it's relevant) The IPC drops from 1.18 to 0.78 because the byte to float conversions use the same ports for the vector instructions as the vector FMAs. This is also why we cannot reach the SIMD roof.
 
+\todo{Replace with flops/cycle graph}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{avxCyclesPerPixelResults.png}
@@ -414,6 +415,7 @@ Figure \ref{fig:avxCyclesPerPixelResults} plots the performance for the AVX2 ver
     \label{fig:avxCyclesPerPixelResults}
 \end{figure}
 \todo{Replace with FLOPs/cycle}
+D
 
 Figure x3 plots the stack optimizations. The scalar optimizations bring the stack baseline from 1772.4 down to 264.7 Gcycles, which is a $6.7\times$ haha gain. For 21 focal values and images of size $2048\times2048$, the initial AVX2 speedup over the best scalar stack version was around $3.9\times$. Focus blocking bring this to 41.7 Gcycles, which in total results in a $42.5\times$ speedup over the stack baseline. The best stack code reaches .... flops/cycle, ..\% of the SIMD peak, which is almost the same as our best single-focus code (i hope so at least need to check the numbers) so a whole stack costs the same per pixel as one refocused image. For images of size $2048\times2048$, the single focus code called over all focal values actually outperforms our stack version by around 20\% in total cycles, due to the stack optimized code keeping the count maps and output images for all F focuses in memory at once, which exceeds the 8GB of RAM available on our processor. For the 200 focus values, we measured $2.4\times10^5$ major page faults, as opposed to the single-focus version which has none, which explains the slowdown. \todo{I moved this bit from the optimizations to the results but i think it makes more sense if we have a plot to show this, otherwise im not sure if we should keep it but it is good for analysis}
 
