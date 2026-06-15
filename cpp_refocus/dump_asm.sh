@@ -41,25 +41,27 @@ compile() {
 }
 
 echo "=== Scalar / compiler-vectorized ==="
-compile "$SCALAR" src/opt7_5.cpp                                                            opt7_5_scalar
-compile "$AVX"    src/avx_analysis_code_ablations/opt7_5_abl_compiler_vec.cpp              opt7_5_compiler_vec
+compile "$SCALAR" src/opt7_5.cpp                                                                opt7_5_scalar
+compile "$AVX"    src/avx_analysis_code_ablations/opt7_5_abl_compiler_vec.cpp                  opt7_5_abl_compiler_vec
 
 echo "=== Hand-vectorized, no tile ==="
-compile "$AVX"    src/avx_analysis_code_ablations/opt9_abl_hand_vec_no_tile.cpp            opt9_hand_vec_no_tile
+compile "$AVX"    src/avx_analysis_code_ablations/opt9_abl_hand_vec_no_tile.cpp                opt9_abl_hand_vec_no_tile
+compile "$AVX"    src/avx_analysis_code_ablations/opt9_abl_hand_vec_no_tile_ilp.cpp            opt9_abl_hand_vec_no_tile_ilp
 
-echo "=== Tiling ablations ==="
-compile "$AVX"    src/avx_analysis_code_ablations/opt10_abl_tile_8x256.cpp                 opt10_tile_8x256
-compile "$AVX"    src/avx_analysis_code_ablations/opt11_abl_tile_8x2032.cpp                opt11_tile_8x2032
+echo "=== 8x256 tile ==="
+compile "$AVX"    src/avx_analysis_code_ablations/opt10_abl_tile_8x256.cpp                     opt10_abl_tile_8x256
+compile "$AVX"    src/avx_analysis_code_ablations/opt10_abl_tile_8x256_ilp.cpp                 opt10_abl_tile_8x256_ilp
 
-echo "=== ILP + register-reuse ablations ==="
-compile "$AVX"    src/avx_analysis_code_ablations/opt17_0_abl_tile_8x2032_ilp.cpp         opt17_0_tile_ilp
-compile "$AVX"    src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp     opt17_tile_ilp_reuse
+echo "=== 8x2032 tile + ILP + reuse ==="
+compile "$AVX"    src/avx_analysis_code_ablations/opt11_abl_tile_8x2032.cpp                    opt11_abl_tile_8x2032
+compile "$AVX"    src/avx_analysis_code_ablations/opt17_0_abl_tile_8x2032_ilp.cpp              opt17_0_abl_tile_8x2032_ilp
+compile "$AVX"    src/avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse.cpp          opt17_abl_tile_8x2032_ilp_reuse
 
 echo "=== Reference opt17 variants ==="
-compile "$AVX"    src/opt17_no_ilp_no_reuse.cpp                                            opt17_no_ilp_no_reuse
-compile "$AVX"    src/opt17_ilp_only.cpp                                                   opt17_ilp_only
-compile "$AVX"    src/opt17_row_reuse_only.cpp                                             opt17_row_reuse_only
-compile "$AVX"    src/opt17.cpp                                                             opt17
+compile "$AVX"    src/opt17_no_ilp_no_reuse.cpp                                                opt17_no_ilp_no_reuse
+compile "$AVX"    src/opt17_ilp_only.cpp                                                       opt17_ilp_only
+compile "$AVX"    src/opt17_row_reuse_only.cpp                                                 opt17_row_reuse_only
+compile "$AVX"    src/opt17.cpp                                                                opt17
 
 echo ""
 echo "Done. Files written to cpp_refocus/$OUT/"
