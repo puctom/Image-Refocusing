@@ -4,15 +4,17 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 VARIANTS=(
-    abl_compiler_vec
-    abl_hand_vec_no_tile
-    abl_tile_8x256
-    abl_tile_8x2032
-    abl_tile_8x2032_ilp
-    abl_tile_8x2032_ilp_reuse
+    # abl_compiler_vec
+    # abl_hand_vec_no_tile
+    # abl_tile_8x256
+    # abl_tile_8x2032
+    # abl_tile_8x2032_ilp
+    # abl_tile_8x2032_ilp_reuse
+    abl_hand_vec_no_tile_ilp 
+    abl_tile_8x256_ilp
 )
 
-SIZES="256 384 512 768 1024 1536 2048 3072 4096"
+SIZES="256 384 512 768 1024 1536 2048 3072"
 
 for variant in "${VARIANTS[@]}"; do
     echo

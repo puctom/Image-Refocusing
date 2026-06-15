@@ -7,7 +7,7 @@ BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 BENCH_COMMON_SRC := src/bench_common.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt7_5 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt17_no_ilp_no_reuse opt17_ilp_only opt17_row_reuse_only opt12_new_tile opt17_no_ilp_no_reuse_old_tile abl_compiler_vec abl_hand_vec_no_tile abl_tile_8x256 abl_tile_8x2032 abl_tile_8x2032_ilp abl_tile_8x2032_ilp_reuse
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt7_5 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt17_no_ilp_no_reuse opt17_ilp_only opt17_row_reuse_only opt12_new_tile opt17_no_ilp_no_reuse_old_tile abl_compiler_vec abl_hand_vec_no_tile abl_hand_vec_no_tile_ilp abl_tile_8x256 abl_tile_8x256_ilp abl_tile_8x2032 abl_tile_8x2032_ilp abl_tile_8x2032_ilp_reuse
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -37,7 +37,9 @@ VER_SRC.opt17_row_reuse_only   := opt17_row_reuse_only
 # Ablation chain: compiler-vec -> hand-vec -> tile 8x256 -> tile 8x2032 -> +ILP -> +reuse
 VER_SRC.abl_compiler_vec          := avx_analysis_code_ablations/opt7_5_abl_compiler_vec
 VER_SRC.abl_hand_vec_no_tile      := avx_analysis_code_ablations/opt9_abl_hand_vec_no_tile
+VER_SRC.abl_hand_vec_no_tile_ilp  := avx_analysis_code_ablations/opt9_abl_hand_vec_no_tile_ilp
 VER_SRC.abl_tile_8x256            := avx_analysis_code_ablations/opt10_abl_tile_8x256
+VER_SRC.abl_tile_8x256_ilp        := avx_analysis_code_ablations/opt10_abl_tile_8x256_ilp
 VER_SRC.abl_tile_8x2032           := avx_analysis_code_ablations/opt11_abl_tile_8x2032
 VER_SRC.abl_tile_8x2032_ilp       := avx_analysis_code_ablations/opt17_0_abl_tile_8x2032_ilp
 VER_SRC.abl_tile_8x2032_ilp_reuse := avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse
@@ -71,7 +73,9 @@ VER_FLAGS.opt17_ilp_only        := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt17_row_reuse_only  := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.abl_compiler_vec          := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.abl_hand_vec_no_tile      := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.abl_hand_vec_no_tile_ilp  := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.abl_tile_8x256            := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.abl_tile_8x256_ilp        := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.abl_tile_8x2032           := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.abl_tile_8x2032_ilp       := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.abl_tile_8x2032_ilp_reuse := -march=native -ffast-math -mavx2 -mfma
