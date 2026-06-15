@@ -69,12 +69,13 @@ import math
 
 # #  overall vectorized code
 SERIES = [
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_compiler_vec_20260614_184642.csv",         "label": "Compiler vectorized code",                "color": "#870d0d"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_compiler_vec_20260614_184642.csv",         "label": "Compiler vectorized code",                "color": "#870d0d"},
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_hand_vec_no_tile_20260614_185443.csv",     "label": "Hand vectorized code",      "color": "#ca6a0f"},
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x256_20260614_190051.csv",           "label": "Tiling for cache, 8x256 tile size",   "color": "#afa514ff"},
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_20260614_191333.csv",          "label": "Tiling for cache, final 8x2032 tile size",   "color": "#4186e7ff"},
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_20260614_192058.csv",      "label": "ILP",   "color": "#893cb2ff"},
     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_reuse_20260614_192858.csv",           "label": "Loads and conv reuse",   "color": "#d438f6ff"},
+    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt7_5_20260614_201838.csv",           "label": "Best scalar",   "color": "#000000ff"},
 
 ]
 
