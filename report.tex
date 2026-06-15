@@ -298,8 +298,9 @@ Bearing in mind the neat, regular structure of the algorithm with sequential pix
 
 Initially, a tile size of 8 rows $ \times $ 256 columns was used, as we suspected that such tile size ($8 \cdot 256 \cdot 3 \cdot 4B = 24$KB) fitting in the L1D cache (48KB) would be optimal. 
 
-We then tuned the tile dimensions empirically. Rather than scanning the height-width grid exhaustively, we used a Bayesian optimizer over the two parameters, which iteratively proposes tile sizes and converges on the combination that minimizes the median measured cycle count. We utilized the Weight and Biases platform  \cite{wandb} to run these simulations and kept a fixed image size of 2048x2048 when running them. The best results were achieved by the tile sizes with large width (around 2000) and small height (around 8), as show in Figure \ref{fig:wandb}. Ultimately, a tile size of 8 rows $ \times $ 2048 (full row) columns was chosen. These optimizations further reduced the proportion of misses: with the number of loads in LLC going down from 704k to 363k for 2048x2048 image size and the corresponding miss ratio down from around 85-95\% to 60-70\%. 
-% (Klejdi ideally to look into the metrics) 
+We then tuned the tile dimensions empirically. Rather than scanning the height-width grid exhaustively, we used a Bayesian optimizer over the two parameters, which iteratively proposes tile sizes and converges on the combination that minimizes the median measured cycle count. We utilized the Weight and Biases platform  \cite{wandb} to run these simulations and kept a fixed image size of 2048x2048 when running them. The best results were achieved by the tile sizes with large width (around 2000) and small height (around 8), as show in Figure \ref{fig:wandb}. Ultimately, a tile size of 8 rows $ \times $ 2048 (full row) columns was chosen. 
+
+This was initially surprising, since the chosen tile exceeds the L1D cache, violating our original residency hypothesis. However, with a full-width tile, each subaperture's contributing region is traversed as complete contiguous rows, which maximizes their reuse from the lower cache levels; a narrower tile would fragment each row into short segments and lose that reuse. Additionally, since the algorithm is compute-bound, some of the latency of the L1 misses can be hidden behind the compute operations, which saturate the FMA and conversion ports and thus dominate the runtime. Indeed, the L1D miss rate rises from roughly 6\% for the smaller tiles to about 12\% for the larger ones, yet performance still improves, confirming that L1 residency of the output was not the binding factor. 
 
 \begin{figure}[H]
     \centering
@@ -309,6 +310,9 @@ trial, colored by median cycle count (darker is faster); the lowest
 runtimes cluster at small tile heights paired with large tile widths.}
     \label{fig:wandb}
 \end{figure}
+
+Taken together, these optimizations cut the LLC absolute load count from 704k to 363k at the 2048×2048 image size, with the corresponding miss ratio falling from roughly 85–95\% to 60–70\% across various image sizes.
+
 
 \mypar{Increasing Instruction-Level Parallelism}
 On top of the code with cache-oriented tiling, we explicitly introduced two independent AVX accumulation chains in the loop body, processing 16 output channels per iteration instead of 8. This way, the compiler explicitly generates more independent corresponding conversions (\texttt{vpmovzxbd}, \texttt{vcvtdq2ps}) and arithmetic (\texttt{vfmadd132ps}) instructions in the assembly. This gave, however, only about 4\% speedup. Our analysis concluded that most likely the out of order execution already achieves the majority of the possible ILP and limited by other bottlenecks, with only a marginal gain possible from the explicit instructions in the code. 
@@ -391,7 +395,7 @@ Figure \ref{fig:scalar-perf} plots our single-focus runtime against image size f
 
 The scalar peak performance of our processor is 4 FLOPs/cycle through 2 FMAs across 2 ports. However, as explained in Section 2, our algorithm also requires int-to-float conversions. The conversion operation has a peak performance of 2 FLOPs/cycle, and since we are performing half as many conversions as FMAs after the Conversion Reuse optimization, we have an Instruction Mix Peak Performance of 3.33 FLOPs/cycle.
 
-We see from Figure \ref{fig:scalar-perf} that our most optimized scalar code performance hovers around 3.2-3.3 FLOPs/cycle. This is very close to the Instruction Mix Peak Performance, meaning that there is very little room for improvement. 
+We see from Figure \ref{fig:scalar-perf} that our most optimized scalar code performance hovers around 3.2-3.3 FLOPs/cycle. This is very close to the Instruction Mix Peak Performance, meaning that there is very little room for improvement. Since the per-pixel workload is constant, total flops and runtime both scale linearly with the number of pixels, so measured performance is effectively independent of image size.
 
 \begin{figure}[H]
     \centering
@@ -400,9 +404,11 @@ We see from Figure \ref{fig:scalar-perf} that our most optimized scalar code per
     \label{fig:scalar-roofline}
 \end{figure}
 
-Our roofline plot in Figure \ref{fig:scalar-roofline} was generated using Intel Advisor MLR model. The raw results were altered to include int-to-float conversions as FLOPs. The plot reveals a few important insights. First of all, we notice that all versions of the code, including the baseline, are compute bound. Next, we see that the baseline version has a much higher operational intensity compared to the optimized versions. The reason for this is twofold; first, the baseline does not reuse weights across subapertures, so it performs many more unnecessary operations, roughly 1.8x as many in our measurements. Second, the access pattern of the baseline implementation is more friendly for the DRAM, but much-less friendly for L1 cache, which is not apparent from the DRAM-level roofline plot. 
+Our roofline plot in Figure \ref{fig:scalar-roofline} was generated with help from Intel® Advisor MLR model. The raw results were altered to include int-to-float conversions as FLOPs. On the plot, \textbf{baseline} and \textbf{tiling} code versions closely overlap for all of their input sizes, while the \textbf{DP counts} and \textbf{conv. reuse} versions overlap almost exactly for images of sizes 1024 and 2048, hence the seemingly missing orange square and rhombus in Figure \ref{fig:scalar-roofline}.
 
-Next, we can see that for our optimized versions, 
+The plot reveals a few important insights. First of all, we notice that all versions of the code, including the baseline, are compute bound. Next, we see that the baseline version has a much higher operational intensity compared to the optimized versions. The reason for this is twofold; first, the baseline does not reuse weights across subapertures, so it performs many more unnecessary operations, roughly 1.8x as many in our measurements. Second, the access pattern of the baseline implementation is more friendly for the DRAM, but much-less friendly for L1 cache, which is not apparent from the DRAM-level roofline plot.
+
+Next, we can see that for our optimized versions, increasing the image size consistently decreases operational intensity while achieving the same performance. This is because our scalar code accesses the entire output image accumulator for each subaperture. As the output image gets larger, the accumulator stops fitting into LLC and we end up getting more cache misses and causing more memory traffic. This is confirmed by the operational intensity of the \textbf{tiling} code version in Figure \ref{fig:scalar-roofline}, where we tiled the output image. This optimization does not provide any speedup and was therefore omitted for scalar code, but we can see that it has a higher operational intensity than other optimized code versions even for larger image sizes. 
 
 Figure \ref{fig:avxCyclesPerPixelResults} plots the performance for the AVX2 versions of the code. AVX2 brings the runtime from the previous best scalar \todo{check deez numbers} $11.5$~Gcycles down to $1.97$~Gcycles, a further $5.84\times$ speedup, which is a total $44.16\times$ speedup over the original baseline. Next we present the roofline model and the measured FLOPs/cycle over the execution.
 % (Tomasz - I commented out, I don't think it's relevant) The IPC drops from 1.18 to 0.78 because the byte to float conversions use the same ports for the vector instructions as the vector FMAs. This is also why we cannot reach the SIMD roof.
@@ -410,12 +416,28 @@ Figure \ref{fig:avxCyclesPerPixelResults} plots the performance for the AVX2 ver
 \todo{Replace with flops/cycle graph}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{avxCyclesPerPixelResults.png}
+    \includegraphics[width=1\linewidth]{report/figures/vectorized_flops2.png}
     \caption{avx Cycles Per Pixel Results}
     \label{fig:avxCyclesPerPixelResults}
 \end{figure}
 \todo{Replace with FLOPs/cycle}
-D
+
+Similarly, as for the scalar code, our roofline model contains different performance roofs depending on the instruction mix and conversions reuse. Our most optimized code reaches ... \todo flops/cycle, ...\% of the scalar peak for its corresponding instruction mix. 
+
+The increased computation capabilities of the vectorized code implemented with vector intrinsics are accompanied by tackling the data transfer stalls. The cache blocking with arbitrary and optimized tile size reduce the cache misses across different levels of cache, while the loads and conversion reuse further reduce the performed accesses to L1 cache, since the data stays in the registers. 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{avxReuseL1DLoads.png}
+    \caption{L1D cache reduced loads, data stays in the registers}
+    \label{fig:placeholder}
+\end{figure}
+\todo{should this go here, later in experiments, not at all?}
+\todo{improve the colors in this plot, will do tonight, must go}
+
+
+The code does not reach the peak performance becasue ... \todo{important question that Jonas also asked.}
 
 Figure x3 plots the stack optimizations. The scalar optimizations bring the stack baseline from 1772.4 down to 264.7 Gcycles, which is a $6.7\times$ haha gain. For 21 focal values and images of size $2048\times2048$, the initial AVX2 speedup over the best scalar stack version was around $3.9\times$. Focus blocking bring this to 41.7 Gcycles, which in total results in a $42.5\times$ speedup over the stack baseline. The best stack code reaches .... flops/cycle, ..\% of the SIMD peak, which is almost the same as our best single-focus code (i hope so at least need to check the numbers) so a whole stack costs the same per pixel as one refocused image. For images of size $2048\times2048$, the single focus code called over all focal values actually outperforms our stack version by around 20\% in total cycles, due to the stack optimized code keeping the count maps and output images for all F focuses in memory at once, which exceeds the 8GB of RAM available on our processor. For the 200 focus values, we measured $2.4\times10^5$ major page faults, as opposed to the single-focus version which has none, which explains the slowdown. \todo{I moved this bit from the optimizations to the results but i think it makes more sense if we have a plot to show this, otherwise im not sure if we should keep it but it is good for analysis}
 
@@ -526,7 +548,8 @@ Example and structure follows.
 
 \mypar{Francois} ...
 
-\mypar{Isabella} ...
+\mypar{Klejdi} Focused on cache optimizations and related metrics. Implemented the tiling logic (including WandB simulation runs) and
+introduced dynamic programming subaperture contribution-count optimization (listing \ref{lst:dp-counts}). Generated a few of the plotting scripts.
 
 \section{Code (Mandatory)}
 This section does not count towards the 7 pages limit.
