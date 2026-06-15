@@ -1,0 +1,708 @@
+% IEEE standard conference template; to be used with:
+%   spconf.sty  - LaTeX style file, and
+%   IEEEbib.bst - IEEE bibliography style file.
+% --------------------------------------------------------------------------
+
+\documentclass[letterpaper]{article}
+\usepackage{spconf,amsmath,amssymb,graphicx,fancyvrb, minted}
+\usepackage{booktabs}
+\usepackage{todonotes}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage[inkscapeversion=1,inkscapelatex=false]{svg}
+\usepackage{hyperref}
+
+\svgpath{{report/figures/}}
+
+\lstdefinestyle{cppstyle}{
+    language=C++,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{red!60!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    frame=single,
+    breaklines=true,
+    tabsize=4,
+    showstringspaces=false,
+    captionpos=b
+}
+
+% Example definitions.
+% --------------------
+% nice symbols for real and complex numbers
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\C}[0]{\mathbb{C}}
+
+% bold paragraph titles
+\newcommand{\mypar}[1]{{\bf #1.}}
+
+% Title.
+% ------
+\title{Light Field Refocus}
+%
+% Single address.
+% ---------------
+\name{Eliisabet Kaasik, Tomasz Puczel, Ya\u{g}\i z G\"uldal, Klejdi Sevdari}
+\address{Department of Computer Science\\ ETH Zurich, Switzerland}
+
+
+% For example:
+% ------------
+%\address{School\\
+%		 Department\\
+%		 Address}
+%
+% Two addresses (uncomment and modify for two-address case).
+% ----------------------------------------------------------
+%\twoauthors
+%  {A. Author-one, B. Author-two\sthanks{Thanks to XYZ agency for funding.}}
+%		 {School A-B\\
+%		 Department A-B\\
+%		 Address A-B}
+%  {C. Author-three, D. Author-four\sthanks{The fourth author performed the work
+%		 while at ...}}
+%		 {School C-D\\
+%		 Department C-D\\
+%		 Address C-D}
+%
+
+\begin{document}
+%\ninept
+%
+% \maketitle
+%
+
+% I wonder if I should add the new scalar code versions to the repo. The major one is the unrolling + explicit FMA use that results in about 14 percent increase in performance. The other one is only used in the roofline plot. They are useful but I don't know the exact policy, are we allowed to touch the repo at this point?
+
+% Noting here to not forget
+% - Yagiz
+
+\maketitle
+
+
+\begin{abstract}
+Like an okapi that's almost-but-not-quite a giraffe, our first Rust implementation fell short of being well optimized. Where a giraffe stretches tall and lean, built for reach and efficiency, our implementation stayed closer to the ground: functional, recognizable, but never quite extending into the form it was meant to take. The okapi survives perfectly well in the underbrush; it simply isn't built to graze the canopy. Our code was the same. It met the requirements and never reached past them. Closing that gap meant better code patterns for cache allocation, AVX vectorization, and flop reduction. And just as a giraffe outreaches an okapi, the optimized implementation now supersedes the original. The lineage stayed the same - what changed was how far it could reach.
+\end{abstract}
+
+
+\section{Introduction}\label{sec:intro}
+
+\mypar{Motivation}  A light field is captured not as one photograph but as a whole grid of them, taken from slightly different viewpoints, and from that collection, a photographer can choose the focal length of the final image after the fact. The real appeal is interactivity: sweeping the focus back and forth, or generating a whole focal stack to go through, all in real time. But that interactivity is exactly what makes performance hard - the data is large (hundreds of images that need to be processed all at once), so a naive implementation falls far short of the rates a responsive tool needs.
+
+% ------------------------------------
+% We can maybe mention the constraints of the problem here, like how we always have 289 subapertures and how our focus values are limited to -50 to 50, and how the subaperture image coordinated get normalized. These have meaningful effects on the decisions we made during our optimizations.
+% ------------------------------------
+
+\mypar{Contribution}
+We present an optimized single-core C++ implementation of light field refocusing, built up incrementally from a baseline ported directly from the provided Rust reference. Because refocusing is embarrassingly parallel (every output pixel, and every focus value, can be computed independently) much prior work scales it across many threads or offloads it to a GPU. We instead ask how much performance we can extract from a single core, where the memory hierarchy and instruction-level bottlenecks dominate, and this is exactly where our optimizations lie. To find the most suitable optimizations, we were guided by careful analysis of roofline plots and hardware performance metrics, and on this basis we applied the following. The total number of floating-point operations (flops) performed was reduced by reusing intermediate results across neighboring output pixels and by replacing repeated computation with analytical and dynamic-programming reformulations. We restructure both the computation and its memory access pattern to improve temporal locality, keeping working data
+resident in cache and reducing redundant traffic to main memory. We streamline the hot loop, hoisting operations that place unnecessary pressure on the critical execution ports and introducing multiple
+accumulators to expose additional instruction-level parallelism (ILP). Finally, we vectorize the operations with AVX so that several pixels are processed per instruction. Together, these optimizations bring the implementation to approximately 75\% of the relevant performance ceiling and achieve a speedup of (insert speedup). \todo
+
+
+\section{Background on the Algorithm/Application}\label{sec:background}
+
+\mypar{Light field refocusing}
+Instead of taking a single photo, a light field camera in our setting takes many at once: a $17\times17$ grid of cameras photographs the same scene from 289 slightly different viewpoints. Each of these $S=289$ subaperture images is an $H\times W$ RGB image (8 bits per channel) tagged with its position $(u,v)$ in the grid, relative to the central camera. The payoff of capturing all these photos \emph{ex ante} is that we can decide after the fact where the photo should be focused. The shift-and-sum algorithm does exactly that: shift each image by $(f u,\, f v)$ for a chosen focus parameter $f$, then average them all.
+\begin{equation}\label{eq:shiftsum}
+E_f(x,y) = \frac{1}{|C_f(x,y)|}
+\sum_{S \in C_f(x,y)} S_{u,v}(x + f u, y + f v)
+\end{equation}
+where $E_f$ is the output image and $C_f(x,y)$ is the set of subapertures whose shifted image still covers pixel $(x,y)$, so $|C_f(x,y)|$ is the count of contributing images.
+
+Since the shifts $fu$ and $fv$ are in general not integers, sampling at fractional coordinates $(x' = x + fu, y' = y + fv)$ is defined by bilinear interpolation of the four surrounding pixels. Writing $p_{ij}$ for the pixel at $(\lfloor x' \rfloor{+}i,\, \lfloor y' \rfloor{+}j)$ and $a = x' - \lfloor x' \rfloor$, $b = y' - \lfloor y' \rfloor$ for the interpolation weights:
+\begin{equation}\label{eq:bilinear}
+\begin{split}
+S_{u,v}(x',y') = & \; (1{-}a)(1{-}b)\,p_{00} + a(1{-}b)\,p_{10} \\
+               &+ (1{-}a)b\,p_{01} + ab\,p_{11}
+\end{split}
+\end{equation}
+
+\mypar{Cost Analysis}
+We count floating-point operations, treating additions, multiplications, and int-to-float conversions equally, since on our machine all three execute on the same ports. The counts read directly off the equations.
+
+Each evaluation of equation \eqref{eq:bilinear} costs 4 multiplications, 3 adds, and 4 conversions of the 8-bit pixels $p_{ij}$ to float; the weights themselves depend only on $(u,v)$ and $f$, so they are computed once per image and we neglect their cost. Accumulating the result into the sum of equation \eqref{eq:shiftsum} adds 1 more add, giving 12 flops per channel and $3 \cdot 12 = 36$ flops per (pixel, subaperture) pair. The output has $HW$ pixels, each summing over up to $S$ subapertures, so one refocused image costs
+\begin{equation}\label{eq:work}
+W = 36\,SHW \;\text{Flops}
+\end{equation}
+and a focal stack $F \cdot 36\,SHW$. The final division by $|C|$ contributes only $3HW$ flops and is neglected, as are border pixels with $|C| < S$, which makes \eqref{eq:work} a slight overestimate.
+
+\mypar{Operational intensity}
+Counting compulsory misses only, each subaperture image must be read
+at least once ($3SHW$ bytes at 3 bytes per pixel) and the output
+written once ($12HW$ bytes as 3 floats per pixel), so
+$Q \approx 3SHW$ bytes since $S = 289$. This puts the operational
+intensity at
+\begin{equation}
+I = \frac{W}{Q} \approx \frac{36\,SHW}{3\,SHW} = 12
+\;\text{flops/byte}
+\end{equation}
+well above both ridge points of our machine ($0.70$ scalar, $5.61$
+SIMD flops/byte), so the algorithm is compute-bound.
+
+\mypar{A note on the Operational Intensity (I) estimate}
+Computing $I$ exactly requires accounting for all data movement in and out of cache, not just compulsory misses: in practice, data is repeatedly evicted and re-fetched, so the true $Q$ is larger than $3SHW$ and the intensity correspondingly lower. Measuring actual traffic with Intel Advisor confirms this, yielding a value slightly below $12$ but still well above both ridge points. As will be seen later in this report, we put considerable effort into keeping our working set resident in cache for as long as possible, which pulls the measured intensity back toward this compulsory-miss ideal. So although the operational intensity above is a simplified estimate, it still serves our purpose and is close to actual empirical estimates (especially for our most optimized code). Additionally, a few of our optimizations reduce the flop count $W$; where this happens we adjust the operational intensity accordingly, as reflected in the roofline plots that follow.
+
+\section{Optimizations Performed}\label{sec:yourmethod}
+
+% Now comes the ``beef'' of the paper, where you explain what you
+% did. Again, organize it in paragraphs with titles. As in every section
+% you start with a very brief overview of the section.
+
+% For this course, explain all the optimizations you performed. This mean, you first very briefly
+% explain the baseline implementation, then go through locality and other optimizations, and finally SSE (every project will be slightly different of course). Show or mention relevant analysis or assumptions. A few examples: 1) Profiling may lead you to optimize one part first; 2) bandwidth plus data transfer analysis may show that it is memory bound; 3) it may be too hard to implement the algorithm in full generality: make assumptions and state them (e.g., we assume $n$ is divisible by 4; or, we consider only one type of input image); 4) explain how certain data accesses have poor locality. Generally, any type of analysis adds value to your work.
+
+% As important as the final results is to show that you took a structured, organized approach to the optimization and that you explain why you did what you did.
+
+% Mention and cite any external resources including library or other code.
+
+% Good visuals or even brief code snippets to illustrate what you did are good. Pasting large amounts of code or screen shots to fill the space is not good.
+
+
+
+
+We have three distinct classes of optimizations that build on top of each other. We started with scalar optimizations without any vectorization to get a good baseline performance close to the instruction mix roofline on Intel Tiger Lake. Then we moved on to vectorized optimizations that make use of AVX intrinsics. Both of these classes of optimizations were aimed at optimizing the performance of inputs with a single focal length value. Our final class of optimizations was finally focused on optimizing performance when the input had multiple focal lengths.
+
+\subsection{Scalar Single-Focus Optimizations}
+\mypar{Adjusting the loop order} The first scalar optimization we performed was adjusting the loop order. The original loop order in the baseline implementation is shown in Figure \ref{fig:loop-order-1}; it traversed all subaperture images for a single pixel of the output image, then moved to the next output pixel on that row. The main problem with this approach is that the 64B cache block loaded from a subaperture image into the cache gets evicted before the next column from that row is read.. We fixed this issue by changing the loop order to first traverse through all pixels of a single subaperture image before moving to the next subaperture image. This loop order is shown in Figure \ref{fig:loop-order-2}. This optimization also allowed us to rewrite the mathematical computation performed in the innermost loop in a more efficient way by allowing us to compute the weight of each corner pixel contributing to the same output pixel once per subaperture image. Overall, this optimization reduced the runtime by 37.2\% compared to the baseline C++ implementation.
+
+% \begin{figure}[htbp]
+%     \centering
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{report/figures/loop-order-1.pdf}
+%         \caption{Naive Loop Order}
+%         \label{fig:loop-order-1}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.30\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{report/figures/loop-order-2.pdf}
+%         \caption{Optimized Loop Order}
+%         \label{fig:loop-order-2}
+%     \end{subfigure}
+
+%     \caption{Comparison of two loop ordering strategies.}
+%     \label{fig:loop-order-comparison}
+% \end{figure}
+
+\mypar{Function inlining} The second scalar optimization we performed was using function inlining, in particular the bilinear sampling function called in the hot loop and also the function for averaging and normalizing the output pixel values into the correct byte values. This optimization had a large impact on performance, reducing the runtime by 62.8\% compared to just changing the loop order. There are multiple reasons for this. The first is the removal of the function call overhead, the compiler no longer needs to use the stack or do packing/unpacking operations. The second is the compiler reordering instructions to both improve ILP and to also perform less work. After this change, the IPC of the program improved to 1 from 0.78, and at the same time for 1024x1024 images the instruction count decreased from 9.88 billion down to 4.59 billion. This optimization also allowed the compiler to unroll the inner loop and reuse loads from the subaperture image, reducing the L1D loads from 3.16 billion to 1.33 billion for images of size 1024x1024.
+After this step, the compiled hot-loop has the dependency tree seen in Figure \ref{fig:dependency-1}. In Figure \ref{fig:dependency}, \textit{vals} represent the output accumulator, the prefixes \textit{W} and \textit{S} represents the weight and the value of the subaperture pixel channel and the suffixes \textit{tl}, \textit{tr}, \textit{bl}, \textit{br} represent the top/bottom left/right corners contributing to the same output pixel. The reason behind this suboptimal compilation was that the compiler was only optimizing locally within the hot loop. Because there are two ports, the compiler was performing one of the operations independently on the other port, resulting in the same longest-dependency latency in the hot loop as using 4 FMAs. This effectively wasted the other port which could have instead performed the 4 FMA operations for the next pixel. Therefore, we unrolled the loop and explicitly forced the compiler to use FMAs to achieve better ILP. This optimization proved to be useful, resulting in a further runtime reduction of roughly 13.7\%.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{report/figures/dependency-1.pdf}
+        \caption{Locally Optimized Dependency Tree}
+        \label{fig:dependency-1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{report/figures/dependency-2.pdf}
+        \caption{Globally Optimized Dependency Tree}
+        \label{fig:dependency-2}
+    \end{subfigure}
+
+    \caption{Comparison of two dependency trees. }
+    \label{fig:dependency}
+\end{figure}
+
+\mypar{Load and conversion reuse} The third scalar optimization we performed was one that reduces the number of flops performed per output pixel. We noticed that across the four subaperture image corner pixels contributing to each of two adjacent output pixels, two corner pixels are shared. So in this optimization, we reused each vertical subaperture image pixel pair that contributed to the same output image pixels. Normally, this would not result in a decrease in the number of flops performed per output image pixel, but for Intel Tiger Lake specifically the conversion operations use the same port as floating-point ADD/MUL/FMA operations. Before this optimization, we were performing 4 conversions, 4 additions and 4 multiplications per output pixel channel per subaperture image. This optimization effectively halves the number of conversions that need to be performed, resulting in an average FLOP distribution of 2 conversions, 4 additions and 4 multiplications per output pixel channel per subaperture image instead. This optimization is highlighted in Figure \ref{fig:scalar-conv-reuse}, where the bright rectangles represent the subaperture image and the dim pixels represent the output image pixels. The two filled subaperture pixels contribute to both of the output pixels present in Figure \ref{fig:scalar-conv-reuse}. This optimization further reduces the runtime by 20.9\% compared to the implementation that had just the changed loop order and function inlining.
+
+\begin{figure}[htbp]
+    \centering
+        \includegraphics[width=0.48\textwidth]{report/figures/scalar-conv-reuse.pdf}
+    \caption{Scalar Conversion Reuse}
+    \label{fig:scalar-conv-reuse}
+\end{figure}
+
+
+The fourth and final optimization we performed for the scalar single focal length version of the problem was to use a more efficient algorithm for calculating the number of contributing subapertures per output image pixel (see $C_f(x, y)$ in equation \ref{eq:shiftsum}). This computation is required because the vertical and horizontal shifts for each subaperture image make it so not each subaperture image contributes to every pixel of the output image for every focal length value. This operation used to be done in the hot loop with an accumulator-based approach, resulting in approximately $289 \times H \times W$ additions being performed. Note that these are integer additions, which can also dispatch to ports 5 and 6 rather than competing solely for ports 0 and 1 like the floating-point conversions, so they place little extra pressure on the bottleneck ports. They do, however, still load from and store to the count array, placing pressure on the load and store ports, so removing them from the hot loop is still a benefit. In this optimization step, we changed this implementation to instead use a dynamic-programming approach that utilizes prefix sums. In essence, a zero-initialized 2-D array of the same shape as the output image is marked on 4 points for each subaperture image: the furthest top left corner (of the output image contributed to by the subaperture) and the furthest bottom right corner are increased by 1, while the furthest top right corner and the furthest bottom left corner are decreased by 1. The counts are then found by traversing this array once from the top-left corner to the bottom right corner, adding up the value encountered in each position to the count accumulator. As a result, the number of additions being performed goes down to approximately $289 \times 4 + H \times W$ additions. This optimization reduces the runtime by a further 9.3\%. The code for this optimization can be found in listing \ref{lst:dp-counts}.
+
+\begin{lstlisting}[style=cppstyle, caption={Algorithm for Finding Contribution Counts}, label={lst:dp-counts}]
+std::vector<int> counts(w * h, 0);
+std::vector<int> diff((w + 1) * (h + 1), 0);
+
+// iterate through subaperture images
+for(const auto& s: subapertures){
+    diff[s.y_beg * (w + 1) + s.x_beg] += 1;
+    diff[s.y_beg * (w + 1) + s.x_end] -= 1;
+    diff[s.y_end * (w + 1) + s.x_beg] -= 1;
+    diff[s.y_end * (w + 1) + s.x_end] += 1;
+}
+
+// DP solution
+for(int y=0; y < h; ++y){
+    int row = 0;
+    for(int x = 0; x < w; ++x){
+        row += diff[y * (w + 1) + x];
+        counts[y * w + x] = row + (y > 0 ? counts[(y - 1) * w + x] : 0);
+    }
+}
+\end{lstlisting}
+
+\subsection{Vectorized Single-Focus Optimizations}
+% BEGIN Tomasz cooking zone
+% item Make sure to report the fastest non-vectorized code you obtained, compiled with flags disabling compiler vectorization. Also report the best compiler-vectorized code
+Having implemented all the optimizations for the scalar code, we moved on to exploiting the SIMD capabilities of the processor using vectorization. 
+
+\mypar{Best compiler vectorized code} Before hand-crafting the vectorized code, we compiled our final, most-performant scalar code without the \texttt{-fno-tree-vectorize} flag. This gave us the compiler-vectorized code, which we evaluated in the further experiments. There was no performance gain when compared to just the scalar code. 
+
+Our brief inspection of the produced assembly showed that the compiler failed to apply vectorization to the global algorithm structure, but instead only vectorized a single iteration of the innermost loop, heavily underutilizing the capabilities of vectorization. 
+
+\mypar{Initial vectorized code with intrinsics}
+Looking globally at the algorithm, it becomes clear that for one subaperture image the adjacent output pixels and their channels can be processed in parallel. They accumulate the contributions from the neighbouring subaperture data, which is accessed in the same sequential pattern. For these reasons we opted for using explicit intrinsics to implement this approach. 
+
+In the initial implementation, for each subaperture once the pointer to the starting pixel due to offset is determined, the input subaperture bytes are loaded: \texttt{\_mm\_loadl\_epi64} and converted to floats: \texttt{\_mm256\_cvtepi32\_ps}, and the weights are stored in their vectors \texttt{\_mm256\_set1\_ps}. Similarly, the output vector is loaded \texttt{\_mm256\_loadu\_ps} and then a chain of FMA instructions is performed \texttt{\_mm256\_fmadd\_ps}, accumulating the contributions from the corner pixels weighted by the bilinear weights. 
+
+Such code gives a large improvement of 77\% of the runtime for small image sizes (below 1024 pixels), and about 61\% for larger image sizes. 
+% Doesn't sound too drastic but is >50% slower TODO
+
+
+\mypar{Blocking for cache hits on output image}
+With the established \texttt{sub-y-x} loop order, the whole output image is accessed over and over again for every subaperture. However, the cache levels (as summarized in Table \ref{tab:cache_specs}) are too small to fit the output image (and the currently processed subaperture) in their entirety, which results in misses across all levels when accessing the output image, causing stalls in turn. Already for an image size of 1024x1024 pixels, the output requires: $1024 \cdot 1024 \cdot 3 \cdot 4B = 12MB $ of memory, which exceeds the 8MB of the LLC capacity.
+
+Bearing in mind the neat structure of the algorithm with sequential pixel accesses, we decided to process a smaller tile of an output image for all subapertures at a time, making sure that accesses to that output memory for subsequent subapertures are hits, rather than misses due to not fitting in cache. An arbitrary tile size is possible, with the access pattern illustrated in \ref{fig:cacheBlocking}, achieved by using \texttt{tile\_y - tile\_x - sub - y - x} loop order.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{cacheBlocking.png}
+    \caption{Blocking the output image }
+    \label{fig:cacheBlocking}
+\end{figure}
+
+
+Initially, a size of 8 rows $ \times $ 256 columns was used, as we suspected that such tile size ($8 \cdot 256 \cdot 3 \cdot 4B = 24$KB) fitting in the L1D cache (48KB) would be optimal. 
+
+We then tuned the tile dimensions empirically. Rather than scanning the height-width grid exhaustively, we used a Bayesian optimizer over the two parameters, which iteratively proposes tile sizes and converges on the combination that minimizes the median measured cycle count. We utilized the Weight and Biases platform  \cite{wandb} to run these simulations and kept a fixed image size of 2048x2048 when running them. The best results were achieved by the tile sizes with large width (around 2000) and small height (around 8), as show in Figure \ref{fig:wandb}. Ultimately, a tile size of 8 rows $ \times $ 2048 (full row) columns was chosen. These optimizations further reduced the proportion of misses: with the number of loads in LLC going down from 704k to 363k for 2048x2048 image size and the corresponding miss ratio down from 99\% to 68\%. 
+% (Klejdi ideally to look into the metrics) 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{report/figures/wandb.png}
+    \caption{Bayesian search over tile dimensions. Each line is one
+trial, colored by median cycle count (darker is faster); the lowest
+runtimes cluster at small tile heights paired with large tile widths.}
+    \label{fig:wandb}
+\end{figure}
+
+\mypar{Increased ILP through loop unrolling}
+On top of the code with cache-oriented tiling, we explicitly unrolled the innermost loop to process two vectors of output channels in the loop body. This way, the compiler explicitly generates more independent corresponding conversions (\texttt{vpmovzxbd}, \texttt{vcvtdq2ps}) and arithmetic (\texttt{vfmadd132ps}) instructions in the assembly. This optimization gave, however, a small speedup of about 4\% of the runtime. We suppose that since the instructions operate on independent data, the out of order execution already achieved the majority of the possible ILP.
+
+\mypar{Load and conversion reuse} %todo add ref to scalar version
+The final optimization with the vectorized code followed the same idea as the \textit{Load and conversion reuse} for scalar code. As illustrated in \ref{fig:avxReuseIllustration}, in case of the vectorized code however, the contributing subaperture pixels cannot be reused for row-adjacent output vectors, because the offset for output channels is 8, while the offset for contributing channels is 3. Fortunately, the intermediate rows of the tile can be used first as the bottom and then for the next row as the top contributing neighbours. 
+By going row-by-row within a tile, we reuse the intermediate loaded and converted rows. Except for the outer pixels, this is applied in blocks of 4 rows, leading to reduction of the loads and conversions from 8 (2 per row) to 5 (reusing 3 intermediate rows). This is confirmed by reduced L1D cache loads, since the data stays in the registers and does not need to be fetched from the cache. The optimization improves the runtime by further \todo{\%}, while the FLOPs/cycle stays at roughly the same level, with the FLOPs count reduced to: \todo{}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{avxReuseIllustration.png}
+    \caption{Avx Reuse Illustration}
+    \label{fig:avxReuseIllustration}
+\end{figure}
+\todo{improve the illustration if it is to stay here}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{avxReuseL1DLoads.png}
+    \caption{L1D cache reduced loads, data stays in the registers}
+    \label{fig:placeholder}
+\end{figure}
+\todo{should this go here, later in experiments, not at all?}
+
+% POTENTIALLY: 
+% lookup for compuattions in scalar
+% integer optimization
+
+% END Tomasz cooking zone
+
+\subsection{Multiple Focal-Length Optimizations}
+
+The second part of the project and the last group of optimizations dealt with the case where the input is a stack of focus values and one output image is produced for each. The baseline is the single-focus code called F times over the same set of subaperture images, so every focus rereads the entire light field. 
+
+\mypar{Function inlining}
+The first stack optimization was to inline the single-focus function call and pull the focus loop inside the spatial loops, which resulted in the loop order of subaperture--y--x--focus. Each subaperture image is brought in once and they contribute to all F output images before the next subaperture is touched, which theoretically results in each light field being read once rather than F times. However, in practice, since the F output accumulator images ($F \cdot W \cdot H \cdot 3$ floats in total) must all stay in cache for that single pass, many of the accumulators spill to DRAM. The 8MB LLC is too small to hold the larger images, for example $1024 \times 1024$ with $21$ focus values this is $252$~MB, which is why the speedup was only around 24.3\% over the baseline. 
+
+\mypar{Scalar and vectorized optimizations} Most of these were a direct carry-over from the single-focus work, applied per focus. However, we changed the loop order to subaperture--focus--y--x, allowing us to calculate the shift and the four bilinear weights once per subaperture-focus pair instead of once per pixel. Since at this stage our kernel is compute bound, not subaperture-DRAM bound, rereading each subaperture F times is faster due to the reduced computations, dropping the runtime by 76.4\% when compared to just the inlining code. Additionally, instead of the single‑focus 4‑row unroll, here we unroll the output into 2×2 pixel blocks to share source pixels horizontally and vertically. This increases ILP since adjacent output pixels share overlapping sets of source pixels, so the block lets us reuse loaded subaperture pixels across the four results and run four independent accumulation chains. The AVX2 vectorization then reused the tiled load-convert-FMA structure and 4-row y-unroll described in the previous section without any noteworthy modifications.
+
+\mypar{Focus blocking} From the function inlining optimizations we observed that the subapertures are reusable across focuses, but that reuse was mostly cancelled out by the accumulator working set overflowing the cache. Our proposed fix for this was to not accumulate all focuses at once, but instead process them in small blocks where the accumulators fit in cache. We block the focus loop with blocks of size 4 and use the loop order tile--focus-block--subaperture--y--x. For each tile and each subaperture, four focus accumulators are updated back to back from the same subaperture rows before the next subaperture is touched, which means those rows are reused across the block while in cache. The tile and block sizes were fixed again using WandB\cite{wandb}: at \texttt{TILE\_H}~$=12$,
+\texttt{TILE\_W}~$=1056$, the block is about $594$~KB and stays in the 1.25MB L2. This does reduce memory traffic as intended. When comparing our most optimized stack code against calling our most optimized single focus code over 200 focal values, we get that for $1024\times1024$ images it reduces the LLC misses around 2.8 times, from 32.2M to 11.4M, confirming that the subaperture rows are fetched from cache across the four focuses instead of being re-read from DRAM. However, the runtime is reduced only by around $6\%$. The reason is that the kernel is bound by the two ports responsible for all the FMA and conversion operations, and the effect of the LLC misses that the blocking optimization removed was already overlapped with that port work, which means they were never stalling the pipeline. For images of size $2048\times2048$, the single focus code actually outperforms our stack version by around 20\%, due to the stack optimized code keeping the count maps and output images for all F focuses in memory at once, which exceeds the 8GB of RAM available on our processor. For the 200 focus values, we measured $2.4\times10^5$ major page faults, as opposed to the single-focus version which has none, which explains the slowdown.
+
+\section{Experimental Results}\label{sec:exp}
+
+
+% Here you evaluate your work using experiments. You start again with a
+% very short summary of the section. The typical structure follows.
+In this section, we will display and explain our experimental results through the use of performance and roofline plots.
+
+% \mypar{Experimental setup} Specify the platform (processor, frequency, cache sizes)
+% as well as the compiler, version, and flags used. I strongly recommend that you play with optimization flags and possibly compilers, even though this can only be a minor aspect in the project and report.
+
+% Then explain what input you used and what range of sizes. Go large enough so the computations takes a few minutes or ideally even longer.
+
+\mypar{Experimental Setup} We fine-tuned our optimizations for and ran all our experiments on an Intel® Core™ i5-1135G7 Processor. This is an Intel Tiger Lake processor with 2 ports for performing floating point operations, including conversions. It supports AVX-256 and also AVX-512 but without any performance benefit compared to the AVX-256 operations, as AVX-512 operations use the two AVX-256 ports in parallel. As a result, the peak single-precision floating-point performance of our processor is 32 Flops/Cycle when doing 8 FMAs each in 2 ports per cycle.
+
+The aforementioned processor has 3 levels of cache, an L1 data cache of 48KB per core, an L2 cache of 1.25MB per core, and a shared LLC of 8MB.
+
+In all our measurements, we used cold-caches and disabled frequency-scaling, which makes the processor run at 2.4 GHz. 
+
+Our experimental setup had 8GB of RAM with a peak memory bandwidth of 5.7 Bytes/Cycle, measured by the STREAM~\cite{McCalpin:95} benchmark.
+
+We always used the \textbf{-O3}, \textbf{-march=native} and \textbf{-ffast-math} flags when compiling our code. Our scalar optimizations also used the \textbf{-fno-tree-vectorize} flag to explicitly disable the compiler from vectorizing.
+
+We used square RGB images ranging in height/width from 256 up to 4096. In our performance plots, the performance drops heavily for images of size 3072x3072 and above. This is because the 289 subaperture images take up more than 8GB of space for these image sizes. Since this does not fit in the RAM, it forces the program to use the swap space for storing subaperture images, which incurs disk I/O latency and throughput penalties when accessing their data. As a result, our discussion below will focus on images of size 2048x2048 and below.
+
+% \mypar{Results(description)}
+% Next divide the experiments into classes, e.g., one paragraph for each. In the simplest case you have one plot that has the size on the x-axis and the performance on the y-axis. The plot will contain several lines, one for each relevant code version. Discuss the plot and extract the overall performance gain from baseline to best code. Also state the percentage of peak performance for the best code. Note that the peak may change depending on the situation. For example, if you only do additions it would be 12 Gflop/s
+% on one core with 3 Ghz and SSE and single precision floating point.
+
+% Do not put two performance lines into the same plot if the operations count changed significantly (that's apples and oranges). In that case, for example, first perform the optimizations that reduce op count and report the runtime gain in a plot. Then continue to optimize the best version and show performance plots.
+
+% {\bf You should}
+% \begin{itemize}
+% \item Follow to a reasonable extent (i.e., don't stress out about it) the guide to benchmarking presented in class, in particular
+% \item plots should be very readable (do 1 column, not 2 column plots
+% for this class), {\bf including the font size} and font color. An example is below (of course you can have a different style),
+% \item every plot answers a question, which you pose and extract the
+% answer from the plot in its discussion
+% \end{itemize}
+% Every plot should be referenced and discussed (what does it show, which statements do
+% you extract).
+
+% Most important for the grade: Be analytical! Explain as good as possible why your results are as they are. In the end argue why more performance is not possible. Read the FAQs (How the project is graded) on the website.
+
+\mypar{Results}
+
+Figure \ref{fig:scalar-perf} plots our single-focus runtime against image size for the scalar optimizations. The loop reordering, inlining, ILP, conversion reuse, and prefix sum count calculation add up to an $10.8\times$ speedup over the baseline, from $123.8$ down to $11.5$~Gcycles. The best scalar code achieved \todo{flops/cycle, also plots} x\% of the 3.2 scalar peak. why we cant do better blabla more analysis 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{report/figures/performance.pdf}
+    \caption{Performance Plot for Scalar Optimizations}
+    \label{fig:scalar-perf}
+\end{figure}
+
+Figure \ref{fig:avxCyclesPerPixelResults} plots the performance for the AVX2 versions of the code. AVX2 brings the runtime from the previous best scalar $13.9$~Gcycles down to $2.0$~Gcycles, a further $7.0\times$ speedup, which is a total $62.5\times$ speedup over the original baseline. The best vectorized single focus code reaches ... \todo flops/cycle, ...\% of the scalar peak. The speedup is close to but slightly below the expected $8\times$ speedup from the lane width. The IPC drops from 1.18 to 0.78 because the byte to float conversions use the same ports for the vector instructions as the vector FMAs. This is also why we cannot reach the SIMD roof.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{avxCyclesPerPixelResults.png}
+    \caption{avx Cycles Per Pixel Results}
+    \label{fig:avxCyclesPerPixelResults}
+\end{figure}
+\todo{Replace with FLOPs/cycle}
+
+Figure x3 plots the stack optimizations. The scalar optimizations bring the stack baseline from 1772.4 down to 264.7 Gcycles, which is a $6.7\times$ haha gain. For 21 focal values and images of size $2048\times2048$, the initial AVX2 speedup over the best scalar stack version was around $3.9\times$. Focus blocking bring this to 41.7 Gcycles, which in total results in a $42.5\times$ speedup over the stack baseline. The best stack code reaches .... flops/cycle, ..\% of the SIMD peak, which is almost the same as our best single-focus code (i hope so at least need to check the numbers) so a whole stack costs the same per pixel as one refocused image. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{report/figures/scalar-roofline.pdf}
+    \caption{Roofline Plot for Scalar Optimizations}
+    \label{fig:scalar-roofline}
+\end{figure}
+
+Our roofline plot in Figure \ref{fig:scalar-roofline} was generated using Intel Advisor MLR model. The raw results were altered to include int-to-float conversions as FLOPs. The plot reveals a few important insights. First of all, we notice that all versions of the code, including the baseline, are compute bound. Next, we see that the baseline version has a much higher operational intensity compared to the optimized versions. The reason for this is twofold; first, the baseline does not reuse weights across subapertures so it performs many more unnecessary operations, roughly 1.8x as many in our measurements. Second, the access pattern of the baseline implementation is more friendly for the DRAM, but much-less friendly for L1 cache, which is not apparent from the roofline plot. 
+
+Next, we can see that for the same 
+
+
+
+\section{Conclusions}
+
+Here you need to briefly summarize what you did and why this is
+important. {\em Do not take the abstract} and put it in the past
+tense. Remember, now the reader has (hopefully) read the paper, so it
+is a very different situation from the abstract. Try to highlight
+important results and say the things you really want to get across. Be brief.
+
+% \section{Check list}
+
+% Here we summarize main points and provide some further tips.
+
+% \mypar{Important}
+
+% \begin{itemize}
+% \item Make sure to have a cost analysis or (in rare cases) argue why not and what you do instead.
+
+% \item Be analytical in explaining your results and limitations as this is a crucial factor for the grade.
+
+% \item Make sure to report the fastest non-vectorized code you obtained, compiled with flags disabling compiler vectorization. Also report the best compiler-vectorized code.
+
+% \item Plots should be readable. A plot can look fine when created but once put in one column you may have 4 point font, which is way to small. See also the small benchmarking guide I presented.
+
+% \item If you show a roofline plot, explain exactly how you got the data for it and the assumptions (e.g., on cache state). Revisit the roofline lecture on do's and dont's.
+
+% \item Don't talk about unrolling as performance optimization (see lectures where this is discussed several times) but be precise.
+
+% \item Some infrastructure work for testing and timing is needed but does not count towards the grade. Every project member has to contribute optimizations or relevant analyses.
+
+% \item No tricks to save space in latex (squeezing font or the like).
+% \end{itemize}
+
+% \mypar{Some tips}
+% \begin{itemize}	
+% \item For short papers like this, to save space, I use paragraph titles instead of subsections, as shown in the introduction.
+
+% \item It is generally a good idea to break sections into such smaller
+% units for readability and since it helps you to (visually) structure the story.
+
+% \item The above section titles should be adapted to more precisely
+% reflect what you do, and structure can be changed if it makes sense.
+
+% \item Each section should be started with a very
+% short summary of what the reader can expect in this section.
+
+% \item Do not use subsubsections.
+
+% \item Make sure you define every acronym you use, no matter how
+% convinced you are the reader knows it.
+
+% \item Always spell-check before you submit.
+
+% \item Also strive for reasonably high visual quality of the report.
+% In this class, the quality also contributes to the grade.
+
+% \item Books helping you to write better: \cite{Higham:98} and \cite{Strunk:00}.
+% \end{itemize}
+
+% \mypar{Graphics} Fig.~\ref{fftperf} is an example plot that I used in a lecture. Note that the fontsize in the plot should not be any smaller. On the other hand it is also a good rule that the font size in the plot is not larger than the one in the caption (otherwise it looks ugly).
+
+% \begin{figure}\centering
+%   \includegraphics[scale=0.33]{report/figures/dft-performance.pdf}
+%   \caption{Performance of four single-precision implementations of the
+%   discrete Fourier transform. The operations count is roughly the
+%   same. {\em The labels in this plot are about the smallest you should go.}\label{fftperf}}
+% \end{figure}
+
+
+
+\bigskip
+{\bf Up to here you have 7 pages and you should use them well.}
+
+\bigskip
+After the 7 pages there should be no appendix (will be ignored by us) but please include the mandatory sections explained after the bibliography.
+
+% References should be produced using the bibtex program from suitable
+% BiBTeX files (here: bibl_conf). The IEEEbib.bst bibliography
+% style file from IEEE produces unsorted bibliography list.
+% -------------------------------------------------------------------------
+\bibliographystyle{IEEEbib}
+\bibliography{bibl_conf}
+
+\section{Contributions of Team Members (Mandatory)}
+
+In this mandatory section (which is not included in the 7 pages limit) each team member should very briefly (telegram style is welcome) explain what she/he did for the project in terms of optimizations {\bf (do not mention  infrastructure work on testing and timing)}. I imagine this section to be maximally one column, rather less. 
+
+Include only 
+\begin{itemize}
+	\item What relates to optimizing your chosen algorithm / application. This means writing actual code for optimization or for analysis.
+	\item What you did before the submission of the presentation.
+\end{itemize}
+Do not include
+\begin{itemize}
+	\item Work on infrastructure and testing.
+	\item Work done after the presentation took place.
+\end{itemize}
+
+Example and structure follows.
+
+\mypar{Marilyn} Focused on non-SIMD optimization for the variant 2 of the algorithm. Cache optimization, basic block optimizations, small generator for the innermost kernel (Section 3.2). Roofline plot. Worked with Francois on the SIMD optimization of variant 1, in particular implemented the bit-masking trick discussed.
+
+\mypar{Hans} ...
+
+\mypar{Francois} ...
+
+\mypar{Isabella} ...
+
+\section{Code (Mandatory)}
+This section does not count towards the 7 pages limit.
+
+Please copy-paste the most performance-critical part of your fastest scalar code here. Should be at most one page. If you have more than one such part, choose one. Could be done in single column if need be. For best display consider adding a page break in latex before.
+
+Paste in here, do not change font size:
+
+{\fontsize{8}{10}\selectfont
+\begin{Verbatim}
+for (const SubParams& p : params) {
+  for (int y = p.y_begin; y < p.y_end; ++y) {
+    size_t ind_top = (
+      (y + p.sy) * width
+      + (p.x_begin + p.sx)
+    ) * 3;
+    size_t ind_bot = ind_top + width * 3;
+
+    float pTLr = p.data[ind_top];
+    float pTLg = p.data[ind_top + 1];
+    float pTLb = p.data[ind_top + 2];
+
+    float pBLr = p.data[ind_bot];
+    float pBLg = p.data[ind_bot + 1];
+    float pBLb = p.data[ind_bot + 2];
+
+    float* vals_row = vals.data()
+      + (static_cast<size_t>(y)
+        * width
+        + static_cast<size_t>(p.x_begin)
+      ) * 3;
+
+    const unsigned char* top_right = p.data
+      + (
+        (
+          (y + p.sy) * width
+          + (p.x_begin + p.sx + 1)
+      ) * 3);
+    const unsigned char* bot_right = top_right
+      + width * 3;
+
+    int x = p.x_begin;
+
+    for (; x + 1 < p.x_end; x += 2) {
+      const float pTR0r = top_right[0];
+      const float pTR0g = top_right[1];
+      const float pTR0b = top_right[2];
+
+      const float pBR0r = bot_right[0];
+      const float pBR0g = bot_right[1];
+      const float pBR0b = bot_right[2];
+
+      const float pTR1r = top_right[3];
+      const float pTR1g = top_right[4];
+      const float pTR1b = top_right[5];
+
+      const float pBR1r = bot_right[3];
+      const float pBR1g = bot_right[4];
+      const float pBR1b = bot_right[5];
+
+      float acc0r = vals_row[0];
+      float acc0g = vals_row[1];
+      float acc0b = vals_row[2];
+
+      float acc1r = vals_row[3];
+      float acc1g = vals_row[4];
+      float acc1b = vals_row[5];
+
+      acc0r = __builtin_fmaf(p.A, pTLr,  acc0r);
+      acc0g = __builtin_fmaf(p.A, pTLg,  acc0g);
+      acc0b = __builtin_fmaf(p.A, pTLb,  acc0b);
+      acc1r = __builtin_fmaf(p.A, pTR0r, acc1r);
+      acc1g = __builtin_fmaf(p.A, pTR0g, acc1g);
+      acc1b = __builtin_fmaf(p.A, pTR0b, acc1b);
+
+      acc0r = __builtin_fmaf(p.B, pTR0r, acc0r);
+      acc0g = __builtin_fmaf(p.B, pTR0g, acc0g);
+      acc0b = __builtin_fmaf(p.B, pTR0b, acc0b);
+      acc1r = __builtin_fmaf(p.B, pTR1r, acc1r);
+      acc1g = __builtin_fmaf(p.B, pTR1g, acc1g);
+      acc1b = __builtin_fmaf(p.B, pTR1b, acc1b);
+
+      acc0r = __builtin_fmaf(p.C, pBLr,  acc0r);
+      acc0g = __builtin_fmaf(p.C, pBLg,  acc0g);
+      acc0b = __builtin_fmaf(p.C, pBLb,  acc0b);
+      acc1r = __builtin_fmaf(p.C, pBR0r, acc1r);
+      acc1g = __builtin_fmaf(p.C, pBR0g, acc1g);
+      acc1b = __builtin_fmaf(p.C, pBR0b, acc1b);
+
+      acc0r = __builtin_fmaf(p.D, pBR0r, acc0r);
+      acc0g = __builtin_fmaf(p.D, pBR0g, acc0g);
+      acc0b = __builtin_fmaf(p.D, pBR0b, acc0b);
+      acc1r = __builtin_fmaf(p.D, pBR1r, acc1r);
+      acc1g = __builtin_fmaf(p.D, pBR1g, acc1g);
+      acc1b = __builtin_fmaf(p.D, pBR1b, acc1b);
+
+      vals_row[0] = acc0r;
+      vals_row[1] = acc0g;
+      vals_row[2] = acc0b;
+      vals_row[3] = acc1r;
+      vals_row[4] = acc1g;
+      vals_row[5] = acc1b;
+
+      pTLr = pTR1r; pTLg = pTR1g; pTLb = pTR1b;
+      pBLr = pBR1r; pBLg = pBR1g; pBLb = pBR1b;
+
+      vals_row += 6;
+      top_right += 6;
+      bot_right += 6;
+    }
+  }
+}
+\end{Verbatim}
+}
+
+After that, please paste the most performance-critical part of your fastest SIMD code here. Again, this should be at most one page. If you have more than one such part, choose one. Could be done in single column if need be. For best display consider adding a page break in latex before.
+
+Paste in here, do not change font size:
+{\fontsize{8}{10}\selectfont
+\begin{Verbatim}
+ones = _mm256_set1_pd(1.);
+mones = _mm256_set1_pd(-1.);
+thresholds = _mm256_set1_pd(0.5);
+for(i = 0; i < n; i+=4) {
+	vt = _mm256_load_pd(x+i);
+	vmask = _mm256_cmp_pd(vt, thresholds, _CMP_GT_OQ);
+	vp = _mm256_and_pd(vmask, ones);
+	vm = _mm256_andnot_pd(vmask, mones);
+	vr = _mm256_add_pd(vt, _mm256_or_pd(vp, vm));
+	_mm256_store_pd(x+i, vr);
+}
+\end{Verbatim}
+}\
+
+\begin{minted}{python}
+for(SubApertureImage& sub : subapertures){
+    // calculate weights
+    float A = (1 - dx) * (1 - dy);
+    float B = dx * (1 - dy);
+    float C = (1 - dx) * dy;
+    float D = dx * dy;
+
+    for(int y=y_begin; y < y_end; ++y)
+        for(int x=x_begin; x < x_end; ++x){
+
+            // load pixels for red channel
+            const float p00r = sub.data.data[ind00];
+            const float p10r = sub.data.data[ind10];
+            const float p01r = sub.data.data[ind01];
+            const float p11r = sub.data.data[ind11];
+
+            // do the same for other channels
+            // ...
+
+            // calculate weighted averages
+            const float outr = A*p00r + B*p10r + C*p01r + D*p11r;
+            const float outg = A*p00g + B*p10g + C*p01g + D*p11g;
+            const float outb = A*p00b + B*p10b + C*p01b + D*p11b;
+
+            // store
+            vals[idx*3]     += outr;
+            vals[idx*3 + 1] += outg;
+            vals[idx*3 + 2] += outb;
+        }
+    }
+}
+    return M
+\end{minted}
+
+% Cache Table
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+               & B    & E & S     & C       \\ \hline
+L1 Data Cache  & 64 B & 12  & 64    & 48 KB   \\ \hline
+L2C            & 64 B & 20  & 1024  & 1.25 MB \\ \hline
+LLC            & 64 B & 8   & 16384 & 8 MB    \\ \hline
+\end{tabular}
+\caption{Cache specifications}
+\label{tab:cache_specs}
+\end{table}
+
+\end{document}
