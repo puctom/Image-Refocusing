@@ -1,2 +1,0 @@
-variant,data_source,focus_parameter,num_reps,img_w,img_h,n_subapertures,avg_ms,median_ms,min_ms,max_ms,avg_cycles,median_cycles,min_cycles,max_cycles,cycles_per_pixel,mpixels_s,membw_gbs,avg_cache_misses,avg_instructions,ipc
-gen_512x512_1,generated 512*512,3.190000,10,512,512,289,1030.770263,1030.935921,1029.196959,1032.778584,2493755595,2494156376,2489949281,2498614354,9512.922649,0.254319,0.220494,1824318.300000,11102935257.000000,4.452295

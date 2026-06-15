@@ -26,72 +26,60 @@ import math
 # One entry per line on the plot.
 # Each dict needs: path, label, color.
 # Optional: filter (a callable that takes a DataFrame and returns a mask).
-# SERIES = [
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#1f4e9e"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_20260602_041212.csv",      "label": "opt17",      "color": "#1eff05"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_ilp_only_20260601_203043.csv",   "label": "opt17_ilp_only",   "color": "#bcbd22"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#b30df4ff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#9a82a5ff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#e9d2f3ff"},
-
-# ]
 
 # #  FOR old_tile vs new_tile
 
 # SERIES = [
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_20260602_041212.csv",      "label": "opt17",      "color": "#20a911"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_ilp_only_20260601_203043.csv",   "label": "opt17_ilp_only",   "color": "#bcbd22"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#b4f91fff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#d83434ff"},
+#     {"path": "scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
+#     {"path": "scripts/timing_results/timing_opt17_20260602_041212.csv",      "label": "opt17",      "color": "#20a911"},
+#     {"path": "scripts/timing_results/timing_opt17_ilp_only_20260601_203043.csv",   "label": "opt17_ilp_only",   "color": "#bcbd22"},
+#     {"path": "scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
+#     {"path": "scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
+#     {"path": "scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
+#     {"path": "scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#b4f91fff"},
+#     {"path": "scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#d83434ff"},
 
 # ]
 
-
 # #  FOR register reuse
 # SERIES = [
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
+#     # {"path": "scripts/timing_results/timing_opt17_no_ilp_no_reuse_20260601_202823.csv",     "label": "opt17_no_ilp_no_reuse",                "color": "#52d918"},
 #     {"path": "scripts/timing_opt17_20260602_041212.csv",      "label": "Process 4 rows (reuse)",      "color": "#ec84f5"},
 #     {"path": "scripts/timing_opt17_ilp_only_20260601_203043.csv",   "label": "Without reusing",   "color": "#7a1818ff"},
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#b4f91fff"},
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#d83434ff"},
+#     # {"path": "scripts/timing_results/timing_opt17_row_reuse_only_20260601_203255.csv",     "label": "opt17_row_reuse_only",      "color": "#9b117dff"},
+#     # {"path": "scripts/timing_results/timing_opt12_20260602_040221.csv",     "label": "opt12",      "color": "#fa2e6fff"},
+#     # {"path": "scripts/timing_results/timing_opt11_20260602_040018.csv",     "label": "opt11",      "color": "#290b36ff"},
+#     # {"path": "scripts/timing_results/timing_opt12_new_tile_20260602_040817.csv",     "label": "opt12_new_tile",      "color": "#b4f91fff"},
+#     # {"path": "scripts/timing_results/timing_opt17_no_ilp_no_reuse_old_tile_20260602_040933.csv",     "label": "opt17_no_ilp_no_reuse_old_tile",      "color": "#d83434ff"},
 
 # ]
 
 
 # # #  overall vectorized code
 # SERIES = [
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_compiler_vec_20260614_184642.csv",         "label": "Compiler vectorized code",                "color": "#870d0d"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_hand_vec_no_tile_20260614_185443.csv",     "label": "Hand vectorized code",      "color": "#ca6a0f"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_hand_vec_no_tile_ilp_20260615_045245.csv",           "label": "Hand vectorized + ILP, no tile",   "color": "#34de9aff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x256_20260614_190051.csv",           "label": "Tiling for cache, 8x256 tile size",   "color": "#afa514ff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x256_ilp_20260615_045509.csv",           "label": "8x256 tile + ILP",   "color": "#64670dff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_20260614_191333.csv",          "label": "Tiling for cache, final 8x2032 tile size",   "color": "#4186e7ff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_20260614_192058.csv",      "label": "ILP",   "color": "#893cb2ff"},
-#     {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_abl_tile_8x2032_ilp_reuse_20260614_192858.csv",           "label": "Loads and conv reuse",   "color": "#d438f6ff"},
-#     # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/timing_opt7_5_20260614_201838.csv",           "label": "Best scalar",   "color": "#000000ff"},
+#     # {"path": "scripts/timing_results/timing_abl_compiler_vec_20260614_184642.csv",         "label": "Compiler vectorized code",                "color": "#870d0d"},
+#     {"path": "scripts/timing_results/timing_abl_hand_vec_no_tile_20260614_185443.csv",     "label": "Hand vectorized code",      "color": "#ca6a0f"},
+#     {"path": "scripts/timing_results/timing_abl_hand_vec_no_tile_ilp_20260615_045245.csv",           "label": "Hand vectorized + ILP, no tile",   "color": "#34de9aff"},
+#     {"path": "scripts/timing_results/timing_abl_tile_8x256_20260614_190051.csv",           "label": "Tiling for cache, 8x256 tile size",   "color": "#afa514ff"},
+#     {"path": "scripts/timing_results/timing_abl_tile_8x256_ilp_20260615_045509.csv",           "label": "8x256 tile + ILP",   "color": "#64670dff"},
+#     {"path": "scripts/timing_results/timing_abl_tile_8x2032_20260614_191333.csv",          "label": "Tiling for cache, final 8x2032 tile size",   "color": "#4186e7ff"},
+#     {"path": "scripts/timing_results/timing_abl_tile_8x2032_ilp_20260614_192058.csv",      "label": "ILP",   "color": "#893cb2ff"},
+#     {"path": "scripts/timing_results/timing_abl_tile_8x2032_ilp_reuse_20260614_192858.csv",           "label": "Loads and conv reuse",   "color": "#d438f6ff"},
+#     # {"path": "scripts/timing_results/timing_opt7_5_20260614_201838.csv",           "label": "Best scalar",   "color": "#000000ff"},
 
 # ]
 
 
 # #  FINAL ABLATION RESULTS
 SERIES = [
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt7_5_abl_compiler_vec_20260615_060220.csv",         "label": "Compiler vectorized code (opt7_5_abl_compiler_vec)",                "color": "#290a0a"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt9_abl_hand_vec_no_tile_20260615_060554.csv",     "label": "Hand vec (opt9_abl_hand_vec_no_tile)",      "color": "#bd5b00"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt9_abl_hand_vec_no_tile_ilp_20260615_060810.csv",     "label": "Hand vec + ILP (opt9_abl_hand_vec_no_tile_ilp)",      "color": "#cb8d53"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt10_abl_tile_8x256_20260615_061032.csv",           "label": "Hand vec + 8x256 tile (opt10_abl_tile_8x256)",   "color": "#008fd1ff"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt10_abl_tile_8x256_ilp_20260615_061418.csv",           "label": "Hand vec + 8x256 tile + ILP (opt10_abl_tile_8x256_ilp)",   "color": "#68b4d7ff"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt11_abl_tile_8x2032_20260615_061946.csv",           "label": "8x2032 (opt11_abl_tile_8x2032)",   "color": "#df04e2ff"},
-    # {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt17_0_abl_tile_8x2032_ilp_20260615_062140.csv",           "label": "8x2032 + ILP (opt17_0_abl_tile_8x2032_ilp)",   "color": "#e572e7ff"},
-    {"path": "/home/team15/tomasz-worktree-dir/scripts/timing_results/final_avx_timing_results/timing_opt17_abl_tile_8x2032_ilp_reuse_20260615_062339.csv",           "label": "8x2032 + ILP + reuse (opt17_abl_tile_8x2032_ilp_reuse)",   "color": "#60ff38ff"}, # The only with reduced FLOPs
+    # {"path": "scripts/timing_results/final_avx_timing_results/timing_opt7_5_abl_compiler_vec_20260615_060220.csv",         "label": "Compiler vectorized code (opt7_5_abl_compiler_vec)",                "color": "#290a0a"},
+    # {"path": "scripts/timing_results/final_avx_timing_results/timing_opt9_abl_hand_vec_no_tile_20260615_060554.csv",     "label": "Hand vec (opt9_abl_hand_vec_no_tile)",      "color": "#bd5b00"},
+    # # {"path": "scripts/timing_results/final_avx_timing_results/timing_opt9_abl_hand_vec_no_tile_ilp_20260615_060810.csv",     "label": "Hand vec + ILP (opt9_abl_hand_vec_no_tile_ilp)",      "color": "#cb8d53"},
+    # {"path": "scripts/timing_results/final_avx_timing_results/timing_opt10_abl_tile_8x256_20260615_061032.csv",           "label": "Hand vec + 8x256 tile (opt10_abl_tile_8x256)",   "color": "#008fd1ff"},
+    # {"path": "scripts/timing_results/final_avx_timing_results/timing_opt10_abl_tile_8x256_ilp_20260615_061418.csv",           "label": "Hand vec + 8x256 tile + ILP (opt10_abl_tile_8x256_ilp)",   "color": "#68b4d7ff"},
+    # {"path": "scripts/timing_results/final_avx_timing_results/timing_opt11_abl_tile_8x2032_20260615_061946.csv",           "label": "8x2032 (opt11_abl_tile_8x2032)",   "color": "#df04e2ff"},
+    {"path": "scripts/timing_results/final_avx_timing_results/timing_opt17_0_abl_tile_8x2032_ilp_20260615_062140.csv",           "label": "8 x full_row tile",   "color": "#e44ee6"},
+    {"path": "scripts/timing_results/final_avx_timing_results/timing_opt17_abl_tile_8x2032_ilp_reuse_20260615_062339.csv",           "label": "conversion reuse",   "color": "#e37a34"}, # The only with reduced FLOPs
 ]
 
 # Shared x and y columns (same across all CSVs).
@@ -103,7 +91,7 @@ Y_COL = "median_cycles"
 def SHARED_FILTER(df):
     return (
         df["data_source"].str.startswith("generated")
-        & (df["img_w"] == df["img_h"]) & (df["img_w"] < 3072) & (df["img_w"] > 64)
+        & (df["img_w"] == df["img_h"]) & (df["img_w"] < 3072) & (df["img_w"] > 256)
     )
 
 # Plot decoration
@@ -120,7 +108,7 @@ Y_SCALE = "log"
 
 # Legend placement: "upper left", "upper right", "lower left", "lower right",
 # "best", or None to hide.
-LEGEND_LOC = "upper left"
+LEGEND_LOC = "best"
 
 # X-axis tick formatting.
 # "human_size"  -> 128, 256, 1k, 4k, 1M  (good for image sizes)
@@ -129,11 +117,11 @@ X_TICK_FORMAT = "human_size"
 
 # Label of the series to use as the denominator in the normalized L1D plot.
 # Set to None to use the first loaded series.
-L1D_NORM_REF_LABEL = "Without reusing"
+L1D_NORM_REF_LABEL = "8x2032 + ILP (opt17_0_abl_tile_8x2032_ilp)"
 
 # Sizes (img_w values) to include in the normalized L1D bar chart.
 # Set to None to include all sizes passing SHARED_FILTER.
-L1D_NORM_SIZES = [512, 1024, 2048]
+L1D_NORM_SIZES = None
 
 CACHE_METRICS = [
     {"col": "avg_l1d_loads",     "title": "L1 Data Cache Loads",            "scale": "log"},
@@ -478,6 +466,8 @@ else:
 # ---------------------------------------------------------------------------
 # L1D Loads Normalized Column Plot
 # ---------------------------------------------------------------------------
+# L1D Loads Normalized Column Plot
+# ---------------------------------------------------------------------------
 _l1d_col = "avg_l1d_loads"
 _l1d_series = [(e, e["df"].set_index(X_COL)[_l1d_col])
                for e in loaded if _l1d_col in e["df"].columns]
@@ -498,6 +488,19 @@ if len(_l1d_series) >= 2:
     if not common_x:
         print("  [skip] l1d_loads_normalized: no x values remain after size filter")
     else:
+        # Console: % decrease from full_row tile -> conversion reuse
+        _cmp_label = "8x2032 + ILP + reuse (opt17_abl_tile_8x2032_ilp_reuse)"
+        _cmp_entry = next(((e, s) for e, s in _l1d_series if e["label"] == _cmp_label), None)
+        if _cmp_entry is not None:
+            cmp_s = _cmp_entry[1]
+            print(f"\nL1D loads % decrease  ({ref_label}  ->  {_cmp_label}):")
+            for _sz in common_x:
+                if _sz in ref_s.index and _sz in cmp_s.index:
+                    _rv = float(ref_s[_sz])
+                    _cv = float(cmp_s[_sz])
+                    _pct = (_rv - _cv) / _rv * 100.0
+                    print(f"  img_w={_sz:5d}:  {fmt_count(_rv)} -> {fmt_count(_cv)}  ({_pct:+.1f}%)")
+
         n_groups = len(common_x)
         n_bars   = len(_l1d_series)
         bar_w    = 0.8 / n_bars
@@ -518,32 +521,31 @@ if len(_l1d_series) >= 2:
                         rect.get_height() + 0.005,
                         fmt_count(abs_val),
                         ha="center", va="bottom",
-                        fontsize=8, color="#333333")
+                        fontsize=12, color="#333333")
 
         ax.axhline(1.0, color="#555555", linewidth=1.0, linestyle="--")
 
         ax.set_xticks(x_idx)
         ax.set_xticklabels([str(v) for v in common_x],
-                           rotation=45, ha="right", fontsize=8)
-        ax.set_xlabel(X_LABEL, fontsize=10, color="#333333", labelpad=6)
-        ax.set_ylabel(f"L1D loads  /  {ref_label}", fontsize=10,
-                      color="#333333", labelpad=6)
+                           rotation=45, ha="right", fontsize=12)
+        ax.set_xlabel(X_LABEL, fontsize=15, color="#333333", labelpad=6)
+        # ax.set_ylabel(f"L1D loads  /  {ref_label}", fontsize=15,
+        #               color="#333333", labelpad=6)
 
-        fig.text(0.10, 0.87, "L1 Data Cache Loads — Normalized",
-                 fontsize=12, fontweight="bold", color="#222222", ha="left")
-        fig.text(0.10, 0.83, f"Each series divided by \"{ref_label}\"  (1.0 = same as reference)",
-                 fontsize=10, color="#333333", ha="left")
+        fig.text(0.10, 0.87, "L1 Data Cache Loads - Normalized",
+                 fontsize=18, fontweight="bold", color="#222222", ha="left")
+        fig.text(0.10, 0.83, f"Each series divided by the reference count (without reuse)  (1.0 = same as reference)",
+                 fontsize=15, color="#333333", ha="left")
 
         style_axes(ax)
 
-        if LEGEND_LOC is not None:
-            handles, labels = ax.get_legend_handles_labels()
-            ax.legend(handles, labels, loc=LEGEND_LOC,
-                      frameon=True, fontsize=9, labelcolor="#333333",
-                      handlelength=1.8, borderaxespad=0.8,
-                      facecolor="white", edgecolor="none", framealpha=0.92)
+        handles, labels = ax.get_legend_handles_labels()
+        ax.legend(handles, labels,
+                  loc="upper left", bbox_to_anchor=(-0.06, -0.09),
+                  ncol=1, frameon=False, fontsize=12, labelcolor="#333333",
+                  handlelength=1.8, borderaxespad=0.8)
 
-        _out = "l1d_loads_normalized.png"
+        _out = "l1d_loads_normalized.pdf"
         fig.savefig(_out, dpi=160, bbox_inches="tight")
         plt.close(fig)
         print(f"Saved l1d_loads_normalized plot to {_out}")

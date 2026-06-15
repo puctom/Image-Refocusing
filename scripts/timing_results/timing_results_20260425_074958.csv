@@ -1,2 +1,0 @@
-variant,data_source,focus_parameter,num_reps,img_w,img_h,n_subapertures,avg_ms,median_ms,min_ms,max_ms,avg_cycles,median_cycles,min_cycles,max_cycles,cycles_per_pixel,mpixels_s,membw_gbs,avg_cache_misses,avg_instructions,ipc
-real_data_1,real,3.900000,10,1024,512,289,2102.823662,2104.982148,2085.318376,2124.626249,5087290473,5092512425,5044940525,5140036737,9703.236528,0.249326,0.216165,9563599.800000,22226379343.200001,4.369001
