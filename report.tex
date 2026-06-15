@@ -251,25 +251,24 @@ for(int y=0; y < h; ++y){
 \subsection{Vectorized Single-Focus Optimizations}
 % BEGIN Tomasz cooking zone
 % item Make sure to report the fastest non-vectorized code you obtained, compiled with flags disabling compiler vectorization. Also report the best compiler-vectorized code
-Having implemented all the optimizations for the scalar code, we moved on to exploiting the SIMD capabilities of the processor using vectorization. 
+Having implemented all the optimizations for the scalar code, we moved on to exploiting the SIMD capabilities of the processor using AVX2 vectorization. The section proceeds by describing the steps taken: a compiler-vectorized baseline, initial hand-written intrinsics, output-tile cache blocking, explicit two-chain accumulation for ILP, and finally input-row load and conversion reuse within each tile.
 
-\mypar{Best compiler vectorized code} Before hand-crafting the vectorized code, we compiled our final, most-performant scalar code without the \texttt{-fno-tree-vectorize} flag. This gave us the compiler-vectorized code, which we evaluated in the further experiments. There was no performance gain when compared to just the scalar code. 
+\mypar{Best compiler vectorized code} Before hand-crafting the vectorized code, we compiled our final, most-performant scalar code without the \texttt{-fno-tree-vectorize} flag. This gave us the compiler-vectorized code, which we evaluated in the further experiments. There was no significant performance difference when compared to just the scalar code (change below 1\%). 
 
 Our brief inspection of the produced assembly showed that the compiler failed to apply vectorization to the global algorithm structure, but instead only vectorized a single iteration of the innermost loop, heavily underutilizing the capabilities of vectorization. 
 
 \mypar{Initial vectorized code with intrinsics}
-Looking globally at the algorithm, it becomes clear that for one subaperture image the adjacent output pixels and their channels can be processed in parallel. They accumulate the contributions from the neighbouring subaperture data, which is accessed in the same sequential pattern. For these reasons we opted for using explicit intrinsics to implement this approach. 
+Looking globally at the algorithm, it became clear that for one subaperture image the adjacent output pixels and their channels can be processed in parallel. They accumulate the contributions from the neighbouring subaperture data, which is accessed in the same sequential pattern. For these reasons we opted for using explicit intrinsics to implement this approach. 
 
-In the initial implementation, for each subaperture once the pointer to the starting pixel due to offset is determined, the input subaperture bytes are loaded: \texttt{\_mm\_loadl\_epi64} and converted to floats: \texttt{\_mm256\_cvtepi32\_ps}, and the weights are stored in their vectors \texttt{\_mm256\_set1\_ps}. Similarly, the output vector is loaded \texttt{\_mm256\_loadu\_ps} and then a chain of FMA instructions is performed \texttt{\_mm256\_fmadd\_ps}, accumulating the contributions from the corner pixels weighted by the bilinear weights. 
+In the initial implementation, the inner loop processes 8 consecutive float-valued output channels per iteration. It loads 8 bytes from each of the four bilinear corner positions in the subaperture, converts them to 32-bit floats, and accumulates the four bilinear contributions into the output accumulator through a chain of FMAs, weighted by the subaperture weights that are broadcast once into AVX registers. 
 
-Such code gives a large improvement of 77\% of the runtime for small image sizes (below 1024 pixels), and about 61\% for larger image sizes. 
-% Doesn't sound too drastic but is >50% slower TODO
+For small image sizes (below 1024 pixels) this reduces runtime by 77\%; for larger images the gain is only about 61\%. This 40\% worse performance for larger images guided us towards the next optimization.
 
 
 \mypar{Blocking for cache hits on output image}
-With the established \texttt{sub-y-x} loop order, the whole output image is accessed over and over again for every subaperture. However, the cache levels (as summarized in Table \ref{tab:cache_specs}) are too small to fit the output image (and the currently processed subaperture) in their entirety, which results in misses across all levels when accessing the output image, causing stalls in turn. Already for an image size of 1024x1024 pixels, the output requires: $1024 \cdot 1024 \cdot 3 \cdot 4B = 12MB $ of memory, which exceeds the 8MB of the LLC capacity.
+With the established \texttt{sub-y-x} loop order, the whole output image is accessed over and over again for every subaperture. However, the cache levels (as summarized in Table \ref{tab:cache_specs}) are too small to fit the output image (and the currently processed subaperture) in their entirety, which results in misses across all levels when accessing the output image, in turn causing the execution to stall. Already for an image size of 1024x1024 pixels, the output requires: $1024 \cdot 1024 \cdot 3 \cdot 4B = 12MB $ of memory, which exceeds the 8MB of the LLC capacity.
 
-Bearing in mind the neat structure of the algorithm with sequential pixel accesses, we decided to process a smaller tile of an output image for all subapertures at a time, making sure that accesses to that output memory for subsequent subapertures are hits, rather than misses due to not fitting in cache. An arbitrary tile size is possible, with the access pattern illustrated in \ref{fig:cacheBlocking}, achieved by using \texttt{tile\_y - tile\_x - sub - y - x} loop order.
+Bearing in mind the neat, regular structure of the algorithm with sequential pixel accesses, we decided to process a smaller tile of an output image for all subapertures at a time, ensuring that when accessed for subsequent subapertures that output memory stays in cache, rather than gets evicted due to its large size. An arbitrary tile size is possible, with the access pattern illustrated in Figure~\ref{fig:cacheBlocking}, achieved by using \texttt{tile\_y - tile\_x - sub - y - x} loop order.
 
 
 \begin{figure}[H]
@@ -280,7 +279,7 @@ Bearing in mind the neat structure of the algorithm with sequential pixel access
 \end{figure}
 
 
-Initially, a size of 8 rows $ \times $ 256 columns was used, as we suspected that such tile size ($8 \cdot 256 \cdot 3 \cdot 4B = 24$KB) fitting in the L1D cache (48KB) would be optimal. 
+Initially, a tile size of 8 rows $ \times $ 256 columns was used, as we suspected that such tile size ($8 \cdot 256 \cdot 3 \cdot 4B = 24$KB) fitting in the L1D cache (48KB) would be optimal. 
 
 We then tuned the tile dimensions empirically. Rather than scanning the height-width grid exhaustively, we used a Bayesian optimizer over the two parameters, which iteratively proposes tile sizes and converges on the combination that minimizes the median measured cycle count. We utilized the Weight and Biases platform  \cite{wandb} to run these simulations and kept a fixed image size of 2048x2048 when running them. The best results were achieved by the tile sizes with large width (around 2000) and small height (around 8), as show in Figure \ref{fig:wandb}. Ultimately, a tile size of 8 rows $ \times $ 2048 (full row) columns was chosen. These optimizations further reduced the proportion of misses: with the number of loads in LLC going down from 704k to 363k for 2048x2048 image size and the corresponding miss ratio down from 99\% to 68\%. 
 % (Klejdi ideally to look into the metrics) 
@@ -295,12 +294,12 @@ runtimes cluster at small tile heights paired with large tile widths.}
     \label{fig:wandb}
 \end{figure}
 
-\mypar{Increased ILP through loop unrolling}
-On top of the code with cache-oriented tiling, we explicitly unrolled the innermost loop to process two vectors of output channels in the loop body. This way, the compiler explicitly generates more independent corresponding conversions (\texttt{vpmovzxbd}, \texttt{vcvtdq2ps}) and arithmetic (\texttt{vfmadd132ps}) instructions in the assembly. This optimization gave, however, a small speedup of about 4\% of the runtime. We suppose that since the instructions operate on independent data, the out of order execution already achieved the majority of the possible ILP.
+\mypar{Increasing Instruction-Level Parallelism}
+On top of the code with cache-oriented tiling, we explicitly introduced two independent AVX accumulation chains in the loop body, processing 16 output channels per iteration instead of 8. This way, the compiler explicitly generates more independent corresponding conversions (\texttt{vpmovzxbd}, \texttt{vcvtdq2ps}) and arithmetic (\texttt{vfmadd132ps}) instructions in the assembly. This gave, however, only about 4\% speedup. Our analysis concluded that most likely the out of order execution already achieves the majority of the possible ILP and limited by other bottlenecks, with only a marginal gain possible from the explicit instructions in the code. 
 
 \mypar{Load and conversion reuse} %todo add ref to scalar version
-The final optimization with the vectorized code followed the same idea as the \textit{Load and conversion reuse} for scalar code. As illustrated in \ref{fig:avxReuseIllustration}, in case of the vectorized code however, the contributing subaperture pixels cannot be reused for row-adjacent output vectors, because the offset for output channels is 8, while the offset for contributing channels is 3. Fortunately, the intermediate rows of the tile can be used first as the bottom and then for the next row as the top contributing neighbours. 
-By going row-by-row within a tile, we reuse the intermediate loaded and converted rows. Except for the outer pixels, this is applied in blocks of 4 rows, leading to reduction of the loads and conversions from 8 (2 per row) to 5 (reusing 3 intermediate rows). This is confirmed by reduced L1D cache loads, since the data stays in the registers and does not need to be fetched from the cache. The optimization improves the runtime by further \todo{\%}, while the FLOPs/cycle stays at roughly the same level, with the FLOPs count reduced to: \todo{}.
+The final optimization with the vectorized code followed the same idea as the \textit{Load and conversion reuse} for scalar code. As illustrated in Figure~\ref{fig:avxReuseIllustration}, in case of the vectorized code however, the contributing subaperture pixels cannot be reused for row-adjacent output vectors, because the offset for output channel vectors is 8, while the offset for contributing channels is 3. Fortunately, the intermediate rows of the tile can be used first as the bottom and then for the next row as the top contributing neighbours. 
+By going row-by-row within a tile, we reuse the intermediate loaded and converted rows. Except for the outer pixels, this is applied in blocks of 4 rows, leading to reduction of the loads and conversions from 8 (2 per row) to 5 (reusing 3 intermediate rows). This is confirmed by reduced L1D cache loads, since the data stays in the registers and does not need to be fetched from the cache. The optimization reduces the total FLOPs performed and improves the runtime by further \todo{\%}, while the FLOPs/cycle stay at roughly the same level: \todo{}.
 
 \begin{figure}[H]
     \centering
@@ -390,7 +389,7 @@ Figure \ref{fig:scalar-perf} plots our single-focus runtime against image size f
     \label{fig:scalar-perf}
 \end{figure}
 
-Figure \ref{fig:avxCyclesPerPixelResults} plots the performance for the AVX2 versions of the code. AVX2 brings the runtime from the previous best scalar $13.9$~Gcycles down to $2.0$~Gcycles, a further $7.0\times$ speedup, which is a total $62.5\times$ speedup over the original baseline. The best vectorized single focus code reaches ... \todo flops/cycle, ...\% of the scalar peak. The speedup is close to but slightly below the expected $8\times$ speedup from the lane width. The IPC drops from 1.18 to 0.78 because the byte to float conversions use the same ports for the vector instructions as the vector FMAs. This is also why we cannot reach the SIMD roof.
+Figure \ref{fig:avxCyclesPerPixelResults} plots the performance for the AVX2 versions of the code. Our fully optimized vectorized code brings the runtime from the previous best scalar $13.9$~Gcycles down to $2.0$~Gcycles, a further $7.0\times$ speedup, which is a total $62.5\times$ speedup over the original baseline. The best vectorized single focus code reaches ... \todo flops/cycle, ...\% of the scalar peak. The speedup is close to but slightly below the expected $8\times$ from processing 8 single-precision floats per AVX2 register. The IPC drops from 1.18 to 0.78 because byte-to-float conversions dispatch to the same two ports as the FMA instructions. Since each loop iteration issues an equal number of conversion and FMA instructions, the sustained throughput is bounded at roughly half the SIMD peak --- this is why we cannot reach the SIMD roof.
 
 \begin{figure}[H]
     \centering
