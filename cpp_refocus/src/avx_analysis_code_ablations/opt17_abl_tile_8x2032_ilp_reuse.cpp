@@ -6,6 +6,9 @@
 #include <immintrin.h>
 
 /*
+*   Ablation: identical to opt17.cpp (8x2032 tile + ILP + row register reuse).
+*   This is the final step in the ablation chain.
+*
 *   List of Optimizations:
 *       - Change the loop order to [Subaperture, y, x] for improved locality
 *       - Common subexpression elimination

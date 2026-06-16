@@ -32,7 +32,7 @@ timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 # configuration defaults
 DEFAULT_FOCUS = 6.7
 DEFAULT_STACK_FOCUSES = [-49.3, -20.12, 0.10, 5.34, 12.352, 33.33, 49.0]
-DEFAULT_SIZES = [16, 32, 64, 128, 256, 512, 1024, 2048]
+DEFAULT_SIZES = [16, 32, 64, 128] + list(range(256, 3073, 256))
 
 def load_yaml_config(path):
     if yaml is None:

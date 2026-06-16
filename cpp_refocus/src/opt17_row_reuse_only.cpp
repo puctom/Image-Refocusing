@@ -6,21 +6,10 @@
 #include <immintrin.h>
 
 /*
-*   List of Optimizations:
-*       - Change the loop order to [Subaperture, y, x] for improved locality
-*       - Common subexpression elimination
-*       - use better bounds for the x-y loops
-*       - use unchecked array access
-*       - function inlining
-*       - unroll channel loop to expose independent scalar ops for ILP
-*       - reduce number of loads in innermost loop
-*       - use AVX float32 FMA with unaligned loads
-*       - use block tiles for better cache performance
-*       - calculate counts using prefix sum technique
-*       - unroll the main vectorized loop to increase ILP for independent vectors accumulations
-*       - 2-row y unroll
-*       - hoist A, B, C, D into broadcasted AVX registers
-*       - fuse multiple output rows (2-row and 4-row processing blocks)
+*   opt17 ablation: row register reuse only, no ILP x-unrolling.
+*   4-row (and 2-row) y-blocks fuse output rows so each shared input row is
+*   loaded once and passed in registers to the next row's computation.
+*   x-loop processes 8 floats (one AVX vector) per step — no _lo/_hi dual-vector.
 * */
 
 namespace {
@@ -34,7 +23,7 @@ struct SubParams {
 
 static inline __m256 load_cvt8(const unsigned char* ptr) {
     return _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(
-    _mm_loadl_epi64(reinterpret_cast<const __m128i*>(ptr))));
+        _mm_loadl_epi64(reinterpret_cast<const __m128i*>(ptr))));
 }
 
 ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {
@@ -138,94 +127,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
 
                     int xf = 0;
 
-                    for (; xf + 16 <= x_floats; xf += 16) {
-                        __m256 rl0_lo = load_cvt8(p.SUB + rb[0] + xf);
-                        __m256 rl0_hi = load_cvt8(p.SUB + rb[0] + xf +  8);
-                        __m256 rr0_lo = load_cvt8(p.SUB + rb[0] + xf +  3);
-                        __m256 rr0_hi = load_cvt8(p.SUB + rb[0] + xf + 11);
-
-                        __m256 rl1_lo = load_cvt8(p.SUB + rb[1] + xf);
-                        __m256 rl1_hi = load_cvt8(p.SUB + rb[1] + xf +  8);
-                        __m256 rr1_lo = load_cvt8(p.SUB + rb[1] + xf +  3);
-                        __m256 rr1_hi = load_cvt8(p.SUB + rb[1] + xf + 11);
-
-                        {
-                            __m256 v_lo = _mm256_loadu_ps(vp0 + xf);
-                            __m256 v_hi = _mm256_loadu_ps(vp0 + xf + 8);
-                            v_lo = _mm256_fmadd_ps(Avx, rl0_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Avx, rl0_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Bvx, rr0_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Bvx, rr0_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Cvx, rl1_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Cvx, rl1_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Dvx, rr1_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Dvx, rr1_hi, v_hi);
-                            _mm256_storeu_ps(vp0 + xf,     v_lo);
-                            _mm256_storeu_ps(vp0 + xf + 8, v_hi);
-                        }
-
-                        __m256 rl2_lo = load_cvt8(p.SUB + rb[2] + xf);
-                        __m256 rl2_hi = load_cvt8(p.SUB + rb[2] + xf +  8);
-                        __m256 rr2_lo = load_cvt8(p.SUB + rb[2] + xf +  3);
-                        __m256 rr2_hi = load_cvt8(p.SUB + rb[2] + xf + 11);
-
-                        {
-                            __m256 v_lo = _mm256_loadu_ps(vp1 + xf);
-                            __m256 v_hi = _mm256_loadu_ps(vp1 + xf + 8);
-                            v_lo = _mm256_fmadd_ps(Avx, rl1_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Avx, rl1_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Bvx, rr1_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Bvx, rr1_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Cvx, rl2_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Cvx, rl2_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Dvx, rr2_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Dvx, rr2_hi, v_hi);
-                            _mm256_storeu_ps(vp1 + xf,     v_lo);
-                            _mm256_storeu_ps(vp1 + xf + 8, v_hi);
-                        }
-
-                        __m256 rl3_lo = load_cvt8(p.SUB + rb[3] + xf);
-                        __m256 rl3_hi = load_cvt8(p.SUB + rb[3] + xf +  8);
-                        __m256 rr3_lo = load_cvt8(p.SUB + rb[3] + xf +  3);
-                        __m256 rr3_hi = load_cvt8(p.SUB + rb[3] + xf + 11);
-
-                        {
-                            __m256 v_lo = _mm256_loadu_ps(vp2 + xf);
-                            __m256 v_hi = _mm256_loadu_ps(vp2 + xf + 8);
-                            v_lo = _mm256_fmadd_ps(Avx, rl2_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Avx, rl2_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Bvx, rr2_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Bvx, rr2_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Cvx, rl3_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Cvx, rl3_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Dvx, rr3_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Dvx, rr3_hi, v_hi);
-                            _mm256_storeu_ps(vp2 + xf,     v_lo);
-                            _mm256_storeu_ps(vp2 + xf + 8, v_hi);
-                        }
-
-                        __m256 rl4_lo = load_cvt8(p.SUB + rb[4] + xf);
-                        __m256 rl4_hi = load_cvt8(p.SUB + rb[4] + xf +  8);
-                        __m256 rr4_lo = load_cvt8(p.SUB + rb[4] + xf +  3);
-                        __m256 rr4_hi = load_cvt8(p.SUB + rb[4] + xf + 11);
-
-                        {
-                            __m256 v_lo = _mm256_loadu_ps(vp3 + xf);
-                            __m256 v_hi = _mm256_loadu_ps(vp3 + xf + 8);
-                            v_lo = _mm256_fmadd_ps(Avx, rl3_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Avx, rl3_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Bvx, rr3_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Bvx, rr3_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Cvx, rl4_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Cvx, rl4_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Dvx, rr4_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Dvx, rr4_hi, v_hi);
-                            _mm256_storeu_ps(vp3 + xf,     v_lo);
-                            _mm256_storeu_ps(vp3 + xf + 8, v_hi);
-                        }
-                    }
-
-                    if (xf + 8 <= x_floats) {
+                    for (; xf + 8 <= x_floats; xf += 8) {
                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
                         __m256 rr0 = load_cvt8(p.SUB + rb[0] + xf + 3);
                         __m256 rl1 = load_cvt8(p.SUB + rb[1] + xf);
@@ -268,7 +170,6 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v = _mm256_fmadd_ps(Dvx, rr4, v);
                             _mm256_storeu_ps(vp3 + xf, v);
                         }
-                        xf += 8;
                     }
 
                     for (int k = 0; k < x_floats - xf; ++k) {
@@ -295,50 +196,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
 
                     int xf = 0;
 
-                    for (; xf + 16 <= x_floats; xf += 16) {
-                        __m256 rl0_lo = load_cvt8(p.SUB + rb[0] + xf);
-                        __m256 rl0_hi = load_cvt8(p.SUB + rb[0] + xf +  8);
-                        __m256 rr0_lo = load_cvt8(p.SUB + rb[0] + xf +  3);
-                        __m256 rr0_hi = load_cvt8(p.SUB + rb[0] + xf + 11);
-                        __m256 rl1_lo = load_cvt8(p.SUB + rb[1] + xf);
-                        __m256 rl1_hi = load_cvt8(p.SUB + rb[1] + xf +  8);
-                        __m256 rr1_lo = load_cvt8(p.SUB + rb[1] + xf +  3);
-                        __m256 rr1_hi = load_cvt8(p.SUB + rb[1] + xf + 11);
-                        {
-                            __m256 v_lo = _mm256_loadu_ps(vp0 + xf);
-                            __m256 v_hi = _mm256_loadu_ps(vp0 + xf + 8);
-                            v_lo = _mm256_fmadd_ps(Avx, rl0_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Avx, rl0_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Bvx, rr0_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Bvx, rr0_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Cvx, rl1_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Cvx, rl1_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Dvx, rr1_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Dvx, rr1_hi, v_hi);
-                            _mm256_storeu_ps(vp0 + xf,     v_lo);
-                            _mm256_storeu_ps(vp0 + xf + 8, v_hi);
-                        }
-                        __m256 rl2_lo = load_cvt8(p.SUB + rb[2] + xf);
-                        __m256 rl2_hi = load_cvt8(p.SUB + rb[2] + xf +  8);
-                        __m256 rr2_lo = load_cvt8(p.SUB + rb[2] + xf +  3);
-                        __m256 rr2_hi = load_cvt8(p.SUB + rb[2] + xf + 11);
-                        {
-                            __m256 v_lo = _mm256_loadu_ps(vp1 + xf);
-                            __m256 v_hi = _mm256_loadu_ps(vp1 + xf + 8);
-                            v_lo = _mm256_fmadd_ps(Avx, rl1_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Avx, rl1_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Bvx, rr1_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Bvx, rr1_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Cvx, rl2_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Cvx, rl2_hi, v_hi);
-                            v_lo = _mm256_fmadd_ps(Dvx, rr2_lo, v_lo);
-                            v_hi = _mm256_fmadd_ps(Dvx, rr2_hi, v_hi);
-                            _mm256_storeu_ps(vp1 + xf,     v_lo);
-                            _mm256_storeu_ps(vp1 + xf + 8, v_hi);
-                        }
-                    }
-
-                    if (xf + 8 <= x_floats) {
+                    for (; xf + 8 <= x_floats; xf += 8) {
                         __m256 rl0 = load_cvt8(p.SUB + rb[0] + xf);
                         __m256 rr0 = load_cvt8(p.SUB + rb[0] + xf + 3);
                         __m256 rl1 = load_cvt8(p.SUB + rb[1] + xf);
@@ -361,7 +219,6 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v = _mm256_fmadd_ps(Dvx, rr2, v);
                             _mm256_storeu_ps(vp1 + xf, v);
                         }
-                        xf += 8;
                     }
 
                     for (int k = 0; k < x_floats - xf; ++k) {
@@ -374,37 +231,14 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                 }
 
                 if (y < y_end) {
-                    size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
-                    size_t rb1 = rb0 + width * 3;
+                    const size_t rb0 = ((size_t)(y + p.sy) * width + (size_t)(x_begin + p.sx)) * 3;
+                    const size_t rb1 = rb0 + width * 3;
 
                     float* vp = tile_vals.data() + (size_t)(y - ty) * tile_row_stride + (size_t)(x_begin - tx) * 3;
 
                     int xf = 0;
 
-                    for (; xf + 16 <= x_floats; xf += 16) {
-                        __m256 rl0_lo = load_cvt8(p.SUB + rb0 + xf);
-                        __m256 rl0_hi = load_cvt8(p.SUB + rb0 + xf +  8);
-                        __m256 rr0_lo = load_cvt8(p.SUB + rb0 + xf +  3);
-                        __m256 rr0_hi = load_cvt8(p.SUB + rb0 + xf + 11);
-                        __m256 rl1_lo = load_cvt8(p.SUB + rb1 + xf);
-                        __m256 rl1_hi = load_cvt8(p.SUB + rb1 + xf +  8);
-                        __m256 rr1_lo = load_cvt8(p.SUB + rb1 + xf +  3);
-                        __m256 rr1_hi = load_cvt8(p.SUB + rb1 + xf + 11);
-                        __m256 v_lo = _mm256_loadu_ps(vp + xf);
-                        __m256 v_hi = _mm256_loadu_ps(vp + xf + 8);
-                        v_lo = _mm256_fmadd_ps(Avx, rl0_lo, v_lo);
-                        v_hi = _mm256_fmadd_ps(Avx, rl0_hi, v_hi);
-                        v_lo = _mm256_fmadd_ps(Bvx, rr0_lo, v_lo);
-                        v_hi = _mm256_fmadd_ps(Bvx, rr0_hi, v_hi);
-                        v_lo = _mm256_fmadd_ps(Cvx, rl1_lo, v_lo);
-                        v_hi = _mm256_fmadd_ps(Cvx, rl1_hi, v_hi);
-                        v_lo = _mm256_fmadd_ps(Dvx, rr1_lo, v_lo);
-                        v_hi = _mm256_fmadd_ps(Dvx, rr1_hi, v_hi);
-                        _mm256_storeu_ps(vp + xf,     v_lo);
-                        _mm256_storeu_ps(vp + xf + 8, v_hi);
-                    }
-
-                    if (xf + 8 <= x_floats) {
+                    for (; xf + 8 <= x_floats; xf += 8) {
                         __m256 rl0 = load_cvt8(p.SUB + rb0 + xf);
                         __m256 rr0 = load_cvt8(p.SUB + rb0 + xf + 3);
                         __m256 rl1 = load_cvt8(p.SUB + rb1 + xf);
@@ -415,7 +249,6 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                         v = _mm256_fmadd_ps(Cvx, rl1, v);
                         v = _mm256_fmadd_ps(Dvx, rr1, v);
                         _mm256_storeu_ps(vp + xf, v);
-                        xf += 8;
                     }
 
                     for (int k = 0; k < x_floats - xf; ++k) {

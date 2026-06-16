@@ -1,0 +1,2 @@
+variant,data_source,num_focuses,num_reps,img_w,img_h,n_subapertures,avg_ms,median_ms,min_ms,max_ms,avg_cycles,median_cycles,min_cycles,max_cycles,cycles_per_pixel,mpixels_s,membw_gbs,avg_cache_refs,avg_cache_misses,cache_miss_rate,avg_branch_instr,avg_branch_misses,branch_miss_rate,avg_instructions,ipc
+real_data_1,real,7,10,1024,512,289,4944.979798,4945.707648,4940.776364,4950.726481,11963251867,11965012735,11953082618,11977154658,3259.727442,0.742170,0.643461,263232986.400000,67599152.300000,0.256804,1050031807.800000,1032285.000000,0.000983,47035165836.300003,3.931637
