@@ -7,7 +7,7 @@ BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 BENCH_COMMON_SRC := src/bench_common.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt5_fma opt6 opt7 opt7_fma opt7_5 opt7_6 opt7_7 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt7_5_abl_compiler_vec opt9_abl_hand_vec_no_tile opt9_abl_hand_vec_no_tile_ilp opt10_abl_tile_8x256 opt10_abl_tile_8x256_ilp opt11_abl_tile_8x2032 opt17_0_abl_tile_8x2032_ilp opt17_abl_tile_8x2032_ilp_reuse opt17_compile_flop_counter rep1 rep2 rep3 rep4 rep5 rep6
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt5_fma opt6 opt7 opt7_fma opt7_5 opt7_6 opt7_7 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt7_5_abl_compiler_vec opt9_abl_hand_vec_no_tile opt9_abl_hand_vec_no_tile_ilp opt10_abl_tile_8x256 opt10_abl_tile_8x256_ilp opt11_abl_tile_8x2032 opt17_0_abl_tile_8x2032_ilp opt17_abl_tile_8x2032_ilp_reuse opt17_compile_flop_counter opt99_basic_unpack32 opt99_basic_mulhi opt1799_16_32_bits rep1 rep2 rep3 rep4 rep5 rep6
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -33,6 +33,11 @@ VER_SRC.opt14     := opt14
 VER_SRC.opt15     := opt15
 VER_SRC.opt16     := opt16
 VER_SRC.opt17     := opt17
+VER_SRC.opt99     := opt99
+VER_SRC.opt99_basic_unrolled_unpack32     			:= opt99_basic_unrolled_unpack32
+VER_SRC.opt99_basic_unpack32     					:= opt99_basic_unpack32
+VER_SRC.opt99_basic_mulhi     						:= opt99_basic_mulhi
+VER_SRC.opt1799_16_32_bits     						:= opt1799_16_32_bits
 VER_SRC.opt17_compile_flop_counter     := opt17_compile_flop_counter
 # Ablation chain: compiler-vec -> hand-vec (no tile) -> +ILP -> tile 8x256 -> +ILP -> tile 8x2032 -> +ILP -> +reuse
 VER_SRC.opt7_5_abl_compiler_vec         := avx_analysis_code_ablations/opt7_5_abl_compiler_vec
@@ -77,6 +82,13 @@ VER_FLAGS.opt14     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt15     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt16     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt17     := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt99     := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt99_basic_mulhi     := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt99_basic     := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt99_basic_unrolled_unpack32     				:= -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt99_basic_unpack32     							:= -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt99_basic_unpack32     							:= -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt1799_16_32_bits     							:= -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt17_compile_flop_counter     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt7_5_abl_compiler_vec         := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt9_abl_hand_vec_no_tile       := -march=native -ffast-math -mavx2 -mfma
