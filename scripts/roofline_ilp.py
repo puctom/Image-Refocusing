@@ -57,23 +57,29 @@ DEFAULT_FREQ_GHZ = 2.40
 
 # Memory-bandwidth roof slope [bytes / cycle], from the STREAM benchmark.
 # (We use the measured STREAM bandwidth, not the Advisor DRAM-roof estimate.)
-MEM_BW_BYTES_PER_CYCLE = 5.7
+MEM_BW_BYTES_PER_CYCLE = 7.84
 
 # Per-target model. One entry per optimization:
 #   label           legend text
 #   marker          the marker SHAPE for this code version (color encodes size)
 #   flops_per_shift FP add/mul ops per shift that Advisor counts
 #   conv_per_shift  int->float conversions per shift (Advisor does NOT count)
-# flops_per_shift is 24 (12 mul + 12 add) for the CSE'd inner loop; basic-opt
-# recomputes the bilinear weights per channel (no CSE, 2-stage lerp) so Advisor
-# measures ~44 mul+add per shift (empirically 1.83x the optimized kernels at
-# every size). conv_per_shift is 12 with no reuse, 6 for the sliding-window
-# (conversion-reuse) opt7* kernels.
+# All rep* kernels are hand-vectorized AVX2: the inner loop accumulates the
+# bilinear stencil with vector FMAs, so per output pixel (3 channels) Advisor
+# counts 24 flops (12 FMAs = 12 mul + 12 add). conv_per_shift is the number of
+# int->float converts (_mm256_cvtepi32_ps) per pixel, which Advisor omits:
+#   - 12 for the no-reuse kernels (rep2/rep3/rep5 load all 4 corners per pixel)
+#   - 6 for the conversion-reuse kernel (rep6 reuses each converted row register
+#     across two output rows, so in steady state only 2 of the 4 corners per
+#     output element are newly converted).
+# See cpp_refocus/Makefile for the target -> source mapping (e.g. rep6 ->
+# opt17_abl_tile_8x2032_ilp_reuse) and opt7_5_flop_counted.cpp for the scalar
+# per-op accounting the AVX kernels mirror.
 TARGET_MODELS = {
-    "basic-opt": {"label": "baseline",         "marker": "o", "flops_per_shift": 44, "conv_per_shift": 12},
-    "opt7_6":    {"label": "DP counts",        "marker": "s", "flops_per_shift": 24, "conv_per_shift": 6},
-    "opt7_fma":  {"label": "conv. reuse", "marker": "D", "flops_per_shift": 24, "conv_per_shift": 6},
-    "opt7_7":    {"label": "tiling",           "marker": "^", "flops_per_shift": 24, "conv_per_shift": 6},
+    "rep2": {"label": "hand vectorized",         "marker": "o", "flops_per_shift": 24, "conv_per_shift": 12},
+    "rep3":    {"label": "small tiles",           "marker": "s", "flops_per_shift": 24, "conv_per_shift": 12},
+    "rep5":  {"label": "large tiles",           "marker": "D", "flops_per_shift": 24, "conv_per_shift": 12},
+    "rep6":    {"label": "conv. reuse",           "marker": "^", "flops_per_shift": 24, "conv_per_shift": 6},
 }
 
 # Color per image size [px]. Cool -> warm follows increasing size.
@@ -87,15 +93,19 @@ SIZE_COLORS = {
 # Only plot these image sizes (px). None = all sizes found.
 SIZES = [256, 512, 1024, 2048]
 
-# Horizontal compute-peak ceilings [flops / cycle].
+# Horizontal compute-peak ceilings [flops / cycle]. AVX2 single precision:
+# 2 FMA ports x 8 lanes x 2 flops = 32 (matches the SP Vector FMA roof in the
+# reports, ~76.5 GFLOPS / 2.40 GHz). The instruction-mix ceiling (26.67) is the
+# scalar 3.33 scaled by the 8-wide SIMD: with the converts counted as flops, the
+# FMA+convert ports retire (24 + 6) adjusted flops per 9 cycles -> 3.33/cycle x 8.
 PEAK_DEFS = [
-    ("scalar_peak",      "",   4.0),
-    ("scalar_instr_mix", "",  3.33),
+    ("avx_fma_peak",  "",  32.0),
+    ("avx_instr_mix", "",  26.67),
 ]
 
 # Plot decoration
 TITLE       = "DRAM Roofline on Intel Tiger Lake"
-FLAGS       = "-march=native -ffast-math -fno-tree-vectorize"
+FLAGS       = "-march=native -ffast-math"
 Y_AXIS_DESC = "[flops / cycle]"
 X_LABEL     = "operational intensity  [flops / byte]"
 OUTPUT_PATH = SCRIPT_DIR / "roofline_ilp.svg"
