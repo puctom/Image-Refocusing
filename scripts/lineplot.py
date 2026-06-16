@@ -422,9 +422,6 @@ if has_cpp_data:
     # Linear scale for cycles_per_pixel
     apply_scale(ax, "y", "linear")
 
-    # Force the y-axis to start at 0 while auto-scaling the top limit
-    ax.set_ylim(bottom=0)
-
     # X ticks
     x_ticks = sorted(all_x)
     if X_SCALE in ("log", "log2"):
@@ -464,6 +461,7 @@ if has_cpp_data:
 else:
     print("  [skip] cycles_per_pixel column not found in any data files")
     plt.close(fig)
+
 
 # ---------------------------------------------------------------------------
 # L1D Loads Normalized Column Plot
