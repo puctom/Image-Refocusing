@@ -453,11 +453,15 @@ The scalar optimizations bring the stack baseline from 1772.4 down to 264.7 Gcyc
 
 \section{Conclusions}
 
-Here you need to briefly summarize what you did and why this is
-important. {\em Do not take the abstract} and put it in the past
-tense. Remember, now the reader has (hopefully) read the paper, so it
-is a very different situation from the abstract. Try to highlight
-important results and say the things you really want to get across. Be brief.
+% Here you need to briefly summarize what you did and why this is
+% important. {\em Do not take the abstract} and put it in the past
+% tense. Remember, now the reader has (hopefully) read the paper, so it
+% is a very different situation from the abstract. Try to highlight
+% important results and say the things you really want to get across. Be brief.
+
+We developed a single-core C++ light-field refocusing implementation, guided at each step by roofline analysis and hardware performance counters. Scalar optimizations --- loop reordering, function inlining, explicit FMA accumulation, bilinear-weight and conversion reuse, and a prefix-sum count algorithm --- compound to a $7.56\times$ speedup over the baseline, bringing the scalar code to within 5\% of its instruction-mix ceiling of 3.33 FLOPs/cycle. This ceiling itself is set by the Tiger Lake constraint that byte-to-float conversions and FMA instructions share the same two execution ports; conversion reuse cuts the conversion count by half, raising the ceiling from the FMA-only 4 FLOPs/cycle to 3.33 FLOPs/cycle.
+
+AVX2 vectorization, combined with empirically tuned output-tile cache blocking ($8\times2048$ tile, found via Bayesian search) and cross-row load-and-conversion reuse, delivers a further $5.84\times$ speedup, for a total of $44\times$ over the original baseline. The best vectorized code reaches approximately 70\% of the corresponding AVX2 instruction-mix ceiling of 26.67 FLOPs/cycle, with the residual gap again attributable to the shared-port bottleneck: even with two independent accumulation chains and explicit tiling to keep the output resident, the equal mix of conversion and FMA instructions saturates both ports and leaves no room for further throughput gains through ILP or memory optimizations alone. The focal-stack implementation, which extends tiling to the focus dimension so that subaperture rows are reused across a block of focal lengths, achieves the same per-pixel throughput as the single-focus code --- confirming that the execution-port bottleneck, not memory bandwidth, is the binding constraint across all our workloads.
 
 % \section{Check list}
 
