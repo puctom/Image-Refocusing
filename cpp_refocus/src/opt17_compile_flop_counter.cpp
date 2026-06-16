@@ -23,16 +23,30 @@
 *       - fuse multiple output rows (2-row and 4-row processing blocks)
 * */
 
-namespace {
+#ifdef COUNT_FLOPS
+#include<iostream>
+// this code will only be there if the flag is specified, otherwise this code literally does not exist
+// USAGE: make build/opt17 COUNT_FLOPS=1, then: ./build/opt17 ../in/validation 6.7 - this will print the number of flops
+// Get cycles: using benchmark.py OR $ ./build/bench-opt17 ../in/validation 6.7 output.csv
+inline unsigned long long total_flops = 0;
+
+// Simple macro to increment
+#define ADD_FLOPS(n) total_flops += (n)
+
+#else
+#define ADD_FLOPS(n) 
+#endif
+
 struct SubParams {
     int sx, sy;
     float A, B, C, D;
     int x_begin, x_end, y_begin, y_end;
     const unsigned char* SUB;
 };
-}
 
 static inline __m256 load_cvt8(const unsigned char* ptr) {
+    // 32bit int -> 32bit single precision float: 8 
+    ADD_FLOPS(8);
     return _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(
     _mm_loadl_epi64(reinterpret_cast<const __m128i*>(ptr))));
 }
@@ -54,14 +68,19 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
         SubParams p;
         float shift_x = focus * sub.u;
         float shift_y = focus * sub.v;
+        ADD_FLOPS(2);
         p.sx = static_cast<int>(std::floor(shift_x));
+        ADD_FLOPS(2); // floor + cast
         p.sy = static_cast<int>(std::floor(shift_y));
+        ADD_FLOPS(2); // floor + cast
         float dx = shift_x - p.sx;
         float dy = shift_y - p.sy;
+        ADD_FLOPS(2);
         p.A = (1.0f - dx) * (1.0f - dy);
         p.B = dx           * (1.0f - dy);
         p.C = (1.0f - dx) * dy;
         p.D = dx           * dy;
+        ADD_FLOPS(8); // depends on how it is compiled, should be insignificant
         p.x_begin = std::max(0, -p.sx);
         p.x_end   = std::min(w, w - p.sx - 1);
         p.y_begin = std::max(0, -p.sy);
@@ -160,6 +179,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v_hi = _mm256_fmadd_ps(Cvx, rl1_hi, v_hi);
                             v_lo = _mm256_fmadd_ps(Dvx, rr1_lo, v_lo);
                             v_hi = _mm256_fmadd_ps(Dvx, rr1_hi, v_hi);
+                            ADD_FLOPS(8 * 8 * 2);
                             _mm256_storeu_ps(vp0 + xf,     v_lo);
                             _mm256_storeu_ps(vp0 + xf + 8, v_hi);
                         }
@@ -180,6 +200,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v_hi = _mm256_fmadd_ps(Cvx, rl2_hi, v_hi);
                             v_lo = _mm256_fmadd_ps(Dvx, rr2_lo, v_lo);
                             v_hi = _mm256_fmadd_ps(Dvx, rr2_hi, v_hi);
+                            ADD_FLOPS(8 * 8 * 2);
                             _mm256_storeu_ps(vp1 + xf,     v_lo);
                             _mm256_storeu_ps(vp1 + xf + 8, v_hi);
                         }
@@ -200,6 +221,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v_hi = _mm256_fmadd_ps(Cvx, rl3_hi, v_hi);
                             v_lo = _mm256_fmadd_ps(Dvx, rr3_lo, v_lo);
                             v_hi = _mm256_fmadd_ps(Dvx, rr3_hi, v_hi);
+                            ADD_FLOPS(8 * 8 * 2);
                             _mm256_storeu_ps(vp2 + xf,     v_lo);
                             _mm256_storeu_ps(vp2 + xf + 8, v_hi);
                         }
@@ -220,6 +242,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v_hi = _mm256_fmadd_ps(Cvx, rl4_hi, v_hi);
                             v_lo = _mm256_fmadd_ps(Dvx, rr4_lo, v_lo);
                             v_hi = _mm256_fmadd_ps(Dvx, rr4_hi, v_hi);
+                            ADD_FLOPS(8 * 8 * 2);
                             _mm256_storeu_ps(vp3 + xf,     v_lo);
                             _mm256_storeu_ps(vp3 + xf + 8, v_hi);
                         }
@@ -236,6 +259,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v = _mm256_fmadd_ps(Bvx, rr0, v);
                             v = _mm256_fmadd_ps(Cvx, rl1, v);
                             v = _mm256_fmadd_ps(Dvx, rr1, v);
+                            ADD_FLOPS(4 * 8 * 2);
                             _mm256_storeu_ps(vp0 + xf, v);
                         }
                         __m256 rl2 = load_cvt8(p.SUB + rb[2] + xf);
@@ -246,6 +270,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v = _mm256_fmadd_ps(Bvx, rr1, v);
                             v = _mm256_fmadd_ps(Cvx, rl2, v);
                             v = _mm256_fmadd_ps(Dvx, rr2, v);
+                            ADD_FLOPS(4 * 8 * 2);
                             _mm256_storeu_ps(vp1 + xf, v);
                         }
                         __m256 rl3 = load_cvt8(p.SUB + rb[3] + xf);
@@ -256,6 +281,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v = _mm256_fmadd_ps(Bvx, rr2, v);
                             v = _mm256_fmadd_ps(Cvx, rl3, v);
                             v = _mm256_fmadd_ps(Dvx, rr3, v);
+                            ADD_FLOPS(4 * 8 * 2);
                             _mm256_storeu_ps(vp2 + xf, v);
                         }
                         __m256 rl4 = load_cvt8(p.SUB + rb[4] + xf);
@@ -266,6 +292,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v = _mm256_fmadd_ps(Bvx, rr3, v);
                             v = _mm256_fmadd_ps(Cvx, rl4, v);
                             v = _mm256_fmadd_ps(Dvx, rr4, v);
+                            ADD_FLOPS(4 * 8 * 2);
                             _mm256_storeu_ps(vp3 + xf, v);
                         }
                         xf += 8;
@@ -281,6 +308,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
                         vp2[xf+k] += p.A*s2l + p.B*s2r + p.C*s3l + p.D*s3r;
                         vp3[xf+k] += p.A*s3l + p.B*s3r + p.C*s4l + p.D*s4r;
+                        ADD_FLOPS(8 * 4);
                     }
                 }
 
@@ -315,6 +343,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v_hi = _mm256_fmadd_ps(Cvx, rl1_hi, v_hi);
                             v_lo = _mm256_fmadd_ps(Dvx, rr1_lo, v_lo);
                             v_hi = _mm256_fmadd_ps(Dvx, rr1_hi, v_hi);
+                            ADD_FLOPS(8 * 8 * 2);
                             _mm256_storeu_ps(vp0 + xf,     v_lo);
                             _mm256_storeu_ps(vp0 + xf + 8, v_hi);
                         }
@@ -333,6 +362,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v_hi = _mm256_fmadd_ps(Cvx, rl2_hi, v_hi);
                             v_lo = _mm256_fmadd_ps(Dvx, rr2_lo, v_lo);
                             v_hi = _mm256_fmadd_ps(Dvx, rr2_hi, v_hi);
+                            ADD_FLOPS(8 * 8 * 2);
                             _mm256_storeu_ps(vp1 + xf,     v_lo);
                             _mm256_storeu_ps(vp1 + xf + 8, v_hi);
                         }
@@ -349,6 +379,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v = _mm256_fmadd_ps(Bvx, rr0, v);
                             v = _mm256_fmadd_ps(Cvx, rl1, v);
                             v = _mm256_fmadd_ps(Dvx, rr1, v);
+                            ADD_FLOPS(4 * 8 * 2);
                             _mm256_storeu_ps(vp0 + xf, v);
                         }
                         __m256 rl2 = load_cvt8(p.SUB + rb[2] + xf);
@@ -359,6 +390,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                             v = _mm256_fmadd_ps(Bvx, rr1, v);
                             v = _mm256_fmadd_ps(Cvx, rl2, v);
                             v = _mm256_fmadd_ps(Dvx, rr2, v);
+                            ADD_FLOPS(4 * 8 * 2);
                             _mm256_storeu_ps(vp1 + xf, v);
                         }
                         xf += 8;
@@ -370,6 +402,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                         float s2l = p.SUB[rb[2]+xf+k], s2r = p.SUB[rb[2]+xf+k+3];
                         vp0[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
                         vp1[xf+k] += p.A*s1l + p.B*s1r + p.C*s2l + p.D*s2r;
+                        ADD_FLOPS(2 * 8);
                     }
                 }
 
@@ -400,6 +433,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                         v_hi = _mm256_fmadd_ps(Cvx, rl1_hi, v_hi);
                         v_lo = _mm256_fmadd_ps(Dvx, rr1_lo, v_lo);
                         v_hi = _mm256_fmadd_ps(Dvx, rr1_hi, v_hi);
+                        ADD_FLOPS(8 * 8 * 2);
                         _mm256_storeu_ps(vp + xf,     v_lo);
                         _mm256_storeu_ps(vp + xf + 8, v_hi);
                     }
@@ -414,6 +448,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                         v = _mm256_fmadd_ps(Bvx, rr0, v);
                         v = _mm256_fmadd_ps(Cvx, rl1, v);
                         v = _mm256_fmadd_ps(Dvx, rr1, v);
+                        ADD_FLOPS(4 * 8 * 2);
                         _mm256_storeu_ps(vp + xf, v);
                         xf += 8;
                     }
@@ -422,6 +457,7 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                         float s0l = p.SUB[rb0+xf+k], s0r = p.SUB[rb0+xf+k+3];
                         float s1l = p.SUB[rb1+xf+k], s1r = p.SUB[rb1+xf+k+3];
                         vp[xf+k] += p.A*s0l + p.B*s0r + p.C*s1l + p.D*s1r;
+                        ADD_FLOPS(8);
                     }
                 }
             }
@@ -434,13 +470,19 @@ ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, flo
                     int c = counts[y * width + (tx + x)];
                     if (c == 0) continue;
                     float inv_c = 1.0f / (float)c;
-                    outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f);
+                    ADD_FLOPS(2); // cast + div
+                    outp[x*3    ] = (unsigned char)std::clamp(vp[x*3    ] * inv_c + 0.5f, 0.0f, 255.0f); // mul, add, clamp (min, max), cast to char
                     outp[x*3 + 1] = (unsigned char)std::clamp(vp[x*3 + 1] * inv_c + 0.5f, 0.0f, 255.0f);
                     outp[x*3 + 2] = (unsigned char)std::clamp(vp[x*3 + 2] * inv_c + 0.5f, 0.0f, 255.0f);
+                    ADD_FLOPS(3 * 5); // is clamp just one?
                 }
             }
         }
     }
+    #ifdef COUNT_FLOPS
+    std::cout << "Total Algorithmic FLOPs: " << total_flops << "\n";
+    total_flops = 0; 
+    #endif
 
     return output;
 }
