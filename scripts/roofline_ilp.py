@@ -76,10 +76,11 @@ MEM_BW_BYTES_PER_CYCLE = 7.84
 # opt17_abl_tile_8x2032_ilp_reuse) and opt7_5_flop_counted.cpp for the scalar
 # per-op accounting the AVX kernels mirror.
 TARGET_MODELS = {
-    "rep2": {"label": "hand vectorized",         "marker": "o", "flops_per_shift": 24, "conv_per_shift": 12},
-    "rep3":    {"label": "small tiles",           "marker": "s", "flops_per_shift": 24, "conv_per_shift": 12},
-    "rep5":  {"label": "large tiles",           "marker": "D", "flops_per_shift": 24, "conv_per_shift": 12},
-    "rep6":    {"label": "conv. reuse",           "marker": "^", "flops_per_shift": 24, "conv_per_shift": 6},
+    "rep2": {"label": "Hand vectorized",         "marker": "o", "flops_per_shift": 24, "conv_per_shift": 12},
+    "rep3":    {"label": "8x256 small tile",           "marker": "s", "flops_per_shift": 24, "conv_per_shift": 12},
+    "rep5":  {"label": "8xfull_row large tile",           "marker": "D", "flops_per_shift": 24, "conv_per_shift": 12},
+    "rep6":    {"label": "Load and conv reuse",           "marker": "^", "flops_per_shift": 24, "conv_per_shift": 6},
+    "stack_opt10":    {"label": "Focal stack (incl. load-conv-reuse)",           "marker": "^", "flops_per_shift": 24, "conv_per_shift": 6},
 }
 
 # Color per image size [px]. Cool -> warm follows increasing size.
@@ -95,20 +96,23 @@ SIZES = [256, 512, 1024, 2048]
 
 # Horizontal compute-peak ceilings [flops / cycle]. AVX2 single precision:
 # 2 FMA ports x 8 lanes x 2 flops = 32 (matches the SP Vector FMA roof in the
-# reports, ~76.5 GFLOPS / 2.40 GHz). The instruction-mix ceiling (26.67) is the
-# scalar 3.33 scaled by the 8-wide SIMD: with the converts counted as flops, the
-# FMA+convert ports retire (24 + 6) adjusted flops per 9 cycles -> 3.33/cycle x 8.
+# reports, ~76.5 GFLOPS / 2.40 GHz). The instruction-mix ceilings are the
+# scalar 3.0 / 3.33 ceilings scaled by the 8-wide SIMD: 24 without conversion
+# reuse, 26.67 with it (FMA+convert ports retire (24 + 6) adjusted flops per
+# 9 cycles -> 3.33/cycle x 8).
 PEAK_DEFS = [
-    ("avx_fma_peak",  "",  32.0),
-    ("avx_instr_mix", "",  26.67),
+    ("avx_fma_peak",        "AVX Peak",                    32.0),
+    ("avx_instr_mix",       "AVX instr. mix",               24.0),
+    ("avx_instr_mix_reuse", "AVX instr. mix, conv. reuse", 26.67),
 ]
 
 # Plot decoration
 TITLE       = "DRAM Roofline on Intel Tiger Lake"
+SUBTITLE    = "(vectorized code)"
 FLAGS       = "-march=native -ffast-math"
 Y_AXIS_DESC = "[flops / cycle]"
 X_LABEL     = "operational intensity  [flops / byte]"
-OUTPUT_PATH = SCRIPT_DIR / "roofline_ilp.svg"
+OUTPUT_PATH = SCRIPT_DIR / "roofline_ilp_avx.pdf"
 
 # Axis scales: "linear", "log", or "log2".
 X_SCALE = "log2"
@@ -284,10 +288,22 @@ def make_plot(points, output_path):
     ax.set_ylim(*y_lim)
     x_lo, x_hi = ax.get_xlim()
 
-    # Diagonal memory-bandwidth roof: perf = BW * intensity.
+    # Diagonal memory-bandwidth roof: perf = BW * intensity. Labeled right
+    # above the line, rotated to follow its slope (angle computed in display
+    # space so it is correct regardless of the log-log aspect ratio).
     xs = np.array([x_lo, x_hi])
     ax.plot(xs, mem_bw_bpc * xs, color="#888888", linewidth=ROOF_LW * FONT_SCALE,
             linestyle="--", zorder=1)
+
+    p0 = ax.transData.transform((x_lo, mem_bw_bpc * x_lo))
+    p1 = ax.transData.transform((x_hi, mem_bw_bpc * x_hi))
+    roof_angle = np.degrees(np.arctan2(p1[1] - p0[1], p1[0] - p0[0]))
+    _, y_hi = ax.get_ylim()
+    x_lab = min(x_hi, max(x_lo, y_hi / mem_bw_bpc)) * 0.2
+    ax.text(x_lab, mem_bw_bpc * x_lab, rf"  $\beta$ = {mem_bw_bpc:g} B/cycle",
+            rotation=roof_angle, rotation_mode="anchor",
+            ha="left", va="bottom", fontsize=FS_PEAK * FONT_SCALE,
+            color="#888888", zorder=2)
 
     # Horizontal compute-peak ceilings, drawn only to the right of where they
     # cross the diagonal memory roof (i.e. starting at ai = peak / mem_bw).
@@ -298,9 +314,9 @@ def make_plot(points, output_path):
         ax.plot([x_start, x_hi], [peak_value, peak_value], color="#888888",
                 linewidth=CEIL_LW * FONT_SCALE, linestyle="--", zorder=1)
         if peak_label:
-            ax.text(x_start, peak_value, f" {peak_label}",
-                    ha="left", va="bottom", fontsize=FS_PEAK * FONT_SCALE,
-                    color="#555555")
+            ax.text(7, peak_value, f" {peak_label}",
+                    ha="left", va="bottom", fontsize=12 * FONT_SCALE,
+                    color="#888888")
 
     # Shape encodes the code version; color encodes the image size.
     for target, model in TARGET_MODELS.items():
@@ -319,10 +335,13 @@ def make_plot(points, output_path):
                   color="#333333", labelpad=6)
 
     left_x = 0.155
-    fig.text(left_x, 0.93, TITLE, fontsize=FS_TITLE * FONT_SCALE,
+    fig.text(left_x, 0.935, TITLE, fontsize=FS_TITLE * FONT_SCALE,
              fontweight="bold", color="#222222", ha="left")
+    if SUBTITLE:
+        fig.text(left_x, 0.89, SUBTITLE, fontsize=FS_FLAGS * FONT_SCALE,
+                 color="#000000", ha="left")
     if FLAGS:
-        fig.text(left_x, 0.865, FLAGS, fontsize=FS_FLAGS * FONT_SCALE,
+        fig.text(left_x, 0.85, FLAGS, fontsize=FS_FLAGS * FONT_SCALE,
                  color="#555555", ha="left")
     if Y_AXIS_DESC:
         pos = ax.get_position()

@@ -34,7 +34,7 @@ struct SubParams {
 
 static inline __m256 load_cvt8(const unsigned char* ptr) {
     return _mm256_cvtepi32_ps(_mm256_cvtepu8_epi32(
-        _mm_loadl_epi64(reinterpret_cast<const __m128i*>(ptr))));
+    _mm_loadl_epi64(reinterpret_cast<const __m128i*>(ptr))));
 }
 
 ImageData refocus_shift_and_sum(std::vector<SubApertureImage>& subapertures, float focus) {

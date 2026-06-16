@@ -7,7 +7,7 @@ BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 BENCH_COMMON_SRC := src/bench_common.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt5_fma opt6 opt7 opt7_fma opt7_5 opt7_6 opt7_7 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 rep1 rep2 rep3 rep4 rep5 rep6
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt5_fma opt6 opt7 opt7_fma opt7_5 opt7_6 opt7_7 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt7_5_abl_compiler_vec opt9_abl_hand_vec_no_tile opt9_abl_hand_vec_no_tile_ilp opt10_abl_tile_8x256 opt10_abl_tile_8x256_ilp opt11_abl_tile_8x2032 opt17_0_abl_tile_8x2032_ilp opt17_abl_tile_8x2032_ilp_reuse rep1 rep2 rep3 rep4 rep5 rep6
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -33,6 +33,15 @@ VER_SRC.opt14     := opt14
 VER_SRC.opt15     := opt15
 VER_SRC.opt16     := opt16
 VER_SRC.opt17     := opt17
+# Ablation chain: compiler-vec -> hand-vec (no tile) -> +ILP -> tile 8x256 -> +ILP -> tile 8x2032 -> +ILP -> +reuse
+VER_SRC.opt7_5_abl_compiler_vec         := avx_analysis_code_ablations/opt7_5_abl_compiler_vec
+VER_SRC.opt9_abl_hand_vec_no_tile       := avx_analysis_code_ablations/opt9_abl_hand_vec_no_tile
+VER_SRC.opt9_abl_hand_vec_no_tile_ilp   := avx_analysis_code_ablations/opt9_abl_hand_vec_no_tile_ilp
+VER_SRC.opt10_abl_tile_8x256            := avx_analysis_code_ablations/opt10_abl_tile_8x256
+VER_SRC.opt10_abl_tile_8x256_ilp        := avx_analysis_code_ablations/opt10_abl_tile_8x256_ilp
+VER_SRC.opt11_abl_tile_8x2032           := avx_analysis_code_ablations/opt11_abl_tile_8x2032
+VER_SRC.opt17_0_abl_tile_8x2032_ilp     := avx_analysis_code_ablations/opt17_0_abl_tile_8x2032_ilp
+VER_SRC.opt17_abl_tile_8x2032_ilp_reuse := avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse
 # Best compiler vectorization without intrinsics in code:
 VER_SRC.opt_compiler_vec      := opt7_6
 
@@ -67,6 +76,14 @@ VER_FLAGS.opt14     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt15     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt16     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt17     := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt7_5_abl_compiler_vec         := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt9_abl_hand_vec_no_tile       := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt9_abl_hand_vec_no_tile_ilp   := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt10_abl_tile_8x256            := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt10_abl_tile_8x256_ilp        := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt11_abl_tile_8x2032           := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt17_0_abl_tile_8x2032_ilp     := -march=native -ffast-math -mavx2 -mfma
+VER_FLAGS.opt17_abl_tile_8x2032_ilp_reuse := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt_compiler_vec	:= -march=native -ffast-math
 
 VER_FLAGS.rep1      := -march=native -ffast-math 
