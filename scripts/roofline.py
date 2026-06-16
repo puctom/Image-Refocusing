@@ -50,8 +50,7 @@ def collect_survey(project_dir, target, target_cmd):
         "src:r=.",
         "--",
     ] + target_cmd
-    if not is_stack_target(target):
-        cmd.insert(2, "--start-paused")
+    cmd.insert(2, "--start-paused")
     run_cmd(
         cmd,
         source_setvars=True,
@@ -70,8 +69,7 @@ def collect_tripcounts(project_dir, target, target_cmd):
         "src:r=.",
         "--",
     ] + target_cmd
-    if not is_stack_target(target):
-        cmd.insert(5, "--start-paused")
+    cmd.insert(5, "--start-paused")
     run_cmd(
         cmd,
         source_setvars=True,
