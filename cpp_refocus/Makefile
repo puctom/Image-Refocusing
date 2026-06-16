@@ -7,7 +7,7 @@ BUILD ?= build
 COMMON_SRC ?= src/utils.cpp deps/lodepng.cpp
 BENCH_COMMON_SRC := src/bench_common.cpp
 
-VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt7_5 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt17_no_ilp_no_reuse opt17_ilp_only opt17_row_reuse_only opt12_new_tile opt17_no_ilp_no_reuse_old_tile opt7_5_abl_compiler_vec opt9_abl_hand_vec_no_tile opt9_abl_hand_vec_no_tile_ilp opt10_abl_tile_8x256 opt10_abl_tile_8x256_ilp opt11_abl_tile_8x2032 opt17_0_abl_tile_8x2032_ilp opt17_abl_tile_8x2032_ilp_reuse
+VERSIONS := basic basic-opt opt1 opt2 opt3 opt4 opt5 opt5_fma opt6 opt7 opt7_fma opt7_5 opt7_6 opt7_7 opt8 opt_compiler_vec opt9 opt10 opt11 opt12 opt13 opt14 opt15 opt16 opt17 opt17_no_ilp_no_reuse opt17_ilp_only opt17_row_reuse_only opt12_new_tile opt17_no_ilp_no_reuse_old_tile opt7_5_abl_compiler_vec opt9_abl_hand_vec_no_tile opt9_abl_hand_vec_no_tile_ilp opt10_abl_tile_8x256 opt10_abl_tile_8x256_ilp opt11_abl_tile_8x2032 opt17_0_abl_tile_8x2032_ilp opt17_abl_tile_8x2032_ilp_reuse rep1 rep2 rep3 rep4 rep5 rep6
 
 VER_SRC.basic     := basic
 VER_SRC.basic-opt := basic
@@ -16,9 +16,13 @@ VER_SRC.opt2      := opt2
 VER_SRC.opt3      := opt3
 VER_SRC.opt4      := opt4
 VER_SRC.opt5      := opt5
+VER_SRC.opt5_fma  := opt5_fma
 VER_SRC.opt6      := opt6
 VER_SRC.opt7      := opt7
+VER_SRC.opt7_fma  := opt7_fma
 VER_SRC.opt7_5    := opt7_5
+VER_SRC.opt7_6    := opt7_6
+VER_SRC.opt7_7    := opt7_7
 VER_SRC.opt8      := opt8
 VER_SRC.opt9      := opt9
 VER_SRC.opt10     := opt10
@@ -44,7 +48,14 @@ VER_SRC.opt11_abl_tile_8x2032           := avx_analysis_code_ablations/opt11_abl
 VER_SRC.opt17_0_abl_tile_8x2032_ilp     := avx_analysis_code_ablations/opt17_0_abl_tile_8x2032_ilp
 VER_SRC.opt17_abl_tile_8x2032_ilp_reuse := avx_analysis_code_ablations/opt17_abl_tile_8x2032_ilp_reuse
 # Best compiler vectorization without intrinsics in code:
-VER_SRC.opt_compiler_vec      := opt7
+VER_SRC.opt_compiler_vec      := opt7_6
+
+VER_SRC.rep1      := opt7_6
+VER_SRC.rep2      := opt9_abl_hand_vec_no_tile
+VER_SRC.rep3      := opt10_abl_tile_8x256
+VER_SRC.rep4      := opt10_abl_tile_8x256_ilp
+VER_SRC.rep5      := opt17_0_abl_tile_8x2032_ilp
+VER_SRC.rep6      := opt17_abl_tile_8x2032_ilp_reuse
 
 VER_FLAGS.basic     := -fno-tree-vectorize
 VER_FLAGS.basic-opt := -march=native -ffast-math -fno-tree-vectorize
@@ -53,9 +64,13 @@ VER_FLAGS.opt2      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt3      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt4      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt5      := -march=native -ffast-math -fno-tree-vectorize
+VER_FLAGS.opt5_fma  := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt6      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt7      := -march=native -ffast-math -fno-tree-vectorize
+VER_FLAGS.opt7_fma  := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt7_5    := -march=native -ffast-math -fno-tree-vectorize
+VER_FLAGS.opt7_6    := -march=native -ffast-math -fno-tree-vectorize
+VER_FLAGS.opt7_7    := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt8      := -march=native -ffast-math -fno-tree-vectorize
 VER_FLAGS.opt9      := -march=native -ffast-math
 VER_FLAGS.opt10     := -march=native -ffast-math
@@ -80,6 +95,13 @@ VER_FLAGS.opt11_abl_tile_8x2032           := -march=native -ffast-math -mavx2 -m
 VER_FLAGS.opt17_0_abl_tile_8x2032_ilp     := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt17_abl_tile_8x2032_ilp_reuse := -march=native -ffast-math -mavx2 -mfma
 VER_FLAGS.opt_compiler_vec	:= -march=native -ffast-math
+
+VER_FLAGS.rep1      := -march=native -ffast-math 
+VER_FLAGS.rep2      := -march=native -ffast-math 
+VER_FLAGS.rep3      := -march=native -ffast-math 
+VER_FLAGS.rep4      := -march=native -ffast-math 
+VER_FLAGS.rep5      := -march=native -ffast-math 
+VER_FLAGS.rep6      := -march=native -ffast-math 
 
 STACK_BENCH_VERSIONS := stack_basic stack_opt1 stack_opt2 stack_opt3 stack_opt4 stack_opt5 stack_avx stack_opt6 stack_opt7 stack_opt8 stack_opt9 stack_opt10
 

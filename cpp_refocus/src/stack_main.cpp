@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
+#include <ittnotify.h>
 
 #include "utils.hpp"
 #include "refocus_stack.hpp"
@@ -21,7 +22,9 @@ int main(int argc, char** argv) {
         auto subapertures = load_subaperture_images(directory);
         std::cout << "Loaded " << subapertures.size() << " sub-aperture images\n";
         flush_caches();
+        __itt_resume();
         auto images = refocus_shift_and_sum_stack(subapertures, focuses);
+        __itt_pause();
         for (size_t i = 0; i < images.size(); ++i) {
             auto output = out_dir / ("stack_" + std::to_string(i) + ".png");
             save_png(output, images[i]);
