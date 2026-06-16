@@ -1,1 +1,4 @@
 pillow==12.1.1
+matplotlib
+pandas
+pyyaml

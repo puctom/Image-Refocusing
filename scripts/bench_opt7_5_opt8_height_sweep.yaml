@@ -1,0 +1,22 @@
+seed: 1234
+
+benchmarks:
+  - target: opt7_5
+    real: false
+    profile: false
+    focus: 6.7
+    width: 512
+    height:
+      start: 512
+      stop: 16384
+      step: 512
+
+  - target: opt8
+    real: false
+    profile: false
+    focus: 6.7
+    width: 512
+    height:
+      start: 512
+      stop: 16384
+      step: 512

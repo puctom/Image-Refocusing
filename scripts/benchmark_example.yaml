@@ -1,0 +1,45 @@
+seed: 1234
+
+benchmarks:
+  - target: stack_opt10
+    stack: true
+    real: false
+    profile: false
+    height:
+      start: 128
+      stop: 256
+      step: 128
+    width:
+      start: 128
+      stop: 512
+      step: 128
+    focal_stack_length:
+      start: 2
+      stop: 6
+      step: 2
+
+  - target: stack_opt10
+    stack: true
+    cases:
+      - height: 160
+        width: 256
+        focal_stack_length: 3
+      - [240, 384, 5]
+
+  - target: stack_opt10
+    stack: true
+    pixel_count:
+      start: 65536
+      stop: 262144
+      step: 65536
+    focal_stack_length:
+      start: 3
+      stop: 7
+      step: 2
+
+  - target: opt17
+    focus: 6.7
+    pixels:
+      start: 65536
+      stop: 262144
+      step: 65536

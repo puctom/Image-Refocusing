@@ -113,8 +113,8 @@ def compare_single(focus):
     rust = Image.open(os.path.join(OUT, "rust", fname))
     cpp = Image.open(os.path.join(OUT, "cpp", fname))
 
-    rust_data = rust.get_flattened_data()
-    cpp_data = cpp.get_flattened_data()
+    rust_data = list(rust.convert("RGB").getdata())
+    cpp_data = list(cpp.convert("RGB").getdata())
 
     if len(rust_data) != len(cpp_data):
         raise RuntimeError(f"Rust and CPP versions of {fname} have different sizes!")

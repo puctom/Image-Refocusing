@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <cstring>
+#include <cerrno>
+#include <iostream>
 #include <stdexcept>
 #include <cstdint>
 
@@ -11,7 +13,23 @@
 // from C++ code, so that we can isolate it to the concrete function
 
 class HWCounter {
-    int fd;
+    int fd = -1;
+
+    static void warn_unavailable(uint32_t type, uint64_t config, int error) {
+        static bool warned = false;
+        if (warned) return;
+        warned = true;
+
+        std::cerr
+            << "Warning: perf_event_open failed for perf counter type=" << type
+            << " config=" << config
+            << " (errno=" << error << ": " << std::strerror(error) << ").\n"
+            << "Timing will continue, but perf counter columns will be reported as 0.\n"
+            << "If kernel.perf_event_paranoid is already -1 on Google Cloud, the VM "
+            << "probably needs PMU support enabled with --performance-monitoring-unit "
+            << "on a supported C4/C4A machine type.\n";
+    }
+
 public:
     HWCounter(uint32_t type, uint64_t config) {
         struct perf_event_attr pe;
@@ -26,22 +44,27 @@ public:
         // syscall to open the performance counter for the current process/thread
         fd = syscall(__NR_perf_event_open, &pe, 0, -1, -1, 0);
         if (fd == -1) {
-            throw std::runtime_error("perf_event_open failed. Run: sudo sysctl -w kernel.perf_event_paranoid=-1");
+            warn_unavailable(type, config, errno);
         }
     }
 
-    ~HWCounter() { close(fd); }
+    ~HWCounter() {
+        if (fd != -1) close(fd);
+    }
 
     void start() {
+        if (fd == -1) return;
         ioctl(fd, PERF_EVENT_IOC_RESET, 0);
         ioctl(fd, PERF_EVENT_IOC_ENABLE, 0);
     }
 
     void stop() {
+        if (fd == -1) return;
         ioctl(fd, PERF_EVENT_IOC_DISABLE, 0);
     }
 
     uint64_t read() {
+        if (fd == -1) return 0;
         uint64_t count;
         if (::read(fd, &count, sizeof(uint64_t)) == -1) return 0;
         return count;

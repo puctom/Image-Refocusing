@@ -34,7 +34,7 @@ constexpr uint64_t DTLB_STORE_MISSES = HW_CACHE_CONFIG(PERF_COUNT_HW_CACHE_DTLB,
 constexpr uint64_t ITLB_LOAD_MISSES  = HW_CACHE_CONFIG(PERF_COUNT_HW_CACHE_ITLB, PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_MISS);
 
 // --- Shared Constants ---
-constexpr int NUM_REPS = 10;
+constexpr int NUM_REPS = 2;
 constexpr int WARMUP_ITERATIONS = 1;
 
 // --- Utility Functions ---

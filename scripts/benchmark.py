@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
 import argparse
+import random
 import subprocess
 import sys
 from pathlib import Path
 import datetime
+
+try:
+    import yaml
+except ImportError:
+    yaml = None
 
 # If this script is in /scripts directory it should be runnable from anywhere.
 # For example: python3 ../scripts/benchmark.py basic --focus 3.319 --sizes 128 256 512
@@ -26,7 +32,130 @@ timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 # configuration defaults
 DEFAULT_FOCUS = 6.7
 DEFAULT_STACK_FOCUSES = [-49.3, -20.12, 0.10, 5.34, 12.352, 33.33, 49.0]
-DEFAULT_SIZES = [16, 32, 64, 128, 256] + list(range(512, 2049, 256))
+DEFAULT_SIZES = [16, 32, 64, 128] + list(range(256, 3073, 256))
+
+def load_yaml_config(path):
+    if yaml is None:
+        print("[ERROR] PyYAML is required for --config mode. Install it with: pip install pyyaml")
+        sys.exit(1)
+    with open(path, "r") as f:
+        config = yaml.safe_load(f)
+    if not isinstance(config, dict) or "benchmarks" not in config:
+        print("[ERROR] YAML config must contain a top-level 'benchmarks' list.")
+        sys.exit(1)
+    return config
+
+def range_values(spec, name):
+    if spec is None:
+        return []
+    if isinstance(spec, int):
+        return [spec]
+    if isinstance(spec, list):
+        return spec
+    if not isinstance(spec, dict):
+        raise ValueError(f"{name} must be an integer, list, or range object")
+
+    start = int(spec["start"])
+    stop = int(spec["stop"])
+    step = int(spec.get("step", 1))
+    if step <= 0:
+        raise ValueError(f"{name}.step must be positive")
+    return list(range(start, stop + 1, step))
+
+def choose_square_like_dimensions(num_pixels):
+    best_w = 16
+    best_h = max(1, (num_pixels + best_w - 1) // best_w)
+    best_score = abs(best_w - best_h)
+
+    for width in range(16, num_pixels + 17, 16):
+        height = (num_pixels + width - 1) // width
+        score = abs(width - height)
+        if score < best_score:
+            best_w = width
+            best_h = height
+            best_score = score
+        if width > height and score > best_score:
+            break
+    return best_w, best_h
+
+def random_focuses(length):
+    return [random.uniform(-50.0, 50.0) for _ in range(length)]
+
+def make_generated_cases(bench):
+    explicit_cases = bench.get("cases")
+    if explicit_cases:
+        for index, case in enumerate(explicit_cases, start=1):
+            if isinstance(case, dict):
+                h = int(case["height"])
+                w = int(case["width"])
+                stack_len = case.get("focal_stack_length", case.get("focal_stack_size", case.get("focalStackSize")))
+            else:
+                h, w, stack_len = case
+                h = int(h)
+                w = int(w)
+            if w % 16 != 0:
+                raise ValueError(f"width must be divisible by 16 in YAML mode, got {w}")
+            yield w, h, f"gen_case{index}_{w}x{h}", int(stack_len)
+        return
+
+    pixel_spec = bench.get("pixels", bench.get("pixel_count"))
+    pixel_values = range_values(pixel_spec, "pixels")
+    if pixel_values:
+        for pixels in pixel_values:
+            w, h = choose_square_like_dimensions(pixels)
+            yield w, h, f"gen_{pixels}px_{w}x{h}", None
+        return
+
+    widths = range_values(bench.get("width"), "width")
+    heights = range_values(bench.get("height"), "height")
+    if not widths or not heights:
+        sizes = range_values(bench.get("sizes", DEFAULT_SIZES), "sizes")
+        for wh in sizes:
+            yield wh, wh, f"gen_{wh}x{wh}", None
+        return
+
+    for h in heights:
+        for w in widths:
+            if w % 16 != 0:
+                raise ValueError(f"width must be divisible by 16 in YAML mode, got {w}")
+            yield w, h, f"gen_{w}x{h}", None
+
+def run_config_benchmarks(config):
+    random.seed(config.get("seed"))
+    for index, bench in enumerate(config["benchmarks"], start=1):
+        target = bench["target"]
+        profile = bool(bench.get("profile", False))
+        include_real = bool(bench.get("real", False))
+        stack_lengths = range_values(bench.get("focal_stack_length"), "focal_stack_length")
+        stack = bool(bench.get("stack", bool(stack_lengths) or bool(bench.get("cases"))))
+        focus = float(bench.get("focus", DEFAULT_FOCUS))
+
+        build_bench_binary(target)
+        timing_csv = RESULTS_DIR / f"timing_{target}_{timestamp}_bench{index}.csv"
+
+        if include_real:
+            print("\n--- Running Real Dataset ---")
+            if stack:
+                focuses = random_focuses(stack_lengths[0] if stack_lengths else len(DEFAULT_STACK_FOCUSES))
+                cmd_args = [DATA_DIR, "real_data_1", timing_csv] + focuses
+            else:
+                cmd_args = [DATA_DIR, focus, "real_data_1", timing_csv]
+            run_benchmark(target, cmd_args, label=f"real_data_bench{index}", profile=profile)
+
+        print("\n--- Running Generated Dataset ---")
+        for w, h, label_base, case_stack_len in make_generated_cases(bench):
+            if stack:
+                lengths = [case_stack_len] if case_stack_len is not None else stack_lengths or [len(DEFAULT_STACK_FOCUSES)]
+                for stack_len in lengths:
+                    label = f"{label_base}_stack{stack_len}_bench{index}"
+                    cmd_args = ["--generate", w, h, label, timing_csv] + random_focuses(stack_len)
+                    run_benchmark(target, cmd_args, label=label, profile=profile)
+            else:
+                label = f"{label_base}_bench{index}"
+                cmd_args = ["--generate", w, h, focus, label, timing_csv]
+                run_benchmark(target, cmd_args, label=label, profile=profile)
+
+        print(f"\n[SUCCESS] Benchmark {index} complete. Results saved to {timing_csv}")
 
 def save_detailed_perf_annotate(label, perf_data_file):
     annotation_file = PROFILING_DIR / f"annotation_{label}_{timestamp}.txt"
@@ -84,7 +213,9 @@ def parse_args(raw_args=None):
     # e.g. python3 scripts/benchmark.py basic --focus 3.5 --sizes 256 512 1024
     # Otherwise the default ones are used.
     parser = argparse.ArgumentParser()
-    parser.add_argument("target", type=str)
+    parser.add_argument("target", type=str, nargs="?")
+    parser.add_argument("--config", type=Path,
+                        help="Read benchmarks from a YAML config file")
     
     # Configuration arguments
     parser.add_argument("--focus", type=float, default=DEFAULT_FOCUS,
@@ -110,6 +241,13 @@ def parse_args(raw_args=None):
 
 def main():
     args = parse_args()
+    if args.config:
+        run_config_benchmarks(load_yaml_config(args.config))
+        return
+    if args.target is None:
+        print("[ERROR] target is required unless --config is used.")
+        sys.exit(1)
+
     build_bench_binary(args.target)
 
     timing_csv = RESULTS_DIR / f"timing_{args.target}_{timestamp}.csv"

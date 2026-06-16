@@ -31,9 +31,9 @@ struct SubParams {
     const unsigned char* __restrict SUB;
 };
 
-constexpr int TILE_H = 8;
-constexpr int TILE_W = 2032;
-constexpr int FOCUS_BLOCK = 2;
+constexpr int TILE_H = 12;
+constexpr int TILE_W = 1056;
+constexpr int FOCUS_BLOCK = 4;
 
 static inline __m256 load_cvt8(const unsigned char* ptr) {
     return _mm256_cvtepi32_ps(
